@@ -58,7 +58,11 @@ function test() {
   var e2 = new Employee('Petar', 5);
   element.innerHTML += '<p>' + e1 + '</p><p>' + e2 + '</p>';
 
-  
+
+  // Homework: Create Programmer constructor extending Employee with multivalued property 
+  // 'languages' and override toString method from Employee to print additional information 
+  // - programming languages for the programmer instance.
+
 }
 
 
