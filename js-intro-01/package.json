@@ -1,0 +1,30 @@
+{
+  "name": "js-intro-01",
+  "version": "1.0.0",
+  "description": "Introduction to JavaScript examples",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.12.0",
+    "eslint-plugin-react": "^6.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-javascript.git"
+  },
+  "keywords": [
+    "javascript",
+    "intro",
+    "course",
+    "examples"
+  ],
+  "author": "",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-javascript/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-javascript#readme"
+}

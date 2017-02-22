@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The new ECMASCRIPT 5 method isArray returns true when used on an array.</p>
+
+<p id="demo"></p>
+
+<script>
+(function(){
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var argsBoundSlice = Array.prototype.slice.bind(arguments); 
+  // var argsBoundSlice = Array.prototype.slice.call(arguments, 0, 3); 
+  // var args = Array.prototype.slice.apply(arguments, [0, 3]); 
+  document.getElementById("demo").innerHTML =  argsBoundSlice(1, arguments.length).join(',') + '<br>' + Array.isArray( argsBoundSlice(1));
+  // document.getElementById("demo").innerHTML =  args.join(',') + '<br>' + Array.isArray( args);
+})("-rf",3,4);
+</script>
+
+</body>
+</html>

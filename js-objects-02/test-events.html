@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="js/test-events.js"></script>
+    </head>
+    <body onload="init();">
+        <h1>Test JS Event Handling</h1>
+        <a href="test.html" onclick="alert('Link clicked'); return true;">Click me</a>
+        <br>
+        <a id="traditional" href="test.html">Click me (Traditional Event Handling Model)</a>
+        <form id="form1" novalidate="novalidate">
+            <input type='text' name="name" id="name" >
+            <input id="b1" type="button" value="Button 1" 
+                   onclick="alert(form.b2.value);" />
+            <input id="b2" type="button" value="Button 2" 
+                   onclick="alert(getElementById('b1').value);" />
+            <input id="submit" type="submit" value="Submit Form" >
+        </form>
+    </body>
+</html>

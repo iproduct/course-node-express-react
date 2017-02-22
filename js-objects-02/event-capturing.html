@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<link type="text/css" rel="stylesheet" href="example.css">
+<div class="d1">1
+<div class="d2">2
+<div class="d3">3
+</div>
+</div>
+</div>
+<script>
+document.querySelector(".d1").addEventListener('click', highlight, true);
+document.querySelector(".d2").addEventListener('click', highlight, true);
+document.querySelector(".d3").addEventListener('click', highlight, true);
+
+function highlight(event) {
+    var elem = event.currentTarget;
+    console.log(elem.classList);
+    console.log(this);
+    console.log(event.target);
+    event.stopPropagation();
+    elem.style.backgroundColor='yellow'
+    alert(elem.className)
+    elem.style.backgroundColor = ''
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+#canvas { 
+    border: 1px dotted blue;
+}
+#image_container,  #image_container img {
+    display: none;
+}
+

@@ -1,0 +1,6 @@
+CORS can be used as a modern alternative to the JSONP pattern. 
+While JSONP supports only the GET request method, CORS also supports 
+other types of HTTP requests. Using CORS enables a web programmer to 
+use regular XMLHttpRequest which supports better error handling than 
+JSONP. On the other hand, JSONP works on legacy browsers which preclude 
+CORS support. CORS is supported by most modern web browsers.

@@ -1,0 +1,25 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CAD System Demo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/canvas.css" />
+        <script type="text/javascript" src="js/dynamic_load.js">
+        </script>   
+        <script>
+            function loadModules(){
+                  loadDynamic('js', ['cadsystem.js'], function(){init();});
+            }
+        </script>
+    </head>
+    <body onload="loadModules()">
+        <h1>CAD System Demo</h1>
+        <canvas id="canvas" width="500" height="300">
+            Please, use browser supporting HTML 5 &lt;canvas&gt; tag
+        </canvas>  
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="200" width="200" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <defs>
+  <linearGradient id="linearGradient3790" y2="160" gradientUnits="userSpaceOnUse" x2="160" y1="40" x1="40">
+   <stop stop-color="#FFF" offset="0"/>
+   <stop stop-color="#666" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3776" y2="40" gradientUnits="userSpaceOnUse" x2="160" y1="164.5" x1="40">
+   <stop stop-color="#bbb" offset="0"/>
+   <stop stop-color="#ddd" offset="1"/>
+  </linearGradient>
+  <filter id="filter3783">
+   <feGaussianBlur stdDeviation="0.96"/>
+  </filter>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+    <cc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
+   </cc:Work>
+   <cc:License rdf:about="http://creativecommons.org/licenses/by/3.0/">
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+   </cc:License>
+  </rdf:RDF>
+ </metadata>
+ <path filter="url(#filter3783)" d="M88,2v36c0,30-12,36-22,36h-20l-40,38h36c30,0,36,12,36,22v20l38,40v-36c0-30,12-36,22-36h20l40-38h-36c-30,0-36-12-36-22v-20l-38-40zm14,84c6.63,0,12,5.373,12,12,0,6.63-5.37,12-12,12-6.627,0-12-5.37-12-12,0-6.627,5.373-12,12-12z" fill="#333"/>
+ <path d="m86,4,0,36c0,30-12,36-22,36h-20l-40,38h36c30,0,36,12,36,22v20l38,40v-36c0-30,12-36,22-36h20l40-38h-36c-30,0-36-12-36-22v-20zm14,84c6.63,0,12,5.373,12,12,0,6.63-5.37,12-12,12-6.627,0-12-5.37-12-12,0-6.627,5.373-12,12-12z" stroke="url(#linearGradient3776)" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="0.5" fill="url(#linearGradient3790)"/>
+ <path opacity="0.3" d="m44,76,20,0-40,38-20,0z" fill="#666"/>
+ <path opacity="0.3" d="M124,44,124,64,86,24v-20z" fill="#000"/>
+ <path opacity="0.3" d="m114,176,0,20-38-40v-20z" fill="#666"/>
+ <path opacity="0.3" d="m176,86,20,0-40,38h-20z" fill="#666"/>
+</svg>

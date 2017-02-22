@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .results{
+                border: 3px solid green; 
+            }
+            .results tr, .results td, .results th {
+                border: 1px solid green; 
+                padding:5px 10px;
+            }
+        </style>
+        <script type="text/javascript">
+function loadXMLDoc(method, url, params, successCallback, errorCallback, 
+    contentType)
+{
+    contentType = contentType || "application/x-www-form-urlencoded";
+    params = params || {};
+    var xmlhttp;
+    var paramStr = "", p;
+    var i = 0;
+    var delimiter = "&";
+    for(p in params){
+        paramStr += ((i>0)?delimiter:"") + encodeURIComponent(p) + "="
+                +encodeURIComponent(params[p]);
+        i++;
+    }
+    url = url + "?t=" + Math.random();
+    if(method !== "POST" && method !== "PUT" && paramStr.length > 0){
+        url += "&" + paramStr;
+    }
+
+   if (typeof XMLHttpRequest !== "undefined") {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        try {
+            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) { }
+        if (xmlhttp === null) {
+            try {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) { }
+        }
+        if (xmlhttp === null) {
+            return;
+        }
+    }
+    xmlhttp.onreadystatechange = function(){
+        if (xmlhttp.readyState===4){
+            if(xmlhttp.status >= 200 && xmlhttp.status < 300){
+                successCallback(xmlhttp);
+            } else {
+                errorCallback(xmlhttp);
+            }
+        }
+    };
+    xmlhttp.open(method, url ,true);
+    xmlhttp.setRequestHeader("Pragma", "no-cache");
+    xmlhttp.setRequestHeader("Cache-Control", "no-cache");
+    if((method === "POST" || method === "PUT") && paramStr.length > 0){
+       xmlhttp.setRequestHeader("Content-type",contentType);
+       xmlhttp.send(paramStr);
+    } else {
+        xmlhttp.send();
+    }
+}
+function getData() {
+    var name = document.getElementById("name_field").value;
+    // loadXMLDoc("GET", "resources/ajax_info.txt",{}, showResult);
+    // loadXMLDoc("POST", "http://localhost:8080/XHR_Ajax/hello", 
+    //   {name: name}, showResult);
+    loadXMLDoc("GET", "resources/cd_catalog.xml", null, showCDCatalog);
+}
+function showResult(xmlhttp){
+    document.getElementById("results").innerHTML=xmlhttp.responseText;
+}
+function showCDCatalog(xmlhttp){
+    var xmlDoc=xmlhttp.responseXML, 
+        txt="<table class='results'><tr><th>Title</th><th>Artist</th></tr>";
+    var x=xmlDoc.getElementsByTagName("CD");
+    //var y=xmlDoc.getElementsByTagName("ARTIST");
+    for (var i=0; i<x.length; i++) {
+        txt=txt +"<tr><td>"
+            + x[i].getElementsByTagName("TITLE")[0].firstChild.nodeValue 
+            + "</td><td>"+ x[i].getElementsByTagName("ARTIST")[0].firstChild.nodeValue 
+            + "</td></tr>";
+    }
+    txt += "</table>"
+    document.getElementById("results").innerHTML=txt;
+}
+
+        </script>
+    </head>
+    <body>
+        <div id="results"><h2>Let AJAX change this text</h2></div>
+        <input type="text" name="name_field" id="name_field" /><br />
+        <button type="button" onclick="getData()">Change Content</button>
+    </body>
+</html>

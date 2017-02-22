@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<link type="text/css" rel="stylesheet" href="example.css">
+<div class="d1" onclick="highlight(event)">1
+<div class="d2" onclick="highlight(event)">2
+<div class="d3" onclick="highlight(event)">3
+</div>
+</div>
+</div>
+<script>
+function highlight(event) {
+    var elem = event.currentTarget;
+    console.log(elem.classList);
+    console.log(this);
+    event.stopPropagation();
+    elem.style.backgroundColor='yellow'
+    alert(elem.className)
+    elem.style.backgroundColor = ''
+}
+</script>
+</body>
+</html>
