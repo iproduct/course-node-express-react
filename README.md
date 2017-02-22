@@ -4,4 +4,4 @@
  
 - Node.js + Express.js + React.js + Redux + MongoDB + Webpack fullstack application development
 
-- Design and devlopment of JSON/REST APIs
+- Design and devlopment of JSON/REST APIs using LoopBack 
