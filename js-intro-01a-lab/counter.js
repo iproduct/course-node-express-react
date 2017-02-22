@@ -12,7 +12,7 @@ var counter = (function () {
     increment: inc,
     decrement: dec
   }
-}) (); //IIFE, Dodule design pattern
+}) (); //IIFE, Module design pattern
 
 console.log(counter.increment());
 console.log(counter.increment());
