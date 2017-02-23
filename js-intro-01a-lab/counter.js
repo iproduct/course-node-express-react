@@ -19,4 +19,4 @@ console.log(counter.increment());
 console.log(counter.decrement());
 console.log(counter.decrement());
 
-console.log(counter.count); //undefined
+console.log(counter.count); //undefined - private
