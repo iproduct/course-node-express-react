@@ -1,5 +1,5 @@
 class Clock {
-  constructor(domElementContainer, active) {
+  constructor(domElementContainer, active = true) {
     this._container = domElementContainer;
     this._timeElement = document.createElement('span');
     this._timeElement.className = 'time';
@@ -7,7 +7,7 @@ class Clock {
     this._statusElement = document.createElement('span');
     this._statusElement.className = 'status';
     this._container.appendChild(this._statusElement);
-    this._active = active || true;
+    this._active = active;
     this._time = 0;
     this._render();
   }
