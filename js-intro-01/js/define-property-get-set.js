@@ -1,6 +1,6 @@
 function PositionLogger(aPos) {
   var position = aPos, positionsLog = [{ val: aPos }];
-  // this.position = aPos;
+  this.position = aPos;
   Object.defineProperty(this, 'position', {
     get: function () {
       console.log('get position called');
