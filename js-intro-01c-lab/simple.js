@@ -26,7 +26,7 @@ function test() {
 
 
   // utility functions
-  function  stringifyEmployees (employees) {
+  function stringifyEmployees(employees) {
     var i, markupResult = '<ul>';
     for (i = 0; i < employees.length; i++) {
       var currentEmp = employees[i];
@@ -58,12 +58,30 @@ function test() {
 
   var e1 = new Employee('Ivan');
   var e2 = new Employee('Petar', 5);
-  element.innerHTML += '<p>' + e1 + '</p><p>' + e2 + '</p>';
+  // element.innerHTML += '<p>' + e1 + '</p><p>' + e2 + '</p>';
 
 
   // Homework: Create Programmer constructor extending Employee with multivalued property 
   // 'languages' and override toString method from Employee to print additional information 
   // - programming languages for the programmer instance.
+
+  function Programmer(aName, aPractice, languages) {
+    Employee.call(this, aName, aPractice); // base constructor
+    this.languages = languages;
+  }
+
+  Programmer.prototype = Object.create(Employee.prototype);
+  Programmer.prototype = new Employee(); // alternative
+  Programmer.prototype.constructor = Programmer;
+  Programmer.prototype.supper = Programmer.prototype;
+  
+  //polymorphic toString
+  Programmer.prototype.toString = function () {
+    return this.supper.toString() + ', languages: ' + this.languages;
+  }
+
+  var p1 = new Programmer('Ivan Petrov', 5, ['JavaScript', 'Scala', 'TypeScript']);
+  console.log(p1);
 
 }
 
