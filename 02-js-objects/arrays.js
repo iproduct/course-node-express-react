@@ -1,4 +1,4 @@
-// function test() {
+
 var i, copy;
 var employees = [
   { name: 'John', age: 35 },
@@ -6,8 +6,6 @@ var employees = [
   { name: 'Amy', age: 27 },
   { name: 'Ivan', age: 27 }
 ];
-
-// printEmployees(employees);
 
 var person1 = {};
 person1.name = 'Petar';
@@ -24,23 +22,17 @@ employees.push(person1, person2);
 // copy = employees.slice(0);// shallow copy
 copy = JSON.parse(JSON.stringify(employees));// deep copy
 
-// employees[0].name = 'NEW NANE';
-
 var result = employees.filter(
   function (employee) {
     return employee.age < 40;
-  }
-).map((emp, ind) => ({ name: emp.name.toUpperCase(), index: ind, age: emp.age }))
-.reduce( (accum, res) => accum + res.age, 0);
+  })
+  .map((emp, ind) => ({ name: emp.name.toUpperCase(), index: ind, age: emp.age }))
+  // .reduce( (accum, res) => accum + res.age, 0);
+  .forEach(res =>
+    console.log(res.index + ' -> ' + res.name)
+  );
 
-console.log(result);
-  // .forEach(res =>
-  //   console.log(res.index + ' -> ' + res.name)
-  // );
+// console.log(result);
 
-  // var element = document.getElementById('results');
-  // for(i = 0; i < employees.length; i++)
-  //   element.innerHTML += copy[i].name + ' - ' + copy[i].age + '<br>';
-// }
 
 
