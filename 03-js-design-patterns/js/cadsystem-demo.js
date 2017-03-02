@@ -69,7 +69,8 @@ function init() {
         r1.on("translate", function (e) {
             alert('Object translated: ' + e.payload);
         });
-        r1.translate(-100, 100);
+        setTimeout(function() {r1.translate(-100, 100);}, 2000);
+        
 
         // Canvas custom button component demo - see button.js
         button = shapes.makeButton(canvas, 240, 280, 140, 30, "Start Animation Demo", function () { startAnimation(ctx); });
