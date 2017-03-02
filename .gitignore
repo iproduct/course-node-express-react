@@ -10,7 +10,7 @@
 
 # IDEs and editors
 /.idea
-/.vscode
+**/.vscode
 .project
 .classpath
 .c9/
