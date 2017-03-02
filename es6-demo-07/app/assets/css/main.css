@@ -2,6 +2,20 @@ body {
   background: #eeeeee;
 }
 
-.display {
-	font-size: 1.3em;
+.search-results {
+ 	margin: 10px 0;
+}
+
+.search-results img{
+ 	height: 150px;
+}
+
+.search-results li span{
+ 	text-decoration: underline;
+	color: blue;
+}
+
+#wiki-content {
+	width: 80%;
+	height: 250px;
 }
