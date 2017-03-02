@@ -1,37 +1,40 @@
-class EventableMixin {
-    constructor.{
-    var registry = {};
+'use strict';
 
-    
-    that.fire = function(event){
-        var array, func, handler, i, 
-            type = typeof event ==='string' ? event: event.type;
-        if(registry.hasOwnProperty(type)){
-            array = registry[type];
-            for(i=0; i < array.length; i++){
-                handler=array[i];
-                func = handler.method;
-                if(typeof func === 'string'){
-                    func = this[func];
-                }
-                func.apply(this, handler.parameters || [event]);
+// Eventable class
+function Eventable() {
+    this.registry = {};
+}
+
+Eventable.prototype.fire = function (event) {
+    var handlers, callback, eventHandler, i,
+        eventType = typeof event === 'string' ? event : event.type;
+    if (this.registry.hasOwnProperty(eventType)) {
+        handlers = this.registry[eventType];
+        for (i = 0; i < handlers.length; i++) {
+            eventHandler = handlers[i];
+            callback = eventHandler.callback;
+            if (typeof callback === 'string') {
+                callback = eventHandler.context[callback]; // if method name is provided instead of function
             }
+            // call each handler back with provided parameters or event as single parameter
+            callback.apply(eventHandler.context, eventHandler.parameters || [event]);
         }
-        return this;        
-    };
-    
-    that.on = function (type, method, parameters) {
-        var handler = {
-            method: method,
-            parameters: parameters
-        };
-        if (registry.hasOwnProperty(type)){
-            registry[type].push(handler);
-        } else {
-            registry[type] = [handler];
-        }
-        return this;
-    };
-    return that;
+    }
+    return this;
 };
+
+Eventable.prototype.on = function (eventType, callback, callbackThisContext, parameters) {
+    var eventHandler = {
+        context: callbackThisContext,
+        callback: callback,
+        parameters: parameters
+    };
+    if (this.registry.hasOwnProperty(eventType)) {
+        this.registry[eventType].push(eventHandler);
+    } else {
+        this.registry[eventType] = [eventHandler];
+    }
+    return this;
+};
+
 
