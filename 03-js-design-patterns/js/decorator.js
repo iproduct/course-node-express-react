@@ -1,51 +1,53 @@
-function ConcreteClass(){
-    this.performTask = function()
+function ClassToBeDecorated(){
+    this.doSomething = function()
     {	
         console.log('doing something');
     };
 }
 
 function AbstractDecorator(decorated){
-    this.performTask = function()
+    this.doSomething = function()
     {
-        this.preTask();
-        decorated.performTask();
-        this.postTask();
+        this.preExtension(); //abstract method to be defined by successors
+        decorated.doSomething();
+        this.postExtension(); //abstract method to be defined by successors
     };
 }
 
-function ConcreteDecoratorClass(decorated){
+// Concrete Decorators
+function FirstDecorator(decorated){
     this.base = AbstractDecorator;
     this.base(decorated);
 	
-    this.preTask = function()
+    this.preExtension = function()
     {
-        console.log('Decorator1 pre-calling..');
+        console.log('First Decorator Pre Extension ...');
     };
 	
-    this.postTask = function()
+    this.postExtension = function()
     {
-        console.log('Decorator1 post-calling..');
-    };
-	
-}
-function ConcreteDecoratorClass2(decorated){
-    this.base = AbstractDecorator;
-    this.base(decorated);
-	
-    this.preTask = function()
-    {
-        console.log('Decorator2 pre-calling..');
-    };
-	
-    this.postTask = function()
-    {
-        console.log('Decorator2 post-calling..');
+        console.log('First Decorator Post Extension ...');
     };
 	
 }
 
-var concrete = new ConcreteClass();
-var decorator1 = new ConcreteDecoratorClass(concrete);
-var decorator2 = new ConcreteDecoratorClass2(decorator1);
-decorator2.performTask();
+function SecondDecorator(decorated){
+    this.base = AbstractDecorator;
+    this.base(decorated);
+	
+    this.preExtension = function()
+    {
+        console.log('Second Decorator Pre Extension ...');
+    };
+	
+    this.postExtension = function()
+    {
+        console.log('Second Decorator Post Extension ...');
+    };
+	
+}
+
+var decorated = new ClassToBeDecorated();
+var firstDecorator = new FirstDecorator(decorated);
+var secondDecorator = new SecondDecorator(firstDecorator);
+secondDecorator.doSomething();
