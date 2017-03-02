@@ -1,9 +1,0 @@
-// Place your settings in this file to overwrite default and user settings.
-{
-    // TypeScript
-
-    // Specifies the folder path containing the tsserver and lib*.d.ts files to use.
-    "typescript.tsdk": "C:\\Users\\admin\\AppData\\Roaming\\npm\\node_modules\\typescript\\lib",
-    "eslint.enable": false,
-    "tslint.enable": false
-  }
