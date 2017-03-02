@@ -1,5 +1,8 @@
-var eventable = function(that) {
+class EventableMixin {
+    constructor.{
     var registry = {};
+
+    
     that.fire = function(event){
         var array, func, handler, i, 
             type = typeof event ==='string' ? event: event.type;
