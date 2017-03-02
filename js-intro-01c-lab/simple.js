@@ -73,7 +73,7 @@ function test() {
   Programmer.prototype = Object.create(Employee.prototype);
   Programmer.prototype = new Employee(); // alternative
   Programmer.prototype.constructor = Programmer;
-  Programmer.prototype.supper = Programmer.prototype;
+  Programmer.prototype.supper = Employee.prototype;
   
   //polymorphic toString
   Programmer.prototype.toString = function () {
