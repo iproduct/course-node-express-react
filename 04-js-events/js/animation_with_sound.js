@@ -49,20 +49,24 @@ function animate() {
         if(y >= canvas.height) {
             dy = -dy;
             audio.src = sound1;
+            audio.play();
         }
         if(y < 0) {
             dy = -dy;
             audio.src = sound1;
+            audio.play();
         }
         if(x >= canvas.width) {
             dx = -dx;
             audio.src = sound2;
+            audio.play();
         }
         if(x < 0) {
             dx = -dx;
             audio.src = sound2;
+            audio.play();
        }
-       audio.play();
+
     }
     var animStep = 0;
     var img = new Image();

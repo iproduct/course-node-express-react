@@ -13,15 +13,15 @@ and open the template in the editor.
     </head>
     <body onload="init();">
         <h1>Test JS Event Handling</h1>
-        <a href="test.html" onclick="alert('Link clicked'); return true;">Click me</a>
+        <a href="test-events.html" onclick="alert('Link clicked'); return true;">Click me</a>
         <br>
         <a id="traditional" href="test.html">Click me (Traditional Event Handling Model)</a>
         <form id="form1" novalidate="novalidate">
             <input type='text' name="name" id="name" >
             <input id="b1" type="button" value="Button 1" 
-                   onclick="alert(form.b2.value);" />
+                   onclick="alert(form.b1.value);" />
             <input id="b2" type="button" value="Button 2" 
-                   onclick="alert(getElementById('b1').value);" />
+                   onclick="alert(getElementById('b2').value);" />
             <input id="submit" type="submit" value="Submit Form" >
         </form>
     </body>

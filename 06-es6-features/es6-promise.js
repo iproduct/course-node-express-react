@@ -10,12 +10,12 @@ var p3 = new Promise((resolve, reject) => {
 var p4 = new Promise((resolve, reject) => {
   setTimeout(resolve, 4000, 'four');
 });
-var p5 = new Promise((resolve, reject) => {
-  reject('reject');
-});
+// var p5 = new Promise((resolve, reject) => {
+//   setTimeout(()=> reject('rejected'), 2000, 'four');
+// });
 
-Promise.race([p1, p2, p3, p4]).then(values => {
-  console.log(values);
+Promise.all([p1, p2, p3, p4]).then(values => {
+  console.log('Success:', values);
 }, reason => {
-  console.log(reason);
+  console.log('Error:', reason);
 });
