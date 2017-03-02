@@ -10,12 +10,12 @@
 
 # IDEs and editors
 .idea
-.vscode
+*.vscode/
 .project
 .classpath
 .c9/
 *.launch
-.settings/
+*.settings/
 
 # misc
 /.sass-cache
