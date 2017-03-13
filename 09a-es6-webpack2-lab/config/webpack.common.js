@@ -12,7 +12,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', ".json"]
+    extensions: ['.js', '.json']
   },
 
   module: {
@@ -23,15 +23,15 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: [
-            ["es2015", { "modules": false }],
+            ['es2015', { 'modules': false }],
             // webpack understands the native import syntax, and uses it for tree shaking
 
-            "stage-1",
+            'stage-1',
             // Specifies what level of language features to activate.
             // Stage 1 is proposal, Stage 2 is "draft", 4 is finished, 0 is strawman.
             // See https://tc39.github.io/process-document/
 
-            "react"
+            'react'
             // Transpile React components to JavaScript
           ]
         }

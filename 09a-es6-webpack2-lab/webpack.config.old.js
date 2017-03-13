@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const config = {
+module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: './index.js',
   output: {
@@ -23,6 +23,4 @@ const config = {
       }]
     }]
   }
-}
-
-module.exports = config
+};
