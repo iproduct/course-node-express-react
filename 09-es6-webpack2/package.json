@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --hot --progress --port 3000",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
-    "build-watch": "webpack -w",
+    "build-watch": "rimraf dist && webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
