@@ -1,6 +1,5 @@
 'use strict';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {Clock} from './clock';
 import {Button} from './button';
 
@@ -18,7 +17,7 @@ demo.className = 'row well';
 container.appendChild(demo);
 
 // ES6 Clock Demo
-var clock = new Clock(demo, false);
+var clock = new Clock(demo, true);
 
 // ES6 Button Demo
 let row3 = document.createElement('div');
