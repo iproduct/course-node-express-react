@@ -5,9 +5,9 @@ var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
 
 // Enable React HMR
-commonConfig.entry['app'].unshift('react-hot-loader/patch');
-commonConfig.module.rules.find(rule => rule.loader === 'babel-loader')
-  .options.plugins = ['react-hot-loader/babel']; 
+// commonConfig.entry['app'].unshift('react-hot-loader/patch');
+// commonConfig.module.rules.find(rule => rule.loader === 'babel-loader')
+//   .options.plugins = ['react-hot-loader/babel']; 
 
 // Merge dev and common configs
 module.exports = webpackMerge(commonConfig, {

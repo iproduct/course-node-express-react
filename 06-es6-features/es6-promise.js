@@ -16,6 +16,6 @@ var p4 = new Promise((resolve, reject) => {
 
 Promise.all([p1, p2, p3, p4]).then(values => {
   console.log('Success:', values);
-}, reason => {
+}).catch( reason => {
   console.log('Error:', reason);
 });

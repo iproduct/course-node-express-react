@@ -1,47 +1,45 @@
 'use strict';
+import './assets/css/main.css';
+import { FlickrComponent } from './flickr.component';
+import { WikiComponent } from './wiki.component';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Clock} from './clock';
-import {Button} from './button';
-
-var container = document.createElement('div');
+// ES6 Clock Demo
+let container = document.createElement('div');
 container.className = 'container';
 document.body.appendChild(container);
 
-var title = document.createElement('h1');
-title.innerText = 'ES6 Clock Demo';
-title.className = 'row jumbotron';
-container.appendChild(title);
+//Flickr Image Search Demo
+let row4 = document.createElement('h1');
+row4.innerText = 'Flickr Image Search Demo';
+row4.className = 'row jumbotron';
+container.appendChild(row4);
 
-var demo = document.createElement('div');
-demo.className = 'row well';
-container.appendChild(demo);
+let row5 = document.createElement('div');
+row5.id = 'flickr-search';
+row5.className = 'row well well-lg';
+container.appendChild(row5);
 
-// ES6 Clock Demo
-var clock = new Clock(demo, false);
+let flikrSearch = new FlickrComponent('#'+ row5.id);
+flikrSearch.search('reactjs');
 
-// ES6 Button Demo
-let row3 = document.createElement('div');
-     
-row3.className = 'row btn-toolbar';
-container.appendChild(row3);
+// let wikiService = new WikiService();
+// wikiService.search("javascript")
+//     .then( (data) => console.log(JSON.stringify(data)) );
 
-let startButton, stopButton;
-startButton = new Button('Start Clock', () => {
-  clock.start();
-  startButton.disable();
-  stopButton.enable();
-});
-row3.appendChild(startButton.getElement());
 
-stopButton = new Button('Stop Clock', () => {
-  startButton.enable();
-  stopButton.disable();
-  clock.stop();
-});
-row3.appendChild(stopButton.getElement());
+//Wikipedia Search Demo
+let row6 = document.createElement('h1');
+row6.innerText = 'Wikipedia Search Demo';
+row6.className = 'row jumbotron';
+container.appendChild(row6);
 
-startButton.disable();
-stopButton.enable();
+let row7 = document.createElement('div');
+row7.id = 'wiki-search';
+row7.className = 'row well well-lg';
+container.appendChild(row7);
+
+let wikiSearch = new WikiComponent('#'+ row7.id);
+wikiSearch.search('reactjs');
+
 
 console.log('ES6 Demo 01 loaded successfully.');
