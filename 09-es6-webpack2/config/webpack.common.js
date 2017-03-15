@@ -12,13 +12,13 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', ".json"]
+    extensions: ['.js', '.jsx', '.json']
   },
 
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
@@ -41,6 +41,13 @@ module.exports = {
         loader: 'html-loader'
       },
       {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [{
+          loader: 'url-loader',
+          options: { limit: 10000 } // Convert images < 10k to base64 strings
+        }]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file-loader',
         options: {
@@ -49,22 +56,27 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: 'app',
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: {
+          use: [{
             loader: 'css-loader',
             options: {
-              sourceMap: true
+              sourceMap: true,
+              modules: true,
+              importLoaders: 1
             }
-          }
+          }, {
+            loader: 'sass-loader'
+          }, {
+            loader: 'postcss-loader'
+          }]
         })
       },
-      {
-        test: /\.css$/,
-        include: 'app',
-        loader: 'raw-loader'
-      },
+      // {
+      //   test: /\.css$/,
+      //   include: 'app',
+      //   loader: 'raw-loader'
+      // },
       // {
       //   test: /\.css$/,
       //   include: helpers.root('src', 'app'),

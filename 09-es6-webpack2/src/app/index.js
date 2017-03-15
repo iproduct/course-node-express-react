@@ -1,9 +1,9 @@
-import './assets/main.css';
+import './assets/css/main.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import Root from './containers/Root';
+import Hello from './containers/hello';
 
 const render = Component => {
   ReactDOM.render(
@@ -14,8 +14,8 @@ const render = Component => {
   )
 };
 
-render(Root);
+render(Hello);
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => { render(Root) });
+  module.hot.accept('./containers/hello', () => { render(Hello) });
 }
