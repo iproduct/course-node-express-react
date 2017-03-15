@@ -1,4 +1,6 @@
-import './assets/css/main.css';
+import './assets/css/main.pcss';
+import './assets/images/react-redux.png';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
@@ -11,7 +13,7 @@ const render = Component => {
       <Component />
     </AppContainer>,
     document.getElementById('root')
-  )
+  );
 };
 
 render(Hello);

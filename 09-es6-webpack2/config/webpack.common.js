@@ -23,15 +23,15 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: [
-            ["es2015", { "modules": false }],
+            ['es2015', { 'modules': false }],
             // webpack understands the native import syntax, and uses it for tree shaking
 
-            "stage-1",
+            'stage-1',
             // Specifies what level of language features to activate.
             // Stage 1 is proposal, Stage 2 is "draft", 4 is finished, 0 is strawman.
             // See https://tc39.github.io/process-document/
 
-            "react"
+            'react'
             // Transpile React components to JavaScript
           ]
         }
@@ -40,35 +40,52 @@ module.exports = {
         test: /\.html$/,
         loader: 'html-loader'
       },
+      // {
+      //   test: /\.(png|jpe?g|gif|svg)$/,
+      //   use: [{
+      //     loader: 'url-loader',
+      //     options: { limit: 10000 } // Convert images < 10k to base64 strings
+      //   }]
+      // },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        use: [{
-          loader: 'url-loader',
-          options: { limit: 10000 } // Convert images < 10k to base64 strings
-        }]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        test: /\.(png|jpe?g|gif|svg|ico)$/,
         loader: 'file-loader',
         options: {
-          name: 'assets/[name].[hash].[ext]'
+          name: 'assets/images/[name].[ext]?[hash]'
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(woff|woff2|ttf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/fonts/[name].[hash].[ext]'
+        }
+      },
+      {
+        test: /\.p?css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [{
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
+              // modules: true,
               importLoaders: 1
             }
-          }, {
-            loader: 'sass-loader'
-          }, {
-            loader: 'postcss-loader'
+          },
+          // {
+          //   loader: 'sass-loader'
+          // }, 
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('precss'),
+                  // require('autoprefixer')
+                ];
+              }
+            }
           }]
         })
       },
