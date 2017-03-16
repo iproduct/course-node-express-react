@@ -4,4 +4,4 @@
  
 # Homework
 
-By extending AbstractSearchComponent and AbstractService to implement GithubUserSearchComponent and GithubUserSearchService that will present first 10 users with their login name and picture as hyperlink to their main page in GitHub.
+By extending AbstractSearchComponent and AbstractService to implement GithubUserSearchComponent and GithubUserSearchService (see: https://developer.github.com/v3/search/#search-users) that will present first 10 users with their login name and picture as hyperlink to their main page in GitHub.
