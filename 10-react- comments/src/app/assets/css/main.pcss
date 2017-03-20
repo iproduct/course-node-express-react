@@ -1,0 +1,18 @@
+@define-mixin icon $name {
+    padding-left: 16px;
+
+    &::after {
+        content: "";
+        background: url(/assets/images/$(name).png) no-repeat;
+        display: inline-block;
+        vertical-align: middle;
+        width: 150px;
+        height: 100px;
+        margin-left: 6px;
+    }
+}
+
+.hello {
+  color: green;
+  @mixin icon react-redux;
+}
