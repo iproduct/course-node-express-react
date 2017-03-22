@@ -1,4 +1,5 @@
 import './assets/css/main.css';
+import './assets/css/animation.css';
 // import './assets/images/react-redux.png';
 
 import React from 'react';
