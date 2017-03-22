@@ -11,7 +11,7 @@ export class TodoApp extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h2 className="col-lg-6">Things TODO</h2>
+          <h2 className="col-lg-6">Things TODO 2</h2>
           <div className="col-lg-2">
             <select className="status-filter form-control col-lg-3" value={this.state.filter} onChange={this.handleFilterChange}>
               <option value="all">All</option>
