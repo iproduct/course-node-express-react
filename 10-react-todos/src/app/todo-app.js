@@ -4,43 +4,86 @@ import TodoList from './todo-list';
 export class TodoApp extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { todos: [], newTodo: '' };
+    this.state = { todos: [], todoText: '', filter: 'all' };
   }
 
   render() {
     return (
       <div className="container">
-        <h2>Things TODO</h2>
-        <TodoList todos={this.state.todos} />
-        <form className="row" onSubmit={this.handleSubmit}>
-          <div className="input-group col-lg-6">
-            <input type="text" className="form-control" placeholder="Next task TODO ..."
-              onChange={this.handleChange} value={this.state.newTodo} />
-            <span className="input-group-btn">
-              <button className='btn btn-secondary' >Add TODO</button>
-            </span>
+        <div className="row">
+          <h2 className="col-lg-6">Things TODO</h2>
+          <div className="col-lg-2">
+            <select className="status-filter form-control col-lg-3" value={this.state.filter} onChange={this.handleFilterChange}>
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="canceled">Canceled</option>
+            </select>
           </div>
-        </form>
+        </div>
+        <div className="row">
+          <div className="conatiner col-lg-8">
+
+            <TodoList todos={this.state.todos} filter={this.state.filter} onChangeStatus={this.handleStatusChange} />
+
+            <form onSubmit={this.handleTodoSubmit}>
+              <div className="input-group">
+                <input type="text" className="form-control" placeholder="Next task TODO ..."
+                  onChange={this.handleTextChange} value={this.state.todoText} />
+                <span className="input-group-btn">
+                  <button className='btn btn-primary'>Add TODO</button>
+                </span>
+              </div>
+            </form>
+
+            <div className="commands">
+              <button className="btn btn-warning" onClick={() => this.handleTodosDelete('completed')}>Delete All Completed</button>
+              <button className="btn btn-danger" onClick={() => this.handleTodosDelete('canceled')}>Delete All Canceled</button>
+            </div>
+
+          </div>
+        </div>
       </div>
     );
   }
 
-  handleChange(e) {
-    this.setState({ newTodo: e.target.value });
+  handleStatusChange = (id, newStatus) => {
+    this.setState(prevState => {
+      const todos = prevState.todos.map(todo =>
+        (todo.id === id) ? Object.assign({}, todo, { status: newStatus }) : todo
+      );
+      return { todos };
+    });
   }
 
-  handleSubmit(e) {
+  handleFilterChange = (e) => {
+    this.setState({ filter: e.target.value });
+  }
+
+  handleTextChange = (e) => {
+    this.setState({ todoText: e.target.value });
+  }
+
+  handleTodoSubmit = (e) => {
     e.preventDefault();
-    this.setState(prevState => ({
-      todos: [
-        ...prevState.todos, {
-          id: Date.now(),
-          text: prevState.newTodo.trim()
-        }
-      ],
-      newTodo: ''
+    if (this.state.todoText.trim().length > 0) {
+      this.setState(prevState => ({
+        todos: [
+          ...prevState.todos,
+          {
+            id: Date.now(),
+            text: prevState.todoText.trim(),
+            status: 'active'       // Statuses: active | completed | canceled
+          }
+        ],
+        todoText: ''
+      }));
+    }
+  }
+
+  handleTodosDelete = (filter) => {
+    this.setState(prevState => ({ 
+      todos: prevState.todos.filter(todo => todo.status !== filter)
     }));
   }
 
