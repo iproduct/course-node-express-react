@@ -1,0 +1,50 @@
+/* Users heihght animation on enter/leave */
+.users-enter.users-enter-active,
+.users-leave.users-leave-active {
+  overflow: hidden;
+  transition: all 1s ease-in;
+}
+
+.users-enter,
+.users-leave.users-leave-active {
+  height: 0;
+  opacity: 0;
+}
+
+.users-enter.users-enter-active,
+.users-leave {
+  height:16em;
+  opacity: 1;
+}
+
+
+/* Tests fading on enter/leave */
+.tests-enter {
+  opacity: 0.01;
+  overflow: hidden;
+}
+
+.tests-enter.tests-enter-active {
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+
+.tests-leave {
+  opacity: 1;
+}
+
+.tests-leave.tests-leave-active {
+  opacity: 0.01;
+  transition: all 0.5s ease-in;
+}
+
+
+/* Initial appear on mount */
+.tests-head-appear {
+  opacity: 0.01;
+}
+
+.tests-head-appear.tests-head-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
