@@ -8,7 +8,7 @@ import { AppContainer } from 'react-hot-loader';
 
 import { TodoApp } from './todo-app';
 
-const render = Component => {
+const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <Component />

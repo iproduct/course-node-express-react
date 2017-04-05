@@ -1,0 +1,41 @@
+body { padding-top: 70px; }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#home .jumbotron img {
+    padding-right: 50px;
+}
+
+.navbar-default .navbar-nav>li>a.active {
+    background-color: #e5e5e5 ;
+    color: #666;
+}
+
+.navbar-default .navbar-nav>li>a:focus {
+    background-color: #ddd ;
+    color: #555;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    background-color: #ccc ;
+    color: #222;
+}
+.navbar-brand {
+    padding: 0;
+}
+
+.test-controls button, .question-controls button, .answer-controls button, .user-controls button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.questions .well {
+    padding :10px;
+}
+
+.question-text p {
+    margin-bottom: 5px;
+}
