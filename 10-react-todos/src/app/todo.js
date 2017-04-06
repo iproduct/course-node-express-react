@@ -7,7 +7,8 @@ export default ({todo, onChangeStatus}) => (
     </span>
     <span className="todo-text">{todo.text}</span>
     { todo.status === 'active' &&     // show only when todo is active
-      <button title="Task Canceled" className="btn btn-sm btn-danger pull-right" onClick={() => onChangeStatus(todo.id, 'canceled')}>
+      <button title="Task Canceled" className="btn btn-sm btn-danger pull-right" 
+          onClick={() => onChangeStatus(todo.id, 'canceled')}>
         <span className="glyphicon glyphicon-remove"></span>
       </button>
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from './todo-list';
 
-export class TodoApp extends React.Component {
+export class TodoApp extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { todos: [], todoText: '', filter: 'all' };
