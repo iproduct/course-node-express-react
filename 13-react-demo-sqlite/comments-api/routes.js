@@ -13,49 +13,98 @@
 
 'use strict';
 
-const Joi = require('joi');
-const Comments = require('./handlers/comments.handlers');
+const express = require('express');
+const router = express.Router();
+const error = require('./helpers').sendErrorResponse;
+const util = require('util');
+const indicative = require('indicative');
 
-module.exports = [{
-  method: 'GET',
-  path: '/api/comments',
-  handler: Comments.findAll
-},
-  {
-    method: 'GET',
-    path: '/api/comments/{commentId}',
-    handler: Comments.find,
-    config: {
-      validate: {
-        params: {
-          commentId: Joi.number().integer().min(1).required()
+
+// GET comments list (optionally by author)
+router.get('/', function (req, res) {
+  const db = req.app.locals.db;
+  let sqlQuery = 'SELECT * FROM comments';
+  const qParams = [];
+
+  if (req.query.author) {
+    sqlQuery += ' WHERE author = ?';
+    qParams.push(req.params.author);
+  }
+
+  db.all(sqlQuery, qParams, function (err, results) {
+    if (err) throw err;
+    console.log(results);
+    res.json(results);
+  });
+});
+
+// GET single comment by id
+router.get('/:commentId', (req, res) => {
+  const db = req.app.locals.db;
+  const params = indicative.sanitize(req.params, { commentId: 'to_int' });
+
+  indicative.validate(params, { commentId: 'required|integer|above:0' })
+    .then(() => {
+      db.get('SELECT * FROM comments WHERE id = ?', [params.commentId], function (err, result) {
+        if (err) throw err;
+        if (typeof result !== 'undefined') {
+          res.json(result);
         }
-      }
-    }
-  },
-  {
-    method: 'POST',
-    path: '/api/comments',
-    handler: Comments.create,
-    config: {
-      validate: {
-        payload: Joi.object({
-          id: Joi.number().integer().min(1).optional(),
-          author: Joi.string().min(2).required(),
-          text: Joi.string().required(),
-        })
-      }
-    }
-  },
-  {
-    method: 'DELETE',
-    path: '/api/comments/{commentId}',
-    handler: Comments.remove,
-    config: {
-      validate: {
-        params: {
-          commentId: Joi.number().integer().min(1).required()
+        else {
+          error(req, res, 404, { errors: [`Comment with Id=${params.commentId} not found.`] });
         }
+      });
+    }).catch(errors => {
+      error(req, res, 400, 'Invalid comment ID: ' + util.inspect(errors))
+    });
+});
+
+// Create new comment
+router.post('/', function (req, res) {
+  const db = req.app.locals.db;
+  let comment = req.body;
+  indicative.validate(req.body, {
+    id: 'integer|above:0',
+    author: 'required|string|min:2',
+    text: 'required|string'
+  }).then(() => {
+    db.run(`INSERT INTO comments (author, text) VALUES (?, ?);`, [comment.author, comment.text], function (err) {
+      if (err) {
+        console.error(err);
+        error(req, res, 500, `Error creating new comment: ${comment}`);
       }
-    }
-  }];
+      comment.id = this.lastID;
+      const uri = req.baseUrl + '/' + comment.id;
+      console.log('Created: ', uri);
+      res.location(uri).json(comment);
+    });
+  }).catch(errors => {
+    error(req, res, 400, `Invalid comment data for '${comment}': ${util.inspect(errors)}`);
+  });
+});
+
+// Delete comment by id
+router.delete('/:commentId', function (req, res) {
+  const db = req.app.locals.db;
+  const params = indicative.sanitize(req.params, { commentId: 'to_int' });
+
+  indicative.validate(params, { commentId: 'required|integer|above:0' })
+    .then(() => {
+      db.run('DELETE FROM comments WHERE id = ?', [params.commentId], function (err) {
+        if (err) {
+          console.error(err);
+          error(req, res, 500, `Error deleting comment with Id: ${params.commentId}`);
+        }
+        if (this.changes > 0) {
+          console.log('Deleted: ', req.baseUrl);
+          res.json({ message: `Comment ${params.commentId} was deleted successfully.` });
+        } else {
+          error(req, res, `Comment with Id=${params.commentId} not found.`);
+        }
+      });
+    }).catch(errors => {
+      error(req, res, 400, 'Invalid comment ID: ' + util.inspect(errors))
+    });
+});
+
+module.exports = router;
