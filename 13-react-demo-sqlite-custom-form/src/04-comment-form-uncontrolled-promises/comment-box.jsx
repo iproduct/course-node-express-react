@@ -1,21 +1,19 @@
 'use strict';
 
-import 'babel-polyfill';
-import {Promise} from 'babel-polyfill';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import CommentForm from './comment-form';
 import CommentList from './comment-list';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import {PropTypes} from 'prop-types';
 
 /**
  * CommentBox class
  */
 class CommentBox extends React.Component {
   static propTypes = {
-    url: React.PropTypes.string,
-    pollInterval: React.PropTypes.number,
+    url: PropTypes.string,
+    pollInterval: PropTypes.number,
   }
 
   constructor(props) {
@@ -65,55 +63,52 @@ class CommentBox extends React.Component {
       });
   }
 
-  handleCommentDelete = async (commentId) => {
+  handleCommentDelete = (commentId) => {
     // delete comment optimistically
     this.setState(prevState => ({
       comments: prevState.comments.filter(comment => comment.id !== commentId), errors: '', messages: undefined
     }));
 
     //AJAX DELETE request
-    try {
-      let data = await (new Promise((resolve) => 
-        axios.delete(this.props.url + "/" + commentId).then(r => resolve(r))));
-      console.log(data.message);
-      this.setState({
-        errors: undefined,
-        messages: `Comment with deleted successfully.`
-      });
-      console.log(`Comment with ID=${commentId} deleted successfully.`);
-    } catch (err) {
-      if (err.response.data.errors) {
+    axios.delete(this.props.url + "/" + commentId)
+      .then(({ data: message }) => {
+        console.log(message);
         this.setState({
-          errors: err.response.data.errors.reduce((errs, err) => errs + ' ' + err.message, ''),
-          messages: undefined
+          errors: undefined,
+          messages: `Comment with deleted successfully.`
         });
-        console.error(this.props.url, err.response.data);
-      }
-      setTimeout(this.loadCommentsFromServer, 30000);
-    }
+        console.log(`Comment with ID=${commentId} deleted successfully.`);
+      })
+      .catch((err) => {
+        if (err.response.data.errors) {
+          this.setState({
+            errors: err.response.data.errors.reduce((errs, err) => errs + ' ' + err.message, ''),
+            messages: undefined
+          });
+          console.error(this.props.url, err.response.data);
+        }
+        setTimeout(this.loadCommentsFromServer, 10000);
+      });
+  }
+
+  componentDidMount = () => {
+    this.loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+  }
+
+  render() {
+    return (
+      <div className="commentBox">
+        <h1>Comments</h1>
+        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        <CSSTransitionGroup transitionName="messages" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          {this.state.errors && <div className="errors">{this.state.errors}</div>}
+          {this.state.messages && <div className="messages">{this.state.messages}</div>}
+        </CSSTransitionGroup>
+        <CommentList onCommentDelete={this.handleCommentDelete} comments={this.state.comments} />
+      </div>
+    );
+  }
 }
 
-componentDidMount = () => {
-  this.loadCommentsFromServer();
-  setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-}
-
-render() {
-  return (
-    <div className="commentBox">
-      <h1>Comments</h1>
-      <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-      <CSSTransitionGroup transitionName="messages" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-        {this.state.errors && <div className="errors">{this.state.errors}</div>}
-        {this.state.messages && <div className="messages">{this.state.messages}</div>}
-      </CSSTransitionGroup>
-      <CommentList onCommentDelete={this.handleCommentDelete} comments={this.state.comments} />
-    </div>
-  );
-}
-}
-
-ReactDOM.render(
-  <CommentBox url="/api/comments" pollInterval={50000} />,
-  document.getElementById('app')
-);
+export default CommentBox;

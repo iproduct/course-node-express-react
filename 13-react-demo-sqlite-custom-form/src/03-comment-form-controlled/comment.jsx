@@ -1,13 +1,15 @@
 import React from "react";
 import Remarkable from 'remarkable';
+import {PropTypes} from 'prop-types';
+
 let md = new Remarkable();
 
 let Comment = React.createClass({
   propTypes: {
-    commentId: React.PropTypes.number.isRequired,
-    author: React.PropTypes.string,
-    children: React.PropTypes.any,
-    onCommentDelete: React.PropTypes.func
+    commentId: PropTypes.number.isRequired,
+    author: PropTypes.string,
+    children: PropTypes.any,
+    onCommentDelete: PropTypes.func
   },
   rawMarkup: function () {
     let rawMarkup = '';
@@ -27,9 +29,9 @@ let Comment = React.createClass({
   render: function () {
     return (
       <div className="comment">
-        <h3 className="commentAuthor">
+        <h2 className="commentAuthor">
           {this.props.author}
-        </h3>
+        </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
         <button onClick={this.handleDelete}>Delete</button>
       </div>

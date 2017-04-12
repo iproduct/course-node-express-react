@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import "babel-polyfill";
 
 if (process.env.ENV === 'production') {
   // Production

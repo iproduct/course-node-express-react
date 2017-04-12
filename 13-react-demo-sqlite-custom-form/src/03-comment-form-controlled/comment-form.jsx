@@ -1,8 +1,9 @@
 import React from "react";
+import {PropTypes} from 'prop-types';
 
  let CommentForm = React.createClass({
   propTypes: {
-    onCommentSubmit: React.PropTypes.func,
+    onCommentSubmit: PropTypes.func,
   },
   getInitialState: function () {
     return { author: '', text: '' };
@@ -39,7 +40,7 @@ import React from "react";
           value={this.state.text}
           onChange={this.handleTextChange}
           />
-        <input type="submit" value="Post" />
+        <input type="submit" disabled={!this.state.author || !this.state.text} value="Post" />
       </form>
     );
   }

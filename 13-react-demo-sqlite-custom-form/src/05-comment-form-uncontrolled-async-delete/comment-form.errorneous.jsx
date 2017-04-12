@@ -1,4 +1,5 @@
 import React from "react";
+import {PropTypes} from 'prop-types';
 
 export const CommentForm = ({ onCommentSubmit }) => {
 
@@ -19,6 +20,6 @@ export const CommentForm = ({ onCommentSubmit }) => {
 }
 
 CommentForm.propTypes = {
-  onCommentSubmit: React.PropTypes.func,
+  onCommentSubmit: PropTypes.func,
 };
 export default CommentForm;

@@ -1,4 +1,5 @@
 import React from "react";
+import {PropTypes} from 'prop-types';
 
 class CommentForm extends React.Component {
   author = '';
@@ -24,7 +25,7 @@ class CommentForm extends React.Component {
 }
 
 CommentForm.propTypes = {
-  onCommentSubmit: React.PropTypes.func,
+  onCommentSubmit: PropTypes.func,
 };
 
 export default CommentForm;

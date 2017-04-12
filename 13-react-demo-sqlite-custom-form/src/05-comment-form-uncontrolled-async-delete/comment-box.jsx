@@ -1,19 +1,19 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import CommentForm from './comment-form';
 import CommentList from './comment-list';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import {PropTypes} from 'prop-types';
 
 /**
  * CommentBox class
  */
 class CommentBox extends React.Component {
   static propTypes = {
-    url: React.PropTypes.string,
-    pollInterval: React.PropTypes.number,
+    url: PropTypes.string,
+    pollInterval: PropTypes.number,
   }
 
   constructor(props) {
@@ -63,33 +63,32 @@ class CommentBox extends React.Component {
       });
   }
 
-  handleCommentDelete = (commentId) => {
+  handleCommentDelete = async function(commentId) {
     // delete comment optimistically
     this.setState(prevState => ({
       comments: prevState.comments.filter(comment => comment.id !== commentId), errors: '', messages: undefined
     }));
 
     //AJAX DELETE request
-    axios.delete(this.props.url + "/" + commentId)
-      .then(({ data: message }) => {
-        console.log(message);
-        this.setState({
-          errors: undefined,
-          messages: `Comment with deleted successfully.`
-        });
-        console.log(`Comment with ID=${commentId} deleted successfully.`);
-      })
-      .catch((err) => {
-        if (err.response.data.errors) {
-          this.setState({
-            errors: err.response.data.errors.reduce((errs, err) => errs + ' ' + err.message, ''),
-            messages: undefined
-          });
-          console.error(this.props.url, err.response.data);
-        }
-        setTimeout(this.loadCommentsFromServer, 30000);
+    try {
+      let data = await axios.delete(this.props.url + "/" + commentId);
+      console.log(data.message);
+      this.setState({
+        errors: undefined,
+        messages: `Comment was deleted successfully.`
       });
-  }
+      console.log(`Comment with ID=${commentId} deleted successfully.`);
+    } catch (err) {
+      if (err.response.data.errors) {
+        this.setState({
+          errors: err.response.data.errors.reduce((errs, err) => errs + ' ' + err.message, ''),
+          messages: undefined
+        });
+        console.error(this.props.url, err.response.data);
+      }
+    }
+    setTimeout(this.loadCommentsFromServer, 10000);
+  }.bind(this);
 
   componentDidMount = () => {
     this.loadCommentsFromServer();
@@ -111,7 +110,4 @@ class CommentBox extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <CommentBox url="/api/comments" pollInterval={50000} />,
-  document.getElementById('app')
-);
+export default CommentBox;

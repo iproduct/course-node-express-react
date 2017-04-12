@@ -1,18 +1,18 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import CommentForm from './comment-form';
 import CommentList from './comment-list';
+import {PropTypes} from 'prop-types';
 
 /**
  * CommentBox class
  */
 let CommentBox = React.createClass({
   propTypes: {
-    url: React.PropTypes.string,
-    pollInterval: React.PropTypes.number,
+    url: PropTypes.string,
+    pollInterval: PropTypes.number,
   },
   getInitialState: function () {
     return { data: [] };
@@ -79,7 +79,4 @@ let CommentBox = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <CommentBox url="/api/comments" pollInterval={50000} />,
-  document.getElementById('app')
-);
+export default CommentBox;

@@ -1,15 +1,16 @@
 import React from 'react';
 import Comment from './comment';
+import {PropTypes} from 'prop-types';
 
 let CommentList = React.createClass({
   propTypes: {
-    data: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        id: React.PropTypes.number,
-        author: React.PropTypes.string,
-        text: React.PropTypes.string
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        author: PropTypes.string,
+        text: PropTypes.string
     })),
-    onCommentDelete: React.PropTypes.func
+    onCommentDelete: PropTypes.func
   },
   render: function () {
     let commentNodes = this.props.data.reverse().map((comment) => {

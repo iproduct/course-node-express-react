@@ -1,8 +1,13 @@
 import React from "react";
+import {PropTypes} from 'prop-types';
 
 class CommentForm extends React.Component {
   author = '';
   text = '';
+
+  focus = () => {
+    this.text.focus();
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -18,13 +23,14 @@ class CommentForm extends React.Component {
         <input type="text" placeholder="Say something..." id="text" name="text" defaultValue=""
           ref={ref => this.text = ref} />
         <input type="submit" value="Post" />
+        <input type="button" value="Focus the text input" onClick={this.focus} />
       </form>
     );
   }
 }
 
 CommentForm.propTypes = {
-  onCommentSubmit: React.PropTypes.func,
+  onCommentSubmit: PropTypes.func,
 };
 
 export default CommentForm;

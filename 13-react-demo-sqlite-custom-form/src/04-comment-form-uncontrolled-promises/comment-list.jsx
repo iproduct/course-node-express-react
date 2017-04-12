@@ -1,17 +1,19 @@
 import React from 'react';
 import Comment from './comment';
+import {PropTypes} from 'prop-types';
 
-let CommentList = React.createClass({
-  propTypes: {
-    comments: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        id: React.PropTypes.number,
-        author: React.PropTypes.string,
-        text: React.PropTypes.string
+class CommentList extends React.Component {
+  static propTypes = {
+    comments: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        author: PropTypes.string,
+        text: PropTypes.string
     })),
-    onCommentDelete: React.PropTypes.func
-  },
-  render: function () {
+    onCommentDelete: PropTypes.func
+  };
+
+  render() {
     let commentNodes = this.props.comments.reverse().map((comment) => {
       return (
         <Comment author={comment.author} commentId={comment.id} key={comment.id} onCommentDelete={this.props.onCommentDelete}>
@@ -25,6 +27,6 @@ let CommentList = React.createClass({
     </div>
     );
   }
-});
+}
 
 export default CommentList;

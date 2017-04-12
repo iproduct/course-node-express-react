@@ -66,24 +66,20 @@ ul {
   padding-left: 30px;
 }
 
-.commentForm {
-  padding-bottom: 2em;
-}
-
 .comment {
   border: 1px solid #eef;
 }
 
 .errors {
   display: block;
-  padding 1em 2em;
+  padding: 1em 2em;
   background: #fee;
   color: red;
 } 
 
 .messages {
   display: block;
-  padding 1em 2em;
+  padding: 1em 2em;
   background: #efe;
   color: green;
 } 

@@ -1,1 +1,2 @@
-import './comment-form-uncontrolled-0/comments-demo';
+import './05-comment-form-uncontrolled-async-delete/comment-demo';
+import './assets/css/custom.css';

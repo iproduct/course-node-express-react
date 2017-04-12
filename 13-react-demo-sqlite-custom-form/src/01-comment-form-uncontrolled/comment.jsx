@@ -1,13 +1,14 @@
 import React from "react";
 import Remarkable from 'remarkable';
+import {PropTypes} from 'prop-types';
 let md = new Remarkable();
 
 let Comment = React.createClass({
   propTypes: {
-    commentId: React.PropTypes.number.isRequired,
-    author: React.PropTypes.string,
-    children: React.PropTypes.any,
-    onCommentDelete: React.PropTypes.func
+    commentId: PropTypes.number.isRequired,
+    author: PropTypes.string,
+    children: PropTypes.any,
+    onCommentDelete: PropTypes.func
   },
   rawMarkup: function () {
     let rawMarkup = '';
