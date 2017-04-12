@@ -23,7 +23,7 @@ let CommentBox = React.createClass({
       dataType: 'json',
       cache: false,
       success: function (data) {
-        this.setState({ data: data });
+        this.setState({ data });
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -37,9 +37,8 @@ let CommentBox = React.createClass({
       type: 'POST',
       data: comment,
       success: function (newComment) {
-        var newComments = this.state.data.concat([newComment]);
         console.log(`New comment added:`, newComment);
-        this.setState({ data: newComments });
+        this.setState(prevState => ({ data: prevState.data.concat(newComment) }));
         this.loadCommentsFromServer();
       }.bind(this),
       error: function (xhr, status, err) {

@@ -1,5 +1,5 @@
 import React from "react";
-var Remarkable = require('remarkable');
+import Remarkable from 'remarkable';
 let md = new Remarkable();
 
 let Comment = React.createClass({

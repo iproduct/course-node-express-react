@@ -1,0 +1,24 @@
+{
+  // Extend existing configuration
+  // from ESlint and eslint-plugin-react defaults.
+  "extends": [
+    "eslint:recommended", "plugin:react/recommended"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  // Enable custom plugin known as eslint-plugin-react
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    // Disable `no-console` rule
+    "no-console": 0,
+    // Give a warning if identifiers contain underscores
+    "no-underscore-dangle": 1,
+    //Not to report dangerouslySetInnerHTML()
+    "react/no-danger": 0
+  }
+}
