@@ -26,7 +26,7 @@ module.exports = {
             ['es2015', { 'modules': false }],
             // webpack understands the native import syntax, and uses it for tree shaking
 
-            'stage-1',
+            'stage-0',
             // Specifies what level of language features to activate.
             // Stage 1 is proposal, Stage 2 is "draft", 4 is finished, 0 is strawman.
             // See https://tc39.github.io/process-document/
@@ -34,7 +34,7 @@ module.exports = {
             'react'
             // Transpile React components to JavaScript
           ],
-          plugins:['syntax-async-functions', 'transform-regenerator']
+          plugins:['syntax-async-functions', 'transform-regenerator', "transform-function-bind"]
         }
       },
       {

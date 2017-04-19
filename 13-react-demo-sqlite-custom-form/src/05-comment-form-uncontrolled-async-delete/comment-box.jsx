@@ -5,7 +5,7 @@ import axios from 'axios';
 import CommentForm from './comment-form';
 import CommentList from './comment-list';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import {PropTypes} from 'prop-types';
+import { PropTypes } from 'prop-types';
 
 /**
  * CommentBox class
@@ -26,9 +26,7 @@ class CommentBox extends React.Component {
       .then(({ data: comments }) => {
         // console.log("GET" , comments);
         this.setState({
-          comments,
-          errors: undefined,
-          messages: undefined
+          comments: comments.reverse()
         });
       })
       .catch((err) => {
@@ -45,12 +43,12 @@ class CommentBox extends React.Component {
     axios.post(this.props.url, comment)
       .then(({ data: newComment }) => {
         this.setState(prevState => ({
-          comments: prevState.comments.concat(newComment),
+          comments: [newComment, ...prevState.comments],
           errors: undefined,
           messages: `New comment added: ${newComment.text}`
         }));
         console.log(`New comment added:`, newComment);
-        setTimeout(this.loadCommentsFromServer, 10000);
+        ::this.clearMessagesAndErrorsAfter(10000);
       })
       .catch((err) => {
         if (err.response.data.errors) {
@@ -59,11 +57,12 @@ class CommentBox extends React.Component {
             messages: undefined
           });
           console.error(this.props.url, err.response.data);
+          ::this.clearMessagesAndErrorsAfter(10000);
         }
       });
   }
 
-  handleCommentDelete = async function(commentId) {
+  handleCommentDelete = async function (commentId) {
     // delete comment optimistically
     this.setState(prevState => ({
       comments: prevState.comments.filter(comment => comment.id !== commentId), errors: '', messages: undefined
@@ -85,10 +84,22 @@ class CommentBox extends React.Component {
           messages: undefined
         });
         console.error(this.props.url, err.response.data);
+        this.loadCommentsFromServer();
       }
     }
-    setTimeout(this.loadCommentsFromServer, 10000);
+    ::this.clearMessagesAndErrorsAfter(10000);
   }.bind(this);
+
+  clearMessagesAndErrorsAfter (timeMs) {
+    if(this.messagesTimeout) clearTimeout(this.messagesTimeout); //cancel pending timeout
+    this.messagesTimeout = setTimeout(() => {
+      this.setState({
+        errors: undefined,
+        messages: undefined
+      });
+      this.messagesTimeout = undefined;
+    }, timeMs);
+  }
 
   componentDidMount = () => {
     this.loadCommentsFromServer();

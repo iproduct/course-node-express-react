@@ -42,7 +42,7 @@ class Test extends React.Component {
         (props.location.query.details === 'true' || props.location.query.details === undefined));
 
     // Get or create test data
-    if (props.test) {
+    if (this.props.test) {
       state.test = this.props.test;
     } else {
       // Default test initialization

@@ -14,7 +14,7 @@ class CommentList extends React.Component {
   };
 
   render() {
-    let commentNodes = this.props.comments.reverse().map((comment) => {
+    let commentNodes = this.props.comments.map((comment) => {
       return (
         <Comment author={comment.author} commentId={comment.id} key={comment.id} onCommentDelete={this.props.onCommentDelete}>
           {comment.text}

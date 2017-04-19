@@ -18,7 +18,7 @@
     // Disable `no-console` rule
     "no-console": 0,
     // Give a warning if identifiers contain underscores
-    "no-underscore-dangle": 1,
+    "no-underscore-dangle": 0,
     //Not to report dangerouslySetInnerHTML()
     "react/no-danger": 0,
     "no-constant-condition": 0
