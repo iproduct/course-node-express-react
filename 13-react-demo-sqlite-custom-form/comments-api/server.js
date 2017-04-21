@@ -93,7 +93,7 @@ const db = new sqlite3.Database(DB_FILE, (err) => {
   //Start the server
   app.listen(9000, (err) => {
     if (err) throw err;
-    console.log('Example app listening on port 3000!')
+    console.log('Example app listening on port 9000!')
   });
 });
 

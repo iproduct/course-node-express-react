@@ -76,7 +76,7 @@ router.post('/', function (req, res) {
       comment.id = this.lastID;
       const uri = req.baseUrl + '/' + comment.id;
       console.log('Created: ', uri);
-      res.location(uri).json(comment);
+      res.location(uri).status(201).json(comment);
     });
   }).catch(errors => {
     error(req, res, 400, `Invalid comment data: ${util.inspect(errors)}`);
