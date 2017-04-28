@@ -116,4 +116,29 @@ router.put('/:testId', function (req, res) {
     })
 });
 
+// DELETE tests list 
+router.delete('/:testId', function (req, res) {
+    const db = req.app.locals.db;
+    const params = req.params;
+    indicative.validate(params, { testId: 'required|regex:^[0-9a-f]{24}$' })
+        .then(() => {
+            db.collection('tests', function (err, tests_collection) {
+                if (err) throw err;
+                tests_collection.findOneAndDelete({ _id: new mongodb.ObjectID(params.testId) },
+                    (err, result) => {
+                        if (err) throw err;
+                        if (result.ok) {
+                            replaceId(result.value);
+                            res.json(result.value);
+                        } else {
+                            error(req, res, 404, `Test with Id=${params.testId} not found.`, err);
+                        }
+                    });
+            });
+        }).catch(errors => {
+            error(req, res, 400, 'Invalid test ID: ' + util.inspect(errors))
+        });
+});
+
+
 module.exports = router;

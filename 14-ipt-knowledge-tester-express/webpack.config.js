@@ -5,6 +5,7 @@ const validate = require('webpack-validator');
 
 const PATHS = {
     app: path.join(__dirname, 'app/index.js'),
+    favicon: path.join(__dirname, 'app/favicon.ico'),
     indextHtmlTemplate: path.join(__dirname, 'app/index.html'),
     images: (__dirname, 'app/assets/img'),
     style: [
@@ -80,6 +81,7 @@ var config = {
         // Generate index.html automatically
         new HtmlWebpackPlugin({
             template: PATHS.indextHtmlTemplate,
+            favicon: PATHS.favicon,
             title: 'IPT Knowledge Tester'
         }),
 

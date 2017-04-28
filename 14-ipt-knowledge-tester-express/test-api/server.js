@@ -15,26 +15,15 @@
 
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const MongoClient = require('mongodb').MongoClient;
 
 const rootPath = path.normalize(path.join(__dirname, '..'));
-
-// const fs = require('fs');
-// const path = require('path');
-// const Hapi = require('hapi');
-// const Good = require('good');
-// const Boom = require('boom');
-
-
-// const assert = require('assert');
-
 const testRoutes = require('./routes/test.routes');
-// const userRoutes = require('./user.routes');
-// const allRoutes = testRoutes.concat(userRoutes);
-
+const userRoutes = require('./routes/user.routes');
 
 const app = express();
 
@@ -51,6 +40,7 @@ app.use(cookieParser());
 // app.use(express.static(path.join(rootPath, 'app/assets')));
 
 app.use('/api/tests', testRoutes);
+app.use('/api/users', userRoutes);
 // app.get('/api/tests', function (req, res) {
 //   res.send('Hello World!')
 // })
@@ -62,8 +52,7 @@ app.use(function (req, res, next) {
   next(err);
 });
 
-/// error handlers
-
+// Error handlers
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -86,9 +75,6 @@ if (app.get('env') === 'development') {
   });
 }
 
-
-const MongoClient = require('mongodb').MongoClient;
-
 //Connection URL to db
 const url = 'mongodb://localhost:27017/tests';
 
@@ -100,32 +86,7 @@ MongoClient.connect(url, { db: { w: 1 } }).then((db) => {
   //Add db as app local property
   app.locals.db = db;
 
-  // // Registering the Good plugin
-  // server.register([{
-  //   register: Good,
-  //   options: {
-  //     reporters: {
-  //       console: [{
-  //         module: 'good-squeeze',
-  //         name: 'Squeeze',
-  //         args: [{
-  //           error: '*',
-  //           log: '*'
-  //         }]
-  //       }, {
-  //         module: 'good-console'
-  //       }, 'stdout']
-  //     }
-  //   }
-  // }], (err) => {
-  //   if (err) {
-  //     throw err;
-  //   }
-
   // Starting the server
-
-
-
   app.listen(9000, (err) => {
     if (err) {
       throw err;
@@ -133,15 +94,4 @@ MongoClient.connect(url, { db: { w: 1 } }).then((db) => {
     console.log('Example app listening on port 3000!')
   })
 
-
-  //   server.start((err) => {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     console.log('Server running at:', server.info.uri);
-  //   });
-  // });
-
-  // // Registering roots
-  // server.route(allRoutes);
 }).catch((err) => { throw err; });
