@@ -29,6 +29,7 @@
   "homepage": "https://github.com/iproduct/course-fullstack-react#readme",
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-eslint": "^7.2.2",
     "babel-loader": "^6.4.1",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",

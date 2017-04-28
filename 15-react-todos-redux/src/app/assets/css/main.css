@@ -1,0 +1,20 @@
+.status-filter {
+  margin-top: 20px;
+}
+
+.todo-text {
+  font-size: 14pt;
+  color: #444;
+}
+
+.todo-list li:nth-child(even) {
+   background-color: #f5f5ff;
+}
+
+.btn.pull-right {
+  margin-left: 5px;
+}
+
+.commands .btn {
+  margin-right: 5px;
+}
