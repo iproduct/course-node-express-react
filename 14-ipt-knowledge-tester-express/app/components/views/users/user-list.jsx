@@ -15,7 +15,7 @@
 
 import React from 'react';
 import User from './user';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 // import { data } from '../../../fake-data/users-data';
 
@@ -70,9 +70,9 @@ class UserList extends React.Component {
         ) : null
         }
         <div className="userList">
-          <ReactCSSTransitionGroup transitionName="users" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
+          <CSSTransitionGroup transitionName="users" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
             {userNodes}
-          </ReactCSSTransitionGroup>
+          </CSSTransitionGroup>
         </div>
       </section>
     );

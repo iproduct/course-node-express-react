@@ -1,6 +1,18 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
 
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: (todoText) => {
+    dispatch(addTodo(todoText));
+  }
+});
+
+@connect(
+  undefined,
+  mapDispatchToProps
+)
 class TodoForm extends React.Component {
   static propTypes = {
     addTodo : PropTypes.func.isRequired
