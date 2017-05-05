@@ -6,6 +6,16 @@ export const addTodo = (text) => ({
   text
 });
 
+export const editTodo = (todo) => ({
+  type: 'EDIT_TODO',
+  todo
+});
+
+export const selectTodo = (todo) => ({
+  type: 'SELECT_TODO',
+  todo
+});
+
 export const setVisibilityFilter = (filter) => ({
   type: 'SET_VISIBILITY_FILTER',
   filter
