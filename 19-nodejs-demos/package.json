@@ -1,0 +1,27 @@
+{
+  "name": "node-lab-01",
+  "version": "1.0.0",
+  "description": "node intro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-nodejs.git"
+  },
+  "keywords": [
+    "node.js",
+    "event",
+    "loop"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-nodejs/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-nodejs#readme",
+  "dependencies": {
+    "irc": "^0.5.2"
+  }
+}
