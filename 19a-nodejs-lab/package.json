@@ -1,0 +1,27 @@
+{
+  "name": "19a-nodejs-lab",
+  "version": "0.1.0",
+  "description": "nodejs intro lab",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon  ./05-http-demo-post.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react.git"
+  },
+  "keywords": [
+    "nodejs",
+    "intro"
+  ],
+  "author": "T. Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-node-express-react/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-node-express-react#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,7 +1,7 @@
 const repl = require('repl');
 
 var replServer = repl.start({prompt: '> '});
-replServer.defineCommand('cl', {
+replServer.defineCommand('cls', {
   help: 'Clear screen',
   action: function(name) {
     this.lineParser.reset();
