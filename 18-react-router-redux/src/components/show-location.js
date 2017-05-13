@@ -18,6 +18,7 @@ export default class ShowTheLocation extends React.Component {
     return (
       <div>
         <div>You are now at {location.pathname}</div>
+        <div>Location: {JSON.stringify(location)}</div>
         <div>The match is: {JSON.stringify(match)}</div>
         <div>The history contains: {JSON.stringify(history)}</div>
       </div>
