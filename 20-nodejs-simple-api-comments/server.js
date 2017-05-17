@@ -24,8 +24,21 @@ const server = http.createServer((req, res) => {
         if (path.length > 1 && path[0] === 'api') {
             if (path[1] === 'comments') {
                 service.findAll((err, comments) => {
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify(comments));
+                    if (err) {
+                        // 500: File not found
+                        console.error(`Error reading file: ${err.message}`);
+                        res.writeHead(500, { 'Content-Type': 'text/html' }); //TODO set appropriate MIME type
+                        res.write(`
+                            <html>
+                                <body>
+                                    <p>Sorry DB file not found</p>
+                                </body>
+                            </html>
+                        `);
+                    } else {
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify(comments));
+                    }
                 });
             }
         } else {
@@ -77,7 +90,7 @@ const server = http.createServer((req, res) => {
                 }).on('end', function () {
                     body = Buffer.concat(body).toString();
                     // at this point, `body` has the entire req body stored in it as a string
-                    
+
                     console.log('Body:', body);
                     const newComment = JSON.parse(body);
                     console.log('After parse:', newComment);
@@ -87,51 +100,72 @@ const server = http.createServer((req, res) => {
                     });
 
                     service.add(newComment, (err, comments, newComment) => {
-                        res.writeHead(201, { 'Content-Type': 'application/json', 'location': `http://127.0.0.1:${port}/comments/${newComment.id}` });
+                        res.writeHead(201, { 'Content-Type': 'application/json', 'Location': `http://127.0.0.1:${port}/comments/${newComment.id}` });
                         res.end(JSON.stringify(comments));
                     });
                 });
             }
-        } else {
-            //Handle req events: data, end, error
-            req.on('error', function (err) {
+        }
+    } else if (req.method === 'DELETE') {
+        let headers = req.headers;
+        let method = req.method;
+        let rUrl = req.url;
+        let body = [];
+
+        let resource = pathname.substr(1);
+        let path = resource.split('/');
+
+        if (path.length === 3 && path[0] === 'api' && path[1] === 'comments') {
+            const commentId = path[path.length - 1];
+            console.log('CommentId to be deleted:', commentId);
+            res.on('error', function (err) {
                 console.error(err);
-            }).on('data', function (chunk) {
-                body.push(chunk);
-            }).on('end', function () {
-                body = Buffer.concat(body).toString();
-                // at this point, `body` has the entire req body stored in it as a string
-                console.log(body);
+            });
 
-                //Start emiting res
-                //Handle res errors
-                res.on('error', function (err) {
-                    console.error(err);
-                });
-
-                // Retun res - 201 : Created
-                // res.statusCode = 200;
-                // res.setHeader('Content-Type', 'application/json');
-                res.writeHead(201, {
-                    'content-type': 'application/json',
-                    'location': `http://127.0.0.1:${port}/echo`
-                });
-
-                var resBody = {
-                    headers: headers,
-                    method: method,
-                    url: rUrl,
-                    body: body
-                };
-
-                res.write(JSON.stringify(resBody));
-                res.end();
+            // delete comment by id
+            service.delete(commentId, (err, comments, newComment) => {
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify(comments));
             });
         }
+    } else {
+        //Handle req events: data, end, error
+        req.on('error', function (err) {
+            console.error(err);
+        }).on('data', function (chunk) {
+            body.push(chunk);
+        }).on('end', function () {
+            body = Buffer.concat(body).toString();
+            // at this point, `body` has the entire req body stored in it as a string
+            console.log(body);
+
+            //Start emiting res
+            //Handle res errors
+            res.on('error', function (err) {
+                console.error(err);
+            });
+
+            // Retun res - 201 : Created
+            // res.statusCode = 200;
+            // res.setHeader('Content-Type', 'application/json');
+            res.writeHead(201, {
+                'content-type': 'application/json',
+                'location': `http://127.0.0.1:${port}/echo`
+            });
+
+            var resBody = {
+                headers: headers,
+                method: method,
+                url: rUrl,
+                body: body
+            };
+
+            res.write(JSON.stringify(resBody));
+            res.end();
+        });
     }
 
 });
-
 server.listen(port, hostname, (err) => {
     if (err) console.error(err);
     console.log(`Server running at http://${hostname}:${port}/`);
