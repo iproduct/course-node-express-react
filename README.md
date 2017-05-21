@@ -6,4 +6,4 @@
 
 - Design and devlopment of JSON/REST APIs using LoopBack 
 
-## !!! Please see repository [Wiki pages](https://github.com/iproduct/course-node-express-react/wiki) for all course-related information (program, lecture presentations, projects, important dates, homeworks)
+## Please see repository [Wiki pages](https://github.com/iproduct/course-node-express-react/wiki) for all course-related information (program, lecture presentations, projects, important dates, homeworks)!
