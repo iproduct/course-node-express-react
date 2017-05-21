@@ -4,6 +4,6 @@
  
 - Node.js + Express.js + React.js + Redux + MongoDB + Webpack fullstack application development
 
-- Design and devlopment of JSON/REST APIs using LoopBack 
+- Design and devlopment of JSON/REST APIs using Express
 
 ## Please see repository [Wiki pages](https://github.com/iproduct/course-node-express-react/wiki) for all course-related information (program, lecture presentations, projects, important dates, homeworks)!
