@@ -6,4 +6,4 @@
 
 - Design and devlopment of JSON/REST APIs using LoopBack 
 
-## Please see this repository Wiki pages for all the information about the course (program, lecture presentations, projects, important dates, homeworks)
+## Please see this repository [Wiki pages](http://) for all the information about the course (program, lecture presentations, projects, important dates, homeworks)
