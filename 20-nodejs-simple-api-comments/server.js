@@ -88,7 +88,7 @@ const server = http.createServer((req, res) => {
                 }).on('data', function (chunk) {
                     body.push(chunk);
                 }).on('end', function () {
-                    body = Buffer.concat(body).toString();
+                    body = Buffer.concat(body).toString('utf-8');
                     // at this point, `body` has the entire req body stored in it as a string
 
                     console.log('Body:', body);

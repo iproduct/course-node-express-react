@@ -10,7 +10,7 @@ var postData = JSON.stringify({
 
 var options = {
   hostname: 'localhost',
-  port: 3000,
+  port: 8000,
   path: '/',
   method: 'POST',
   headers: {

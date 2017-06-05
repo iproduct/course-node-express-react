@@ -1,0 +1,36 @@
+'use strict';
+
+let path = require('path');
+
+var app = require(path.resolve(__dirname, '../server/server'));
+var ds = app.datasources.db;
+ds.automigrate('Account', function(err) {
+  if (err) throw err;
+
+  var accounts = [
+    {
+      email: 'john.doe@ibm.com',
+      password: 'john',
+      createdAt: new Date(),
+      lastModifiedAt: new Date(),
+    },
+    {
+      email: 'jane.doe@ibm.com',
+      password: 'jane',
+      createdAt: new Date(),
+      lastModifiedAt: new Date(),
+    },
+  ];
+  var count = accounts.length;
+  accounts.forEach(function(account) {
+    app.models.Account.create(account, function(err, model) {
+      if (err) throw err;
+
+      console.log('Created:', model);
+
+      count--;
+      if (count === 0)
+        ds.disconnect();
+    });
+  });
+});

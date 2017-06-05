@@ -66,7 +66,7 @@ router.post('/', function (req, res) {
                 replaceId(user);
                 const uri = req.baseUrl + '/' + user.id;
                 console.log('Created User: ', uri);
-                res.location(uri).json(user);
+                res.location(uri).status(201).json(user);
             } else {
                 error(req, res, 400, `Error creating new user: ${user}`);
             }

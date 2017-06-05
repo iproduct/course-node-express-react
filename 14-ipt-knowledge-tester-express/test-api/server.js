@@ -21,21 +21,22 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 
-const rootPath = path.normalize(path.join(__dirname, '..'));
+// const rootPath = path.normalize(path.join(__dirname, '..'));
 const testRoutes = require('./routes/test.routes');
 const userRoutes = require('./routes/user.routes');
 
+const SERVER_PORT = 9000;
 const app = express();
 
 // view engine setup
-app.set('app', path.join(rootPath, 'app'));
+// app.set('app', path.join(rootPath, 'app'));
 // app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(rootPath, 'app/assets')));
 
@@ -58,7 +59,7 @@ app.use(function (req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json('error', {
       message: err.message,
       error: err
     });
@@ -68,7 +69,7 @@ if (app.get('env') === 'development') {
   // no stacktraces leaked to user
   app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json('error', {
       message: err.message,
       error: {}
     });
@@ -87,11 +88,11 @@ MongoClient.connect(url, { db: { w: 1 } }).then((db) => {
   app.locals.db = db;
 
   // Starting the server
-  app.listen(9000, (err) => {
+  app.listen(SERVER_PORT, (err) => {
     if (err) {
       throw err;
     }
-    console.log('Example app listening on port 3000!')
+    console.log(`Example app listening on port ${SERVER_PORT}!`)
   })
 
 }).catch((err) => { throw err; });

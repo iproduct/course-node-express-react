@@ -8,6 +8,8 @@ module.exports = class CommentService {
   }
 
   findAll(callback) {
+
+    debugger
     fs.readFile(this.filename, function (err, data) {
       if (err) {
         callback(err);
@@ -48,8 +50,6 @@ module.exports = class CommentService {
           return true;
         }
       });
-
-      console.log('TO BE DELETED !!!', commentId, deleted);
 
       if (!deleted) {
         callback(new Error(`Comment with id=${commentId} does not exist.`), comments);

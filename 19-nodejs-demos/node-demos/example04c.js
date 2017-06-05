@@ -7,7 +7,7 @@ function MyEventEmitter() {
   EventEmitter.call(this);
 
   doFirstJob();
-  setImmediate(this.emit.bind(this, 'myEvent'));
+  process.nextTick(()=>this.emit.bind(this, 'myEvent'));
 }
 util.inherits(MyEventEmitter, EventEmitter); //slower
 

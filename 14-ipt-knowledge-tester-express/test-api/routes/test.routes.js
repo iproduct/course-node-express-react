@@ -67,7 +67,7 @@ router.post('/', function (req, res) {
                 replaceId(test);
                 const uri = req.baseUrl + '/' + test.id;
                 console.log('Created Test: ', uri);
-                res.location(uri).json(test);
+                res.location(uri).status(201).json(test);
             } else {
                 error(req, res, 400, `Error creating new test: ${test}`);
             }
