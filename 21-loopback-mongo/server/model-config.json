@@ -35,7 +35,7 @@
     "dataSource": "mongodb",
     "public": false
   },
-  "Account": {
+  "product": {
     "dataSource": "mongodb",
     "public": true
   }
