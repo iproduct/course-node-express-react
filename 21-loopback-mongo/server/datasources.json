@@ -2,5 +2,12 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mongodb": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "loopback",
+    "name": "mongodb",
+    "connector": "mongodb"
   }
 }

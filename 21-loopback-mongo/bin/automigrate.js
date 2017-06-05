@@ -3,30 +3,52 @@
 let path = require('path');
 
 var app = require(path.resolve(__dirname, '../server/server'));
-var ds = app.datasources.db;
-ds.automigrate('Account', function(err) {
+var ds = app.datasources.mongodb;
+ds.automigrate('User', function(err) {
   if (err) throw err;
 
-  var accounts = [
+  var users = [
     {
-      email: 'john.doe@ibm.com',
+      username: 'john',
+      email: 'john@fmi.com',
       password: 'john',
-      createdAt: new Date(),
-      lastModifiedAt: new Date(),
     },
     {
-      email: 'jane.doe@ibm.com',
+      username: 'jane',
+      email: 'jane@fmi.com',
       password: 'jane',
-      createdAt: new Date(),
-      lastModifiedAt: new Date(),
     },
+    {
+      username: 'bob',
+      email: 'bob@fmi.com',
+      password: 'bob',
+    },
+
   ];
-  var count = accounts.length;
-  accounts.forEach(function(account) {
-    app.models.Account.create(account, function(err, model) {
+  var count = users.length;
+  users.forEach(function(account) {
+    app.models.User.create(account, function(err, model) {
       if (err) throw err;
 
       console.log('Created:', model);
+
+      if (model.username === 'bob') {
+        app.models.Role.create({
+          name: 'admin',
+        }, function(err, role) {
+          if (err) return debug(err);
+          debug(role);
+
+          // Make Bob an admin
+          role.principals.create({
+            principalType: app.models.RoleMapping.USER,
+            principalId: model.id,
+          }, function(err, principal) {
+            if (err) return debug(err);
+            debug(principal);
+          });
+        });
+      }
 
       count--;
       if (count === 0)
@@ -34,3 +56,8 @@ ds.automigrate('Account', function(err) {
     });
   });
 });
+
+function debug(message) {
+  console.log(message);
+}
+
