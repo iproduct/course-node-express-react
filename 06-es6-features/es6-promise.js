@@ -7,15 +7,14 @@ var p2 = new Promise((resolve, reject) => {
 var p3 = new Promise((resolve, reject) => {
   setTimeout(resolve, 3000, 'three');
 });
-var p4 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 4000, 'four');
-});
-// var p5 = new Promise((resolve, reject) => {
-//   setTimeout(()=> reject('rejected'), 2000, 'four');
+// var p4 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 4000, 'four');
+// });
+// var p3 = new Promise((resolve, reject) => {
+//   setTimeout(()=> reject('rejected'), 3000, 'three');
 // });
 
-Promise.all([p1, p2, p3, p4]).then(values => {
-  console.log('Success:', values);
-}).catch( reason => {
-  console.log('Error:', reason);
-});
+Promise.all([p1, p2, p3])
+.then(values => console.log('Success:', values))
+.catch( reason => console.log('Error:', reason) )
+.then( () => console.log('Demo finished'));

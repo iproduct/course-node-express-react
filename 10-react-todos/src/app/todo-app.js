@@ -66,25 +66,19 @@ export class TodoApp extends React.PureComponent {
 
   handleTodoSubmit = (e) => {
     e.preventDefault();
-    if (this.state.todoText.trim().length > 0) {
-      this.setState(prevState => ({
-        todos: [
-          ...prevState.todos,
-          {
-            id: Date.now(),
-            text: prevState.todoText.trim(),
-            status: 'active'       // Statuses: active | completed | canceled
-          }
-        ],
-        todoText: ''
-      }));
-    }
+    this.state.todos.push(
+      {
+        id: Date.now(),
+        text: this.state.todoText.trim(),
+        status: 'active'
+      });
   }
+}
 
-  handleTodosDelete = (filter) => {
-    this.setState(prevState => ({ 
-      todos: prevState.todos.filter(todo => todo.status !== filter)
-    }));
-  }
+handleTodosDelete = (filter) => {
+  this.setState(prevState => ({
+    todos: prevState.todos.filter(todo => todo.status !== filter)
+  }));
+}
 
 }
