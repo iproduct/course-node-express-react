@@ -1,0 +1,20 @@
+{
+  "name": "00-es6-features",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/iproduct/course-angular",
+  "author": "Trayan Ilev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-angular/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-angular#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}
