@@ -8,6 +8,8 @@ function Shape(/*Number*/ xCoord, /*Number*/ yCoord) {
     this.y = yCoord || 0;
 }
 
+console.log(Shape.__proto__);
+
 Shape.prototype.move = function (/*Number*/ deltaX, /*Number*/ deltaY) {
     this.x += deltaX;
     this.y += deltaY;
@@ -16,7 +18,8 @@ Shape.prototype.move = function (/*Number*/ deltaX, /*Number*/ deltaY) {
 
 /* Rectangle extends Shape */
 function Rectangle(/*Number*/ xCoord, /*Number*/ yCoord) {
-    Shape.call(this, xCoord, yCoord);
+    const boundShape = Shape.bind(this, 2);
+    boundShape(5);
 }
 
 //subclass extends superclass

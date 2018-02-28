@@ -17,7 +17,7 @@ let fibonacci = {
       next() {
         [pre, cur] = [cur, pre + cur];
         index++;
-        return { done: index > 15, value: cur };
+        return { done: cur > 1000, value: cur };
       }
     }
   }

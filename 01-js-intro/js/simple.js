@@ -42,9 +42,8 @@ function test() {
 
 
   function Employee(aName, aPractice) {
-    aPractice = aPractice || 0;
     this.name = aName;
-    this.practice = aPractice;
+    this.practice = aPractice || 0;
     // this.toString = function() {
     //   return this.name + ', practice: ' + this.practice;
     // };

@@ -19,17 +19,17 @@ person2.qualifications = ['C++', '.NET'];
 
 employees.push(person1, person2);
 
-// copy = employees.slice(0);// shallow copy
-copy = JSON.parse(JSON.stringify(employees));// deep copy
+// var copy = employees.slice(0);// shallow copy
+var copy = JSON.parse(JSON.stringify(employees));// deep copy
 
 var result = employees.filter(
   function (employee) {
     return employee.age < 40;
   })
-  .map((emp, ind) => ({ name: emp.name.toUpperCase(), index: ind, age: emp.age }))
+  .map((emp, index) => ({ name: emp.name.toUpperCase(), index, age: emp.age }))
   // .reduce( (accum, res) => accum + res.age, 0);
-  .forEach(res =>
-    console.log(res.index + ' -> ' + res.name)
+  .forEach((res) =>
+    console.log(`${res.index} -> ${res.name}, ${res.age}`)
   );
 
 // console.log(result);
