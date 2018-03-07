@@ -5,6 +5,7 @@ async function init() {
     console.log(user);
     const githubResp = await fetch(`http://api.github.com/users/${user.name}`);
     const githubUser = await githubResp.json();
+    console.log(githubUser);
     const img = document.createElement("img");
     img.src = githubUser.avatar_url;
     document.body.appendChild(img);

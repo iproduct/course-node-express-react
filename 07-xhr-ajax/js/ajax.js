@@ -1,4 +1,4 @@
-function loadXMLDoc(method, url, params, successCallback, errorCallback,
+function loadDoc(method, url, params, successCallback, errorCallback,
   contentType) {
   contentType = contentType || "application/x-www-form-urlencoded";
   params = params || {};
@@ -42,7 +42,8 @@ function loadXMLDoc(method, url, params, successCallback, errorCallback,
   };
   xmlhttp.open(method, url, true);
   xmlhttp.setRequestHeader("Pragma", "no-cache");
-  xmlhttp.setRequestHeader("Cache-Control", "no-cache");
+  xmlhttp.setRequestHeader("Cache-Control", "no-cache");  
+  // xmlhttp.setRequestHeader("Accept", "text/plain");
   if ((method === "POST" || method === "PUT") && paramStr.length > 0) {
     xmlhttp.setRequestHeader("Content-type", contentType);
     xmlhttp.send(paramStr);
@@ -51,8 +52,8 @@ function loadXMLDoc(method, url, params, successCallback, errorCallback,
   }
 }
 function getData() {
-  // loadXMLDoc("GET", "resources/ajax-info.txt",{}, showResult);
-  loadXMLDoc("GET", "resources/book-catalog.xml", null, showBookCatalog);
+  // loadDoc("GET", "resources/ajax-info.txt",{}, showResult);
+  loadDoc("GET", "resources/book-catalog.xml", null, showBookCatalog);
 }
 function showResult(xmlhttp) {
   document.getElementById("results").innerHTML = xmlhttp.responseText;
