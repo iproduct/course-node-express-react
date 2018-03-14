@@ -4,7 +4,7 @@ import { FlickrService } from './flickr.service';
 
 export class FlickrComponent extends AbstractSearchComponent{
   constructor(jqElemSelector) {
-    super('flkr', jqElemSelector, new FlickrService(), 4);
+    super('flkr', jqElemSelector, new FlickrService(), 8);
   }
 
   addItem(i, item) {

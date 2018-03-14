@@ -1,4 +1,4 @@
-export class Clock {
+export class ClockComponent {
 
     constructor(element) {
         this._element = element;

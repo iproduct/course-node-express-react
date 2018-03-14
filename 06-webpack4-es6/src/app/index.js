@@ -2,10 +2,10 @@
 import './assets/css/main.css';
 import { FlickrComponent } from './flickr.component';
 import { WikiComponent } from './wiki.component';
-import { ClockComponent, Clock } from './clock';
-import { Button } from './button';
+import { ClockComponent } from './clock';
+import { ButtonComponent } from './button';
 
-// ES6 Clock Demo
+ // ES6 Clock Demo
 let container = document.createElement('div');
 container.className = 'container';
 document.body.appendChild(container);
@@ -18,7 +18,7 @@ let clockElem = document.createElement('div');
 clockElem.className = 'display well well-lg col-sm-12 col-sm-10 col-md-8 col-lg-6';
 row2.appendChild(clockElem);
 
-let clock = new Clock(clockElem);
+let clock = new ClockComponent(clockElem);
 clock.start();
 
 //ES6 Button Demo
@@ -27,14 +27,14 @@ row3.className = 'row btn-toolbar';
 container.appendChild(row3);
 
 let startButton, stopButton;
-startButton = new Button('Start Clock', () => {
+startButton = new ButtonComponent('Start Clock', () => {
     clock.start();
     startButton.disable();
     stopButton.enable();
 });
 row3.appendChild(startButton.getElement());
 
-stopButton = new Button('Stop Clock', () => {
+stopButton = new ButtonComponent('Stop Clock', () => {
     startButton.enable();
     stopButton.disable();
     clock.stop();

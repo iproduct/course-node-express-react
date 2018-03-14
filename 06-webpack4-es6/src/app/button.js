@@ -1,4 +1,4 @@
-export class Button {
+export class ButtonComponent {
     constructor(title, onClick, enabled) {
         this._onClick = onClick;
         this._enabled = enabled;

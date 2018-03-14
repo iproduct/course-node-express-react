@@ -6,7 +6,7 @@ import { WikiService } from './wiki.service';
 export class WikiComponent extends AbstractSearchComponent {
   constructor(jqElemSelector) {
     super('wiki', jqElemSelector, new WikiService(), 10, 'ol');
-    let iframeElem = $('<iframe id=\'wiki-content\'>');
+    let iframeElem = $('<iframe id=\'wiki-content\' width="80%">');
     $(jqElemSelector).append(iframeElem);
   }
 
