@@ -5,6 +5,7 @@ export class TodoApp extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { todos: [], todoText: '', filter: 'all' };
+    // this.handleTodoSubmit = this.handleTodoSubmit.bind(this);
   }
 
   render() {
@@ -79,6 +80,4 @@ handleTodosDelete = (filter) => {
   this.setState(prevState => ({
     todos: prevState.todos.filter(todo => todo.status !== filter)
   }));
-}
-
 }
