@@ -59,12 +59,17 @@ export default class TodoApp extends React.Component {
     );
   }
 
-  handleTodoSubmit = (e) => {
+  handleTodoSubmit = e => {
     e.preventDefault();
-    this.state.todos.push({
-      id: Date.now(),
-      title: this.state.todoText.trim(),
-      status: 'active'
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: Date.now(),
+          title: this.state.todoText.trim(),
+          status: 'active'
+        }
+      ]
     });
   };
 
