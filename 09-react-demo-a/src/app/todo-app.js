@@ -1,7 +1,8 @@
 import React from 'react';
 import TodoList from './todo-list';
+import { hot } from 'react-hot-loader';
 
-export default class TodoApp extends React.Component {
+class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,3 +78,6 @@ export default class TodoApp extends React.Component {
     this.setState({ todoText: e.target.value });
   };
 }
+
+
+export default hot(module)(TodoApp);
