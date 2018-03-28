@@ -1,18 +1,18 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var helpers = require('./helpers');
+var webpack = require("webpack");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var helpers = require("./helpers");
 
 module.exports = {
-  context: helpers.root('src'),
+  context: helpers.root("src"),
   entry: {
-    'polyfills': './polyfills.js',
-    'vendor': './vendor.js',
-    'app': ['./app/index.js']
+    polyfills: "./polyfills.js",
+    vendor: "./vendor.js",
+    app: ["./app/index.js"]
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: [".js", ".json"]
   },
 
   module: {
@@ -20,100 +20,75 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
           presets: [
-            ['es2015', { 'modules': false }],
+            ["es2015", { modules: false }],
             // webpack understands the native import syntax, and uses it for tree shaking
 
-            'stage-1',
+            "stage-1",
             // Specifies what level of language features to activate.
             // Stage 1 is proposal, Stage 2 is "draft", 4 is finished, 0 is strawman.
             // See https://tc39.github.io/process-document/
 
-            'react'
+            "react"
             // Transpile React components to JavaScript
           ]
         }
       },
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        loader: "html-loader"
       },
-      // {
-      //   test: /\.(png|jpe?g|gif|svg)$/,
-      //   use: [{
-      //     loader: 'url-loader',
-      //     options: { limit: 10000 } // Convert images < 10k to base64 strings
-      //   }]
-      // },
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/,
-        loader: 'file-loader',
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: "file-loader",
         options: {
-          name: 'assets/images/[name].[ext]?[hash]'
+          name: "assets/[name].[hash].[ext]"
         }
       },
       {
-        test: /\.(woff|woff2|ttf|eot)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'assets/fonts/[name].[hash].[ext]'
-        }
-      },
-      {
-        test: /\.p?css$/,
+        test: /\.css$/,
+        exclude: helpers.root("src/app"),
         loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
+          fallback: "style-loader",
+          use: {
+            loader: "css-loader",
             options: {
-              sourceMap: true,
-              // modules: true,
-              importLoaders: 1
+              sourceMap: true
             }
-          },
-          // {
-          //   loader: 'sass-loader'
-          // }, 
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: function () {
-                return [
-                  require('precss'),
-                  // require('autoprefixer')
-                ];
-              }
-            }
-          }]
+          }
         })
       },
       // {
       //   test: /\.css$/,
-      //   include: 'app',
+      //   include: helpers.root('src/app'),
       //   loader: 'raw-loader'
       // },
-      // {
-      //   test: /\.css$/,
-      //   include: helpers.root('src', 'app'),
-      //   use: [
-      //     'style-loader',
-      //     'css-loader?modules',
-      //     'postcss-loader',
-      //   ],
-      // },
+      {
+        test: /\.css$/,
+        include: helpers.root("src", "app"),
+        use: ["style-loader", "css-loader?modules", "postcss-loader"]
+      }
     ]
   },
 
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['app', 'vendor', 'polyfills']
-    }),
+  optimization: {
+    minimize: true,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: "commons",
+          chunks: "initial",
+          minChunks: 3
+        }
+      }
+    }
+  },
 
+  plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html',
-      title: 'React TODO Demo'
+      template: "index.html"
     })
   ]
 };

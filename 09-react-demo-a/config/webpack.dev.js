@@ -6,7 +6,7 @@ var helpers = require('./helpers');
 
 // Enable React HMR
 commonConfig.entry['app'].unshift('react-hot-loader/patch');
-const babelLoader = commonConfig.module.rules.find(rule => rule.loader === 'babel-loader')
+const babelLoader = commonConfig.module.rules.find(rule => rule.loader === 'babel-loader');
 babelLoader.options.plugins = ['react-hot-loader/babel']; 
 babelLoader.options.cacheDirectory = true;
 
