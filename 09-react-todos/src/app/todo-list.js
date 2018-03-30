@@ -1,10 +1,10 @@
 import React from 'react';
 import Todo from './todo';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { ReactTransitionGroup } from 'react-transition-group';
 
-export default ({ todos, filter, ...rest }) => (
+const TodoList = ({ todos, filter, ...rest }) => (
   <ul className="todo-list list-group">
-    <ReactCSSTransitionGroup transitionName="todos" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
+    
       {todos
         .filter(todo => filter === 'all' ? true : todo.status === filter)
         .map(todo => (
@@ -13,6 +13,8 @@ export default ({ todos, filter, ...rest }) => (
           </li>
         ))
       }
-    </ReactCSSTransitionGroup>
+
   </ul>
 );
+
+export default TodoList;
