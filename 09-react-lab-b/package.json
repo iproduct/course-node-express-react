@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --hot --progress --profile --colors --port 3000 --mode development",
-    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
+    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail --mode production",
     "build-watch": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
 

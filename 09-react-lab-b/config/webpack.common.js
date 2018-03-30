@@ -73,18 +73,18 @@ module.exports = {
     ]
   },
 
-  optimization: {
-    minimize: true,
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: "commons",
-          chunks: "initial",
-          minChunks: 3
-        }
-      }
-    }
-  },
+  // optimization: {
+  //   minimize: true,
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       commons: {
+  //         name: "commons",
+  //         chunks: "initial",
+  //         minChunks: 3
+  //       }
+  //     }
+  //   }
+  // },
 
   plugins: [
     new HtmlWebpackPlugin({
