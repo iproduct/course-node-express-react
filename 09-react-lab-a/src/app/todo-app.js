@@ -37,7 +37,7 @@ class TodoApp extends React.Component {
           </div>
         </div>
 
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} onStateChange={this.stateChanged}/>
         <div className="row">
           <div className="conatiner col-lg-8">
             <form onSubmit={this.handleTodoSubmit}>
@@ -62,21 +62,27 @@ class TodoApp extends React.Component {
 
   handleTodoSubmit = e => {
     e.preventDefault();
-    this.setState({
+    this.setState(prevState => ({
       todos: [
-        ...this.state.todos,
+        ...prevState.todos,
         {
           id: Date.now(),
-          title: this.state.todoText.trim(),
+          title: prevState.todoText.trim(),
           status: 'active'
         }
-      ]
-    });
+      ],
+      todoText: ''
+    }) );
   };
 
   handleTextChange = e => {
     this.setState({ todoText: e.target.value });
   };
+
+  stateChanged(id, newState){
+
+  }
+  
 }
 
 

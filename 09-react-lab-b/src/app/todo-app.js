@@ -74,7 +74,7 @@ class TodoApp extends Component {
         ...prevState.todos,
         {
           id: Date.now(),
-          title: this.state.todoText.trim(),
+          title: prevState.todoText.trim(),
           status: 'active'
         }
       ],

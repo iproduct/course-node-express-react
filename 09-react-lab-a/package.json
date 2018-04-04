@@ -8,7 +8,6 @@
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "build-watch": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
   "keywords": [
     "react",
@@ -30,6 +29,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.6",
+    "mini-css-extract-plugin": "^0.4.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.1",

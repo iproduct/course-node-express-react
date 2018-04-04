@@ -1,6 +1,7 @@
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var helpers = require("./helpers");
 
 module.exports = {
@@ -49,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: helpers.root("src/app"),
+        // exclude: helpers.root("src/app"),
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: {
@@ -65,11 +66,11 @@ module.exports = {
       //   include: helpers.root('src/app'),
       //   loader: 'raw-loader'
       // },
-      {
-        test: /\.css$/,
-        include: helpers.root("src", "app"),
-        use: ["style-loader", "css-loader?modules", "postcss-loader"]
-      }
+      // {
+      //   test: /\.css$/,
+      //   include: helpers.root("src", "app"),
+      //   use: ["style-loader", "css-loader?modules"]
+      // }
     ]
   },
 
