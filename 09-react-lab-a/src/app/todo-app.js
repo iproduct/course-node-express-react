@@ -14,7 +14,8 @@ class TodoApp extends React.Component {
         { id: 5, title: 'Todo 5', status: 'active' },
         { id: 6, title: 'Todo 6', status: 'active' }
       ],
-      todoText: ''
+      todoText: '',
+      filter: 'all'
     };
   }
 
@@ -37,7 +38,7 @@ class TodoApp extends React.Component {
           </div>
         </div>
 
-        <TodoList todos={this.state.todos} onStateChange={this.stateChanged}/>
+        <TodoList todos={this.state.todos} filter={this.state.filter} onStateChange={this.stateChanged} />
         <div className="row">
           <div className="conatiner col-lg-8">
             <form onSubmit={this.handleTodoSubmit}>
@@ -79,8 +80,14 @@ class TodoApp extends React.Component {
     this.setState({ todoText: e.target.value });
   };
 
-  stateChanged(id, newState){
+  handleFilterChange = e => {
+    this.setState({filter: e.target.value});
+  }
 
+  stateChanged = (id, newState) => {
+    this.setState(prevState => ({
+      todos: prevState.todos.map(todo => todo.id === id ? {...todo, status: newState} : todo)
+    }) );
   }
   
 }

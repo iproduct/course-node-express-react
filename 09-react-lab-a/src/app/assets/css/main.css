@@ -1,3 +1,18 @@
 .todo-list {
     list-style-type: none;
 }
+
+.todo-list li {
+    width: 300px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px dotted lightgray;
+}
+
+.todo-list li span {
+    display: inline-block;
+}
+
+.btn.pull-right {
+  margin-left: 5px;  
+}

@@ -1,4 +1,4 @@
-/* Todos fading on enter/leave */
+/* Todos fading on enter/exit */
 .todos-enter {
   height: 0;
   opacity: 0.01;
@@ -11,12 +11,11 @@
   transition: all 0.5s ease-in;
 }
 
-.todos-leave {
+.todos-exit {
   opacity: 1;
 }
 
-.todos-leave.todos-leave-active {
+.todos-exit.todos-exit-active {
   opacity: 0.01;
   transition: all 0.5s ease-in;
 }
-
