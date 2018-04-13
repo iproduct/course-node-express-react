@@ -8,7 +8,7 @@ export default ({ todos, filter, ...props }) => (
       {todos
         .filter(todo => filter === 'all' || todo.status === filter)
         .map((todo, index) => (
-          <CSSTransition key={todo.id} timeout={1000} classNames="todos">
+          <CSSTransition key={todo.id} timeout={500} classNames="todos">
             <TodoItem todo={todo} index={index} {...props} />
           </CSSTransition>
         ))}

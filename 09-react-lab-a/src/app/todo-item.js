@@ -13,7 +13,7 @@ const TodoItem = ({ todo, index, onStateChange }) => (
       <span className="glyphicon glyphicon-remove" />
     </button>
     <button
-      title="Cancel task"
+      title="Complete task"
       className="btn btn-sm btn-success pull-right"
       onClick={() => onStateChange(todo.id, 'completed')}
     >
