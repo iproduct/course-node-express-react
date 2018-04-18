@@ -1,6 +1,5 @@
 'use strict';
 
-import '../assets/css/custom.css';
 import React from 'react';
 import $ from 'jquery';
 import CommentForm from './comment-form';
@@ -10,18 +9,15 @@ import {PropTypes} from 'prop-types';
 /**
  * CommentBox class
  */
-let CommentBox = React.createClass({
-  propTypes: {
-    url: PropTypes.string,
-    pollInterval: PropTypes.number,
-  },
-  getInitialState: function () {
-    return { data: [] };
-  },
-  loadCommentsFromServer: function () {
-    $.ajax({
+class CommentBox extends React.Component {
+ constructor(params) {
+   super(params);
+   this.state = { data: [] };
+  }
+
+  loadCommentsFromServer = () => {
+    $.getJSON({
       url: this.props.url,
-      dataType: 'json',
       cache: false,
       success: function (data) {
         this.setState({ data });
@@ -30,13 +26,14 @@ let CommentBox = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-  },
-  handleCommentSubmit: function (comment) {
-    $.ajax({
+  };
+
+  handleCommentSubmit = (comment) => {
+    $.post({
       url: this.props.url,
       dataType: 'json',
-      type: 'POST',
-      data: comment,
+      contentType: 'application/json',
+      data: JSON.stringify(comment),
       success: function (newComment) {
         var newComments = this.state.data.concat([newComment]);
         console.log(`New comment added:`, newComment);
@@ -47,8 +44,9 @@ let CommentBox = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-  },
-  handleCommentDelete: function (commentId) {
+  };
+
+  handleCommentDelete = (commentId) => {
     // var comments = this.state.data;
     // comment.id = Date.now();
     // var newComments = comments.concat([comment]);
@@ -64,20 +62,27 @@ let CommentBox = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-  },
-  componentDidMount: function () {
+  };
+
+  componentDidMount = () => {
     this.loadCommentsFromServer();
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-  },
-  render: function () {
+  };
+
+  render() {
     return (
       <div className="commentBox">
         <h1>Comments</h1>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-        <CommentList onCommentDelete={this.handleCommentDelete} data={this.state.data} />
+        <CommentList onCommentDelete={this.handleCommentDelete} comments={this.state.data} />
       </div>
     );
   }
-});
+}
+
+CommentBox.propTypes = {
+  url: PropTypes.string,
+  pollInterval: PropTypes.number,
+};
 
 export default CommentBox;

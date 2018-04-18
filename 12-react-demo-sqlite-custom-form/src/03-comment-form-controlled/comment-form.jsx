@@ -1,20 +1,26 @@
 import React from "react";
 import {PropTypes} from 'prop-types';
 
- let CommentForm = React.createClass({
-  propTypes: {
+ class CommentForm extends React.Component {
+
+  static propTypes = {
     onCommentSubmit: PropTypes.func,
-  },
-  getInitialState: function () {
+  };
+
+  constructor(props) {
+    super(props);
     return { author: '', text: '' };
-  },
-  handleAuthorChange: function (e) {
+  }
+
+  handleAuthorChange = (e) => {
     this.setState({ author: e.target.value });
-  },
-  handleTextChange: function (e) {
+  };
+
+  handleTextChange = (e) => {
     this.setState({ text: e.target.value });
-  },
-  handleSubmit: function (e) {
+  };
+
+  handleSubmit = (e) => {
     e.preventDefault();
     var author = this.state.author.trim();
     var text = this.state.text.trim();
@@ -24,8 +30,9 @@ import {PropTypes} from 'prop-types';
     // TODO: send request to the server
      this.props.onCommentSubmit({author, text});
      this.setState({author: '', text: '' });
-  },
-  render: function () {
+  };
+
+  render() {
     return (
       <form className="commentForm" onSubmit={this.handleSubmit}>
         <input
@@ -44,6 +51,6 @@ import {PropTypes} from 'prop-types';
       </form>
     );
   }
-});
+}
 
 export default CommentForm;
