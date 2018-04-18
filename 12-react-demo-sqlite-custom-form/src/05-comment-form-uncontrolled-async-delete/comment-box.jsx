@@ -4,8 +4,9 @@ import React from 'react';
 import axios from 'axios';
 import CommentForm from './comment-form';
 import CommentList from './comment-list';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { CSSTransition } from 'react-transition-group';
 import { PropTypes } from 'prop-types';
+import { hot } from 'react-hot-loader';
 
 /**
  * CommentBox class
@@ -111,14 +112,21 @@ class CommentBox extends React.Component {
       <div className="commentBox">
         <h1>Comments</h1>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-        <CSSTransitionGroup transitionName="messages" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-          {this.state.errors && <div className="errors">{this.state.errors}</div>}
-          {this.state.messages && <div className="messages">{this.state.messages}</div>}
-        </CSSTransitionGroup>
+        {/* <CSSTransitionroup transitionName="messages" transitionEnterTimeout={500} transitionLeaveTimeout={300}> */}
+        <CSSTransition in={!!this.state.errors} timeout={1000} classNames="messages">
+          <div>  
+            {this.state.errors && <div className="errors">{this.state.errors}</div>}
+          </div>
+        </CSSTransition>  
+        <CSSTransition in={!!this.state.messages} timeout={1000} classNames="messages">
+          <div> 
+            {this.state.messages && <div className="messages">{this.state.messages}</div>}
+          </div>
+        </CSSTransition>
         <CommentList onCommentDelete={this.handleCommentDelete} comments={this.state.comments} />
       </div>
     );
   }
 }
 
-export default CommentBox;
+export default (CommentBox);

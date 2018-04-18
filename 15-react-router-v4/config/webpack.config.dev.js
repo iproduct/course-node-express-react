@@ -133,7 +133,7 @@ module.exports = {
           // directory for faster rebuilds.
           cacheDirectory: true,
           presets:['es2015', 'stage-0', 'react'],
-          plugins: ['transform-decorators-legacy']
+          plugins: ['transform-decorators-legacy', 'syntax-async-functions', 'transform-regenerator', "transform-function-bind"]
         },
       },
       // "postcss" loader applies autoprefixer to our CSS.

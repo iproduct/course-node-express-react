@@ -7,6 +7,7 @@ var helpers = require('./helpers');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = webpackMerge(commonConfig, {
+  mode: 'proiduction',
   devtool: 'source-map',
 
   output: {

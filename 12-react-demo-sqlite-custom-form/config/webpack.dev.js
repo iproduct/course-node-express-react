@@ -6,11 +6,13 @@ var helpers = require('./helpers');
 
 // Enable React HMR
 commonConfig.entry['app'].unshift('react-hot-loader/patch');
-commonConfig.module.rules.find(rule => rule.loader === 'babel-loader')
-  .options.plugins = ['react-hot-loader/babel']; 
+const babelLoader = commonConfig.module.rules.find(rule => rule.loader === 'babel-loader');
+babelLoader.options.plugins = ['react-hot-loader/babel']; 
+babelLoader.options.cacheDirectory = true; 
 
 // Merge dev and common configs
 module.exports = webpackMerge(commonConfig, {
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
 
   output: {
@@ -27,16 +29,21 @@ module.exports = webpackMerge(commonConfig, {
 
   devServer: {
     hot: true, // enable HMR on the server
-    contentBase: helpers.root('dist'), // match the output path
     publicPath: '/', // match the output `publicPath`
-    port: 3000,
     historyApiFallback: true, // HTML 5 History API support
-    stats: 'minimal', // Minimal statistics
+
+    // Display only errors to reduce the amount of output.
+    // stats: 'errors-only',
+    stats: 'minimal',
+
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 3000,
+
     proxy: {
-            '/api/*': {
-                target: 'http://localhost:9000/',
-                secure: false
-            }
-        },
+        '/api/*': {
+            target: 'http://localhost:9000/',
+            secure: false
+        }
+    },
   }
 });

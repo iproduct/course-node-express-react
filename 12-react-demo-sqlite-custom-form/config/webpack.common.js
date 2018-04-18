@@ -108,10 +108,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['app', 'vendor', 'polyfills']
-    }),
-
     new HtmlWebpackPlugin({
       template: 'index.html',
       title: 'React TODO Demo'
