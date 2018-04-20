@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
   text = React.createRef();
 
   focus = () => {
-    this.text.focus();
+    this.text.current.focus();
   }
 
   handleSubmit = (e) => {

@@ -1,16 +1,13 @@
 import React from "react";
 import {PropTypes} from 'prop-types';
 
- class CommentForm extends React.Component {
+export default class CommentForm extends React.Component {
 
   static propTypes = {
     onCommentSubmit: PropTypes.func,
   };
 
-  constructor(props) {
-    super(props);
-    return { author: '', text: '' };
-  }
+  state = { author: '', text: '' };
 
   handleAuthorChange = (e) => {
     this.setState({ author: e.target.value });
@@ -53,4 +50,4 @@ import {PropTypes} from 'prop-types';
   }
 }
 
-export default CommentForm;
+
