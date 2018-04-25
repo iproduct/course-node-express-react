@@ -12,6 +12,31 @@ import ShowTheLocation from './components/show-location'
 
 @withRouter
 class App extends Component {
+  state = {
+    topics: [
+      {
+        title:"React Intro", 
+        content: "React is a declarative, efficient, and flexible JavaScript library for building user interfaces."
+      },
+      {
+        title:"Introducing JSX", 
+        content: "JSX is a syntax extension to JavaScript. We recommend using it with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript."
+      },
+      {
+        title:"Rendering Elements", 
+        content: "Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements."
+      },
+      {
+        title:"Components and Props", 
+        content: "Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen."
+      },
+      {
+        title:"State and Lifecycle", 
+        content: "In this section, we will learn how to make the Clock component truly reusable and encapsulated. It will set up its own timer and update itself every second."
+      },
+    ]
+  };
+
   static contextTypes = {
     router: PropTypes.object
   };
