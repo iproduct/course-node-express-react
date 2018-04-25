@@ -7,7 +7,7 @@ import Base from './base';
 import Home from './components/home';
 import About from './components/about';
 import Repos from './components/repos';
-import Topics from './components/topics';
+import Topics from './components/Topics';
 import ShowTheLocation from './components/show-location'
 
 @withRouter
@@ -43,7 +43,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <ul className="main-menu">
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/intro">Intro</Link></li>
@@ -62,7 +62,7 @@ class App extends Component {
         <Route path="/home" component={Home} />
         <Route path="/intro" render={() => <div>How to start using this app</div>} />
         <Route path="/repos" component={Repos} />
-        <Route path="/topics" component={Topics} />
+        <Route path="/topics" render={ props => (<Topics {...props} topics={this.state.topics} />)} />
         <Route path="/about" component={About} />
         <Route path="/show-location" component={ShowTheLocation} />
       </div>
