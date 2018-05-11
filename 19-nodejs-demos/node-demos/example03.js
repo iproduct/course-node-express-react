@@ -1,5 +1,5 @@
 var irc = require('irc');
-var client = new irc.Client('irc.freenode.net', 'my_bot2', {
+var client = new irc.Client('irc.freenode.net', 'my_bot3', {
   channels: ['#node_channel']
 });
 
@@ -19,10 +19,10 @@ setTimeout(function () {
   client.join('#node_channel');
   client.say('#node_channel', "I'm a bot!");
   setTimeout(function () {
-    client.say('#node_channel', "SRSLY, I AM!");
+    client.say('#node_channel', "Am a bot really!");
     setTimeout(function () {
       client.part('#node_channel');
       process.exit(0);
-    }, 10000);
-  }, 10000);
-}, 14000);
+    }, 3000);
+  }, 5000);
+}, 10000);

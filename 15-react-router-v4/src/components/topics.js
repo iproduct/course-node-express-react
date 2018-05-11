@@ -1,28 +1,25 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import './Topics.css';
+import { withParams } from './hocs';
+import Topic from './Topic'
 
 const Topics = ({ match, location, history, topics }) => (
-    <div>
+    <div className="Topics">
         <h2>Blog Topics</h2>
         <nav className="Topics-nav">
             <ul> 
                 { topics.map(topic => (
                     <li key={topic.title}>
-                        <Link to={`${match.url}/${topic.title}`}>{topic.title}</Link>
+                        <NavLink to={`${match.url}/${topic.title}`} 
+                            className='navlink' activeClassName='active'>
+                            {topic.title}
+                        </NavLink>
                     </li>
                 ))}
             </ul>
         </nav>
-        <Route path={`${match.url}/:topicTile`} render={({ match }) => {
-            console.log(topics);
-            console.log(match.params.topicTile);
-            return (
-            <article>
-                <h3>{match.params.topicTile}</h3>
-                <div>{topics.find(t => t.title === match.params.topicTile).content}</div>
-            </article>);
-        }} />
+        <Route path={`${match.url}/:topicTile`} render={ withParams(Topic, { topics }) } />
     </div>
 );
 

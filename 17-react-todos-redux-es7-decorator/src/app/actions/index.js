@@ -32,3 +32,8 @@ export const deleteTodos = (withStatus) => ({
   status: withStatus
 });
 
+export const deleteTodo = (id) => ({
+  type: 'DELETE_TODO',
+  id
+});
+

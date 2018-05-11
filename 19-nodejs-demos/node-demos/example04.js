@@ -3,6 +3,8 @@
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 
+const log = [];
+
 class MemoryWatcher extends EventEmitter {
   constructor(options) {
     super();
@@ -23,11 +25,13 @@ class MemoryWatcher extends EventEmitter {
 
 //Use it!
 var watcher = new MemoryWatcher({
-  maxBytes: 24790000,
-  frequency: 1000
+  maxBytes: 25120000,
+  frequency: 500
+  
 });
 
 watcher.on('data', function (bytes) {
+  log.push(bytes);
   console.log(bytes);
 })
 

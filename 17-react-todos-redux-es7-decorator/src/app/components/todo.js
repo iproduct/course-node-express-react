@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({ todo, onTodoSelected, onCompleted, onCanceled }) => (
+const Todo = ({ todo, onTodoSelected, onCompleted, onCanceled, onDelete }) => (
   <div key={todo.id} onClick={() => onTodoSelected(todo)} >
     <span className={`label label-${todo.status === 'active' ? 'info' : todo.status === 'completed' ? 'success' : 'danger'} pull-right`}>
       {todo.status === 'active' ? '' : todo.status === 'completed' ? 'Completed' : 'Canceled'}
@@ -9,7 +9,7 @@ const Todo = ({ todo, onTodoSelected, onCompleted, onCanceled }) => (
     {todo.status === 'active' &&     // show only when todo is active
       <button title="Task Canceled" className="btn btn-sm btn-danger pull-right"
         onClick={(e) => {e.stopPropagation(); onCanceled(todo.id);}}>
-        <span className="glyphicon glyphicon-remove"></span>
+        <span className="glyphicon glyphicon-ban-circle"></span>
       </button>
     }
     {todo.status === 'active' &&     // show only when todo is active
@@ -17,6 +17,10 @@ const Todo = ({ todo, onTodoSelected, onCompleted, onCanceled }) => (
         <span className="glyphicon glyphicon-ok"></span>
       </button>
     }
+    <button title="Delete todo" className="btn btn-sm btn-danger pull-right"
+      onClick={(e) => {e.stopPropagation(); onDelete(todo.id);}}>
+      <span className="glyphicon glyphicon-remove"></span>
+    </button>
   </div>);
 
 export default Todo;

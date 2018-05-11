@@ -5,7 +5,8 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import AnimationOnPropsChange from './animation-on-props-change';
 
 import { connect } from 'react-redux';
-import { changeStatus, selectTodo, editTodo } from '../actions';
+import { changeStatus, selectTodo, editTodo,
+  deleteTodo} from '../actions';
 
 const getVisibleTodos = (todos, filter) => {
   const filteredTodos = todos.filter(todo => filter === 'all' ? true : todo.status === filter);
@@ -34,6 +35,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onCanceled: (id) => {
     dispatch(changeStatus(id, 'canceled'));
+  },
+  onDelete: (id) => {
+    dispatch(deleteTodo(id));
   }
 });
 

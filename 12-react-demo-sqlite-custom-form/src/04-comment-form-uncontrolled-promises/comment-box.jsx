@@ -66,7 +66,9 @@ class CommentBox extends React.Component {
   handleCommentDelete = (commentId) => {
     // delete comment optimistically
     this.setState(prevState => ({
-      comments: prevState.comments.filter(comment => comment.id !== commentId), errors: '', messages: undefined
+      comments: prevState.comments.filter(comment => comment.id !== commentId), 
+      errors: '', 
+      messages: undefined
     }));
 
     //AJAX DELETE request

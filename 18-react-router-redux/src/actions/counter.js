@@ -12,7 +12,7 @@ export function incrementAsync(x) {
     setTimeout(() => {
       // Yay! Can invoke sync or async actions with `dispatch`
       dispatch(increment(x));
-    }, 2000);
+    }, 4000);
 }
 
 export function incrementIfOdd(x) {

@@ -18,7 +18,8 @@ const todoReducer = (state = {}, action) => {
     if (state.id !== action.id) {
       return state;
     }
-    return Object.assign({}, state, { status: action.status });
+    return { ...state, status: action.status }
+    // Object.assign({}, state, { status: action.status });
 
   default:
     return state;
@@ -43,9 +44,14 @@ const todosReducer = (state = [], action) => {
       todoReducer(todo, action)
     );
 
-  case 'DELETE_TODOS':
+    case 'DELETE_TODOS':
     return state.filter(todo =>
       todo.status !== action.status
+    );
+
+    case 'DELETE_TODO':
+    return state.filter(todo =>
+      todo.id !== action.id
     );
 
   default:

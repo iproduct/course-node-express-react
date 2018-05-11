@@ -9,6 +9,7 @@ import About from './components/about';
 import Repos from './components/repos';
 import Topics from './components/Topics';
 import ShowTheLocation from './components/show-location'
+import { withParams } from './components/hocs';
 
 @withRouter
 class App extends Component {
@@ -62,7 +63,7 @@ class App extends Component {
         <Route path="/home" component={Home} />
         <Route path="/intro" render={() => <div>How to start using this app</div>} />
         <Route path="/repos" component={Repos} />
-        <Route path="/topics" render={ props => (<Topics {...props} topics={this.state.topics} />)} />
+        <Route path="/topics" render={ withParams(Topics, { topics: this.state.topics }) } />
         <Route path="/about" component={About} />
         <Route path="/show-location" component={ShowTheLocation} />
       </div>

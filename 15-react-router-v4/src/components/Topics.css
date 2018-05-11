@@ -1,9 +1,29 @@
 .Topics-nav {
     float: left;
+    padding-right: 15px;
+    border-right: 1px dotted gray;
+    margin-right: 15px;
 } 
 
 .Topics-nav ul {
+    font-weight: bold;
     list-style-type: none;
     padding: 0;
 } 
 
+.Topics-nav ul li  {
+    width: 200px;
+}
+
+.Topics-nav ul .navlink {
+    width: 100%;
+    display: block;
+}
+
+.Topics-nav .active  {
+    color: white;
+    background:#555555;
+}
+
+.Topics article {
+}

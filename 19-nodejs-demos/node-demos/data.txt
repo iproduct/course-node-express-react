@@ -1,13 +1,18 @@
-var http = require('http');
+var crypto = require('crypto');
 var fs = require('fs');
-var oppressor = require('oppressor');
+var zlib = require('zlib');
 
-const PORT = 8000;
+var password = new Buffer(process.env.PASS || 'password');
+var encryptStream = crypto.createCipher('aes-256-cbc', password);
 
-var server = http.createServer(function (req, res) {
-    var stream = fs.createReadStream(__dirname + '/data.txt');
-    stream.pipe(oppressor(req)).pipe(res);
-});
-server.listen(PORT);
+var gzip = zlib.createGzip();
+var readStream = fs.createReadStream(__filename); // current file
+var writeStream = fs.createWriteStream(__dirname + '/out.gz');
 
-console.log('Server running on port %s', PORT);
+readStream   // reads current file
+  .pipe(encryptStream) // encrypts
+  .pipe(gzip)  // compresses
+  .pipe(writeStream)  // writes to out file
+  .on('finish', function () {  // all done
+    console.log('Encription and compression done.');
+  });
