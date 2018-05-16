@@ -9,10 +9,11 @@ class MemoryWatcher extends EventEmitter {
   constructor(options) {
     super();
     options = options || {
-      frequency: 2000 // 10 seconds
+      frequency: 2000 // 2 seconds
     };
     setInterval(() => {
       var bytes = process.memoryUsage().rss; // resident set size
+      log.push(new Array(10000));
       if (options.maxBytes && bytes > options.maxBytes) {
         this.emit('error', new Error('Memory exceeded ' + options.maxBytes + ' bytes'));
       } else {
@@ -25,7 +26,7 @@ class MemoryWatcher extends EventEmitter {
 
 //Use it!
 var watcher = new MemoryWatcher({
-  maxBytes: 25120000,
+  maxBytes: 25200000,
   frequency: 500
   
 });

@@ -83,6 +83,40 @@ router.post('/', function (req, res) {
   });
 });
 
+// Edit existing comment
+router.put('/:commentId', (req, res) => {
+  const db = req.app.locals.db;
+  let comment = req.body;
+  const params = indicative.sanitize(req.params, { commentId: 'to_int' });
+
+  indicative.validate(comment, {
+    id: 'integer|above:0',
+    author: 'required|string|min:2',
+    text: 'required|string'
+  }).then(validated => {
+    if(params.commentId !== comment.id) {
+      error(req, res, 400, 'Invalid comment ID: ' + comment.id);
+      return;
+    }
+    db.run(`UPDATE comments SET author = ?, text = ? WHERE id= ?`, 
+      [validated.author, validated.text, validated.id], function(err) {
+        if (err) {
+          console.error(err);
+          error(req, res, 500, `Error creating new comment: ${comment}`);
+          return;
+        }
+        if (this.changes > 0) {
+          console.log('Updated: ', req.baseUrl);
+          res.json({ message: `Comment ${params.commentId} was updated successfully.` });
+        } else {
+          error(req, res, 404, `Comment with Id=${params.commentId} not found.`);
+        }
+    })
+  }).catch(errors => {
+    error(req, res, 400, 'Invalid comment ID: ' + util.inspect(errors))
+  });
+});
+
 // Delete comment by id
 router.delete('/:commentId', function (req, res) {
   const db = req.app.locals.db;

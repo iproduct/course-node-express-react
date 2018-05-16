@@ -16,3 +16,5 @@ readStream   // reads current file
   .on('finish', function () {  // all done
     console.log('Encription and compression done.');
   });
+
+  // New comment
