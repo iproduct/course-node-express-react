@@ -83,7 +83,7 @@ router.put('/:userId', function (req, res) {
     const db = req.app.locals.db;
     const user = req.body;
     indicative.validate(user, {
-        id: 'regex:^[0-9a-f]{24}$',
+        id: 'required|regex:^[0-9a-f]{24}$',
         email: 'required|email',
         fname: 'required|string|min:2',
         lname: 'required|string|min:2',

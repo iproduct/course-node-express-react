@@ -72,6 +72,7 @@ router.post('/', function (req, res) {
       if (err) {
         console.error(err);
         error(req, res, 500, `Error creating new comment: ${comment}`);
+        return;
       }
       comment.id = this.lastID;
       const uri = req.baseUrl + '/' + comment.id;
@@ -90,7 +91,7 @@ router.put('/:commentId', (req, res) => {
   const params = indicative.sanitize(req.params, { commentId: 'to_int' });
 
   indicative.validate(comment, {
-    id: 'integer|above:0',
+    id: 'required|integer|above:0',
     author: 'required|string|min:2',
     text: 'required|string'
   }).then(validated => {
@@ -128,12 +129,14 @@ router.delete('/:commentId', function (req, res) {
         if (err) {
           console.error(err);
           error(req, res, 500, `Error deleting comment with Id: ${params.commentId}`);
+          return;
         }
         if (this.changes > 0) {
           console.log('Deleted: ', req.baseUrl);
           res.json({ message: `Comment ${params.commentId} was deleted successfully.` });
         } else {
-          error(req, res, `Comment with Id=${params.commentId} not found.`);
+          error(req, res, 404, `Comment with Id=${params.commentId} not found.`);
+          return;
         }
       });
     }).catch(errors => {

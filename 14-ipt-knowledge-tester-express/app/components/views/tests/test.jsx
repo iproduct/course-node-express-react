@@ -50,9 +50,9 @@ class Test extends React.Component {
         id: '',
         title: '',
         description: '',
-        difficulty: 'intermediate',
+        difficulty: 0,
         author: '',
-        license: 'CC BY-NC-SA',
+        license: 0,
         questions: []
       }
 
@@ -85,6 +85,7 @@ class Test extends React.Component {
     this.cancelEdit = this.cancelEdit.bind(this);
     this.confirmCancelEdit = this.confirmCancelEdit.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleNumberChange = this.handleNumberChange.bind(this);
     this.editTest = this.editTest.bind(this);
     this.deleteTest = this.deleteTest.bind(this);
 
@@ -133,6 +134,12 @@ class Test extends React.Component {
   handleTextChange(e) {
     let test = this.state.test;
     test[e.target.name] = e.target.value;
+    this.setState({ test: test });
+  }
+
+  handleNumberChange(e) {
+    let test = this.state.test;
+    test[e.target.name] = +(e.target.value);
     this.setState({ test: test });
   }
 
@@ -262,8 +269,8 @@ class Test extends React.Component {
                 <td>Difficulty</td>
                 <td>
                   { (isEdit) ? (
-                    <input type="text" name="difficulty" placeholder="Test difficulty ..." className="form-control"
-                      value={this.state.test.difficulty} onChange={this.handleTextChange} />
+                    <input type="number" name="difficulty" placeholder="Test difficulty ..." className="form-control"
+                      value={this.state.test.difficulty} onChange={this.handleNumberChange} />
                   ) :
                     (<span>{this.state.test.difficulty}</span>
                     ) }
@@ -284,8 +291,8 @@ class Test extends React.Component {
                 <td>License</td>
                 <td>
                   { (isEdit) ? (
-                    <input type="text" name="license" placeholder="Test author ..." className="form-control"
-                      value={this.state.test.license} onChange={this.handleTextChange} />
+                    <input type="number" name="license" placeholder="License ..." className="form-control"
+                      value={this.state.test.license} onChange={this.handleNumberChange} />
                   ) :
                     (<span>{this.state.test.license}</span>
                     ) }

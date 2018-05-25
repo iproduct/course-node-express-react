@@ -86,10 +86,10 @@ router.put('/:testId', function (req, res) {
     indicative.validate(test, {
         id: 'required|regex:^[0-9a-f]{24}$',
         title: 'required|string|min:2',
-        difficulty: 'required|string',
+        difficulty: 'required|number',
         description: 'string',
         author: 'required|string|min:2',
-        license: 'string',
+        license: 'number',
         questions: 'array'
     }).then(() => {
         if (test.id !== req.params.testId) {

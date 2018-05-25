@@ -63,7 +63,7 @@
     "debug": "^2.6.3",
     "deep-equal": "^1.0.1",
     "express": "^4.15.2",
-    "indicative": "^2.2.1",
+    "indicative": "^5.0.5",
     "jquery": "^3.1.0",
     "mongodb": "^2.2.2",
     "monk": "^4.0.0",
