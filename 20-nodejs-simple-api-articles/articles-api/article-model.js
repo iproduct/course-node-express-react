@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = class Comment {
+module.exports = class Article {
   constructor(id, text) {
     this.id = id;
     this.text = text;

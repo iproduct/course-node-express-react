@@ -1,0 +1,22 @@
+/* Messages fading on enter/leave */
+.messages-enter {
+  height: 0;
+  opacity: 0.01;
+  overflow: hidden;
+}
+
+.messages-enter.messages-enter-active {
+  height: auto;
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+
+.messages-leave {
+  opacity: 1;
+}
+
+.messages-leave.messages-leave-active {
+  opacity: 0.01;
+  transition: all 0.5s ease-in;
+}
+

@@ -3,12 +3,12 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const Comment = require('./comment-model');
-const CommentService = require('./comment-service');
+const Article = require('./article-model');
+const ArticleService = require('./article-service');
 
 const hostname = '127.0.0.1';
-const port = 3000;
-const service = new CommentService('comments.json');
+const port = 9000;
+const service = new ArticleService('articles.json');
 
 const server = http.createServer((req, res) => {
     let pathname = url.parse(req.url).pathname;
@@ -22,8 +22,8 @@ const server = http.createServer((req, res) => {
         let path = resource.split('/');
 
         if (path.length > 1 && path[0] === 'api') {
-            if (path[1] === 'comments') {
-                service.findAll((err, comments) => {
+            if (path[1] === 'articles') {
+                service.findAll((err, articles) => {
                     if (err) {
                         // 500: File not found
                         console.error(`Error reading file: ${err.message}`);
@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
                         `);
                     } else {
                         res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify(comments));
+                        res.end(JSON.stringify(articles));
                     }
                 });
             }
@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
         let path = resource.split('/');
 
         if (path.length > 1 && path[0] === 'api') {
-            if (path[1] === 'comments') {
+            if (path[1] === 'articles') {
                 //Handle req events: data, end, error
                 req.on('error', function (err) {
                     console.error(err);
@@ -92,16 +92,16 @@ const server = http.createServer((req, res) => {
                     // at this point, `body` has the entire req body stored in it as a string
 
                     console.log('Body:', body);
-                    const newComment = JSON.parse(body);
-                    console.log('After parse:', newComment);
+                    const newArticle = JSON.parse(body);
+                    console.log('After parse:', newArticle);
 
                     res.on('error', function (err) {
                         console.error(err);
                     });
 
-                    service.add(newComment, (err, comments, newComment) => {
-                        res.writeHead(201, { 'Content-Type': 'application/json', 'Location': `http://127.0.0.1:${port}/comments/${newComment.id}` });
-                        res.end(JSON.stringify(comments));
+                    service.add(newArticle, (err, articles, newArticle) => {
+                        res.writeHead(201, { 'Content-Type': 'application/json', 'Location': `http://127.0.0.1:${port}/articles/${newArticle.id}` });
+                        res.end(JSON.stringify(articles));
                     });
                 });
             }
@@ -110,25 +110,25 @@ const server = http.createServer((req, res) => {
         let headers = req.headers;
         let method = req.method;
         let rUrl = req.url;
-        let body = [];
 
         let resource = pathname.substr(1);
         let path = resource.split('/');
 
-        if (path.length === 3 && path[0] === 'api' && path[1] === 'comments') {
+        if (path.length === 3 && path[0] === 'api' && path[1] === 'articles') {
             const commentId = path[path.length - 1];
-            console.log('CommentId to be deleted:', commentId);
+            console.log('ArticleId to be deleted:', commentId);
             res.on('error', function (err) {
                 console.error(err);
             });
 
             // delete comment by id
-            service.delete(commentId, (err, comments, newComment) => {
+            service.delete(commentId, (err, articles, newArticle) => {
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify(comments));
+                res.end(JSON.stringify(articles));
             });
         }
     } else {
+        const body = [];
         //Handle req events: data, end, error
         req.on('error', function (err) {
             console.error(err);
@@ -145,13 +145,13 @@ const server = http.createServer((req, res) => {
                 console.error(err);
             });
 
-            // Retun res - 201 : Created
-            // res.statusCode = 200;
-            // res.setHeader('Content-Type', 'application/json');
-            res.writeHead(201, {
-                'content-type': 'application/json',
-                'location': `http://127.0.0.1:${port}/echo`
-            });
+            // Retun res - 200 : OK
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            // res.writeHead(200, {
+            //     'content-type': 'application/json',
+            //     'location': `http://127.0.0.1:${port}/echo`
+            // });
 
             var resBody = {
                 headers: headers,

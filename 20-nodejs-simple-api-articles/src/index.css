@@ -1,0 +1,80 @@
+body {
+  background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 30px;
+}
+
+a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+  font-size: 12px;
+  margin: 0 2px;
+  padding: 0 5px;
+}
+
+h1 {
+  border-bottom: 1px solid #ddd;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+h2 {
+  font-size: 2em;
+  border-bottom: 1px solid #eee;
+
+}
+
+h3 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #eee;
+
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+p, ul {
+  margin: 15px 0;
+}
+
+ul {
+  padding-left: 30px;
+}
+
+.comment {
+  border: 1px solid #eef;
+}
+
+.errors {
+  display: block;
+  padding: 1em 2em;
+  background: #fee;
+  color: red;
+} 
+
+.messages {
+  display: block;
+  padding: 1em 2em;
+  background: #efe;
+  color: green;
+} 
+
+
+
