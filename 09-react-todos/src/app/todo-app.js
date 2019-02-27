@@ -90,7 +90,7 @@ class TodoApp extends React.Component {
 
   handleTodoSubmit = e => {
     e.preventDefault();
-    this.setState(prevState => {
+    this.setState(prevState => ({
       todos: [
         ...prevState.todos,
         {
@@ -98,8 +98,9 @@ class TodoApp extends React.Component {
           text: this.state.todoText.trim(),
           status: 'active'
         }
-      ]
-    });
+      ],
+      todoText: ''
+    }));
   };
 
   handleTodosDelete = filter => {
