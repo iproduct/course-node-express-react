@@ -12,7 +12,7 @@ util.inherits(MyEventEmitter, EventEmitter);
 var mee = new MyEventEmitter();
 
 function doFirstJob() {  
- console.log("Firs job done!");
+ console.log("First job done!");
 }
 
 mee.on('myEvent', function onMyEvent() {  

@@ -6,15 +6,14 @@ class MyEventEmitter extends EventEmitter {
   constructor() {
     super();
     doFirstJob();
-    setImmediate(()=>this.emit('myEvent', 'setImmediate'));
+    setImmediate(()=>console.log("Immediate"));
   }
 }
 
 let mee = new MyEventEmitter();
 
 function doFirstJob() {
-  
-  console.log("Firs job done!");
+  process.nextTick(() => console.log("First job done!"))
 }
 
 mee.on('myEvent', function onMyEvent(val) {

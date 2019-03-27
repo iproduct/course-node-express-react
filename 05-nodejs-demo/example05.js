@@ -2,7 +2,7 @@ var crypto = require('crypto');
 var fs = require('fs');
 var zlib = require('zlib');
 
-var password = new Buffer(process.env.PASS || 'password');
+var password = Buffer.from(process.env.PASS || 'password');
 var encryptStream = crypto.createCipher('aes-256-cbc', password);
 
 var gzip = zlib.createGzip();

@@ -6,7 +6,7 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 
-const PORT = 8000;
+const PORT = 3000;
 const server = http.createServer((request, response) => {
     // request is an http.IncomingMessage, which is a Readable Stream
     // response is an http.ServerResponse, which is a Writable Stream

@@ -1,0 +1,23 @@
+{
+  "name": "06-chat-server-lab3",
+  "version": "1.0.0",
+  "description": "chat server using socket.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -w ./ ./index.js localhost 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket.io",
+    "demo"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

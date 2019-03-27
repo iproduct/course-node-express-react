@@ -15,7 +15,7 @@ var listner2 = function listner2() {
 eventEmitter.addListener('myevent', listner1);
 
 // Bind listner2 to myevent
-eventEmitter.on('myevent', listner2);
+eventEmitter.once('myevent', listner2);
 
 var eventListeners = require('events').EventEmitter.listenerCount(eventEmitter,'myevent');
 console.log(eventListeners + " listner(s) listening to myevent.");

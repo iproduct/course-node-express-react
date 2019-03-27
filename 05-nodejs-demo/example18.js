@@ -12,12 +12,14 @@ if (cluster.isMaster) {
   // Count requests
   function messageHandler(msg) {
     if (msg.cmd && msg.cmd == 'notifyRequest') {
+      console.log("Message handled");
       numReqs += 1;
     }
   }
 
   // Start workers and listen for messages containing notifyRequest
   const numCPUs = require('os').cpus().length;
+  console.log(`Num CPUs: ${numCPUs}`);
   for (var i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
@@ -35,5 +37,5 @@ if (cluster.isMaster) {
 
     // notify master about the request
     process.send({ cmd: 'notifyRequest' });
-  }).listen(8000);
+  }).listen(8080);
 }
