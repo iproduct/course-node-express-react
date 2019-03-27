@@ -1,0 +1,30 @@
+{
+  "name": "nodejs-demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "irc": "^0.5.2",
+    "oppressor": "0.0.1",
+    "split": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-fullstack-react.git"
+  },
+  "keywords": [
+    "nodejs",
+    "demos",
+    "project"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-fullstack-react/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-fullstack-react#readme"
+}
