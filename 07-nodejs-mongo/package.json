@@ -8,7 +8,7 @@
   "license": "Apache 2.0",
   "private": false,
   "dependencies": {
-    "mongodb": "^3.1.0-beta4"
+    "mongodb": "^3.2.3"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"

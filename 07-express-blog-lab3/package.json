@@ -1,0 +1,38 @@
+{
+  "name": "07-express-blog-lab3",
+  "version": "1.0.0",
+  "description": "Simple blog API",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon -w ./ ./server.js localhost 9000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react.git"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "articles",
+    "blog"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-node-express-react/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-node-express-react#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "indicative": "^5.0.8",
+    "mongodb": "^3.2.3",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}

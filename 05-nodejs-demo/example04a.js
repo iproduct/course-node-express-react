@@ -5,15 +5,16 @@ var EventEmitter = require('events');
 class MyEventEmitter extends EventEmitter {
   constructor() {
     super();
-    doFirstJob();
+   
     setImmediate(()=>console.log("Immediate"));
+    doFirstJob();
   }
 }
 
 let mee = new MyEventEmitter();
 
 function doFirstJob() {
-  process.nextTick(() => console.log("First job done!"))
+  setTimeout(() => console.log("First job done!"), 1);
 }
 
 mee.on('myEvent', function onMyEvent(val) {

@@ -7,7 +7,7 @@ MongoClient.connect(url, function(err, db) {
   var author1 = { name: "Eric Evans", address: "New York, USA" };
   dbo.collection("authors").find({address: /^New/}).project({name: 1, address:1}).sort({name: -1}).toArray(function(err, res) {
     if (err) throw err;
-    console.log("1 document found:");
+    console.log("Documents found:");
     console.log(res);
     db.close();
   });
