@@ -36,14 +36,16 @@ app.use(function(err, req, res, next) {
 
 const dburl = 'mongodb://localhost:27017/articles2';
 
-MongoClient.connect(dburl, { useNewUrlParser: true }, function(err, db) {
-    if (err) throw err;
+MongoClient.connect(dburl, { useNewUrlParser: true }).then( db => {
+    // if (err) throw err;
     console.log("Database connected!");
     var dbo = db.db("articles2");
-    console.log(`DB : ${dbo}`);
     app.locals.db = dbo;
     app.listen( port, err => {
         if(err) throw err;
         console.log(`Blog API is listening on port ${port}`);
     });
+}).catch(err => { 
+    console.error("Error: MongoDB not available. Check that it is started on port 27017.")
+    throw err;
 });

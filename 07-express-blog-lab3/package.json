@@ -2,9 +2,9 @@
   "name": "07-express-blog-lab3",
   "version": "1.0.0",
   "description": "Simple blog API",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "nodemon -w ./ ./server.js localhost 9000",
+    "start": "nodemon -w ./src ./src/server.js localhost 9000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
