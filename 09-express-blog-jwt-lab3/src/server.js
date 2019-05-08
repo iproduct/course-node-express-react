@@ -18,11 +18,14 @@ const usersRouter = require('./routes/user.routes');
 
 const port  = 9000;
 
-const rootPath = path.normalize(__dirname);
+const dotenv = require('dotenv');
+dotenv.config();
+
+const secret = process.env.MY_BLOG_SECRET;
+console.log(`Your secret is ${secret}`);
 
 const app = express();
 
-app.set('app', path.join(rootPath, 'app'));
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '20mb'}));
 
@@ -35,13 +38,28 @@ app.use( function(req, res, next) {
     next(err);
 });
 
-app.use(function(err, req, res, next) {
+// Error handlers
+// development error handler
+// will print stacktrace
+if (app.get("env") === "development") {
+  app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.json({
-        message: err.message,
-        error: err.error || err | {}
+      message: err.message,
+      error: err.error || err || {}
     });
-});
+  });
+} else {
+  // production error handler
+  // no stacktraces leaked to user
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({
+      message: err.message,
+      error: {}
+    });
+  });
+}
 
 const dburl = 'mongodb://localhost:27017/articles2';
 
