@@ -15,14 +15,9 @@ const MongoClient = require('mongodb').MongoClient;
 
 const articlesRouter = require('./routes/article.routes');
 const usersRouter = require('./routes/user.routes');
+const authRouter = require('./routes/auth.routes');
 
 const port  = 9000;
-
-const dotenv = require('dotenv');
-dotenv.config();
-
-const secret = process.env.MY_BLOG_SECRET;
-console.log(`Your secret is ${secret}`);
 
 const app = express();
 
@@ -31,6 +26,7 @@ app.use(bodyParser.json({limit: '20mb'}));
 
 app.use('/api/articles', articlesRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter);
 
 app.use( function(req, res, next) {
     const err = new Error('Not Found');

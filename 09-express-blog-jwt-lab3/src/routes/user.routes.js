@@ -14,9 +14,14 @@ const replaceId = require('./helpers').replaceId;
 const error = require('./helpers').error;
 const util = require('util');
 const indicative = require('indicative');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const verifyToken = require('./verify-token');
+const verifyRole = require('./verify-role');
+
 
 // GET users list
-router.get('/', function (req, res) {
+router.get('/', verifyToken, verifyRole(3), function (req, res) {
     const db = req.app.locals.db;
     db.collection('users').find().toArray(
         function (err, docs) {
@@ -34,7 +39,7 @@ router.get('/', function (req, res) {
 });
 
 // GET users details
-router.get('/:userId', function (req, res) {
+router.get('/:userId', verifyToken, function (req, res) {
     const db = req.app.locals.db;
     const params = req.params;
     indicative.validate(params, { userId: 'required|regex:^[0-9a-f]{24}$' })
@@ -70,8 +75,10 @@ router.post('/', function (req, res) {
         // fname: 'required|string|min:2',
         // lname: 'required|string|min:2',
         password: 'required|string|min:6|max:20',
-        role: 'required|integer|above:0|under:4'
+        role: 'required|integer|above:0|under:2'
     }).then(() => {
+        user.role  = 1;
+        user.password = bcrypt.hashSync(user.password);
         const collection = db.collection('users');
         console.log('Inserting user:', user);
         collection.insertOne(user).then((result) => {
@@ -93,7 +100,7 @@ router.post('/', function (req, res) {
 });
 
 // PUT (edit) user by id
-router.put('/:userId', function (req, res) {
+router.put('/:userId', verifyToken, function (req, res) {
     const db = req.app.locals.db;
     const user = req.body;
     indicative.validate(user, {
@@ -132,7 +139,7 @@ router.put('/:userId', function (req, res) {
 });
 
 // DELETE users list
-router.delete('/:userId', function (req, res) {
+router.delete('/:userId', verifyToken, function (req, res) {
     const db = req.app.locals.db;
     const params = req.params;
     indicative.validate(params, { userId: 'required|regex:^[0-9a-f]{24}$' })
