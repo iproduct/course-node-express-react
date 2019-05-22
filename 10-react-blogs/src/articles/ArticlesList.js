@@ -1,36 +1,29 @@
 import React, { useState } from 'react';
 import ARTICLES from './mock-articles';
-import { Row, Col, Card } from 'react-materialize';
+import { Row, Col, Button, Icon } from 'react-materialize';
+import Article from './Article';
 
 function ArticlesList() {
   const [articles, setArticles] = useState(ARTICLES);
 
   return (
-      <div className="articles-main">
-        <ul>
-            {
-                articles.map(article => (
-                    <Row key={article.id} className="article-item">
-                    <Col m={6} s={12}>
-                    <Card
-                    className="blue-grey darken-1"
-                    textClassName="white-text"
-                    title={article.title}
-                    >
-                    {article.imageUrl && (<img src={article.imageUrl} alt={article.title}></img>) }
-                    {article.content}
-                    </Card>
-                    </Col>
-                    </Row>
-                ))
-            }
-        </ul>
+    <Row className="articles-main">
+        <Col s={8} m={4}>
+        {
+            articles.map(article => (
+                <Article key={article.id} article={article} />
+            ))
+        }
+        </Col>
+        <Col s={12} m={4}>
         <div>
-            <button onClick={() => setArticles(articles)}>
+            <Button waves="light" onClick={() => setArticles(articles)}>
                 Add Article
-            </button>
+                <Icon right>add_box</Icon>
+            </Button>
         </div>
-    </div>
+        </Col>
+    </Row>
   );
 }
 

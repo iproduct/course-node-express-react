@@ -1,7 +1,7 @@
 const ARTICLES = [{
     "id": "5cb7510d69168b597c9206d8",
-    "title": "Express is Hard",
-    "content": "Express is Hard Content ...",
+    "title": "Express is Easy",
+    "content": "Express is Easy Content ...",
     "imageUrl": "https://expressjs.com/images/express-mw.png"
 }, {
     "id": "5cb75194738e615e5882416d",
