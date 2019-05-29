@@ -20,7 +20,14 @@ class ArticleForm extends React.Component {
   }
 
   handleChange = (event) => {
-    this.setState({title: event.target.value});
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    console.log(name, value);
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(event) {
@@ -42,11 +49,23 @@ class ArticleForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.title} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
+      {this.state.id && (<label>
+        ID:
+        <input type="text" name="id" value={this.state.id} onChange={this.handleChange} readOnly={true}/>
+      </label>)}
+      <label>
+        Title:
+        <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
+      </label>
+      <label>
+        Content:
+        <input type="text"  name="content" value={this.state.content} onChange={this.handleChange} />
+      </label>
+      <label>
+        Picture URL:
+        <input type="text"  name="imageUrl" value={this.state.imageUrl} onChange={this.handleChange} />
+      </label>
+      <input type="submit" value="Submit" />
       </form>
     );
   }

@@ -3,10 +3,10 @@ import React from 'react';
 import { Row, Col, Card } from 'react-materialize';
 import './Article.css';
 
-function Article({article, ...props}) {
+function Article({article, editCallback, ...props}) {
   return (
     <Row className="article-item">
-    <Card className="blue-grey darken-1" textClassName="white-text" title={article.title}>
+    <Card className="blue-grey darken-1" textClassName="white-text" title={article.title} onClick={editCallback}>
     <Row>
         <Col s={3}>
         {article.imageUrl && 

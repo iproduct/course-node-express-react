@@ -7,14 +7,30 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-materialize": "^3.3.0",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "indicative": "^5.0.8",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.2.3",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7"
+
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "nodemon -w ./blog-api ./blog-api/server.js localhost 9000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:9000",
   "eslintConfig": {
     "extends": "react-app"
   },
