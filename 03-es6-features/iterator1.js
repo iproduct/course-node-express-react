@@ -4,7 +4,7 @@ let fibonacci = {
     return {
       next() {
         [pre, cur] = [cur, pre + cur];
-        return { done: false, value: cur }
+        return { value: cur }
       }
     }
   }

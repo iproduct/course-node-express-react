@@ -2,7 +2,7 @@ async function f() {
   return 1;
 }
 async function g() {
-  throw "Error!!!";
+  // throw "Error!!!";
   return 2;
 }
 

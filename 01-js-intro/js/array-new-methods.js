@@ -3,11 +3,11 @@
  * Test JS 1.6 new Array Methods
  */
 
-var array = [3, 5, 7, 2, 7, 2, 9];
-var index = array.indexOf(2, -5); // index is assigned 0
-console.log("index of 2 is ", index);
-index = array.lastIndexOf(2); // index is assigned -1
-console.log("index of 2 is ", index);
+// var array = [3, 5, 7, 2, 7, 2, 9];
+// var index = array.indexOf(2, -3); // index is assigned 0
+// console.log("index of 2 is ", index);
+// index = array.lastIndexOf(2); // index is assigned -1
+// console.log("index of 2 is ", index);
 
 //var array = [2, 2, 5, 9, 2];
 //var index = array.lastIndexOf(7);
@@ -35,11 +35,11 @@ function average(accumulator, value, index, array) {
     }
 }
 
-var result = [41, 20, 17, 50, 39, 75]
-    // .some( function(value) { return !isYoung(value); } );
+var result = [41, 20, 48, 17, 39, 75]
+    //  .some( age => !isYoung(age) );
     // .some( value => !isYoung(value) );
     .filter(isYoung)
-    .map(ageNextYear)
-    // .reduce(average, 0);
-    .forEach(print);
-// console.log("YoungAvg = ", result);
+    // .map(age => age * age)
+    .reduce(average, 0);
+    // .forEach(print);
+console.log("YoungAvg = ", result);

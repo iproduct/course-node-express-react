@@ -3,9 +3,10 @@ async function f() {
     setTimeout(() => resolve("Task completed."), 2000);
   });
 
+  console.log('Start.'); // "start!"
   let result = await promise; // wait untill promise resolve
 
   console.log(result); // "done!"
 }
 
-f();
+f().then(() => console.log('Really finished.'));

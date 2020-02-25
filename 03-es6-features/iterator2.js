@@ -24,7 +24,5 @@ let fibonacci = {
 }
 
 for (var n of fibonacci) {
-  // truncate the sequence at 1000
-
   console.log(n);
 }

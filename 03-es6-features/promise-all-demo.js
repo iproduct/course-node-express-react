@@ -13,30 +13,28 @@
     setTimeout(resolve, 4000, 'four');
   });
   var p5 = new Promise((resolve, reject) => {
-    setTimeout(reject, 990, 'reject for reason');
+    setTimeout(reject, 950, 'reject for reason');
   });
 
-  
-
-  Promise.all([p1, p2, p3, p4, p5]).then(values => { 
-    console.log(values);
-  }, reason => {
-    console.log(reason)
-  });
-
+  // Promise.all([p1, p2, p3, p4, p5]).then(values => { 
+  //   console.log(values);
+  // }).catch( reason => {
+  //   console.log(`Rejected in second then clause: ${reason}`)
+  // });
 
   // You can also use .catch
-  Promise.race([p1, p2, p3, p4, p5]).then(values => {
-    console.log(values);
-    return values;
+  Promise.race([p1, p2, p3, p4, p5]).then(value => {
+    console.log(value);
+    return value;
   }).catch(reason => {
     console.log(reason);
     return `Retrown from catch: ${reason}`;
+  }).then(v => {
+    console.log(`Resolved in second then clause: ${v}`);
+  }, r => {
+    console.log(`Rejected in second then clause: ${r}`);
+  }).finally(() => {
+    console.log(`Demo finished.`);
   });
-  // .then(v => {
-  //   console.log(`Resolved in second then clause: ${v}`);
-  // }, r => {
-  //   console.log(`Rejected in second then clause: ${r}`);
-  // });
 
 }) ();

@@ -8,23 +8,25 @@ function Shape(/*Number*/ xCoord, /*Number*/ yCoord) {
     this.y = yCoord || 0;
 }
 
-console.log(Shape.__proto__);
-
 Shape.prototype.move = function (/*Number*/ deltaX, /*Number*/ deltaY) {
     this.x += deltaX;
     this.y += deltaY;
     console.info("Shape moved.");
 }
 
+
+
 /* Rectangle extends Shape */
 function Rectangle(/*Number*/ xCoord, /*Number*/ yCoord) {
-    const boundShape = Shape.bind(this, 2);
-    boundShape(5);
+    const boundShape = Shape.bind(this);
+    boundShape(xCoord, yCoord);
 }
 
 //subclass extends superclass
 Rectangle.prototype = Object.create(Shape.prototype);
 Rectangle.prototype.constructor = Rectangle;
+
+console.log("!!!" + Rectangle.prototype.__proto__.constructor);
 
 var rect = new Rectangle(5, 8);
 

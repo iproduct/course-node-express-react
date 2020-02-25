@@ -38,7 +38,7 @@ function test() {
     return markupResult;
   };
 
-  element.innerHTML = stringifyEmployees(employees);
+  // element.innerHTML = stringifyEmployees(employees);
 
 
   function Employee(aName, aPractice) {
