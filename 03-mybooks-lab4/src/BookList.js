@@ -1,16 +1,17 @@
 import React from 'react';
+import Book from './Book';
 
 const BookList = ({ books, ...rest }) => {
   return (
-    <ul>
-      {books.map(book => (
-        <li key={book.id} className="book-card">
-          <h2>{book.title}</h2>
-          <h3>{book.subtitle}</h3>
-          <img src={book.frontPage} alt={book.subtitle}/>
-        </li>
-      ))}
-    </ul>
+    <div className="container">
+      <div className="section">
+        <div className="row">
+          {books.map(book => (
+            <Book book={book} key={book.id} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,0 +1,7 @@
+.Book-card {
+    height: 350px;
+}
+.card.horizontal .card-image img.Book-front-image {
+    height: 250px !important;
+    width: auto;
+}
