@@ -1,0 +1,15 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav .material-icons.large {
+    font-size: 56px;
+}
+
+.card-wrapper {
+    padding: 0 5px;
+}
+
+.row .card {
+    height: 210px;
+}
