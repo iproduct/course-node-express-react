@@ -1,7 +1,18 @@
-.Book-card {
-    height: 350px;
+.card .card-content {
+    width:100%;
 }
+
+.card.horizontal .card-image {
+    overflow: visible;
+}
+
 .card.horizontal .card-image img.Book-front-image {
-    height: 250px !important;
+    height: 250px;
     width: auto;
+    max-width: none;
+}
+.card-action.Book-card-action {
+    position: absolute;
+    height: 50px;
+    bottom: 5px;
 }
