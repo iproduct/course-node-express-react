@@ -19,18 +19,13 @@ export default function Book({ book, ...rest }) {
           </span>
           <p>{book.subtitle}</p>
           <div className="card-action Book-card-action">
-            {
-              // if (index $fav .ID).ID}}
-              <a href="books?remove={{.ID}}">Remove Fav</a>
-              // else}}
-              //     <a href="books?add={{.ID}}">Add to Favourites</a>
-              // end}}
-            }
+            <a href="books?remove={{.ID}}">Add to Favs</a>
           </div>
         </div>
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4">
-            {book.title}<i className="material-icons right">close</i>
+            {book.title}
+            <i className="material-icons right">close</i>
           </span>
           <p>{book.subtitle}</p>
         </div>
