@@ -4,10 +4,10 @@ import './Nav.css';
 export default function Nav() {
   return (
     <React.Fragment>
-      <div class="navbar">
-        <nav class="light-blue lighten-1" role="navigation">
+      <div className="navbar">
+        <nav className="light-blue lighten-1" role="navigation">
           <div className="nav-wrapper container">
-            <a id="logo-container" href="books" className="brand-logo">
+            <a id="logo-container" href="#" className="brand-logo">
               <i className="large material-icons">menu_book</i>
             </a>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
