@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Nav from './Nav';
 import BookList from './BookList';
 import mockBooks from './mock-books';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
           <BookList books={mockBooks} />
         </div>
       </div>
+      <Footer />
     </React.Fragment>
   );
 }
