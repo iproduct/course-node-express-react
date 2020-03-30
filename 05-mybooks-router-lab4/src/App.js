@@ -58,10 +58,10 @@ function App() {
   }
 
   function onAddtoFavs(book) {
-    setFavs([...favs, book]);
+    setFavs(fv => [...fv, book]);
   }
   function onRemoveFromFavs(book) {
-    setFavs(favs.filter(fav => fav.id !== book.id));
+    setFavs(fv => fv.filter(fav => fav.id !== book.id));
   }
 }
 

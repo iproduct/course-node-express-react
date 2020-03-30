@@ -1,0 +1,24 @@
+.card .card-content {
+    width:100%;
+}
+
+.card.horizontal .card-image {
+    overflow: visible;
+}
+
+.card .card-image img.Post-front-image {
+    max-height: 350px;
+    height: auto;
+    width: 100%;
+    max-width: none;
+}
+.card-action.Post-card-action {
+    position: relative;
+    height: 50px;
+    bottom: 5px;
+    color: #ffab40;
+    margin-right: 24px;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}

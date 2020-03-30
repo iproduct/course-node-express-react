@@ -25,12 +25,14 @@ export default function Book({ book, inFavs, addToFavs, removeFromFavs, ...rest 
             <i className="material-icons right">more_vert</i>
           </span>
           <p>{book.subtitle}</p>
-          {!inFavs && <div className="card-action Book-card-action" onClick={onAddToFavs}>
-            Add to Favs
-          </div>}
-          {inFavs && <div className="card-action Book-card-action" onClick={onRemoveFromFavs}>
-            Remove from Favs
-          </div>}
+          {inFavs ? 
+            <div className="card-action Book-card-action" onClick={onRemoveFromFavs}>
+              Remove from Favs
+            </div> : 
+            <div className="card-action Book-card-action" onClick={onAddToFavs}>
+              Add to Favs
+            </div>}
+         
         </div>
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4">
