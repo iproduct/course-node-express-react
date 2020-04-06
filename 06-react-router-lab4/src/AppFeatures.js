@@ -81,9 +81,8 @@ function Topics() {
         <Route path={`${match.url}/:sectionId/topics/:topicId`}>
           <RoutedTopic />
         </Route>
-        <Route exact path={match.url}>
-          {() => <h3>Please select a topic.</h3>}
-        </Route>
+        <Route exact path={match.url} 
+          render={(location) => <h3>Please select a topic.: {JSON.stringify(location)}</h3>} />
       </Switch>
     </div>
   );

@@ -1,0 +1,18 @@
+{
+  "name": "Formik Example",
+  "version": "1.0.0",
+  "description": "An example form built with Formik and React",
+  "keywords": [
+    "react",
+    "formik",
+    "forms"
+  ],
+  "homepage": "https://codesandbox.io/s/zKrK5YLDZ",
+  "main": "index.js",
+  "dependencies": {
+    "formik": "2.1.3",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "yup": "0.27.0"
+  }
+}
