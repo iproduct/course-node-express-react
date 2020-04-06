@@ -8,15 +8,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
+    this.state= {
+      color: 'green'
+    };
   }
 
   focus = () => {
+    this.setState(state => ({color: (state.color === 'red'? 'blue': 'red')}));
     this.ref.current.focusInput();
+
   }
 
   render() {
     return (
-      <FancyForm ref={this.ref} onClick={this.focus}></FancyForm>
+      <FancyForm ref={this.ref} color={this.state.color} onClick={this.focus}></FancyForm>
     );
   }
   }

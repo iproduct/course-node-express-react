@@ -12,7 +12,7 @@ class FancyForm extends React.Component {
 
   focusInput() {
     this.inputRef.current.focus();
-    this.buttonRef.current.style.backgroundColor = 'red';
+    this.buttonRef.current.style.backgroundColor = this.props.color;
   }
 
   render() {
