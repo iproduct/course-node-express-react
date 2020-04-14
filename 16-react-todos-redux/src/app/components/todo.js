@@ -13,7 +13,8 @@ const Todo = ({ todo, onCompleted, onCanceled }) => (
       </button>
     }
     {todo.status === 'active' &&     // show only when todo is active
-      <button title="Task Completed" className="btn btn-sm btn-success pull-right" onClick={() => onCompleted(todo.id)}>
+      <button title="Task Completed" className="btn btn-sm btn-success pull-right" 
+        onClick={() => onCompleted(todo.id)}>
         <span className="glyphicon glyphicon-ok"></span>
       </button>
     }

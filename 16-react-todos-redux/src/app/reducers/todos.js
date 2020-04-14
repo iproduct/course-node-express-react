@@ -9,7 +9,7 @@ const todoReducer = (state = {}, action) => {
     };
 
   case 'CHANGE_STATUS':
-    if (state.id !== action.id) {
+    if (state.id !== action.id || state.status === action.status) {
       return state;
     }
     return Object.assign({}, state, { status: action.status });
