@@ -1,0 +1,32 @@
+{
+  "name": "09-nodejs-lab4",
+  "version": "0.0.1",
+  "description": "NodeJS intro",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -w . ./http1.js localhost 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "intro"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-node-express-react/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-node-express-react#readme",
+  "dependencies": {
+    "irc": "^0.5.2",
+    "livereload": "^0.9.1",
+    "nodemon": "^2.0.3",
+    "rxjs": "^6.5.5",
+    "rxjs-compat": "^6.5.5"
+  }
+}
