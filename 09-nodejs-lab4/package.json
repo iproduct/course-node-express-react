@@ -4,7 +4,7 @@
   "description": "NodeJS intro",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -w . ./http1.js localhost 3000",
+    "start": "nodemon -w . ./http-echo-2.js localhost 8080",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
