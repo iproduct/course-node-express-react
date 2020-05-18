@@ -11,6 +11,6 @@ let rs = new Readable(
                 if (char > 'z'.charCodeAt(0)) this.push(null);
             }
         }
-    } (97)
+    } (97) // IIFE
 );
 rs.pipe(process.stdout);

@@ -13,7 +13,7 @@ let rs = new Readable(
                 }, 100);
             }
         }
-    } (96)
+    } (96) // IIFE
 );
 rs.pipe(process.stdout);
 
@@ -22,3 +22,4 @@ rs.on('error', process.exit);
 process.on('exit', function () {
     console.error('\n_read() called ');
 });
+

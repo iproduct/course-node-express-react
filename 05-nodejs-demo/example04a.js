@@ -1,6 +1,7 @@
 'use strict';
 
-var EventEmitter = require('events');
+const EventEmitter = require('events');
+const process = require('process');
 
 class MyEventEmitter extends EventEmitter {
   constructor() {
@@ -14,11 +15,13 @@ class MyEventEmitter extends EventEmitter {
 let mee = new MyEventEmitter();
 
 function doFirstJob() {
-  setTimeout(() => console.log("First job done!"), 1);
+  process.nextTick(() => console.log("First job done!"));
 }
 
 mee.on('myEvent', function onMyEvent(val) {
-  console.log("MyEvent received.", val);
+  console.log("MyEvent received: ", val);
 });
+
+mee.emit('myEvent', "Message 1");
 
 console.log('end-of-program');

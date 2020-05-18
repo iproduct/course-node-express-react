@@ -24,7 +24,8 @@
     <script>
       $(function () {
         var socket = io(undefined, {transports: ['websocket', 'polling']	});
-        $('form').submit(function(){
+        $('form').submit(function(ev){
+          ev.preventDefault();
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
           return false;

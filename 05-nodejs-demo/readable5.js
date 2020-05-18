@@ -28,10 +28,10 @@ class CountriesReadable extends Readable {
 let rs = new CountriesReadable();
 
 rs
-.pipe(new MyWritable());
-// .pipe(new JsonToString())
-// .pipe(new AddNewLine())
-// .pipe(process.stdout);
+// .pipe(new MyWritable());
+.pipe(new JsonToString())
+.pipe(new AddNewLine())
+.pipe(process.stdout);
 
 rs.on('error', process.exit);
 

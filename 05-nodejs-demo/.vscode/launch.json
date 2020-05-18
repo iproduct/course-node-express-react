@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/example18a-threads.js",
+            "program": "${file}",
             "runtimeArgs": ["--experimental-worker"]
         }
     ]

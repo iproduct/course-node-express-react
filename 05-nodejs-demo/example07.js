@@ -7,6 +7,7 @@ var server = http.createServer(function (req, res) {
     fs.readFile(__dirname + '/data.txt', function (err, data) {
         process.nextTick(() => console.log("First job done!"))
         console.log("Immediate");
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(data);
     });
 });
