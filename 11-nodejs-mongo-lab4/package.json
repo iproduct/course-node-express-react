@@ -1,9 +1,10 @@
 {
-  "name": "07-nodejs-mongo-lab3",
+  "name": "11-nodejs-mongo-lab4",
   "version": "1.0.0",
-  "description": "mondo intro",
+  "description": "mongodb nodejs demo",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon -w ./ ./server.js localhost 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,8 +12,9 @@
     "url": "git+https://github.com/iproduct/course-node-express-react.git"
   },
   "keywords": [
-    "mongo",
-    "nodejs"
+    "nodejs",
+    "mongodb",
+    "demo"
   ],
   "author": "Trayan Iliev",
   "license": "Apache-2.0",
@@ -21,6 +23,11 @@
   },
   "homepage": "https://github.com/iproduct/course-node-express-react#readme",
   "dependencies": {
-    "mongodb": "^3.2.3"
+    "mongodb": "^3.5.8"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "livereload": "^0.9.1",
+    "nodemon": "^2.0.4"
   }
 }

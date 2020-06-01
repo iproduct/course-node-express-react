@@ -1,0 +1,38 @@
+{
+  "name": "10-chat-socketio-lab",
+  "version": "1.0.0",
+  "description": "chat server and client with SocketIO server push API",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run nodemon\" \"npm run livereload\"",
+    "nodemon": "nodemon -w ./src ./src/server.js localhost 3000",
+    "livereload": "livereload . -w 1000 -d",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/Course-Multimedia-FMI.git"
+  },
+  "keywords": [
+    "socketio",
+    "server",
+    "push",
+    "javascipt"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/Course-Multimedia-FMI/issues"
+  },
+  "homepage": "https://github.com/iproduct/Course-Multimedia-FMI#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.8",
+    "socketio": "^1.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "livereload": "^0.9.1",
+    "nodemon": "^2.0.4"
+  }
+}
