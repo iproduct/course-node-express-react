@@ -1,12 +1,18 @@
 import React from 'react';
 import './Post.css';
 
-export default function Post({ post, inFavs, addToFavs, removeFromFavs, ...rest }) {
+export default function Post({ post, inFavs, addToFavs, editPost, deletePost, removeFromFavs, ...rest }) {
   function onAddToFavs() {
     addToFavs && addToFavs(post);
   }
   function onRemoveFromFavs() {
     removeFromFavs && removeFromFavs(post);
+  }
+  function onEdit() {
+    editPost && editPost(post);
+  }
+  function onDelete() {
+    deletePost && deletePost(post);
   }
 
   return (
@@ -26,12 +32,20 @@ export default function Post({ post, inFavs, addToFavs, removeFromFavs, ...rest 
           </span>
           <p class="card-subtitle grey-text text-darken-2">{post.subtitle}</p>
 
-          {!inFavs && <div className="card-action Post-card-action" onClick={onAddToFavs}>
-            Add to Favs
-          </div>}
-          {inFavs && <div className="card-action Post-card-action" onClick={onRemoveFromFavs}>
-            Remove from Favs
-          </div>}
+          <div className="card-action Post-card-action">
+            {!inFavs && <span className="action-button" onClick={onAddToFavs}>
+              Add to Favs
+            </span>}
+            {inFavs && <span className="action-button" onClick={onRemoveFromFavs}>
+              Remove from Favs
+            </span>}
+            {editPost && <span className="action-button" onClick={onEdit}>
+              Edit
+            </span>}
+            {deletePost && <span className="action-button" onClick={onDelete}>
+              Delete
+            </span>}
+          </div>
         </div>
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4">

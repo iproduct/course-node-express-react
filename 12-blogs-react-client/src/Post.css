@@ -1,3 +1,7 @@
+.card {
+    height:520px;
+}
+
 .card .card-content {
     width:100%;
 }
@@ -18,12 +22,18 @@
     max-width: none;
 }
 .card-action.Post-card-action {
-    position: relative;
+    position: absolute;
+    width: 100%;
     height: 50px;
-    bottom: 5px;
+    bottom: 10px;
     color: #ffab40;
     margin-right: 24px;
     -webkit-transition: color .3s ease;
     transition: color .3s ease;
     text-transform: uppercase;
+}
+
+.action-button {
+    margin: 10px 20px;
+    font-size: 1.1em;
 }

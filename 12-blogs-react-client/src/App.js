@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Nav from './Nav';
 import PostList from './PostList';
 import mockPosts from './mock-posts';
 import Header from './Header';
 import Footer from './Footer';
-import {useHistory, Switch, Route} from 'react-router-dom';
+import { useHistory, Switch, Route } from 'react-router-dom';
 import BlogAPI from "./BlogAPI";
 import PostForm from "./PostForm";
 import Register from "./Register";
@@ -16,6 +16,7 @@ const GOOLE_BOOKS_API_BASE = 'https://www.googleapis.com/books/v1/volumes?q=';
 function App() {
     const history = useHistory();
     const [posts, setPosts] = useState(mockPosts);
+    const [selectedPost, setSelectedPost] = useState(undefined);
     const [favs, setFavs] = useState([]);
     const [users, setUsers] = useState([]);
     const [loggedUser, setLoggedUser] = useState(undefined);
@@ -27,38 +28,39 @@ function App() {
     }, []);
     return (
         <React.Fragment>
-            <Nav searchPosts={onSearchPosts} loggedUser={loggedUser}/>
+            <Nav searchPosts={onSearchPosts} loggedUser={loggedUser} />
             <div className="section no-pad-bot" id="index-banner">
                 <div className="container">
                     <Switch>
                         <Route path="/about">
                             <Header titleText="Bookmark your favourite posts to read them later."
-                                    buttonText="Get Started" buttonLink="/"/>
+                                buttonText="Get Started" buttonLink="/" />
                             <div className="row center">
-                                <img src="/img/reading.png" alt="post reading" className="App-about"/>
+                                <img src="/img/reading.png" alt="post reading" className="App-about" />
                             </div>
                         </Route>
+                        <Route path="/add-post" component={() => <PostForm onSubmitPost={addEditPost} />} />
                         <Route path="/edit-post">
-                            <PostForm onSubmitPost={addPost}/>
+                            <PostForm master={selectedPost} onSubmitPost={addEditPost} />
                         </Route>
                         <Route path="/users">Users</Route>
-                      <Route path="/login"><Login onLogin={login} /></Route>
-                      <Route path="/register"><Register onRegister={registerUser}/></Route>
+                        <Route path="/login"><Login onLogin={login} /></Route>
+                        <Route path="/register"><Register onRegister={registerUser} /></Route>
                         <Route path="/favs">
-                            <Header titleText="Your favourite posts" buttonText="View All Posts" buttonLink="/"/>
+                            <Header titleText="Your favourite posts" buttonText="View All Posts" buttonLink="/" />
                             <PostList showFavs={true} posts={posts} favs={favs} addToFavs={addToFavs}
-                                      removeFromFavs={removeFromFavs}/>
+                                removeFromFavs={removeFromFavs} />
                         </Route>
                         <Route exact path="/">
                             <Header titleText="Bookmark your favourite posts" buttonText="View Favourites"
-                                    buttonLink="/favs"/>
+                                buttonLink="/favs" />
                             <PostList showFavs={false} posts={posts} favs={favs} addToFavs={addToFavs}
-                                      removeFromFavs={removeFromFavs}/>
+                                removeFromFavs={removeFromFavs} editPost={editPost} deletePost={deletePost} />
                         </Route>
                     </Switch>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </React.Fragment>
     );
 
@@ -79,32 +81,52 @@ function App() {
         );
     }
 
-    function addPost(post) {
+    function addEditPost(post) {
         history.push('/');
         console.log(post);
-        BlogAPI.createPost(post)
-            .then(created => {
+        if (post.id) {
+            BlogAPI.updatePost(post).then(updated => {
+                setPosts(oldPosts => oldPosts.map(p => p.id === updated.id ? updated : p));
+            });
+        } else {
+            BlogAPI.createPost(post).then(created => {
                 setPosts(oldPosts => [...oldPosts, created]);
+            });
+        }
+    }
+
+    function editPost(post) {
+        setSelectedPost(post);
+        console.log(post);
+        history.push('/edit-post');
+    }
+
+    function deletePost(post) {
+        history.push('/');
+        console.log(post);
+        BlogAPI.deletePostById(post.id)
+            .then(deleted => {
+                setPosts(oldPosts => oldPosts.filter(p => p.id !== deleted.id));
             });
     }
 
     function registerUser(user) {
-      history.push('/');
-      console.log(user);
-      BlogAPI.createUser(user)
-          .then(created => {
-            setUsers(oldUsers => [...oldUsers, user]);
-          });
+        history.push('/');
+        console.log(user);
+        BlogAPI.createUser(user)
+            .then(created => {
+                setUsers(oldUsers => [...oldUsers, user]);
+            });
     }
 
     function login(credentials) {
-      history.push('/');
-      console.log(credentials);
-      BlogAPI.login(credentials)
-          .then(loginResp => {
-            setLoggedUser(loginResp);
-            sessionStorage.setItem('loginResp', loginResp.jwt);
-          });
+        history.push('/');
+        console.log(credentials);
+        BlogAPI.login(credentials)
+            .then(loginResp => {
+                setLoggedUser(loginResp);
+                sessionStorage.setItem('loginResp', loginResp.jwt);
+            });
     }
 
     function addToFavs(post) {

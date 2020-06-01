@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PostForm.css';
 
-export default function PostForm({ onSubmitPost, ...rest }) {
-    const [titleText, setTitleText] = useState('');
-    const [subtitleText, setSubTitleText] = useState('');
-    const [contentText, setContentText] = useState('');
-    const [imageUrlText, setImageUrlText] = useState('');
+export default function PostForm({ master, onSubmitPost, ...rest }) {
+    const idText = (master && master.id) || '';
+    const [titleText, setTitleText] = useState((master && master.title) || '');
+    const [subtitleText, setSubTitleText] = useState((master && master.subtitle) || '');
+    const [contentText, setContentText] = useState((master && master.content) || '');
+    const [imageUrlText, setImageUrlText] = useState((master && master.imageUrl) || '');
+    useEffect(() => {
+        window.M.textareaAutoResize(document.getElementById('content'));
+    });
     return (
         <div className="row">
             <form className="col s12 PostForm-form" onSubmit={submitPost}>
+                <div className="input-field col s12">
+                    <input
+                        id="id"
+                        type="text"
+                        disabled
+                        value={idText}
+                    />
+                    <label class="active" htmlFor="title">Title</label>
+                </div>
                 <div className="input-field col s12">
                     <input
                         id="title"
@@ -16,7 +29,7 @@ export default function PostForm({ onSubmitPost, ...rest }) {
                         onChange={event => setTitleText(event.target.value)}
                         value={titleText}
                     />
-                    <label htmlFor="title">Title</label>
+                    <label class="active" htmlFor="title">Title</label>
                 </div>
                 <div className="input-field col s12">
                     <input
@@ -25,13 +38,13 @@ export default function PostForm({ onSubmitPost, ...rest }) {
                         onChange={event => setSubTitleText(event.target.value)}
                         value={subtitleText}
                     />
-                    <label htmlFor="title">Subtitle</label>
+                    <label class="active" htmlFor="title">Subtitle</label>
                 </div>
                 <div className="input-field col s12">
                     <textarea id="content" className="materialize-textarea" onChange={event => setContentText(event.target.value)}
                         value={contentText}>
                     </textarea>
-                    <label htmlFor="content">Post Content</label>
+                    <label class="active" htmlFor="content">Post Content</label>
                 </div>
                 <div className="input-field col s12">
                     <input
@@ -40,7 +53,7 @@ export default function PostForm({ onSubmitPost, ...rest }) {
                         onChange={event => setImageUrlText(event.target.value)}
                         value={imageUrlText}
                     />
-                    <label htmlFor="imageUrl">Image URL</label>
+                    <label class="active" htmlFor="imageUrl">Image URL</label>
                 </div>
 
                 <button className="btn waves-effect waves-light" type="submit" name="action">Submit
@@ -52,12 +65,14 @@ export default function PostForm({ onSubmitPost, ...rest }) {
 
     function submitPost(event) {
         event.preventDefault();
+        const id = idText.trim();
         const title = titleText.trim();
         const subtitle = subtitleText.trim();
         const content = contentText.trim();
         const imageUrl = imageUrlText.trim();
         if (title && content && imageUrl) {
             onSubmitPost({
+                id,
                 title,
                 subtitle,
                 content: content,

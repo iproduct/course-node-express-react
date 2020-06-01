@@ -20,7 +20,7 @@ export default function Nav({ searchPosts, loggedUser, ...rest }) {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/edit-post">Add Post</Link>
+                <Link to="/add-post">Add Post</Link>
               </li>
               <li>
                 <Link to="/favs">Favourites</Link>

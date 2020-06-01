@@ -25,7 +25,7 @@ class BlogApi {
         const postsResp = await fetch(
             BLOG_API_BASE + "/posts",
             {
-                method: 'POST', // or 'PUT'
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -35,6 +35,34 @@ class BlogApi {
         const postCreated = await postsResp.json();
         console.log("POST created successfully", postCreated);
         return postCreated;
+    }
+
+    async updatePost(post) {
+        const postsResp = await fetch(
+            BLOG_API_BASE + "/posts/" + encodeURIComponent(post.id),
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(post)
+            }
+        );
+        const postCreated = await postsResp.json();
+        console.log("POST created successfully", postCreated);
+        return postCreated;
+    }
+
+    async deletePostById(id) {
+        const deleteResp = await fetch(
+            BLOG_API_BASE + "/posts/"+ encodeURIComponent(id),
+            {
+                method: 'DELETE'
+            }
+        );
+        const deleted = await deleteResp.json();
+        console.log(deleted);
+        return deleted;
     }
 
     async findAllUsers() {
