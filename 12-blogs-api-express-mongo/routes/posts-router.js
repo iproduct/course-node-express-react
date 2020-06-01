@@ -3,7 +3,6 @@ const sendErrorResponse = require('./utils').sendErrorResponse;
 const replaceId = require('./utils').replaceId;
 const ObjectID = require('mongodb').ObjectID;
 const indicative = require('indicative');
-const util = require('util');
 
 const router = express.Router();
 
@@ -27,7 +26,7 @@ router.get('/:id', async (req, res) => {
         }
         res.json(post);
     } catch (errors) {
-        sendErrorResponse(req, res, 400, `Invalid user data: ${util.inspect(errors)}`);
+        sendErrorResponse(req, res, 400, `Invalid post data: ${errors.map(e => e.message).join(', ')}`, errors);
     }
 });
 
@@ -38,22 +37,24 @@ router.post('/', function(req, res) {
         title: 'required|string|min:2|max:60',
         subtitle: 'string|max:255',
         content: 'string',
+        imageUrl: 'url'
     }).then(() => {
         req.app.locals.db.collection('posts').insertOne(post).then(r => {
             if (r.result.ok && r.insertedCount === 1) {
                 delete post._id;
                 post.id = r.insertedId;
-                console.log(`Created post: ${post}`);
+                console.log(`Created post: ${post.id}: ${post.title}`);
                 res.status(201).location(`/posts/${post.id}`).json(post);
             } else {
                 sendErrorResponse(req, res, 500, `Server error: ${err.message}`, err);
             }
         }).catch(err => {
-            console.log("Error: Update unsuccessfull.");
+            console.error(`Unable to create post: ${post.id}: ${post.title}.`);
+            console.error(err);
             sendErrorResponse(req, res, 500, `Server error: ${err.message}`, err);
         });
     }).catch(errors => {
-        sendErrorResponse(req, res, 400, `Invalid user data: ${util.inspect(errors)}`);
+        sendErrorResponse(req, res, 400, `Invalid post data: ${errors.map(e => e.message).join(', ')}`, errors);
     });
 });
 
@@ -74,6 +75,7 @@ router.put('/:id', async (req, res) => {
             title: 'required|string|min:2|max:60',
             subtitle: 'string|max:255',
             content: 'string',
+            imageUrl: 'url'
         });
         try {
             r = await req.app.locals.db.collection('posts').updateOne({ _id: new ObjectID(req.params.id) }, { $set: post });
@@ -85,14 +87,15 @@ router.put('/:id', async (req, res) => {
                 }
                 res.json(post);
             } else {
-                sendErrorResponse(req, res, 500, `Unable to update post: ${post.title}`);
+                sendErrorResponse(req, res, 500, `Unable to update post: ${post.id}: ${post.title}`);
             }
         } catch (err) {
-            console.log("Error: Update unsuccessfull.");
+            console.log(`Unable to update post: ${post.id}: ${post.title}`);
+            console.error(err);
             sendErrorResponse(req, res, 500, `Server error: ${err.message}`, err);
         }
     } catch (errors) {
-        sendErrorResponse(req, res, 400, `Invalid user data: ${util.inspect(errors)}`);
+        sendErrorResponse(req, res, 400, `Invalid post data: ${errors.map(e => e.message).join(', ')}`, errors);
     }
 });
 
@@ -108,12 +111,14 @@ router.delete('/:id', async (req, res) => {
         replaceId(old);
         const r = await req.app.locals.db.collection('posts').deleteOne({ _id: new ObjectID(req.params.id) });
         if(r.result.ok && r.deletedCount === 1) {
+            console.log(`Deleted post: ${old.id}: ${old.title}`);
             res.json(old);
         } else {
+            console.log(`Unable to delete post: ${post.id}: ${post.title}`);
             sendErrorResponse(req, res, 500, `Unable to delete post: ${old.id}: ${old.title}`);
         }
     } catch (errors) {
-        sendErrorResponse(req, res, 400, `Invalid user data: ${util.inspect(errors)}`);
+        sendErrorResponse(req, res, 400, `Invalid post data: ${errors.map(e => e.message).join(', ')}`, errors);
     }
 });
 

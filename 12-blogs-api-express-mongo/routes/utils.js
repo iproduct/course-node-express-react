@@ -1,5 +1,5 @@
 module.exports.sendErrorResponse = function(req, res, status, message, err) {
-    if(req.get('env') !== 'development') {
+    if(req.get('env') === 'production') {
         err = undefined;
     }
     res.status(status).json({
