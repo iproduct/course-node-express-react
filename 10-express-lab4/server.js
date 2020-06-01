@@ -3,9 +3,12 @@ const express = require('express')
 const postsRouter = require('./routes/posts-router');
 const usersRouter = require('./routes/users-router');
 const sendErrorResponse = require('./routes/utils').sendErrorResponse;
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017';
+const db_name = 'myblog9';
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(express.json({limit: '50mb'}));
 app.use(express.static('public'))
@@ -23,4 +26,15 @@ app.use(function (err, req, res, next) {
     sendErrorResponse(req, res, 500, `Server error: ${err.message}`, err);
 })
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+MongoClient.connect(url, { useUnifiedTopology: true }, function (err, con) {
+    if (err) throw err;
+    app.locals.db = con.db(db_name);
+    // db.collection('posts').find().toArray((err, posts) =>{
+    //     if (err) throw err;
+    //     console.log(posts);
+    //     con.close();
+    // });
+    console.log(`Connection extablished to ${db_name}.`);
+    app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+});
+

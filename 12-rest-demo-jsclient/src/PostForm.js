@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './PostForm.css';
 
-export default function PostForm({onSubmitPost, ...rest}) {
+export default function PostForm({ onSubmitPost, ...rest }) {
     const [titleText, setTitleText] = useState('');
+    const [subtitleText, setSubTitleText] = useState('');
     const [contentText, setContentText] = useState('');
     const [imageUrlText, setImageUrlText] = useState('');
     return (
@@ -18,8 +19,17 @@ export default function PostForm({onSubmitPost, ...rest}) {
                     <label htmlFor="title">Title</label>
                 </div>
                 <div className="input-field col s12">
+                    <input
+                        id="subtitle"
+                        type="text"
+                        onChange={event => setSubTitleText(event.target.value)}
+                        value={subtitleText}
+                    />
+                    <label htmlFor="title">Subtitle</label>
+                </div>
+                <div className="input-field col s12">
                     <textarea id="content" className="materialize-textarea" onChange={event => setContentText(event.target.value)}
-                              value={contentText}>
+                        value={contentText}>
                     </textarea>
                     <label htmlFor="content">Post Content</label>
                 </div>
@@ -43,11 +53,13 @@ export default function PostForm({onSubmitPost, ...rest}) {
     function submitPost(event) {
         event.preventDefault();
         const title = titleText.trim();
+        const subtitle = subtitleText.trim();
         const content = contentText.trim();
         const imageUrl = imageUrlText.trim();
         if (title && content && imageUrl) {
             onSubmitPost({
-                title: title,
+                title,
+                subtitle,
                 content: content,
                 imageUrl: imageUrl
             })

@@ -1,5 +1,5 @@
 
-export const BLOG_API_BASE = "http://localhost:8080/api";
+export const BLOG_API_BASE = "http://localhost:3000/api";
 
 class BlogApi {
 
