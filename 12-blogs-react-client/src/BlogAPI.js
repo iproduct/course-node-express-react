@@ -33,6 +33,10 @@ class BlogApi {
             }
         );
         const postCreated = await postsResp.json();
+        if(postsResp.status >= 400) { //error status code
+            console.log("Error creating Post:", postCreated);
+            throw(postCreated.message);
+        }
         console.log("POST created successfully", postCreated);
         return postCreated;
     }
@@ -48,9 +52,13 @@ class BlogApi {
                 body: JSON.stringify(post)
             }
         );
-        const postCreated = await postsResp.json();
-        console.log("POST created successfully", postCreated);
-        return postCreated;
+        const postUpdated = await postsResp.json();
+        if(postsResp.status >= 400) { //error status code
+            console.log("Error updating Post:", postUpdated);
+            throw(postUpdated.message);
+        }
+        console.log("POST updated successfully", postUpdated);
+        return postUpdated;
     }
 
     async deletePostById(id) {
@@ -61,7 +69,11 @@ class BlogApi {
             }
         );
         const deleted = await deleteResp.json();
-        console.log(deleted);
+        if(deleteResp.status >= 400) { //error status code
+            console.log("Error deleting Post:", deleted);
+            throw(deleted.message);
+        }
+        console.log("POST deleted successfully", deleted);
         return deleted;
     }
 

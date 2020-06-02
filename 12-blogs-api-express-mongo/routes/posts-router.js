@@ -34,8 +34,8 @@ router.post('/', function(req, res) {
     const post = req.body;
     indicative.validator.validate(post, {
         // id: 'required|regex:^[0-9a-f]{24}',
-        title: 'required|string|min:2|max:60',
-        subtitle: 'string|max:255',
+        title: 'required|string|min:3|max:60',
+        subtitle: 'string|max:120',
         content: 'string',
         imageUrl: 'url'
     }).then(() => {
@@ -72,8 +72,8 @@ router.put('/:id', async (req, res) => {
     try {
         await indicative.validator.validate(post, {
             id: 'required|regex:^[0-9a-f]{24}',
-            title: 'required|string|min:2|max:60',
-            subtitle: 'string|max:255',
+            title: 'required|string|min:3|max:60',
+            subtitle: 'string|max:120',
             content: 'string',
             imageUrl: 'url'
         });

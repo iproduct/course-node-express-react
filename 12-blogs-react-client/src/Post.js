@@ -30,7 +30,7 @@ export default function Post({ post, inFavs, addToFavs, editPost, deletePost, re
             {post.title}
             <i className="material-icons right">more_vert</i>
           </span>
-          <p class="card-subtitle grey-text text-darken-2">{post.subtitle}</p>
+          <p className="card-subtitle grey-text text-darken-2">{post.subtitle}</p>
 
           <div className="card-action Post-card-action">
             {!inFavs && <span className="action-button" onClick={onAddToFavs}>

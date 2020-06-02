@@ -26,19 +26,25 @@ export default function PostForm({ master, onSubmitPost, ...rest }) {
                     <input
                         id="title"
                         type="text"
+                        minLength="2"
+                        maxLength="60"
+                        className="validate"
                         onChange={event => setTitleText(event.target.value)}
                         value={titleText}
                     />
                     <label class="active" htmlFor="title">Title</label>
+                    <span class="helper-text" data-error="Title must be between 2 and 60 characters long." data-success=""></span>
                 </div>
                 <div className="input-field col s12">
                     <input
                         id="subtitle"
                         type="text"
+                        maxLength="120"
                         onChange={event => setSubTitleText(event.target.value)}
                         value={subtitleText}
                     />
                     <label class="active" htmlFor="title">Subtitle</label>
+                    <span class="helper-text" data-error="Subtitle must be no longer than 120 characters." data-success=""></span>
                 </div>
                 <div className="input-field col s12">
                     <textarea id="content" className="materialize-textarea" onChange={event => setContentText(event.target.value)}

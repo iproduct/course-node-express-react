@@ -82,15 +82,22 @@ function App() {
     }
 
     function addEditPost(post) {
-        history.push('/');
         console.log(post);
         if (post.id) {
             BlogAPI.updatePost(post).then(updated => {
                 setPosts(oldPosts => oldPosts.map(p => p.id === updated.id ? updated : p));
+                window.M.toast({html: `<div>Post '${updated.title}' has been updated successfully.</div>`, classes: 'success', displayLength: 8000});
+                history.push('/');
+            }).catch(error => {
+                window.M.toast({ html: '<div>' + error + '</div>', classes: 'error', displayLength: 12000 });
             });
         } else {
             BlogAPI.createPost(post).then(created => {
                 setPosts(oldPosts => [...oldPosts, created]);
+                window.M.toast({html: `<div>Post '${created.title}' has been created successfully.</div>`, classes: 'success', displayLength: 8000});
+                history.push('/');
+            }).catch(error => {
+                window.M.toast({ html: '<div>' + error + '</div>', classes: 'error', displayLength: 12000 });
             });
         }
     }
@@ -102,31 +109,35 @@ function App() {
     }
 
     function deletePost(post) {
-        history.push('/');
         console.log(post);
-        BlogAPI.deletePostById(post.id)
-            .then(deleted => {
-                setPosts(oldPosts => oldPosts.filter(p => p.id !== deleted.id));
-            });
+        BlogAPI.deletePostById(post.id).then(deleted => {
+            setPosts(oldPosts => oldPosts.filter(p => p.id !== deleted.id));
+            window.M.toast({html: `<div>Post '${deleted.title}' has been deleted successfully.</div>`, classes: 'success', displayLength: 8000});
+        }).catch(error => {
+            window.M.toast({ html: '<div>' + error + '</div>', classes: 'error', displayLength: 12000 });
+        });
     }
 
     function registerUser(user) {
-        history.push('/');
         console.log(user);
-        BlogAPI.createUser(user)
-            .then(created => {
-                setUsers(oldUsers => [...oldUsers, user]);
-            });
+        BlogAPI.createUser(user).then(created => {
+            setUsers(oldUsers => [...oldUsers, user]);
+            history.push('/');
+        }).catch(error => {
+            window.M.toast({ html: '<div>' + error + '</div>', classes: 'error', displayLength: 12000 });
+        });
     }
 
     function login(credentials) {
-        history.push('/');
         console.log(credentials);
         BlogAPI.login(credentials)
-            .then(loginResp => {
+        .then(loginResp => {
                 setLoggedUser(loginResp);
                 sessionStorage.setItem('loginResp', loginResp.jwt);
-            });
+                history.push('/');
+        }).catch(error => {
+            window.M.toast({html: '<div>' + error + '</div>', classes: 'error', displayLength: 12000});
+        });
     }
 
     function addToFavs(post) {
