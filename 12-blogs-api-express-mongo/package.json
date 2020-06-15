@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/iproduct/course-node-express-react#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "indicative": "^7.4.4",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.8",
     "socket.io": "^2.3.0"
   },

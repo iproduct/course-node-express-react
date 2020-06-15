@@ -56,7 +56,11 @@ export default function Nav({ searchPosts, loggedUser, ...rest }) {
                 </form>
               </li>
               {loggedUser && loggedUser.user && <li>
-                <div>Welcome, {loggedUser.user.firstName + ' ' + loggedUser.user.lastName}!</div>
+                <div>
+                  Welcome, {loggedUser.user.firstName + ' ' + loggedUser.user.lastName}! 
+                  <img src={loggedUser.user.imageUrl} alt="user avatar" className="circle user-avatar" />
+                </div>
+                
               </li>}
             </ul>
           </div>

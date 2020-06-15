@@ -36,17 +36,20 @@ router.post('/', async (req, res) => {
         await indicative.validator.validate(user, {
             firstName: 'required|string|min:2',
             lastName: 'required|string|min:2',
-            email: 'required|email',
+            username: 'required|email',
             password: 'required|string|min:6',
-            role: 'required|in:Author,Admin',
+            role: 'in:Author,Admin',
             imageUrl: 'url'
         });
+        if(!user.role) {
+            user.role = 'Author';
+        }
         try {
             const r = await req.app.locals.db.collection('users').insertOne(user);
             if (r.result.ok && r.insertedCount === 1) {
                 delete user._id;
                 user.id = r.insertedId;
-                console.log(`Unable to update post: ${post.id}: ${post.title}`);
+                console.log(`Unable to update post: ${user.id}: ${user.firstName} ${user.lastName}`);
                 res.status(201).location(`/users/${user.id}`).json(user);
             } else {
                 sendErrorResponse(req, res, 500, `Unable to create user: ${user.id}: ${user.firstName} ${user.lastName}`);
@@ -77,7 +80,7 @@ router.put('/:id', async (req, res) => {
             id: 'required|regex:^[0-9a-f]{24}$',
             firstName: 'required|string|min:2',
             lastName: 'required|string|min:2',
-            email: 'required|email',
+            username: 'required|email',
             password: 'required|string|min:6',
             role: 'required|in:Author,Admin',
             imageUrl: 'url'

@@ -71,7 +71,7 @@ export default function Register({onRegister, ...rest}) {
         const password = passwordText.trim();
         const imageUrl = imageUrlText.trim();
         if (firstName && lastName && username && password) {
-            onRegister({firstName, lastName, username, password, imageUrl, roles: "ROLE_USER"});
+            onRegister({firstName, lastName, username, password, imageUrl});
         }
     }
 }

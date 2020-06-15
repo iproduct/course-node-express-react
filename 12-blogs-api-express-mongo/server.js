@@ -3,6 +3,7 @@ const cors = require('cors');
 // const bodyParser = require('body-parser');
 const postsRouter = require('./routes/posts-router');
 const usersRouter = require('./routes/users-router');
+const authRouter = require('./routes/auth-router');
 const sendErrorResponse = require('./routes/utils').sendErrorResponse;
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
@@ -20,7 +21,8 @@ app.use(express.json({limit: '50mb'}));
 app.use(express.static('public'))
 app
     .use('/api/posts', postsRouter)
-    .use('/api/users', usersRouter);
+    .use('/api/users', usersRouter)
+    .use('/api/auth', authRouter);
 
 app.get('/', (req, res) => res.send('Hello Express and NodeJS World!'))
 app.post('/hello/:name', function (req, res) {

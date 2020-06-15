@@ -12,3 +12,10 @@ nav .input-field {
     padding-left: 0;
     background-color: rgb(240, 245, 255);
 }
+
+.user-avatar {
+    padding-top:10px;  
+    padding-left:10px;
+    vertical-align: middle;
+    width: 50px;
+}

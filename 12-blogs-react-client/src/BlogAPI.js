@@ -2,6 +2,7 @@
 export const BLOG_API_BASE = "http://localhost:8080/api";
 
 class BlogApi {
+    token = undefined;
 
     async findAllPosts() {
         const postsResp = await fetch(
@@ -41,13 +42,14 @@ class BlogApi {
         return postCreated;
     }
 
-    async updatePost(post) {
+    async updatePost(post, history) {
         const postsResp = await fetch(
             BLOG_API_BASE + "/posts/" + encodeURIComponent(post.id),
             {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`
                 },
                 body: JSON.stringify(post)
             }
@@ -95,9 +97,9 @@ class BlogApi {
         return userFound;
     }
 
-    async createUser(user) {
+    async register(user) {
         const usersResp = await fetch(
-            BLOG_API_BASE + "/users",
+            BLOG_API_BASE + "/auth/register",
             {
                 method: 'POST', // or 'PUT'
                 headers: {
@@ -107,13 +109,17 @@ class BlogApi {
             }
         );
         const userCreated = await usersResp.json();
+        if(usersResp.status >= 400) { //error status code
+            console.log("Error creating Post:", userCreated);
+            throw(userCreated.message);
+        }
         console.log("USER created successfully", userCreated);
         return userCreated;
     }
 
     async login(credentials) {
         const userResp = await fetch(
-            BLOG_API_BASE + "/login",
+            BLOG_API_BASE + "/auth/login",
             {
                 method: 'POST', // or 'PUT'
                 headers: {
@@ -122,9 +128,10 @@ class BlogApi {
                 body: JSON.stringify(credentials)
             }
         );
-        const jwt = await userResp.json();
-        console.log("USER logged-in successfully:", jwt);
-        return jwt;
+        const resp = await userResp.json();
+        console.log("USER logged-in successfully:", resp);
+        this.token = resp.token;
+        return resp;
     }
 }
 

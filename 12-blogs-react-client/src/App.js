@@ -19,7 +19,8 @@ function App() {
     const [selectedPost, setSelectedPost] = useState(undefined);
     const [favs, setFavs] = useState([]);
     const [users, setUsers] = useState([]);
-    const [loggedUser, setLoggedUser] = useState(undefined);
+    const [loggedUser, setLoggedUser] = useState(undefined);    
+    const [redirectUri, setRedirectUri] = useState(undefined);
 
     useEffect(() => {
         BlogAPI.findAllPosts()
@@ -105,7 +106,12 @@ function App() {
     function editPost(post) {
         setSelectedPost(post);
         console.log(post);
-        history.push('/edit-post');
+        if(!BlogAPI.token) {
+            setRedirectUri('/edit-post');
+            history.push('/login');
+        } else {
+            history.push('/edit-post');
+        }
     }
 
     function deletePost(post) {
@@ -120,9 +126,10 @@ function App() {
 
     function registerUser(user) {
         console.log(user);
-        BlogAPI.createUser(user).then(created => {
-            setUsers(oldUsers => [...oldUsers, user]);
+        BlogAPI.register(user).then(created => {
+            setUsers(oldUsers => [...oldUsers, created]);
             history.push('/');
+            window.M.toast({html: `<div>User ${created.firstName} ${created.lastName} has been created successfully.</div>`, classes: 'success', displayLength: 8000});
         }).catch(error => {
             window.M.toast({ html: '<div>' + error + '</div>', classes: 'error', displayLength: 12000 });
         });
@@ -134,7 +141,12 @@ function App() {
         .then(loginResp => {
                 setLoggedUser(loginResp);
                 sessionStorage.setItem('loginResp', loginResp.jwt);
-                history.push('/');
+                if(redirectUri){
+                    history.push(redirectUri);
+                } else {
+                    history.push('/');
+                }
+               
         }).catch(error => {
             window.M.toast({html: '<div>' + error + '</div>', classes: 'error', displayLength: 12000});
         });

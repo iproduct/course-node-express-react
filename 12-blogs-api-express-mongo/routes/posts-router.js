@@ -3,6 +3,8 @@ const sendErrorResponse = require('./utils').sendErrorResponse;
 const replaceId = require('./utils').replaceId;
 const ObjectID = require('mongodb').ObjectID;
 const indicative = require('indicative');
+const verifyToken = require('./verify-token');
+const verifyRole = require('./verify-role');
 
 const router = express.Router();
 
@@ -58,7 +60,7 @@ router.post('/', function(req, res) {
     });
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', verifyToken, verifyRole(['Admin']), async (req, res) => {
     const old = await req.app.locals.db.collection('posts').findOne({ _id: new ObjectID(req.params.id) });
     if (!old) {
         sendErrorResponse(req, res, 404, `Post with ID=${req.params.id} does not exist`);
