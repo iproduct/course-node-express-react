@@ -15,7 +15,6 @@ Shape.prototype.move = function (/*Number*/ deltaX, /*Number*/ deltaY) {
 }
 
 
-
 /* Rectangle extends Shape */
 function Rectangle(/*Number*/ xCoord, /*Number*/ yCoord) {
     const boundShape = Shape.bind(this);

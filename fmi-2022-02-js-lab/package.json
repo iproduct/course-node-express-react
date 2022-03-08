@@ -1,0 +1,27 @@
+{
+  "name": "fmi-2022-02-js-lab",
+  "version": "1.0.0",
+  "description": "Introduction to JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start":"lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react.git"
+  },
+  "keywords": [
+    "javascript",
+    "intro"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-node-express-react/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-node-express-react#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
