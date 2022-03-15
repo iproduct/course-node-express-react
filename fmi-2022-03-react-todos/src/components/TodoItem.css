@@ -1,0 +1,38 @@
+.TodoItem {
+    display: flex;
+    justify-content: space-between;
+    width: 960px;
+    padding: 10px;
+    margin: 5px;
+    background-image: linear-gradient(to bottom right, rgba(120, 120, 120, 0.301), rgba(60, 60, 60, 0.801));
+    text-align: left;
+    border: 1px solid  rgba(200, 200, 200, 0.301);
+    border-radius:  5px;
+}
+
+.TodoItem:hover {
+    background-image: linear-gradient(to bottom right, rgba(185, 185, 185, 0.335), rgba(112, 111, 111, 0.801));
+}
+
+.TodoItem-id{
+    padding-right: 10px;
+}
+
+.TodoItem-button {
+    font-size: 18pt;
+    color: green;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.TodoItem-button:hover {
+    color: rgb(1, 224, 1);
+}
+
+.danger {
+    color: rgb(255, 80, 80);
+}
+
+.danger:hover {
+    color: rgb(224, 35, 21);
+}
