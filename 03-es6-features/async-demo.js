@@ -1,5 +1,5 @@
 async function f() {
-  return new Promise((resolve, reject) =>setTimeout(reject, 1000,"Error here!!!")); //Promise.resolve(1);
+  return new Promise((resolve, reject) =>setTimeout(reject, 3000,"Error here!!!")); //Promise.resolve(1);
 }
 async function g() {
   // throw "Error!!!";

@@ -1,4 +1,4 @@
-var a, b, rest;
+// var a, b, rest;
 // [b, a] = [1, 2];
 // console.log(a); 
 // console.log(b); 
@@ -6,7 +6,7 @@ var a, b, rest;
 // const [a, b, , , ...rest] = [1, 2, 3, 4, 5, 6, 7, 8];
 // console.log(a); // 1
 // console.log(b); // 2
-// console.log(rest); // [5, 6, 7, 8]
+// console.log(...rest); // [5, 6, 7, 8]
 
 // const obj1 = {a:1, b:2, c:3};
 // const {c, a } = obj1;
@@ -37,7 +37,7 @@ var b = [ ...a, [4]];
 var [, c] = b;
 console.log(c.shift());
 
-console.log(b.shift().shift());
+// console.log(b.shift().shift());
 
 console.log('a=', a);
 console.log('b=', b);

@@ -5,14 +5,14 @@ async function f() {
 
   console.log('Start.'); // "start!"
   try {
-  let result = await promise; // wait untill promise resolve
-  console.log(result); // "done!"
-  return result;
-  } catch(err) {
+    let result = await promise; // wait untill promise resolve
+    console.log(result); // "done!"
+    return result;
+  } catch (err) {
     console.log('Rejected: ' + err); // "rejected"
     throw err;
   }
 }
 
 f().then((data) => console.log('Really finished: ' + data))
-.catch((data) => console.log('Really finished REJECT: ' + data));
+  .catch((data) => console.log('Really finished REJECT: ' + data));

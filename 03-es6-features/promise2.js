@@ -15,12 +15,12 @@ msgAfterTimeout("", "Foo", 1000).then(msg => {
 })
 .then((msg) => {
     console.log(`done after 3000ms:${msg}`);
-    throw "Demo finished";
+    return Promise.reject("Demo finished");
 })
 .then(msg => console.log(msg))
 .catch( err => {
     console.log('Error: ' + err);
-    // throw 'After finish';
+    return 'After finish';
 })
 .then(      
     msg => console.log(msg), //Success 

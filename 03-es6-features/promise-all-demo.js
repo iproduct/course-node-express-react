@@ -13,7 +13,7 @@
     setTimeout(resolve, 4000, 'four');
   });
   var p5 = new Promise((resolve, reject) => {
-    setTimeout(reject, 950, 'reject for reason');
+    setTimeout(reject, 990, 'reject for reason');
   });
 
   // Promise.all([p1, p2, p3, p4, p5]).then(values => { 
@@ -28,7 +28,7 @@
     return value;
   }).catch(reason => {
     console.log(reason);
-    return `Retrown from catch: ${reason}`;
+    throw `Retrown from catch: ${reason}`;
   }).then(v => {
     console.log(`Resolved in second then clause: ${v}`);
   }, r => {
@@ -37,4 +37,4 @@
     console.log(`Demo finished.`);
   });
 
-}) ();
+}) ();7
