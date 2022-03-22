@@ -1,7 +1,7 @@
 import './TodoItem.css'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TodoStatus } from '../model/todo-model'
+import { ALL_STATUSES, ACTIVE, CANCELED, COMPLETED, TodoStatus } from '../model/todo-model'
 
 const TodoItem = ({ todo }) => {
     return (
@@ -21,6 +21,12 @@ const TodoItem = ({ todo }) => {
   )
 }
 
-TodoItem.propTypes = {}
+TodoItem.propTypes = {
+    todo: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        status: PropTypes.oneOf([ALL_STATUSES, ACTIVE, COMPLETED, CANCELED])
+    })
+}
 
 export default TodoItem
