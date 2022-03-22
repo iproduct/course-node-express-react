@@ -16,9 +16,12 @@ const TodoItem = ({ todo }) => {
                 <span className='TodoItem-status'>
                     {TodoStatus[todo.status]}
                 </span>
+                <span className='TodoItem-buttons'>
+                    <button type="button" onClick={() => { }}>DELETE</button>
+                </span>
             </span>
         </div>
-  )
+    )
 }
 
 TodoItem.propTypes = {
