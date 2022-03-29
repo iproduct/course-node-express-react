@@ -1,7 +1,7 @@
 import './TodoList.css'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ALL_STATUSES, ACTIVE, CANCELED, COMPLETED, TodoStatus } from '../model/todo-model'
+import { ALL_STATUSES, ACTIVE, CANCELED, COMPLETED } from '../model/todo-model'
 import TodoItem from './TodoItem'
 
 const TodoList = ({ todos, ...props }) => {
