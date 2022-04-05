@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+// routes
+import Router from './routes';
+// theme
+import ThemeConfig from './theme';
+import GlobalStyles from './theme/globalStyles';
+// components
+import ScrollToTop from './components/ScrollToTop';
+import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
+
+// ----------------------------------------------------------------------
 import './App.css';
+import { useEffect, useState } from 'react';
+import blogsApiClient from './service/blogs-api-client'
 
 function App() {
+  const [posts, setPosts] = useState([]);
+  const [messages, setMessages] = useState();
+  const [errors, setErrors] = useState();
+  useEffect(() => {
+    (async () => {
+      const fetchedPosts = await blogsApiClient.fetchPosts();
+      setPosts(fetchedPosts);
+    })();
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeConfig>
+      <ScrollToTop />
+      <GlobalStyles />
+      <BaseOptionChartStyle />
+      <Router posts={posts} />
+    </ThemeConfig>
+
   );
 }
 
