@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Default",
+      "lastName": "Admin",
+      "username": "admin",
+      "passwod": "admin",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "firstName": "Default",
+      "lastName": "Author",
+      "username": "author",
+      "passwod": "author",
+      "role": "AUTHOR"
+    },
+    {
+      "id": 3,
+      "firstName": "Default",
+      "lastName": "Reader",
+      "username": "reader",
+      "passwod": "reader",
+      "role": "READER"
+    }
+  ],
+  "posts": [
+    {
+      "id": 2,
+      "title": "Fetch API",
+      "content": "Fetch API is easy to use Promise-based web service client API.",
+      "authorId": 1,
+      "tags": [
+        "fetch",
+        "api",
+        "http",
+        "client"
+      ],
+      "imageUrl": "https://www.publicdomainpictures.net/pictures/220000/velka/binare-kontakte.jpg",
+      "active": true
+    },
+    {
+      "id": 3,
+      "title": "Fetch API 123",
+      "content": "Fetch API is easy to use Promise-based web service client API.",
+      "tags": [
+        "fetch",
+        "api",
+        "new tag"
+      ],
+      "imageUrl": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/89033476/original/34981a0ec6461c35c1b9b44a960e2d4747245dd9/develop-node-js-server.png",
+      "authorId": 1,
+      "active": true
+    },
+    {
+      "title": "Fetch API",
+      "content": "Fetch API is easy to use Promise-based web service client API.",
+      "authorId": 1,
+      "tags": [
+        "fetch",
+        "api",
+        "http",
+        "client"
+      ],
+      "imageUrl": "https://www.publicdomainpictures.net/pictures/160000/velka/ancient-world-map-from-1689.jpg",
+      "active": true,
+      "id": 4
+    },
+    {
+      "id": 8,
+      "title": "aaa",
+      "content": "aaaa\naaa\naaa\n\naaaaaa",
+      "tags": [
+        "aaaa",
+        "bbbb",
+        "cccc"
+      ],
+      "imageUrl": "https://assets.logitech.com/assets/64683/performance-mouse-mx.png",
+      "authorId": 2,
+      "active": true
+    },
+    {
+      "id": 9,
+      "title": "Hello React123",
+      "content": "Hello React content ...\nEasy ...",
+      "tags": [
+        "react",
+        "hello",
+        "intro"
+      ],
+      "imageUrl": "https://www.publicdomainpictures.net/pictures/250000/velka/mars-1515656849bmH.jpg",
+      "authorId": 2,
+      "active": true
+    },
+    {
+      "id": 10,
+      "title": "sdfwe",
+      "content": "ewewewfrewf",
+      "tags": [
+        "refref",
+        "ferref",
+        "rfref"
+      ],
+      "imageUrl": "https://cdn.mos.cms.futurecdn.net/sfgpCc8Ba2GFWVLcPmBzcM.jpg",
+      "authorId": 2,
+      "active": true
+    }
+  ],
+  "comments": []
+}
