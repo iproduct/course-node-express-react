@@ -3,6 +3,11 @@ Accept: "application/json"
 
 ###
 
+GET http://localhost:8080/api/users HTTP/1.1
+Accept: "application/json"
+
+###
+
 POST http://localhost:8080/api/posts HTTP/1.1
 content-type: application/json
 

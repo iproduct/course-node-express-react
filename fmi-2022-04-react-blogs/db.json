@@ -105,6 +105,19 @@
       "imageUrl": "https://cdn.mos.cms.futurecdn.net/sfgpCc8Ba2GFWVLcPmBzcM.jpg",
       "authorId": 2,
       "active": true
+    },
+    {
+      "title": "SSE API",
+      "content": "SSE API is easy to use Promise-based web service client API.",
+      "authorId": 1,
+      "tags": [
+        "fetch",
+        "api",
+        "http",
+        "client"
+      ],
+      "status": "ACTIVE",
+      "id": 11
     }
   ],
   "comments": []

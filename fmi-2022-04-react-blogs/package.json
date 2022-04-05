@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "api": "json-server db.json --port 8080 --routes routes.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
