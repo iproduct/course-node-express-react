@@ -19,11 +19,11 @@ const SORT_OPTIONS = [
 
 // ----------------------------------------------------------------------
 
-export default function BlogEdit({ post }) {
+export default function BlogEdit({...rest}) {
   return (
     <Page title="Dashboard: Blog Edit Form | Minimal-UI">
       <Container>
-        <BlogPostForm />
+        <BlogPostForm {...rest} />
       </Container>
     </Page>
   );

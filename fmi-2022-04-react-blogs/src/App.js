@@ -23,12 +23,17 @@ function App() {
     })();
   }, [])
 
+  const addPost = async (post) => {
+    post.authorId = 1;
+    const created = await blogsApiClient.postNewPost(post);
+  }
+
   return (
     <ThemeConfig>
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      <Router posts={posts} />
+      <Router posts={posts} onAddPost={addPost} />
     </ThemeConfig>
 
   );

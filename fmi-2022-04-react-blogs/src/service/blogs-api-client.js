@@ -9,6 +9,37 @@ class BlogsApiClient {
         return this.handleResponse(async ()=> fetch(`${this.baseApiUrl}/posts`))
     }
 
+    async fetchPostById(postId) {
+        return this.handleResponse(async () => fetch(`${this.baseApiUrl}/posts/${postId}`));
+    }
+
+    async postNewPost(post) {
+        return this.handleResponse(async () => fetch(`${this.baseApiUrl}/posts`,{
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(post)
+        }));
+    }
+
+    async editPost(post) {
+        return this.handleResponse(async () => fetch(`${this.baseApiUrl}/posts/${post.id}`,{
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT',
+            body: JSON.stringify(post)
+        }));
+    }
+
+    
+    async deletePostById(postId) {
+        return this.handleResponse(async () => fetch(`${this.baseApiUrl}/posts/${postId}`, {
+            method: 'DELETE',
+        }));
+    }
+
     // error handling utils
     async handleResponse(asyncRequestFunc){
         try{

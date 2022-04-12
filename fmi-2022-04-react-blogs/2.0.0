@@ -1,0 +1,18 @@
+yarn add v1.22.17
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 5 new dependencies.
+info Direct dependencies
+├─ eslint-plugin-prettier@4.0.0
+├─ eslint@8.13.0
+└─ prettier@2.6.2
+info All dependencies
+├─ eslint-plugin-prettier@4.0.0
+├─ eslint@8.13.0
+├─ fast-diff@1.2.0
+├─ prettier-linter-helpers@1.0.0
+└─ prettier@2.6.2
+Done in 9.12s.
