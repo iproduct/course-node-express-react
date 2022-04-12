@@ -26,6 +26,7 @@ function App() {
   const addPost = async (post) => {
     post.authorId = 1;
     const created = await blogsApiClient.postNewPost(post);
+    setPosts(old => [...old, created])
   }
 
   return (

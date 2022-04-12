@@ -39,6 +39,7 @@ export default function BlogPostForm({ post, onAddPost }) {
     },
     validationSchema: RegisterSchema,
     onSubmit: post => {
+      post.tags = post.tags.trim().split(',').map(tag => tag.trim())
       console.log(post);
       onAddPost(post);
       navigate('/dashboard/blogs');
