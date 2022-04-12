@@ -10,6 +10,7 @@ import Products from './pages/Products';
 import Blog from './pages/Blog';
 import User from './pages/User';
 import NotFound from './pages/Page404';
+import BlogEdit from './pages/BlogEdit'
 
 // ----------------------------------------------------------------------
 
@@ -22,7 +23,8 @@ export default function Router({posts}) {
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
         { path: 'products', element: <Products /> },
-        { path: 'blog', element: <Blog posts={posts} /> }
+        { path: 'blog', element: <Blog posts={posts} /> },
+        { path: 'blog/new', element: <BlogEdit post={undefined} /> }
       ]
     },
     {
