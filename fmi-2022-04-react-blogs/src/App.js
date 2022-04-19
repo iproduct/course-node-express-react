@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 // routes
 import Router from './routes';
 // theme
@@ -9,8 +10,7 @@ import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
 
 // ----------------------------------------------------------------------
 import './App.css';
-import { useEffect, useState } from 'react';
-import blogsApiClient from './service/blogs-api-client'
+import blogsApiClient from './service/blogs-api-client';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -21,13 +21,13 @@ function App() {
       const fetchedPosts = await blogsApiClient.fetchPosts();
       setPosts(fetchedPosts);
     })();
-  }, [])
+  }, []);
 
   const addPost = async (post) => {
     post.authorId = 1;
     const created = await blogsApiClient.postNewPost(post);
-    setPosts(old => [...old, created])
-  }
+    setPosts((old) => [...old, created]);
+  };
 
   return (
     <ThemeConfig>

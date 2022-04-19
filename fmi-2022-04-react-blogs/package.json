@@ -38,7 +38,9 @@
     "api": "json-server db.json --port 8080 --routes routes.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .js,.jsx ./src",
+    "lint:fix": "eslint --fix --ext .js,.jsx ./src"
   },
   "browserslist": {
     "production": [
@@ -53,15 +55,19 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.17.5",
     "@babel/eslint-parser": "^7.17.0",
-    "eslint": "^8.13.0",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "2.25.3",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.28.0",
-    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx": "^0.1.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.4.0",
     "json-server": "^0.17.0",
     "prettier": "^2.6.2"
   }

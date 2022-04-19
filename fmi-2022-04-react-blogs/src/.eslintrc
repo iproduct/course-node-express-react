@@ -6,14 +6,15 @@
   },
   "extends": [
     "airbnb",
-    "prettier",
+    // "prettier",
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended"
   ],
   "plugins": [
-    "prettier",
+    // "prettier",
     "react",
-    "react-hooks"
+    "react-hooks",
+    "jsx"
   ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
@@ -26,16 +27,19 @@
   },
   "rules": {
     "import": 0,
+    "indent": 0,
     "max-len": 0,
     "no-alert": 0,
     "no-shadow": 0,
     "no-console": 0,
     "comma-dangle": 0,
     "import/no-cycle": 0,
+    "import/order:": 0,
     "react/prop-types": 1,
     "no-return-assign": 0,
     "consistent-return": 1,
     "no-param-reassign": 0,
+    "linebreak-style": 0,
     "react/display-name": 0,
     "no-use-before-define": 0,
     "no-underscore-dangle": 0,
@@ -61,14 +65,20 @@
         "ignoreRestSiblings": false
       }
     ],
-    "prettier/prettier": [
-      2,
-      {
-        "printWidth": 100,
-        "singleQuote": true,
-        "trailingComma": "none",
-        "tabWidth": 2
-      }
-    ]
+    "class-methods-use-this": 0,
+    "no-else-return": 0,
+    "prefer-promise-reject-errors": 0,
+    "object-curly-newline": 0,
+    "arrow-parens": 0,
+    "semi":0,
+    // "prettier/prettier": [
+    //   2,
+    //   {
+    //     "printWidth": 100,
+    //     "singleQuote": true,
+    //     "trailingComma": "none",
+    //     "tabWidth": 2
+    //   }
+    // ]
   }
 }

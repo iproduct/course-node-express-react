@@ -56,12 +56,12 @@ export default function BlogPostForm({ post, onAddPost }) {
             fullWidth
             label="ID"
             {...getFieldProps('id')}
-            disabled={true}
+            disabled
           />
-          <TextInputField formik={formik} field='title' />
-          <TextInputField formik={formik} field='content' />
-          <TextInputField formik={formik} field='tags' />
-          <TextInputField formik={formik} field='imageUrl' />
+          <TextInputField formik={formik} field="title" />
+          <TextInputField formik={formik} field="content" />
+          <TextInputField formik={formik} field="tags" />
+          <TextInputField formik={formik} field="imageUrl" />
           <FormControlLabel control={<Checkbox {...getFieldProps('active')} />} label="Active" />
 
           <LoadingButton
