@@ -1,0 +1,9 @@
+.row .col.Post-card-wrapper {
+    padding: 0px;
+}
+.Post-card {
+    margin: 5px;
+}
+.card .card-image img.Post-image {
+    height: 300px;
+}

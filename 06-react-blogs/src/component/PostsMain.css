@@ -1,0 +1,13 @@
+.PostMain {
+    display: flex;
+}
+.PostMain-btn {
+    width: 100%;
+}
+.PostMain-left-column {
+    width: 30%;
+}
+.PostMain-right-column {
+    width: 70%;
+
+}

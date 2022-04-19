@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 // routes
 import Router from './routes';
 // theme
@@ -20,14 +20,18 @@ function App() {
     (async () => {
       const fetchedPosts = await blogsApiClient.fetchPosts();
       setPosts(fetchedPosts);
-    })();
+    })(); // IIFE
   }, []);
 
-  const addPost = async (post) => {
-    post.authorId = 1;
-    const created = await blogsApiClient.postNewPost(post);
-    setPosts((old) => [...old, created]);
-  };
+
+  const addPost = useCallback(
+    async (post) => {
+      post.authorId = 1;
+      const created = await blogsApiClient.postNewPost(post);
+      setPosts(old => [...old, created]);
+    },
+    []
+  );
 
   return (
     <ThemeConfig>

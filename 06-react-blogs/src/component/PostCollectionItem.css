@@ -1,0 +1,36 @@
+.PostCollectionItem {
+  border: 1px solid rgb(211, 209, 209);
+  border-radius: 5px;
+}
+
+.PostCollectionItem:hover {
+  background: #c8d8fc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #c8d8fc,
+    #d3efff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bootom,
+    #c8d8fc,
+    #d3efff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.PostCollectionItem-img {
+  width: 50px;
+  height: 50px;
+}
+
+.PostCollectionItem-buttons {
+  padding: 5px;
+}
+
+.PostCollectionItem-buttons .btn {
+  padding: 0 3px;
+  margin-left: 5px;
+}
+
+.PostCollectionItem-buttons .btn .material-icons {
+  margin: 0;
+}
