@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
-import App from "./AppAuthenticationV6";
+import App from "./AppLazyV6";
 
 ReactDOM.render(
   <React.StrictMode>

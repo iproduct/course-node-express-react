@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useContext } from "react";
 import {
     Routes,
     Route,
@@ -36,7 +37,7 @@ export default function App() {
 
             <Routes>
                 <Route element={<Layout />}>
-                    <Route path="/" element={<PublicPage />} />
+                    <Route index element={<PublicPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route
                         path="/protected"
@@ -102,7 +103,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 }
 
 function useAuth() {
-    return React.useContext(AuthContext);
+    return useContext(AuthContext);
 }
 
 function AuthStatus() {

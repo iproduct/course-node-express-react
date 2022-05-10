@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Routes, Route, Outlet, Link } from 'react-router-dom';
 
-const About = React.lazy(() => import('./pages/About'));
-const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const A1 = React.lazy(() => import('./pages/About'));
+const D2 = React.lazy(() => import('./pages/Dashboard'));
 
 export default function App() {
     return (
@@ -15,7 +15,7 @@ export default function App() {
                         path="about"
                         element={
                             <React.Suspense fallback={<>...</>}>
-                                <About />
+                                <A1 />
                             </React.Suspense>
                         }
                     />
@@ -23,7 +23,7 @@ export default function App() {
                         path="dashboard/*"
                         element={
                             <React.Suspense fallback={<>...</>}>
-                                <Dashboard />
+                                <D2 />
                             </React.Suspense>
                         }
                     />
