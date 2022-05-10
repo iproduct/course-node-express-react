@@ -65,7 +65,8 @@ export default function BlogPostCard({ post, index }) {
   const POST_INFO = [
     { number: comment, icon: 'eva:message-circle-fill' },
     { number: view, icon: 'eva:eye-fill' },
-    { number: share, icon: 'eva:share-fill' }
+    { number: share, icon: 'eva:share-fill' },
+
   ];
 
   return (
@@ -156,6 +157,33 @@ export default function BlogPostCard({ post, index }) {
           </TitleStyle>
 
           <InfoStyle>
+            <Box
+              key={index}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                ml: index === 0 ? 0 : 1.5,
+                ...((latestPostLarge || latestPost) && {
+                  color: 'green'
+                })
+              }}
+            >
+              <Iconify icon="eva:color-picker-outline" sx={{ width: 32, height: 32, mr: 0.5 }} />
+            </Box>
+            <Box
+              key={index}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                ml: index === 0 ? 0 : 1.5,
+                ...((latestPostLarge || latestPost) && {
+                  color: 'red'
+                })
+              }}
+            >
+              <Iconify icon="eva:close-circle-outline" sx={{ width: 32, height: 32, mr: 0.5 }} />
+            </Box>
+
             {POST_INFO.map((info, index) => (
               <Box
                 key={index}

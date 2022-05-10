@@ -205,6 +205,20 @@
       "imageUrl": "https://www.publicdomainpictures.net/pictures/160000/nahled/oeufs-de-paques-1457782172BLx.jpg",
       "active": true,
       "authorId": 1
+    },
+    {
+      "id": 20,
+      "title": "To Route or Not to Route?",
+      "content": "React Router V6 makes routing easy ...",
+      "tags": [
+        "react",
+        "router",
+        "easy",
+        "routing"
+      ],
+      "imageUrl": "https://www.publicdomainpictures.net/pictures/70000/t2/pictures.jpg",
+      "active": true,
+      "authorId": 1
     }
   ],
   "comments": []
