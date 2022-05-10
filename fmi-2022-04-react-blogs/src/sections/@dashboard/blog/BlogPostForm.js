@@ -1,20 +1,21 @@
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useFormik, Form, FormikProvider } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // material
 import { Stack, TextField, IconButton, InputAdornment, FormControlLabel, Checkbox } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // component
 import Iconify from '../../../components/Iconify';
 import TextInputField from '../../../components/TextInputField';
+import { Post } from '../../../model/post-model';
 
 // ----------------------------------------------------------------------
 
-export default function BlogPostForm({ post, onAddPost }) {
+export default function BlogPostForm({post, onAddPost }) {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
+  
   const RegisterSchema = Yup.object().shape({
     title: Yup.string()
       .min(2, 'Too short - should be atlest 2 characters long')

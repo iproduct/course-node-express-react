@@ -25,7 +25,8 @@ export default function Router({posts, onAddPost}) {
         { path: 'user', element: <User /> },
         { path: 'products', element: <Products /> },
         { path: 'blogs', element: <Blog posts={posts} /> },
-        { path: 'blogs/new', element: <BlogEdit post={new Post()} onAddPost={onAddPost} /> }
+        { path: 'blogs/new', element: <BlogEdit post={new Post()} onAddPost={onAddPost} /> },
+        { path: 'blogs/edit/:postId', element: <BlogEdit post={new Post()} onAddPost={onAddPost} /> }
       ]
     },
     {

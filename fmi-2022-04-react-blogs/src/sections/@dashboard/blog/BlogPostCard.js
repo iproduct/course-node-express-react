@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // material
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Link, Card, Grid, Avatar, Typography, CardContent } from '@mui/material';
@@ -58,9 +58,10 @@ BlogPostCard.propTypes = {
 };
 
 export default function BlogPostCard({ post, index }) {
-  const { imageUrl, title, view, comment, share, author, createdAt } = post;
+  const { id, imageUrl, title, view, comment, share, author, createdAt } = post;
   const latestPostLarge = index === 0;
   const latestPost = index === 1 || index === 2;
+  const navigate = useNavigate();
 
   const POST_INFO = [
     { number: comment, icon: 'eva:message-circle-fill' },
@@ -157,28 +158,24 @@ export default function BlogPostCard({ post, index }) {
           </TitleStyle>
 
           <InfoStyle>
-            <Box
+            <Box component="div" title="Edit" onClick={() => navigate(`edit/${id}`)}
               key={index}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
                 ml: index === 0 ? 0 : 1.5,
-                ...((latestPostLarge || latestPost) && {
-                  color: 'green'
-                })
+                ...({color: 'green'})
               }}
             >
               <Iconify icon="eva:color-picker-outline" sx={{ width: 32, height: 32, mr: 0.5 }} />
             </Box>
-            <Box
+            <Box component="div" title="Delete" 
               key={index}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
                 ml: index === 0 ? 0 : 1.5,
-                ...((latestPostLarge || latestPost) && {
-                  color: 'red'
-                })
+                ...({color: 'red'})
               }}
             >
               <Iconify icon="eva:close-circle-outline" sx={{ width: 32, height: 32, mr: 0.5 }} />
