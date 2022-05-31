@@ -8,7 +8,7 @@ MongoClient.connect(dbUrl, {
     useUnifiedTopology: true
 }).then(async client => {
     console.log("Database connected.");
-    const db = client.db('webstore4');
+    const db = client.db('webstore_fmi_2022');
     const prod = await db.collection('products')
         .findOne({ _id: new ObjectId("5ed150848446d5ae645ac3c4") });
     console.log(prod);

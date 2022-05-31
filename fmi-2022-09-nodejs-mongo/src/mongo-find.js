@@ -5,7 +5,7 @@ MongoClient.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(connection => {
-    const db = connection.db('webstore4');
+    const db = connection.db('webstore_fmi_2022');
     db.collection('products')
         // .find({ name: /^Super/ })
         .find()

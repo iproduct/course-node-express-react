@@ -6,9 +6,9 @@ MongoClient.connect(dbUrl, {
     useUnifiedTopology: true
 }, function (err, con) {
     if (err) throw err;
-    const db = con.db('webstore4');
+    const db = con.db('webstore_fmi_2022');
     db.collection('products')
-        .updateOne({ name: 'Super Mouse' }, { $set: { price: 600 } })
+        .updateOne({ name: 'Super Mouse' }, { $set: { price: 45.7 } })
         .then(res => {
             // console.log(res);
             db.collection('products')

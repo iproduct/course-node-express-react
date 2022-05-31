@@ -6,9 +6,9 @@ MongoClient.connect(dbUrl, {
     useUnifiedTopology: true
 }, function (err, con) {
     if (err) throw err;
-    const db = con.db('webstore4');
+    const db = con.db('webstore_fmi_2022');
     db.collection('products')
-        .findOneAndDelete({ name: 'Super Keyboard' })
+        .findOneAndDelete({ name: 'Wireless Keyboard' })
         .then(res => {
             console.log(`${JSON.stringify(res.value?.name)} product deleted successfully.`);
         }).catch(err => {

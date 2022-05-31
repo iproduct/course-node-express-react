@@ -1,0 +1,1 @@
+module.exports.secret=process.env.BLOG_API_SECRET;
