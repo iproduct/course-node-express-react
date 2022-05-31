@@ -3,6 +3,7 @@ const sendErrorResponse = require('./utils').sendErrorResponse;
 const replaceId = require('./utils').replace_id;
 const ObjectID = require('mongodb').ObjectID;
 const indicative = require('indicative');
+const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 
@@ -44,13 +45,15 @@ router.post('/', async (req, res) => {
         if(!user.role) {
             user.role = 'Author';
         }
+        const salt = bcrypt.genSaltSync(10);
+        user.password = await bcrypt.hash(user.password, salt);
         try {
             const r = await req.app.locals.db.collection('users').insertOne(user);
             if (r.result.ok && r.insertedCount === 1) {
                 delete user._id;
                 user.id = r.insertedId;
                 console.log(`Unable to update post: ${user.id}: ${user.firstName} ${user.lastName}`);
-                res.status(201).location(`/users/${user.id}`).json(user);
+                res.status(201).location(`/api/users/${user.id}`).json(user);
             } else {
                 sendErrorResponse(req, res, 500, `Unable to create user: ${user.id}: ${user.firstName} ${user.lastName}`);
             }
