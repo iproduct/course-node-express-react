@@ -1,0 +1,19 @@
+{
+  "name": "fmi-2022-07-nodejs",
+  "version": "1.0.0",
+  "description": "NodeJS demos",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/course-node-express-react",
+  "author": "Trayan Iliev",
+  "license": "Apache2.0",
+  "private": false,
+  "scripts": {
+    "start": "nodemon -w ./ ./http01.js localhost 5000"
+  },
+  "dependencies": {
+    "rxjs": "^7.5.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

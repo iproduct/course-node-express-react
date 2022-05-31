@@ -1,0 +1,21 @@
+GET http://localhost:3000/api/posts HTTP/1.1
+Accept: "application/json"
+
+###
+
+POST http://localhost:3000/api/posts HTTP/1.1
+content-type: application/json
+
+{
+    "title": "SSE API",
+    "content": "SSE API is easy to use Promise-based web service client API.",
+    "authorId": 1,
+    "tags": [
+        "fetch",
+        "api",
+        "http",
+        "client"
+    ],
+    "imageUrl": "https://www.publicdomainpictures.net/pictures/220000/velka/binare-kontakte.jpg",
+    "active": true
+}
