@@ -6,7 +6,7 @@ MongoClient.connect(dbUrl, {
     useUnifiedTopology: true
 }, function (err, connection) {
     if (err) throw err;
-    const db = connection.db('webstore4');
+    const db = connection.db('webstore_fmi_2022');
     const product1 = {
         "name": "Best Headphones",
         "price": 16.5,
