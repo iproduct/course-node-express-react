@@ -66,7 +66,7 @@ router.post('/register', async (req, res) => {
             if (r.result.ok && r.insertedCount === 1) {
                 delete user._id;
                 user.id = r.insertedId;
-                console.log(`Unable to update post: ${user.id}: ${user.firstName} ${user.lastName}`);
+                console.log(`Successfully created user: ${user.id}: ${user.firstName} ${user.lastName}`);
                 res.status(201).location(`/users/${user.id}`).json(user);
             } else {
                 sendErrorResponse(req, res, 500, `Unable to create user: ${user.id}: ${user.firstName} ${user.lastName}`);
