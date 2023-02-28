@@ -73,7 +73,7 @@
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "debug": "^3.1.0",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "indicative": "^5.0.5",
     "jquery": "^3.3.1",
     "morgan": "^1.9.0",
