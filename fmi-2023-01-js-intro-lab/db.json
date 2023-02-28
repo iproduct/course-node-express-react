@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "lite-server",
+      "author": "trayan"
+    },
+    {
+      "id": 3,
+      "title": "intro to js",
+      "author": "trayan"
+    },
+    {
+      "title": "New in ECMAScript!!!",
+      "author": "Trayan",
+      "id": 4
+    },
+    {
+      "title": "New in ECMAScript!!!",
+      "author": "Trayan",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

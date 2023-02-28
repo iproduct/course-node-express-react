@@ -23,12 +23,12 @@ console.log('Value: ' + pl1.position);
 pl1.position -= 10;
 console.log('Value: ' + pl1.position);
 
-var log = pl1.getLog();
+var log = pl1.getLog();;
 console.log(JSON.stringify(log));
 
-// for (var key in pl1) {
-//   if (pl1.hasOwnProperty(key)) {
-//     var val = pl1[key];
-//     console.log(key, '->', val);
-//   }
-// }
+for (var key in pl1) {
+  if (pl1.hasOwnProperty(key)) {
+    var val = pl1[key];
+    console.log(key, '->', val);
+  }
+}

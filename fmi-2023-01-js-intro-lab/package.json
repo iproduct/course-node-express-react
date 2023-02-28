@@ -1,0 +1,17 @@
+{
+  "name": "fmi-2023-01-js-intro-lab",
+  "version": "1.0.0",
+  "description": "JS intro lab",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/course-node-express-react",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "lite-server",
+    "api": "json-server --port 9000 --routes routes.json db.json"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.2",
+    "lite-server": "^2.6.1"
+  }
+}
