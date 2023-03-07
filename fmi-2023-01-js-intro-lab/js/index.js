@@ -14,6 +14,11 @@ function updatePosts(newPosts) {
     }
 }
 
+function clearForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+}
+
 async function addPost(event) {
     event.preventDefault();
     const title = document.getElementById('title').value;
@@ -28,8 +33,9 @@ async function addPost(event) {
     const post = await resp.json();
     if (resp.status === 201) {
         newPosts = posts.concat(post);
+        updatePosts(newPosts);
+        clearForm();
     }
-    updatePosts(newPosts);
 }
 
 window.addEventListener('load', init);
