@@ -2,13 +2,16 @@ let posts = [];
 
 async function init() {
     const resp = await fetch('http://localhost:9000/api/posts');
-    posts = await resp.json();
-    showPosts();
+    newPosts = await resp.json();
+    updatePosts(newPosts);
 }
 
-function showPosts() {
-    const items = posts.reduce((acc, post) => acc + `<li>${post.id}: ${post.title} -- by ${post.author}</li>\n`, '');
-    document.getElementById('results').innerHTML = `<ul>${items}</ul>`;
+function updatePosts(newPosts) {
+    if (posts !== newPosts) {
+        posts = newPosts;
+        const items = posts.reduce((acc, post) => acc + `<li>${post.id}: ${post.title} -- by ${post.author}</li>\n`, '');
+        document.getElementById('results').innerHTML = `<ul>${items}</ul>`;
+    }
 }
 
 async function addPost(event) {
@@ -24,9 +27,9 @@ async function addPost(event) {
     });
     const post = await resp.json();
     if (resp.status === 201) {
-        posts = posts.concat(post);
+        newPosts = posts.concat(post);
     }
-    showPosts();
+    updatePosts(newPosts);
 }
 
 window.addEventListener('load', init);
