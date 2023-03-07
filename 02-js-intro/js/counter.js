@@ -11,7 +11,7 @@ var counter = function countWithClosure() { //IIFE - Module pattern
       return --count;
     }
   };
-}();
+}(); // IIFE
 
 console.log(counter.increment());
 console.log(counter._inc)

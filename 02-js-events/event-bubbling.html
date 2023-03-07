@@ -3,27 +3,28 @@
 
 <head>
     <link type="text/css" rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="external">external
+        <div class="middle">middle
+            <div class="internal">internal
+            </div>
+        </div>
+    </div>
     <script>
         function handler(event) {
             var elem = event.currentTarget;
-            console.log(elem.className);
-            // event.stopPropagation();
+            console.log(`Current Target: ${elem.className}, Target: ${event.target.className}`);
+            event.stopPropagation();
             elem.style.background = "#ffff00";
             alert(elem.className);
             elem.style.background = '';
         }
+        document.querySelectorAll("div").forEach(
+            elem => elem.addEventListener('click', handler)
+        );
     </script>
-
-</head>
-
-<body>
-    <div class="external" onclick="handler(event)">external
-        <div class="middle" onclick="handler(event)">middle
-            <div class="internal" onclick="handler(event)">internal
-            </div>
-        </div>
-    </div>
-
 </body>
 
 </html>
