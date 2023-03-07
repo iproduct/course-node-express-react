@@ -1,0 +1,29 @@
+{
+  "name": "js-intro-01-lab",
+  "version": "1.0.0",
+  "description": "js intro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-javascript.git"
+  },
+  "keywords": [
+    "intro",
+    "javascript",
+    "npm",
+    "eslint"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-javascript/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-javascript#readme",
+  "devDependencies": {
+    "eslint": "^3.12.0",
+    "eslint-plugin-react": "^6.8.0"
+  }
+}
