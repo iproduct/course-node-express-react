@@ -1,17 +1,17 @@
-var fibonacci = {
+var fibonacci = (numValues) => ({
   [Symbol.iterator]: function*() {
     var pre = 0,
       cur = 1;
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < numValues; i++) {
       var temp = pre;
       pre = cur;
       cur += temp;
-      if (cur < 1000) yield cur;
+      yield [i, cur];
     }
   }
-};
+});
 
-for (var n of fibonacci) {
+for (var [i, n] of fibonacci(30)) {
   // truncate the sequence at 1000
-  console.log(n);
+  console.log(i, '->', n);
 }

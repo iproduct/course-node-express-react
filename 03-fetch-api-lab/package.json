@@ -1,0 +1,15 @@
+{
+  "name": "03-fetch-api-lab",
+  "version": "1.0.0",
+  "description": "Fetch API demo",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/react-typescript-academy-2022.git",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

@@ -1,7 +1,11 @@
 let posts = [];
 
 async function init() {
-    const resp = await fetch('http://localhost:9000/api/posts');
+    const resp = await fetch('http://localhost:9000/api/posts', {
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
     newPosts = await resp.json();
     updatePosts(newPosts);
 }

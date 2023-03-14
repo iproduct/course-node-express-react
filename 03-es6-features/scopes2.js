@@ -10,7 +10,7 @@
 //     return function () {
 //       console.log(x);
 //     }
-//   }(i), i * 1000);
+//   }(i), i * 1000); // IIFE
 // }
 
 for (let i = 0; i < 10; i++) {
