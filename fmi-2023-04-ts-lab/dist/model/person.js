@@ -6,7 +6,7 @@ export class NaturalPerson {
         this.email = email;
         this.contact = contact;
     }
-    toString() {
+    greet() {
         const contact = this.contact ? ': ' + this.contact.toString() : '';
         return `${this.firstName} ${this.lastName} [${this.email}]${contact}`;
     }
