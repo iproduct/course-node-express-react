@@ -5,6 +5,7 @@ export interface Person extends Identifiable {
     lastName: string;
     email: string;
     contact?: Contact;
+    toString(): string;
 }
 
 export interface Contact {
@@ -23,4 +24,8 @@ export class NaturalPerson implements Person {
         public contact?: Contact | undefined
     ) { }
 
+    toString(): string {
+        const contact = this.contact ? ': ' + this.contact.toString() : '';
+        return `${this.firstName} ${this.lastName} [${this.email}]${contact}`;
+    }
 }
