@@ -1,0 +1,26 @@
+{
+  "name": "05-ts-blogs-rest",
+  "version": "1.0.0",
+  "description": "TypeScript intro",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/react-typescript-academy-2022.git",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "concurrently --kill-others \"tsc -w\" \"lite-server\"",
+    "api": "json-server db.json --port 4000 --routes routes.json"
+  },
+  "dependencies": {
+    "typescript": "^4.7.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "concurrently": "^7.3.0",
+    "eslint": "^8.20.0",
+    "json-server": "^0.17.0",
+    "lite-server": "^2.6.1"
+  }
+}

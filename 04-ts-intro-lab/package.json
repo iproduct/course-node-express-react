@@ -1,0 +1,22 @@
+{
+  "name": "04-ts-intro-lab",
+  "version": "1.0.0",
+  "description": "TypeScript intro lab",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/react-typescript-academy-2022.git",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "concurrently --kill-others \"tsc -w\" \"lite-server\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "concurrently": "^7.5.0",
+    "eslint": "^8.27.0",
+    "lite-server": "^2.6.1",
+    "typescript": "^4.8.4"
+  }
+}
+
+

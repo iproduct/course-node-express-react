@@ -1,9 +1,9 @@
 
-// for (var i = 0; i < 10; i++) {
-//   setTimeout(function() {
-//     console.log(i);
-//   }, i * 1000);
-// }
+for (let i = 0; i < 10; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, i * 1000);
+}
 
 // for (var i = 0; i < 10; i++) {
 //   setTimeout(function (x) {
@@ -13,8 +13,8 @@
 //   }(i), i * 1000); // IIFE
 // }
 
-for (let i = 0; i < 10; i++) {
-  setTimeout(function() {
-    console.log(i)
-  }, i * 1000);
-}
+// for (let i = 0; i < 10; i++) {
+//   setTimeout(function() {
+//     console.log(i)
+//   }, i * 1000);
+// }

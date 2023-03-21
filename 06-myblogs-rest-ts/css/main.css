@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#errors div {
+    padding: 5px 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: rgb(252, 230, 230);
+    color: red;
+    text-align: center;
+}
+
+.card {
+    margin: 15px;
+}
+
+div.card-image {
+    height: 300px;
+    padding: 20px;
+}
+
+.card-image image {
+    width: 90%;
+}

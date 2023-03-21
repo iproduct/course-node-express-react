@@ -1,0 +1,1 @@
+{"version":3,"file":"indexed-types.js","sourceRoot":"","sources":["../src/indexed-types.ts"],"names":[],"mappings":"AAQA,iBAAiB;AACjB,MAAM,CAAC,MAAM,OAAO,GAAG;IACnB,EAAE,IAAI,EAAE,OAAO,EAAE,GAAG,EAAE,EAAE,EAAE;IAC1B,EAAE,IAAI,EAAE,KAAK,EAAE,GAAG,EAAE,EAAE,EAAE;IACxB,EAAE,IAAI,EAAE,KAAK,EAAE,GAAG,EAAE,EAAE,EAAE;CAC3B,CAAC;AASF,GAAG"}
