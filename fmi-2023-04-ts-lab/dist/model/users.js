@@ -18,7 +18,21 @@ export class UserBase extends NaturalPerson {
         this.contact = contact;
     }
     get greeting() {
-        return `User: ${this.username} [${super.greeting}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`;
+        return `ID: ${this.id}, User: ${this.username} [${super.greeting}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`;
+    }
+}
+export class UserCreateDto {
+    constructor(username, password, roles, firstName, lastName, email, contact) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contact = contact;
+    }
+    get greeting() {
+        return `User: ${this.username} [${this.firstName} ${this.lastName}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`;
     }
 }
 //# sourceMappingURL=users.js.map

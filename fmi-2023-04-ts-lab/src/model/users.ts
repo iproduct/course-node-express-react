@@ -19,11 +19,26 @@ export class UserBase extends NaturalPerson implements User {
         public firstName: string,
         public lastName: string,
         public email: string,
-        public contact?: Contact | undefined
+        public contact?: Contact
     ) { 
         super(id, firstName, lastName, email, contact);
     }
     get greeting() {
-        return `User: ${this.username} [${super.greeting}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`; 
+        return `ID: ${this.id}, User: ${this.username} [${super.greeting}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`; 
+    }
+}
+
+export class UserCreateDto {
+    constructor(
+        public username: string,
+        public password: string,
+        public roles: Role[],
+        public firstName: string,
+        public lastName: string,
+        public email: string,
+        public contact?: Contact 
+    ){}
+    get greeting() {
+        return `User: ${this.username} [${this.firstName} ${this.lastName}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`; 
     }
 }
