@@ -1,5 +1,5 @@
 import { NaturalPerson } from "./person.js";
-var Role;
+export var Role;
 (function (Role) {
     Role[Role["Reader"] = 1] = "Reader";
     Role[Role["Author"] = 2] = "Author";
@@ -18,7 +18,7 @@ export class UserBase extends NaturalPerson {
         this.contact = contact;
     }
     get greeting() {
-        return `User: ${this.username} [${super.greeting}] in Roles: ${this.roles.join(', ')}`;
+        return `User: ${this.username} [${super.greeting}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`;
     }
 }
 //# sourceMappingURL=users.js.map

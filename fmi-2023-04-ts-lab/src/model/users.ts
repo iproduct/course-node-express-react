@@ -6,7 +6,7 @@ export interface User extends Person {
     roles: Role[];
 }
 
-enum Role {
+export enum Role {
     Reader = 1, Author, Admin
 }
 
@@ -24,6 +24,6 @@ export class UserBase extends NaturalPerson implements User {
         super(id, firstName, lastName, email, contact);
     }
     get greeting() {
-        return `User: ${this.username} [${super.greeting}] in Roles: ${this.roles.join(', ')}`; 
+        return `User: ${this.username} [${super.greeting}] in roles: [${this.roles.map(r => Role[r]).join(', ')}]`; 
     }
 }
