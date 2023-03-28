@@ -8,5 +8,11 @@ function login(user) {
 }
 const p1 = new NaturalPerson(1, 'Trayan', 'Iliev', 'trayan@gmail.com');
 const u1 = new UserBase(1, 'trayan', 'trayan123', [Role.Reader, Role.Author, Role.Admin], 'Trayan', 'Iliev', 'trayan@gmail.com');
-document.getElementById('demo').innerHTML = greet(p1) + '<br>' + greet(u1);
+const demoElem = document.getElementById('demo');
+if (demoElem) {
+    demoElem.innerHTML = greet(p1) + '<br>' + greet(u1);
+}
+else {
+    console.log("Eror: Demo <div> does not exist!");
+}
 //# sourceMappingURL=greeter.js.map
