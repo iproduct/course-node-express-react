@@ -5,7 +5,7 @@ export interface Person extends Identifiable {
     lastName: string;
     email: string;
     contact?: Contact;
-    greet: () => string;
+    readonly greeting: string;
 }
 
 export interface Contact {
@@ -15,17 +15,17 @@ export interface Contact {
     phone?: string;
 }
 
-export class NaturalPerson implements Person {
+export class NaturalPerson implements Person{
     constructor(
         public id: number,
         public firstName: string,
         public lastName: string,
         public email: string,
-        public contact?: Contact | undefined
+        public contact?: Contact
     ) { }
 
-    greet(): string {
+    get greeting(): string {
         const contact = this.contact ? ': ' + this.contact.toString() : '';
-        return `${this.firstName} ${this.lastName} [${this.email}]${contact}`;
+        return `${this.firstName} ${this.lastName} - ${this.email}${contact}`;
     }
 }

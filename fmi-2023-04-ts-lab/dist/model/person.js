@@ -6,9 +6,9 @@ export class NaturalPerson {
         this.email = email;
         this.contact = contact;
     }
-    greet() {
+    get greeting() {
         const contact = this.contact ? ': ' + this.contact.toString() : '';
-        return `${this.firstName} ${this.lastName} [${this.email}]${contact}`;
+        return `${this.firstName} ${this.lastName} - ${this.email}${contact}`;
     }
 }
 //# sourceMappingURL=person.js.map
