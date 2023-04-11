@@ -9,7 +9,7 @@ type Props = {
 const PostsList = ({ posts }: Props) => {
     return (
         <div className='PostsList-posts'>
-            {posts.map(post => (<PostItem post={post}/>))}
+            {posts.map(post => (<PostItem key={post.id} post={post}/>))}
         </div>
     )
 }

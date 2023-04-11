@@ -1,0 +1,14 @@
+.PostItem-wrapper {
+    padding: 5px;
+}
+
+.PostItem-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 380px;
+}
+
+.PostItem-card>.card-image>img {
+    max-height: 270px;
+}
