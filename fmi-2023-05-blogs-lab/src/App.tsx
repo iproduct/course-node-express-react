@@ -10,8 +10,7 @@ const App = (props: Props) => {
     const [posts, setPosts] = useState<Post[]>([]);
     const [showForm, setShowForm] = useState<boolean>(false);
     useEffect(() => {
-        var elems = document.querySelectorAll('.sidenav');
-        M.Sidenav.init(elems, {});
+        M.AutoInit();
 
         PostsClientService.findAll()
             .then(allPosts => {
@@ -19,7 +18,7 @@ const App = (props: Props) => {
                 setPosts(allPosts);
             })
             .catch(err => console.log(err));
-    }, [])
+    }, []);
     return (
         <>
             <nav className="light-blue lighten-1" role="navigation">
@@ -42,7 +41,7 @@ const App = (props: Props) => {
                         <h5 className="header col s12 light">React Demo using TypeScript and Redux</h5>
                     </div>
                     <div className="row center">
-                        <button id="download-button" className="btn-large range"
+                        <button id="download-button" className="btn-large btn-large waves-effect waves-light orange"
                             onClick={() => setShowForm(show => !show)}>
                             Add New Post
                         </button>
