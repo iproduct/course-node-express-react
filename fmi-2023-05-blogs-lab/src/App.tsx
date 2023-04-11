@@ -38,7 +38,6 @@ const App = (props: Props) => {
                 </div>
             </div>
 
-
             <div className="container">
                 <div className="section">
 

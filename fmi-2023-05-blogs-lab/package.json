@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "api": "json-server db.json --routes routes.json --port 9000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@types/materialize-css": "^1.0.11"
+    "@types/materialize-css": "^1.0.11",
+    "json-server": "^0.17.3"
   }
 }
