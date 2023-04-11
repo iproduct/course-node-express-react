@@ -8,7 +8,7 @@ type Props = {
 
 const PostItem = ({ post }: Props) => {
     return (
-        <div className='PostItem-wrapper col s12 m4'>
+        <div className='PostItem-wrapper col s12 m6 l4'>
             <div className="PostItem-card card">
                 <div className="card-image waves-effect waves-block waves-light">
                     <img className="activator" src={post.imageUrl} alt={post.title} />

@@ -38,7 +38,7 @@ const App = (props: Props) => {
                     <br /><br />
                     <h1 className="header center orange-text">My Blogs</h1>
                     <div className="row center">
-                        <h5 className="header col s12 light">React Demo using TypeScript and Redux</h5>
+                        <h5 className="header col s12 light">React Demo using TypeScript and React Router</h5>
                     </div>
                     <div className="row center">
                         <button id="download-button" className="btn-large btn-large waves-effect waves-light orange"
