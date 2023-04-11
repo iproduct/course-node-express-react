@@ -2,7 +2,7 @@ import { IdType, Identifiable } from "../common-types";
 
 export const BASE_API_URL = 'http://localhost:9000/api';
 
-export interface BlogsApi<T extends Identifiable> {
+export interface Api<T extends Identifiable> {
     findAll():  Promise<T[]>;
     findById(id: IdType): Promise<T>;
     create(entity: Omit<T, 'id'>): Promise<T>;
@@ -10,7 +10,7 @@ export interface BlogsApi<T extends Identifiable> {
     deleteById(id: IdType): Promise<T>;
 }
 
-export class BlogsApiClient<T extends Identifiable> implements BlogsApi<T>{
+export class ApiClient<T extends Identifiable> implements Api<T>{
     constructor(private collection: string) {}
     findAll(): Promise<T[]> {
         return this.handleRequest<T[]>(`${BASE_API_URL}/${this.collection}`);
@@ -46,11 +46,10 @@ export class BlogsApiClient<T extends Identifiable> implements BlogsApi<T>{
     private async handleRequest<D>(url: string, options?: RequestInit) {
         try {
             const resp = await fetch(url, options);
-            const data = await resp.json;
             if(resp.status >= 400) {
-                return Promise.reject(data);
+                return Promise.reject(resp.body);
             }
-            return data as D;
+            return resp.json() as D;
         } catch(err) {
             return Promise.reject(err);
         }
