@@ -1,0 +1,112 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Json Server",
+      "content": "Install JSON Server npm: install -g json-server.  Create a db.json file with some data. Start JSON Server: json-server --watch db.json",
+      "imageUrl": "https://dz2cdn1.dzone.com/storage/temp/8746383-json-server.png",
+      "authorId": 1,
+      "tags": [
+        "json-server",
+        "backend",
+        "rest",
+        "api"
+      ],
+      "likeCounter": 0
+    },
+    {
+      "title": "ReactJS is Easy",
+      "content": "Component-Based Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+      "authorId": 1,
+      "tags": [
+        "react",
+        "spa",
+        "intro",
+        "frontend"
+      ],
+      "likeCounter": 0,
+      "id": 2
+    },
+    {
+      "title": "ReactJS Goes Functional",
+      "content": "Component-Based Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM. Component-Based Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+      "authorId": 1,
+      "tags": [
+        "react",
+        "spa",
+        "functional programming",
+        "frontend"
+      ],
+      "likeCounter": 0,
+      "id": 3
+    },
+    {
+      "title": "TypeScript Components",
+      "content": "Component-oriented development is much easier using Typescript.",
+      "imageUrl": "https://logospng.org/wp-content/uploads/typescript.png",
+      "authorId": 1,
+      "tags": [
+        "typescript",
+        "components",
+        "frontend"
+      ],
+      "likeCounter": 0,
+      "id": 4
+    },
+    {
+      "title": "New Post",
+      "content": "New post content ...",
+      "imageUrl": "http://doctorakil.com/wp-content/uploads/2018/01/coffee-940x600.jpg",
+      "tags": [
+        "coffee",
+        "script"
+      ],
+      "id": 5
+    },
+    {
+      "title": "Mission to Mars",
+      "content": "Mars is near ...",
+      "imageUrl": "https://www.publicdomainpictures.net/pictures/250000/velka/mars-1515656849bmH.jpg",
+      "tags": [
+        "mars",
+        "mission",
+        "space"
+      ],
+      "id": 6
+    },
+    {
+      "title": "New Post",
+      "content": "New Post content here ...",
+      "imageUrl": "https://avatars.githubusercontent.com/u/8014435?v=4",
+      "authorId": 1,
+      "tags": [
+        "new",
+        "post content"
+      ],
+      "likeCounter": 0,
+      "status": 2,
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1,
+      "authorId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Default",
+      "lastName": "Admin",
+      "username": "admin",
+      "password": "admin123",
+      "role": 2,
+      "imageUrl": "https://avatars.githubusercontent.com/u/8014435?v=4"
+    }
+  ]
+}
