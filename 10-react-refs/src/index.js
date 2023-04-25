@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AppFunction from './AppFunction';
 // import { RenderProp } from './RenderProp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppFunction />
   </React.StrictMode>,
   document.getElementById('root')
 );

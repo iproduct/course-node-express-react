@@ -7,7 +7,7 @@ interface AppProps {
 
 export function AppFunction(props: AppProps) {
     const [count, setCount] = useState(0);
-    const intervalRef: MutableRefObject<NodeJS.Timer | undefined> = useRef(undefined);
+    const intervalRef: MutableRefObject<NodeJS.Timer | undefined> = useRef();
     const incrementCount = useCallback(
         () => {
             setCount(oldCount => oldCount + 1)

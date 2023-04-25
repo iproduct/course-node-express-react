@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { EffectCallback, Fragment, useEffect, useState } from 'react';
 import M from 'materialize-css';
 import PostsList from './components/PostsList';
 import { PostsClientService } from './services/posts-service';
@@ -9,16 +9,28 @@ type Props = {}
 const App = (props: Props) => {
     const [posts, setPosts] = useState<Post[]>([]);
     const [showForm, setShowForm] = useState<boolean>(false);
-    useEffect(() => {
-        M.AutoInit();
-
-        PostsClientService.findAll()
-            .then(allPosts => {
+    useEffect(() => { // using asinc/await
+        (async () => {
+            M.AutoInit();
+            try {
+                const allPosts = await PostsClientService.findAll()
                 console.log(allPosts);
                 setPosts(allPosts);
-            })
-            .catch(err => console.log(err));
+            } catch (err) {
+                console.log(err)
+            }
+        })(); // IIFE
     }, []);
+    // useEffect(() => { // using Promise
+    //     M.AutoInit();
+
+    //     PostsClientService.findAll()
+    //         .then(allPosts => {
+    //             console.log(allPosts);
+    //             setPosts(allPosts);
+    //         })
+    //         .catch(err => console.log(err));
+    // }, []);
     return (
         <>
             <nav className="light-blue lighten-1" role="navigation">
