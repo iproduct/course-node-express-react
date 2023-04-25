@@ -1,6 +1,6 @@
-import { ForwardedRef, forwardRef, ReactNode } from "react";
+import { Children, ForwardedRef, forwardRef, ReactElement, ReactNode } from "react";
 
-function VideoPlayer(props: { children?: ReactNode }, videoRef: ForwardedRef<HTMLVideoElement>) {
+function VideoPlayer({children}: {children?: ReactNode}, videoRef: ForwardedRef<HTMLVideoElement>) {
     return (
         <>
             <video
@@ -8,7 +8,11 @@ function VideoPlayer(props: { children?: ReactNode }, videoRef: ForwardedRef<HTM
                 controls
                 src={"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
             />
-            {props.children}
+            {children}
+            {/* Children count: {Children.count(children)}
+            {Children.toArray(children)
+                .filter(elem => elem && (elem as ReactElement).type && (elem as ReactElement).type === 'button')
+            } */}
         </>
     );
 }

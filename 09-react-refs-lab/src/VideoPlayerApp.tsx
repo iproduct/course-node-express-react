@@ -16,8 +16,10 @@ export default function VideoPlayerApp() {
     <div className="App">
       <header className="App-header">
         <VideoPlayer ref={videoRef}>
+          {/* Hi I'm custom Video Player */}
           <button onClick={handlePlay}>Play</button>
           <button onClick={handlePause}>Pause</button>
+          {/* Hi I'm custom Video Player */}
         </VideoPlayer>
       </header>
     </div>
