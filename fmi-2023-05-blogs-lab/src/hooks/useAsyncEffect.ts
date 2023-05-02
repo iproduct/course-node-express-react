@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
 
-type AsyncEffect<V> = (isMounted: () => boolean) => Promise<V>;
+type AsyncEffect<V> = (isMounted?: () => boolean) => Promise<V>;
 type Destructor<V> = (prevResult: V) => void;
 
-export default function useAsyncEffect<V>(effect: AsyncEffect<V>, destroy: Destructor<V>, inputs: any) {
-    var hasDestroy = typeof destroy === 'function';
-
+export default function useAsyncEffect<V>(effect: AsyncEffect<V>, inputs?: ReadonlyArray<unknown>, destroy?: Destructor<V>) {
     useEffect(function () {
         let result: V;
         let mounted = true;
@@ -20,9 +18,10 @@ export default function useAsyncEffect<V>(effect: AsyncEffect<V>, destroy: Destr
         return function () {
             mounted = false;
 
-            if (hasDestroy) {
+            if (destroy) {
                 destroy(result);
             }
         };
-    }, hasDestroy ? inputs : destroy);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, inputs);
 }

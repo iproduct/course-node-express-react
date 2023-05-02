@@ -4,14 +4,14 @@ import PostsList from './components/PostsList';
 import { PostsClientService } from './services/posts-service';
 import { Post } from './model/posts';
 import useEffectOnMount from './hooks/useEffectOnMount';
+import useAsyncEffect from './hooks/useAsyncEffect';
 
 type Props = {}
 
 const App = (props: Props) => {
     const [posts, setPosts] = useState<Post[]>([]);
     const [showForm, setShowForm] = useState<boolean>(false);
-    useEffectOnMount(() => { // using asinc/await
-        (async () => {
+    useAsyncEffect(async () => {
             console.log("Invoking custom hook callback.")
             M.AutoInit();
             try {
@@ -21,8 +21,7 @@ const App = (props: Props) => {
             } catch (err) {
                 console.log(err)
             }
-        })(); // IIFE
-    });
+        });
     // useEffect(() => { // using Promise
     //     M.AutoInit();
 
