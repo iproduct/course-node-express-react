@@ -5,6 +5,7 @@ import { PostsClientService } from './services/posts-service';
 import { Post } from './model/posts';
 import useEffectOnMount from './hooks/useEffectOnMount';
 import useAsyncEffect from './hooks/useAsyncEffect';
+import PostForm from './components/PostForm';
 
 type Props = {}
 
@@ -67,9 +68,7 @@ const App = (props: Props) => {
             <div className="container">
                 {showForm && (
                     <div className="section">
-                        <div className="row">
-                            <h2>Add Post Form</h2>
-                        </div>
+                        <PostForm />
                     </div>
                 )}
 
