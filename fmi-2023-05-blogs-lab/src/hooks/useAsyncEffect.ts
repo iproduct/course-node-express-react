@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 type AsyncEffect<V> = (isMounted?: () => boolean) => Promise<V>;
-type Destructor<V> = (prevResult: V) => void;
+type Destructor<V> = (prevResult?: V) => void;
 
 export default function useAsyncEffect<V>(effect: AsyncEffect<V>, inputs?: ReadonlyArray<unknown>, destroy?: Destructor<V>) {
     useEffect(function () {

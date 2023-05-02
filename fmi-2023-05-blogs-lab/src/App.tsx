@@ -18,10 +18,11 @@ const App = (props: Props) => {
                 const allPosts = await PostsClientService.findAll()
                 console.log(allPosts);
                 setPosts(allPosts);
+                return allPosts;
             } catch (err) {
                 console.log(err)
             }
-        });
+        }, [], (oldPosts => console.log(`Cleaning ${oldPosts ? oldPosts.length : 0 } old posts.`)));
     // useEffect(() => { // using Promise
     //     M.AutoInit();
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import CountdownApp from './CountdownApp';
+// import CountdownApp from './CountdownApp';
 // import VideoPlayerApp from './VideoPlayerApp';
 import UncontrolledFormClass from './components/UncontrolledFormClass';
 import UncontrolledFormApp from './UncontrolledFormApp';
@@ -13,10 +13,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <VideoPlayerApp /> */}
     {/* <UncontrolledFormApp /> */}
-    <CountdownApp />
+    {/* <CountdownApp /> */}
   </React.StrictMode>
 );
 
