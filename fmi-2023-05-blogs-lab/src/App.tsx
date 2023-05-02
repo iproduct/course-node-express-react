@@ -2,7 +2,7 @@ import React, { EffectCallback, Fragment, useEffect, useState } from 'react';
 import M from 'materialize-css';
 import PostsList from './components/PostsList';
 import { PostsClientService } from './services/posts-service';
-import { Post } from './model/posts';
+import { Post, PostCreateDto } from './model/posts';
 import useEffectOnMount from './hooks/useEffectOnMount';
 import useAsyncEffect from './hooks/useAsyncEffect';
 import PostForm from './components/PostForm';
@@ -24,16 +24,12 @@ const App = (props: Props) => {
                 console.log(err)
             }
         }, [], (oldPosts => console.log(`Cleaning ${oldPosts ? oldPosts.length : 0 } old posts.`)));
-    // useEffect(() => { // using Promise
-    //     M.AutoInit();
 
-    //     PostsClientService.findAll()
-    //         .then(allPosts => {
-    //             console.log(allPosts);
-    //             setPosts(allPosts);
-    //         })
-    //         .catch(err => console.log(err));
-    // }, []);
+    async function addPost(post: PostCreateDto) {
+        const created = await PostsClientService.create(post);
+        setPosts(posts.concat(created));
+    }
+
     return (
         <>
             <nav className="light-blue lighten-1" role="navigation">
@@ -68,7 +64,7 @@ const App = (props: Props) => {
             <div className="container">
                 {showForm && (
                     <div className="section">
-                        <PostForm />
+                        <PostForm onSubmit={addPost}/>
                     </div>
                 )}
 

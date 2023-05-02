@@ -1,0 +1,12 @@
+.PostForm-button-panel{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+}
+
+.PostForm-button-panel button {
+    margin: 10px;
+    display: flex;
+    min-width: 130px;
+    justify-content: center;
+}
