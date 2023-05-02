@@ -3,14 +3,16 @@ import M from 'materialize-css';
 import PostsList from './components/PostsList';
 import { PostsClientService } from './services/posts-service';
 import { Post } from './model/posts';
+import useEffectOnMount from './hooks/useEffectOnMount';
 
 type Props = {}
 
 const App = (props: Props) => {
     const [posts, setPosts] = useState<Post[]>([]);
     const [showForm, setShowForm] = useState<boolean>(false);
-    useEffect(() => { // using asinc/await
+    useEffectOnMount(() => { // using asinc/await
         (async () => {
+            console.log("Invoking custom hook callback.")
             M.AutoInit();
             try {
                 const allPosts = await PostsClientService.findAll()
@@ -20,7 +22,7 @@ const App = (props: Props) => {
                 console.log(err)
             }
         })(); // IIFE
-    }, []);
+    });
     // useEffect(() => { // using Promise
     //     M.AutoInit();
 
