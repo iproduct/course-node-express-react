@@ -1,0 +1,197 @@
+{
+  "posts": [
+    {
+      "title": "json-server",
+      "content": "JSON Server is easy ...",
+      "tags": [
+        "json",
+        "server",
+        "rest",
+        "api"
+      ],
+      "imageUrl": "https://dz2cdn1.dzone.com/storage/temp/8746383-json-server.png",
+      "status": 1,
+      "authorId": 1,
+      "id": 1,
+      "favorite": true
+    },
+    {
+      "title": "Classes in ES6+ and TypeScript",
+      "content": "Traditional JavaScript uses functions and prototype-based inheritance to build up reusable components, but this may feel a bit awkward to programmers more comfortable with an object-oriented approach, where classes inherit functionality and objects are built from these classes. Starting with ECMAScript 2015, also known as ECMAScript 6, JavaScript programmers can build their applications using this object-oriented class-based approach. In TypeScript, we allow developers to use these techniques now, and compile them down to JavaScript that works across all major browsers and platforms, without having to wait for the next version of JavaScript.",
+      "tags": [
+        "javascript",
+        "es6",
+        "class"
+      ],
+      "imageUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Iz3e8EkG--/c_imagga_scale,f_auto,fl_progressive,h_1080,q_auto,w_1080/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/azhvn8vuqrofsidykaas.jpg",
+      "status": 1,
+      "authorId": 1,
+      "id": 2,
+      "favorite": true
+    },
+    {
+      "id": 3,
+      "title": "REST Client Super Advanced",
+      "content": "REST Client is relatively easy ...",
+      "tags": [
+        "rest",
+        "rest-client",
+        "http",
+        "easy"
+      ],
+      "imageUrl": "https://humao.gallerycdn.vsassets.io/extensions/humao/rest-client/0.25.0/1655829100763/Microsoft.VisualStudio.Services.Icons.Default",
+      "status": 1,
+      "authorId": 1
+    },
+    {
+      "title": "Coffe Script",
+      "content": "Do you like coffee script ...",
+      "tags": [
+        "coffee",
+        "script"
+      ],
+      "imageUrl": "http://doctorakil.com/wp-content/uploads/2018/01/coffee-940x600.jpg",
+      "status": 1,
+      "authorId": 1,
+      "id": 23
+    },
+    {
+      "title": "Blogs API Tutorial in TypeScript and Materialize",
+      "content": "This tutorial demonstrates how to implement SPA using pure TypeScript without any frameworks.\nMore text here ...\nAnd more ...\nSome more text ...\nSome more text ...\nSome more text ...",
+      "tags": [
+        "typescript",
+        "demo"
+      ],
+      "imageUrl": "https://www.publicdomainpictures.net/pictures/40000/velka/robin-bird.jpg",
+      "status": 1,
+      "authorId": 1,
+      "id": 24
+    },
+    {
+      "authorId": 1,
+      "imageUrl": "https://www.publicdomainpictures.net/pictures/260000/velka/bitcoin-money-decentralized.jpg",
+      "tags": [
+        "dwewewed",
+        "dedwewdewew",
+        "cewcedwcew"
+      ],
+      "content": "wedewewdewdewdewdewdewdewdewdewd",
+      "title": "dewqdweq",
+      "id": 29,
+      "favorite": true
+    },
+    {
+      "authorId": 1,
+      "imageUrl": "https://react-hook-form.com/static/reduxform.min-f62ec60fb88f0bcaa8940334ce89eea3.png",
+      "tags": [
+        "react",
+        "hook",
+        "form"
+      ],
+      "content": "React Hook Form reduces the amount of code you need to write while removing unnecessary re-renders. Now dive in and explore with the following example",
+      "title": "React Hook Form",
+      "id": 30
+    },
+    {
+      "authorId": 1,
+      "imageUrl": "https://lh3.googleusercontent.com/gP6lhLobKT8STMKp-3AZ1vn1fpF2EEz8kSQdioNdsfHT5lN6Lb4iANEYipRYmJKmee-RoK8BdT50gZ5fmYr4sepyRp4iyM8EB2ek62g9vo0UY8tTi2E=w760-h380",
+      "tags": [
+        "mui",
+        "react"
+      ],
+      "content": "Material UI is an open-source React component library that implements Google's Material Design.  It includes a comprehensive collection of prebuilt components that are ready for use in production right out of the box.  Material UI is beautiful by design and features a suite of customization options that make it easy to implement your own custom design system on top of our components.",
+      "title": "React MUI",
+      "id": 31
+    },
+    {
+      "authorId": 1,
+      "imageUrl": "https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk=",
+      "tags": [
+        "asdsa",
+        "sada",
+        "sdsa"
+      ],
+      "content": "aaaaaaaa bbbbbbbbbbbbbbbbbbb",
+      "title": "aaaaaaa",
+      "id": 32
+    },
+    {
+      "authorId": 1,
+      "status": 2,
+      "imageUrl": "https://img.freepik.com/free-vector/gradient-colored-ui-kit-pack_23-2149188404.jpg",
+      "tags": [
+        "mui",
+        "select",
+        "component"
+      ],
+      "content": "Select components are used for collecting user provided information from a list of options.",
+      "title": "MUI Select Component",
+      "id": 33
+    },
+    {
+      "authorId": 1,
+      "status": 2,
+      "imageUrl": "https://img.freepik.com/free-vector/gradient-colored-ui-kit-pack_23-2149188404.jpg",
+      "tags": [
+        "mui",
+        "select",
+        "component"
+      ],
+      "content": "Select components are used for collecting user provided information from a list of options.",
+      "title": "MUI Select Component",
+      "id": 34
+    },
+    {
+      "authorId": 1,
+      "imageUrl": "https://img.freepik.com/free-vector/user-interface-elements-fitness-workout-mobile-app-fitness-tracker-sport-activity-planner-heart-rate-monitor-gui-templates-unique-neumorphic-ui-ux-design-kit-manage-navigation-components_9209-3324.jpg?w=2000",
+      "tags": [
+        "assd"
+      ],
+      "content": "adassdsasdasasadsadsdsad",
+      "title": "sdsa",
+      "id": 38
+    },
+    {
+      "title": "sadwqsddsadsasad",
+      "content": "sAdsasadsasadsa asdsadasdsa",
+      "tags": [
+        "asdsad",
+        "asdsad",
+        "asd"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1501183007986-d0d080b147f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+      "status": 2,
+      "authorId": 1,
+      "id": 39
+    },
+    {
+      "authorId": 1,
+      "status": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1618822461310-da1be362e30c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2V5Y2hlbGxlc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+      "tags": [
+        "asdsad",
+        "asdasdsad"
+      ],
+      "content": "sdsaddsadasdsadsadsadsadsadsa",
+      "title": "asdZdsasdsadsadsadassa",
+      "id": 40
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Smith",
+      "username": "john",
+      "password": "john123",
+      "role": "ADMIN"
+    }
+  ]
+}

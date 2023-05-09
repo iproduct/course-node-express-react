@@ -1,0 +1,8 @@
+.RootPage-container {
+    padding: 30px;
+}
+
+.RootPage-container .active {
+    color: white;
+    background-color: cornflowerblue;
+}

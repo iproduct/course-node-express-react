@@ -2,7 +2,7 @@ import React, { BaseSyntheticEvent, FormEvent } from 'react'
 import TextInput from './TextInput';
 import { Post, PostCreateDto } from '../model/posts';
 import './PostForm.css';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
@@ -31,7 +31,7 @@ const schema = yup.object({
     imageUrl: yup.string().required().url(),
 }).required();
 
-const PostForm = ({post, onSubmit, onCancel}: Props) => {
+const PostForm = ({ post, onSubmit, onCancel }: Props) => {
     const methods = useForm<FormData>({
         defaultValues: { ...post, tags: post?.tags.join(', ') },
         mode: 'onChange',
@@ -50,7 +50,7 @@ const PostForm = ({post, onSubmit, onCancel}: Props) => {
         // const newPost = { ...data, tags: data.tags.split(/,\s*/), likeCounter: 0 }
         const newPost = { ...data, tags: data.tags.split(/,\s*/).filter(tag => tag.length > 0), authorId: 1, active: true }
         console.log(newPost);
-        onSubmit(newPost);  
+        onSubmit(newPost);
         console.log("RESET to:", post);
         // reset({ ...post, tags: post?.tags.join(', ') });
         reset({ ...post, tags: post?.tags.join(', ') });
@@ -64,12 +64,13 @@ const PostForm = ({post, onSubmit, onCancel}: Props) => {
         reset({ ...post, tags: post?.tags.join(', ') });
     }
     return (
-        <form onSubmit={handleSubmit(onSubmitForm)} onReset={onReset}>
-            <TextInput name="title" control={control} />
-            <TextInput name="tags"  control={control}  />
-            <TextInput name="content"  control={control}  />
-            <TextInput name="imageUrl" label="Image URL"  control={control}  />
-            <div className='PostForm-button-panel'>
+        <FormProvider {...methods} >
+            <form onSubmit={handleSubmit(onSubmitForm)} onReset={onReset}>
+                <TextInput name="title" />
+                <TextInput name="tags" />
+                <TextInput name="content" />
+                <TextInput name="imageUrl" label="Image URL" control={control} />
+                <div className='PostForm-button-panel'>
                     <button className="btn waves-effect waves-light" type="submit" name="submit" disabled={!(isDirty && isValid)}>
                         Submit
                         <i className="material-icons right">send</i>
@@ -78,11 +79,12 @@ const PostForm = ({post, onSubmit, onCancel}: Props) => {
                         <i className="material-icons right">autorenew</i>
                     </button>
                     <button className="btn waves-effect waves-light #ff1744 red accent-3" type="button" name="cancel"
-                        onClick={() => {onCancel();   reset({ ...post, tags: post?.tags.join(', ') }) }}>Cancel
+                        onClick={() => { onCancel(); reset({ ...post, tags: post?.tags.join(', ') }) }}>Cancel
                         <i className="material-icons right">cancel</i>
                     </button>
                 </div>
-        </form>
+            </form>
+        </FormProvider>
     )
 }
 

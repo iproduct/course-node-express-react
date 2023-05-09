@@ -1,0 +1,11 @@
+.PostList {
+   display: flex;
+   flex-flow: row wrap;
+   gap: 20px 20px;
+}
+
+
+.PostList .active {
+   color: white;
+   background-color: cornflowerblue;
+}
