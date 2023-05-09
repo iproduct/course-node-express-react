@@ -1,9 +1,8 @@
-import React, { EffectCallback, Fragment, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import M from 'materialize-css';
 import PostsList from './components/PostsList';
 import { PostsClientService } from './services/posts-service';
 import { Post, PostCreateDto } from './model/posts';
-import useEffectOnMount from './hooks/useEffectOnMount';
 import useAsyncEffect from './hooks/useAsyncEffect';
 import PostForm from './components/PostForm';
 
@@ -64,7 +63,7 @@ const App = (props: Props) => {
             <div className="container">
                 {showForm && (
                     <div className="section">
-                        <PostForm onSubmit={addPost}/>
+                        <PostForm post={new PostCreateDto('', '', 1, [], '')} onSubmit={addPost} onCancel={() => {setShowForm(false)}} />
                     </div>
                 )}
 
