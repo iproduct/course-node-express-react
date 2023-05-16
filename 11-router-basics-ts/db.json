@@ -56,18 +56,6 @@
       "id": 23
     },
     {
-      "title": "Blogs API Tutorial in TypeScript and Materialize",
-      "content": "This tutorial demonstrates how to implement SPA using pure TypeScript without any frameworks.\nMore text here ...\nAnd more ...\nSome more text ...\nSome more text ...\nSome more text ...",
-      "tags": [
-        "typescript",
-        "demo"
-      ],
-      "imageUrl": "https://www.publicdomainpictures.net/pictures/40000/velka/robin-bird.jpg",
-      "status": 1,
-      "authorId": 1,
-      "id": 24
-    },
-    {
       "authorId": 1,
       "imageUrl": "https://www.publicdomainpictures.net/pictures/260000/velka/bitcoin-money-decentralized.jpg",
       "tags": [
@@ -113,20 +101,8 @@
       ],
       "content": "aaaaaaaa bbbbbbbbbbbbbbbbbbb",
       "title": "aaaaaaa",
-      "id": 32
-    },
-    {
-      "authorId": 1,
-      "status": 2,
-      "imageUrl": "https://img.freepik.com/free-vector/gradient-colored-ui-kit-pack_23-2149188404.jpg",
-      "tags": [
-        "mui",
-        "select",
-        "component"
-      ],
-      "content": "Select components are used for collecting user provided information from a list of options.",
-      "title": "MUI Select Component",
-      "id": 33
+      "id": 32,
+      "favorite": true
     },
     {
       "authorId": 1,
@@ -152,19 +128,6 @@
       "id": 38
     },
     {
-      "title": "sadwqsddsadsasad",
-      "content": "sAdsasadsasadsa asdsadasdsa",
-      "tags": [
-        "asdsad",
-        "asdsad",
-        "asd"
-      ],
-      "imageUrl": "https://images.unsplash.com/photo-1501183007986-d0d080b147f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZXxlbnwwfHwwfHw%3D&w=1000&q=80",
-      "status": 2,
-      "authorId": 1,
-      "id": 39
-    },
-    {
       "authorId": 1,
       "status": 1,
       "imageUrl": "https://images.unsplash.com/photo-1618822461310-da1be362e30c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2V5Y2hlbGxlc3xlbnwwfHwwfHw%3D&w=1000&q=80",
@@ -174,7 +137,8 @@
       ],
       "content": "sdsaddsadasdsadsadsadsadsadsa",
       "title": "asdZdsasdsadsadsadassa",
-      "id": 40
+      "id": 40,
+      "favorite": true
     }
   ],
   "comments": [

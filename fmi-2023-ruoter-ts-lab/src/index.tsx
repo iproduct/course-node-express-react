@@ -2,22 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { NavLink, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Layout } from './Layout';
-import About from './About';
-import Home from './Home';
+import App from './App';
+import LazyLoading from './LazyLoading';
+import AuthApp from './AuthApp';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {index: true, element: <Home /> },
-      {path: 'home', element: <Home /> },
-      {path: 'about', element: <About /> },
-    ]
-  }
-]);
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -25,7 +14,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+   <AuthApp />
   </React.StrictMode>
 );
 
