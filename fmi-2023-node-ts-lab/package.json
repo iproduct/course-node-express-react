@@ -1,0 +1,16 @@
+{
+  "name": "fmi-2023-node-ts-lab",
+  "version": "1.0.0",
+  "description": "NodeJS intro",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/course-node-express-react",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "scripts": {
+    "tsc": "tsc -w"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.5",
+    "typescript": "^5.0.4"
+  }
+}

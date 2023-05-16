@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useContext} from "react";
 import {
     Routes,
     Route,
@@ -105,7 +105,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 }
 
 function useAuth() {
-    return React.useContext(AuthContext);
+    return useContext(AuthContext);
 }
 
 function AuthStatus() {
