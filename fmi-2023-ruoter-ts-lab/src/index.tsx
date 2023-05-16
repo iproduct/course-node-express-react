@@ -3,23 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { NavLink, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Layout } from './Layout';
+import About from './About';
+import Home from './Home';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />
-      
-    )
-  },
-  {
-    path: '/about',
-    element: (
-      <div>
-        <h1>About Us</h1>
-        <NavLink className={({ isActive, isPending }) =>isActive ? "active" : isPending ? "pending" : "" } to="/">Home</NavLink> |
-        <NavLink className={({ isActive, isPending }) =>isActive ? "active" : isPending ? "pending" : "" } to="/about">About Us</NavLink> |
-      </div>
-    )
+    element: <Layout />,
+    children: [
+      {index: true, element: <Home /> },
+      {path: 'home', element: <Home /> },
+      {path: 'about', element: <About /> },
+    ]
   }
 ]);
 

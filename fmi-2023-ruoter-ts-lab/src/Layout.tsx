@@ -9,7 +9,7 @@ export const Layout = (props: LayoutProps) => {
         <div>
             <h1>Hello React Router!</h1>
             <nav>
-                <NavLink className={({ isActive, isPending }) => isActive ? "active" : isPending ? "pending" : ""} to="/">Home</NavLink> |
+                <NavLink className={({ isActive, isPending }) => isActive ? "active" : isPending ? "pending" : ""} to="/home">Home</NavLink> |
                 <NavLink className={({ isActive, isPending }) => isActive ? "active" : isPending ? "pending" : ""} to="/about">About Us</NavLink> |
             </nav>
             <Outlet />
