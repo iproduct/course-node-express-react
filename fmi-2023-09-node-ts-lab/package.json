@@ -6,6 +6,11 @@
   "repository": "https://github.com/iproduct/course-node-express-react",
   "author": "Trayan Iliev",
   "license": "Apache-2.0",
+  "scripts": {
+    "tsc": "tsc -w",
+    "server": "node --inspect=5858 -r ts-node/register ./src/01-http-server-1.ts",
+    "start": "nodemon"
+  },
   "devDependencies": {
     "@types/node": "^20.2.3",
     "nodemon": "^2.0.22",
