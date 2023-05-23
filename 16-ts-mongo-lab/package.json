@@ -1,0 +1,46 @@
+{
+  "name": "15-ts-node-lab",
+  "version": "1.0.0",
+  "description": "nodejs typescript demos",
+  "main": "server.js",
+  "repository": "https://github.com/iproduct/fullstack-typescript-react.git",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "server": "node --inspect=5858 -r ts-node/register ./src/server.ts",
+    "tsc": "tsc -w",
+    "start": "concurrently --kill-others \"nodemon\" \"livereload ./dist -d\"",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "rxjs": "^6.5.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/mongodb": "^3.5.25",
+    "@types/node": "^14.0.14",
+    "concurrently": "^5.2.0",
+    "eslint": "^7.3.1",
+    "eslint-plugin-import": "^2.22.0",
+    "livereload": "^0.9.1",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm run tsc",
+    "ext": "ts"
+  }
+}
