@@ -34,26 +34,26 @@ async function main() {
 
     try {
         // get all posts
-        // const posts = await db.collection(collection)
-        //     .find<Post>({title:/react/i})
-        //     .project({title: 1})
-        //     .sort({title: -1})
-        //     // .skip(1)
-        //     // .limit(3)
-        //     .toArray();
-
         const posts = await db.collection(collection)
-            .aggregate<IPost>(
-                [{ "$match": { "title": { $regex: /react/i } } },
-                {
-                    $group: {
-                        _id: { title: '$title' },
-                        title: { $addToSet: '$title' },
-                        count: { "$sum": 1 }
-                    }
-                }
-                ])
+            .find<Post>({title:/react/i})
+            .project({title: 1})
+            .sort({title: -1})
+            // .skip(1)
+            // .limit(3)
             .toArray();
+
+        // const posts = await db.collection(collection)
+        //     .aggregate<IPost>(
+        //         [{ "$match": { "title": { $regex: /react/i } } },
+        //         {
+        //             $group: {
+        //                 _id: { title: '$title' },
+        //                 title: { $addToSet: '$title' },
+        //                 count: { "$sum": 1 }
+        //             }
+        //         }
+        //         ])
+        //     .toArray();
 
         posts.forEach(post => console.log(post));
 

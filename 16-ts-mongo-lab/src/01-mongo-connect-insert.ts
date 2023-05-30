@@ -23,7 +23,7 @@ const dbUrl = 'mongodb://localhost: 27017/'
 
 MongoClient.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true}, async (err, con) => {
     if (err) throw err;
-    const db = con.db('myblog10');
+    const db = con.db('fmi-2023-blogs');
     const post1 = {
         title: "Learning React",
         text: "A Hands-On Guide to Building Web Applications Using React and Redux, 2nd Edition",

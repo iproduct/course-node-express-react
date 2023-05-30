@@ -8,10 +8,9 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "server": "node --inspect=5858 -r ts-node/register ./src/server.ts",
     "tsc": "tsc -w",
-    "start": "concurrently --kill-others \"nodemon\" \"livereload ./dist -d\"",
-    "build": "tsc"
+    "server": "node --inspect=5858 -r ts-node/register ./src/01-http-server-1.ts",
+    "start": "nodemon"
   },
   "dependencies": {
     "express": "^4.17.1",
