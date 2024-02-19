@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Todo = (todo) => {
+export const Todo = ({todo}) => {
   return (
     <div key={todo.id} className="card my-1">
         <div className="card-body d-flex flex-row justify-content-between">
