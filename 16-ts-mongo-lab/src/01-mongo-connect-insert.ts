@@ -19,7 +19,7 @@
 import { MongoClient } from 'mongodb';
 import { Post } from './model/post.model';
 
-const dbUrl = 'mongodb://localhost: 27017/'
+const dbUrl = 'mongodb://localhost:27017/'
 
 MongoClient.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true}, async (err, con) => {
     if (err) throw err;

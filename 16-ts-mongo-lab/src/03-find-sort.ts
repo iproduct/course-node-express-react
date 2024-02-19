@@ -21,7 +21,7 @@ import { Post, IPost } from './model/post.model';
 import MOCK_POSTS from './model/mock-posts';
 
 const dbUrl = 'mongodb://localhost: 27017/';
-const dbName = 'myblog10';
+const dbName = 'fmi-2023-blogs';
 const collection = 'posts';
 
 async function main() {
@@ -36,7 +36,7 @@ async function main() {
         // get all posts
         const posts = await db.collection(collection)
             .find<Post>({title:/react/i})
-            .project({title: 1})
+            .project({title: 1, keywords: 1})
             .sort({title: -1})
             // .skip(1)
             // .limit(3)

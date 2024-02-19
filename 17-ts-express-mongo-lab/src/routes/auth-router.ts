@@ -90,7 +90,7 @@ router.post('/register', async (req, res, next) => {
             throw new AppError(400, `Username already taken: "${newUser.username}".`);
         }
 
-        throw new AppError(400, `Can not change username.`);
+        // throw new AppError(400, `Can not change username.`);
 
         // hash password
         newUser.password = await bcrypt.hash(newUser.password, 8);

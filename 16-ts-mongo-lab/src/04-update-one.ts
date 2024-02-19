@@ -21,7 +21,7 @@ import { Post, IPost } from './model/post.model';
 import MOCK_POSTS from './model/mock-posts';
 
 const dbUrl = 'mongodb://localhost: 27017/';
-const dbName = 'myblog10';
+const dbName = 'fmi-2023-blogs';
 const collection = 'posts';
 
 async function main() {
@@ -31,7 +31,7 @@ async function main() {
         useUnifiedTopology: true
     });
     const db = con.db(dbName);
-    const postId = '5efd94a7fc08d180086f8302';
+    const postId = '64763f706d5082175cbcafb9';
     try {
         // update by _id
         var myquery = { _id: new ObjectID(postId) };

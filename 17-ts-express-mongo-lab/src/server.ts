@@ -28,7 +28,7 @@ import usersRouter from './routes/users-router';
 import authRouter from './routes/auth-router';
 
 const POSTS_FILE = path.join(__dirname, '../posts.json');
-const DB_URL = 'mongodb://localhost: 27017/';
+const DB_URL = 'mongodb://localhost:27017/';
 const DB_NAME = 'myblog10';
 const PORT = process.env.PORT || 9000;
 

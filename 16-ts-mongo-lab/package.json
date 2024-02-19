@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "tsc": "tsc -w",
-    "server": "node --inspect=5858 -r ts-node/register ./src/01-http-server-1.ts",
+    "server": "node --inspect=5858 -r ts-node/register ./src/04-update-one.ts",
     "start": "nodemon"
   },
   "dependencies": {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TodoList from './TodoList';
+import TodoInput from './TodoInput';
 
 class App extends Component {
   
@@ -23,16 +24,7 @@ class App extends Component {
     return (
       <div className="container col-sm-8">
         <h2>React Todo Demo</h2>
-        <form onSubmit={this.handleTodoSubmit}>
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Next task todo ..."
-              onChange={this.handleTextChange} 
-              value={this.state.todoText} />
-              <span className="input-group-btn">
-                <button type="submit" className="btn btn-primary">Add Todo</button>
-              </span>
-          </div>
-        </form>
+        <TodoInput onCreateTodo={this.handleTodoSubmit} onError={()=>{}} />
         <TodoList todos={this.state.todos} onChangeStatus={this.handleStatusChange} /> 
       </div>
     );
@@ -51,13 +43,12 @@ class App extends Component {
     );
   }
 
-  handleTodoSubmit(e) {
-    e.preventDefault();
+  handleTodoSubmit(todo) {
     this.setState(prevState => ({
       todoText: '',
       todos: [
         ...prevState.todos,
-        {id: Date.now(), text: prevState.todoText.trim(), status: 'active'}
+        todo
       ]
     }))
   }
