@@ -14,7 +14,7 @@ class AppTodos extends Component {
   //   this.removeTodo = this.removeTodo.bind(this)
   // }
 
-  removeTodo = (todo) => {
+  removeTodo = todo => {
     console.log('Deleting', todo);
     this.setState(state => ({ todos: this.state.todos.filter(td => td.id !== todo.id) }));
   }
