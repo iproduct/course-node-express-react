@@ -28,9 +28,9 @@ console.log(pl1.positionsLog);
 
 console.log(pl1.getLog());
 
-for (var key in pl1) {
-  if (pl1.hasOwnProperty(key)) {
-    var val = pl1[key];
-    console.log(key, '->', val);
-  }
-}
+// for (var key in pl1) {
+//   if (pl1.hasOwnProperty(key)) {
+//     var val = pl1[key];
+//     console.log(key, '->', val);
+//   }
+// }

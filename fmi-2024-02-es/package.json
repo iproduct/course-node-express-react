@@ -1,0 +1,9 @@
+{
+  "name": "fmi-2024-02-es",
+  "version": "1.0.0",
+  "description": "Intro to ES6+",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/course-node-express-react.git",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0"
+}

@@ -23,7 +23,7 @@
         function handler2(event) {
             var elem = event.currentTarget;
             console.log(`Handler 2: Current Target: ${elem.className}, Target: ${event.target.className}`);
-            // event.stopPropagation();
+            event.stopPropagation();
             elem.style.background = "#ffff00";
             alert('Handler 2:' + elem.className);
             elem.style.background = '';

@@ -16,7 +16,6 @@ class App extends Component{
     clearInterval(this.interval)
   }
 
-
   render() {
     return (
       <div className="App">

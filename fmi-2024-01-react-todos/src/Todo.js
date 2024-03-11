@@ -1,6 +1,9 @@
 import React from 'react'
 
-export const Todo = ({ todo }) => {
+export const Todo = ({ todo, onDelete }) => {
+  function remove(event) {
+    onDelete(todo)
+  }
   return (
     <div key={todo.id} className="card my-1 d-flex flex-row justify-content-between">
       <span className="btn-group">
@@ -9,6 +12,7 @@ export const Todo = ({ todo }) => {
       </span>
       <span className="d-flex badge text-bg-success col-1 align-items-center justify-content-center">
         {todo.status}
+        <span className="btn btn-danger" onClick={remove}>Del</span>
       </span>
     </div>
   )
