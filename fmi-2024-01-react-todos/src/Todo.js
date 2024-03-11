@@ -10,8 +10,8 @@ export const Todo = ({ todo, onDelete }) => {
         <span className="btn btn-primary">{todo.id}</span>
         <span className="btn btn-default">{todo.text}</span>
       </span>
-      <span className="d-flex badge text-bg-success col-1 align-items-center justify-content-center">
-        {todo.status}
+      <span className="d-flexcol-1 align-items-center justify-content-center">
+        <span  className="badge  text-bg-success">{todo.status}</span>
         <span className="btn btn-danger" onClick={remove}>Del</span>
       </span>
     </div>
