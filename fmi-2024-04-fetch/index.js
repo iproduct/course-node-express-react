@@ -11,7 +11,11 @@ fetch('users.json')
                     .map(gitUser => gitUser.value)
                 console.log(gitUsers)
 
-                // TODO: Show pictures (avatar_url)
+                gitUsers.map(gitUser => {
+                    const img = new Image();
+                    img.src = gitUser.avatar_url;
+                    document.getElementById('results').appendChild(img);
+                });
             })
     });
 
