@@ -1,0 +1,19 @@
+{
+  "name": "fmi-2024-05-ts",
+  "version": "1.0.0",
+  "description": "Introduction to TypeScript",
+  "main": "index.js",
+  "repository": "https://github.com/iproduct/course-node-express-react",
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "concurrently --kill-others \"tsc -w\" \"lite-server\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "lite-server": "^2.6.1"
+  }
+}
