@@ -1,5 +1,5 @@
-type IdType = number;
-type CountryType = "BG" | "DE" | "FR" | "GB" | "US"; // ...
+export type IdType = number;
+export type CountryType = "BG" | "DE" | "FR" | "GB" | "US"; // ...
 
 export interface Person {
     id: IdType;
@@ -40,7 +40,7 @@ export class PersonImpl implements Person {
 }
 
 
-type UserCreateDto = Omit<User, "id">
+export type UserCreateDto = Omit<User, "id">
 
 export class UserDto implements UserCreateDto {
     constructor(
