@@ -26,7 +26,8 @@ export class UserDto {
         this.roles = roles;
     }
     get salutation() {
-        return `Hi ${this.firstName} ${this.firstName} [${this.email}] in roles: ${this.roles.map(r => Role[r]).join(', ')}`;
+        var _a;
+        return `Hi ${this.firstName} ${this.firstName} [${this.email}] form ${(_a = this.contact) === null || _a === void 0 ? void 0 : _a.country} in roles: ${this.roles.map(r => Role[r]).join(', ')}`;
     }
 }
 export class UserImpl extends UserDto {

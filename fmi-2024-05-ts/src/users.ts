@@ -1,5 +1,6 @@
-type IdType = number;
-type CountryType = "BG" | "DE" | "FR" | "GB" | "US"; // ...
+import { IdType } from "./shared-types.js";
+
+export type CountryType = "BG" | "DE" | "FR" | "GB" | "US" | "NW"; // ...
 
 export interface Person {
     id: IdType;
@@ -40,7 +41,7 @@ export class PersonImpl implements Person {
 }
 
 
-type UserCreateDto = Omit<User, "id">
+export type UserCreateDto = Omit<User, "id">
 
 export class UserDto implements UserCreateDto {
     constructor(
@@ -52,7 +53,7 @@ export class UserDto implements UserCreateDto {
         public roles: Role[] = [Role.Reader]
     ) { }
     get salutation() {
-        return `Hi ${this.firstName} ${this.firstName} [${this.email}] in roles: ${this.roles.map(r => Role[r]).join(', ')}`;
+        return `Hi ${this.firstName} ${this.firstName} [${this.email}] form ${this.contact?.country} in roles: ${this.roles.map(r => Role[r]).join(', ')}`;
     }
 }
 
