@@ -1,4 +1,7 @@
 import { greeter } from "./greeter.js";
 
 const user = 'Georgi';
-document.body.innerHTML = greeter(user);
+const contentElem = document.getElementById('content');
+if (contentElem) {
+    contentElem.innerHTML = greeter(user);
+}
