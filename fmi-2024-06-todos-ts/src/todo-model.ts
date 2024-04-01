@@ -1,13 +1,13 @@
 import { IdType } from "./shared-types";
 
-enum TodoStatus{
-    Created = 1, 
+export enum TodoStatus{
+    Active = 1, Completed, Canceled
 }
 
-export class TodoCreateDTO {
-    constructor(public text: string, status ='active') {}
+export class TodoCreateDto {
+    constructor(public text: string, status: TodoStatus =TodoStatus.Active) {}
 }
 
-export interface Todo extends TodoCreateDTO{
+export interface Todo extends TodoCreateDto{
     id: IdType;
 }
