@@ -11,7 +11,7 @@ interface AppState {
 
 class App extends React.Component<{}, AppState> {
   state: AppState = {
-    todos: []
+    todos: TODOS
   }
 
   render() {

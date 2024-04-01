@@ -1,5 +1,6 @@
 import React from 'react'
 import { Todo } from './todo-model'
+import TodoItem from './TodoItem'
 
 type TodoListProps = {
     todos: Todo[]
@@ -7,6 +8,6 @@ type TodoListProps = {
 
 export default function TodoList({todos}: TodoListProps) {
   return (
-    <div>TodoList</div>
+    <div>{todos.map(td => (<TodoItem todo={td} />))}</div>
   )
 }
