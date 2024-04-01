@@ -1,57 +1,56 @@
-import { Identifiable, Optional } from "./shared-types.js";
+import { Identifiable } from "./shared-types.js";
 
 export interface IdGenerator<K> {
     getNextId(): K;
 }
 
-export class IdGeneratorNumber implements IdGenerator<number>{
-    private  nextId = 0;
+export class IdGeneratorNumber implements IdGenerator<number> {
+    private nextId = 0;
     getNextId(): number {
         return ++this.nextId;
     }
 }
 
-export interface Repository<K, V extends Identifiable<K>>{
-    findAll(): V[];
-    findById(id: K): Optional<V>;
-    create(entity: Omit<V, "id">): V;
-    update(entity: V): Optional<V>;
-    deleteById(id: K): Optional<V>;
-    readonly size: number;
+export interface Repository<K, V extends Identifiable<K>> {
+    findAll(): Promise<V[]>;
+    findById(id: K): Promise<V>;
+    create(entity: Omit<V, "id">): Promise<V>;
+    update(entity: V): Promise<V>;
+    deleteById(id: K): Promise<V>;
+    readonly size: Promise<number>;
 }
 
 export class RepositoryInMemory<K, V extends Identifiable<K>> implements Repository<K, V> {
     private entities = new Map<K, V>();
-    constructor(private idGen: IdGenerator<K>){}
-    findAll(): V[] {
+    constructor(private idGen: IdGenerator<K>) { }
+    async findAll() {
         return Array.from(this.entities.values());
     }
-    findById(id: K): Optional<V> {
-        return this.entities.get(id);
+    async findById(id: K) {
+        const found = this.entities.get(id);
+        if (found) {
+            return found;
+        }
+        throw new Error(`Entity with ID='${id}' not found.`);
     }
-    create(entity: Omit<V, 'id'>): V {
+
+    async create(entity: Omit<V, 'id'>) {
         const result = entity as V;
         result.id = this.idGen.getNextId();
         this.entities.set(result.id, result);
         return result;
     }
-    update(entity: V): Optional<V> {
-        const exisitng = this.findById(entity.id);
-        if(exisitng) {
-            this.entities.set(entity.id, entity);
-            return entity;
-        }
-        return undefined;
+    async update(entity: V) {
+        await this.findById(entity.id);
+        this.entities.set(entity.id, entity);
+        return entity;
     }
-    deleteById(id: K): Optional<V> {
-        const exisitng = this.findById(id);
-        if(exisitng) {
-            this.entities.delete(id);
-            return exisitng;
-        }
-        return undefined;
+    async deleteById(id: K) {
+        const exisitng = await this.findById(id);
+        this.entities.delete(id);
+        return exisitng;
     }
     get size() {
-        return this.entities.size;
+        return Promise.resolve(this.entities.size);
     }
 }

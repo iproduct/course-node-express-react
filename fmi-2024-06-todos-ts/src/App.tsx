@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Todo } from './todo-model';
-import TODOS from './mock-todos';
 import TodoList from './TodoList';
+import TodoRepository from './todo-repository';
 
 interface AppState {
   todos: Todo[];
@@ -11,7 +10,12 @@ interface AppState {
 
 class App extends React.Component<{}, AppState> {
   state: AppState = {
-    todos: TODOS
+    todos: []
+  }
+
+  async componentDidMount() {
+      const todos = await TodoRepository.findAll();
+      this.setState({todos});
   }
 
   render() {

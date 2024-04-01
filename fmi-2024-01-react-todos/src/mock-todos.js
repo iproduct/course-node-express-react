@@ -1,7 +1,7 @@
 import { Todo } from "./todo-model"
 
 const TODOS = [
-    new TodoCreateDto('Create TODO App using create-react-app', 'completed'),
+    new Todo('Create TODO App using create-react-app', 'completed'),
     new Todo('Create TodoApp function component'),
     new Todo('Create TodoList function component'),
     new Todo('Create TodoItem function component'),
