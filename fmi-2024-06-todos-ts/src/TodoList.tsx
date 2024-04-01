@@ -8,6 +8,6 @@ type TodoListProps = {
 
 export default function TodoList({todos}: TodoListProps) {
   return (
-    <div>{todos.map(td => (<TodoItem todo={td} />))}</div>
+    <div>{todos.map(td => (<TodoItem key={td.id} todo={td} />))}</div>
   )
 }
