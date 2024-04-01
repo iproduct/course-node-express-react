@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { IdType } from "./shared-types.js";
 
 export type CountryType = "BG" | "DE" | "FR" | "GB" | "US" | "NW"; // ...
+=======
+export type IdType = number;
+export type CountryType = "BG" | "DE" | "FR" | "GB" | "US"; // ...
+>>>>>>> 9c75d0be1bb6df4efb37ca1990da4286fe8f70f3
 
 export interface Person {
     id: IdType;
