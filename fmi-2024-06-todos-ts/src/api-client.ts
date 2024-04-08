@@ -36,9 +36,6 @@ export class ApiClient {
             method: 'DELETE',
         });
     }
-    // get size() {
-    //     return Promise.resolve(this.entities.size);
-    // }
 
     private async fetchData<D>(uri: string, options?: RequestInit): Promise<D> {
         const resp = await fetch(uri, options);
