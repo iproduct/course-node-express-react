@@ -29,16 +29,6 @@
       "id": "6",
       "text": "Connect todos app to backend with json-server",
       "status": 1
-    },
-    {
-      "id": "7",
-      "text": "Create TodoFilter function component",
-      "status": 1
-    },
-    {
-      "id": "4445",
-      "text": "Todo or not todo?",
-      "status": 1
     }
   ]
 }

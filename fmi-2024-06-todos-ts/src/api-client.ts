@@ -22,16 +22,20 @@ export class ApiClient {
             body: JSON.stringify(entity)
         });
     }
-    // async update(entity: V) {
-    //     await this.findById(entity.id);
-    //     this.entities.set(entity.id, entity);
-    //     return entity;
-    // }
-    // async deleteById(id: K) {
-    //     const exisitng = await this.findById(id);
-    //     this.entities.delete(id);
-    //     return exisitng;
-    // }
+    async update<V extends Identifiable<IdType>>(ctor: EntityConstructor<V>, entity:V): Promise<V>  {
+        return this.fetchData(`${this.baseUrl}/${ctor.className.toLocaleLowerCase()}s`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(entity)
+        });
+    }
+    async deleteById<V extends Identifiable<IdType>>(ctor: EntityConstructor<V>, id: IdType): Promise<V>  {
+        return this.fetchData(`${this.baseUrl}/${ctor.className.toLocaleLowerCase()}s/${id}`, {
+            method: 'DELETE',
+        });
+    }
     // get size() {
     //     return Promise.resolve(this.entities.size);
     // }

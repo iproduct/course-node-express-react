@@ -37,6 +37,16 @@ class App extends React.Component<{}, AppState> {
     }
   }
 
+  deleteTodo = async (todo: Todo) => {
+    try {
+      const deleted = await API.deleteById(Todo, todo.id);
+      this.setState(state => ({ todos: state.todos.filter(td => td.id !== deleted.id) }))
+      this.clearErrors();
+    } catch (err) {
+      this.showError(err as Error);
+    }
+  }
+
   showError = (error: Error) => {
     this.setState({ errors: error.message })
   }
@@ -52,7 +62,7 @@ class App extends React.Component<{}, AppState> {
         <TodoInput onCreateTodo={this.createTodo} onError={this.showError} />
         {this.state.errors && <div className='errors'>Error: {this.state.errors}</div>}
         <hr />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} onDelete={this.deleteTodo}/>
       </div>
     );
   }
