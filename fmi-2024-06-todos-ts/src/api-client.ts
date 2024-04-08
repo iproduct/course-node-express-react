@@ -13,7 +13,7 @@ export class ApiClient {
     async findById<V extends Identifiable<IdType>>(ctor: EntityConstructor<V>, id: IdType): Promise<V>  {
         return this.fetchData(`${this.baseUrl}/${ctor.className.toLocaleLowerCase()}s/${id}`);
     }
-    async create<V extends Identifiable<IdType>>(ctor: EntityConstructor<V>, entity: Omit<V, 'id'>) {
+    async create<V extends Identifiable<IdType>>(ctor: EntityConstructor<V>, entity: Omit<V, 'id'>): Promise<V>  {
         return this.fetchData(`${this.baseUrl}/${ctor.className.toLocaleLowerCase()}s`, {
             method: 'POST',
             headers: {

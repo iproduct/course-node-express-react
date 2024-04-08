@@ -28,7 +28,7 @@ class App extends React.Component<{}, AppState> {
   }
 
   createTodo = async (todo: TodoCreateDto) => {
-    const created = await TodoRepository.create(todo);
+    const created = await API.create(Todo, todo);
     this.setState(state => ({todos: [...state.todos, created]}))
   }
 

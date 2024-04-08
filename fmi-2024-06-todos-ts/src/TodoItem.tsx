@@ -3,13 +3,14 @@ import { Todo, TodoStatus } from './todo-model';
 
 type TodoitemProps = {
     todo: Todo;
+    index: number;
 }
 
-const TodoItem = ({ todo }: TodoitemProps) => {
+const TodoItem = ({ todo, index }: TodoitemProps) => {
     return (
         <div key={todo.id} className="card my-1 d-flex flex-row justify-content-between">
             <span className="btn-group">
-                <span className="btn btn-primary">{todo.id}</span>
+                <span className="btn btn-primary">{index}</span>
                 <span className="btn btn-default">{todo.text}</span>
             </span>
             <span className="align-items-center justify-content-between">
