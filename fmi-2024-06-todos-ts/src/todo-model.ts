@@ -8,6 +8,8 @@ export class TodoCreateDto {
     constructor(public text: string, public status: TodoStatus =TodoStatus.Active) {}
 }
 
-export interface Todo extends TodoCreateDto{
-    id: IdType;
+export class Todo extends TodoCreateDto{
+    static className = 'Todo';
+    public id: IdType = 0;
+
 }
