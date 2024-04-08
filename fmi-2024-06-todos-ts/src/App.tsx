@@ -20,24 +20,29 @@ class App extends React.Component<{}, AppState> {
   async componentDidMount() {
     try {
       const todos = await API.findAll(Todo);
-      this.setState({todos});
-      this.clearErrors();
-    } catch(err) {
+      this.setState({ todos });
+
+    } catch (err) {
       this.showError(err as Error);
     }
   }
 
   createTodo = async (todo: TodoCreateDto) => {
-    const created = await API.create(Todo, todo);
-    this.setState(state => ({todos: [...state.todos, created]}))
+    try {
+      const created = await API.create(Todo, todo);
+      this.setState(state => ({ todos: [...state.todos, created] }))
+      this.clearErrors();
+    } catch (err) {
+      this.showError(err as Error);
+    }
   }
 
   showError = (error: Error) => {
-    this.setState({errors: error.message})
+    this.setState({ errors: error.message })
   }
 
   clearErrors = () => {
-    this.setState({errors: ''})
+    this.setState({ errors: '' })
   }
 
 
