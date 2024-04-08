@@ -34,8 +34,9 @@ class App extends React.Component<{}, AppState> {
   render() {
     return (
       <div className='container d-flex flex-column justify-content-between text-black bg-light'>
-        <TodoInput onCreateTodo={this.createTodo} onError={this.showError}/>
+        <TodoInput onCreateTodo={this.createTodo} onError={this.showError} />
         {this.state.errors && <div className='errors'>{this.state.errors}</div>}
+        <hr />
         <TodoList todos={this.state.todos} />
       </div>
     );
