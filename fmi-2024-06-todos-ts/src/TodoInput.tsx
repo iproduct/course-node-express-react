@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useCallback, useState } from 'react'
 import { TodoCreateDto, TodoStatus } from './todo-model'
 
 type Props = {
@@ -9,16 +9,20 @@ type Props = {
 const TodoInput = ({ onCreateTodo, onError }: Props) => {
   const [text, setText] = useState('');
   const [status, setStatus] = useState(TodoStatus.Active);
-  function submitTodo(event: FormEvent) {
-    event.preventDefault();
-    if (text.trim().length === 0) {
-      onError(new Error('All fields are required'))
-      return;
-    }
-    const todo = new TodoCreateDto(text, status);
-    onCreateTodo(todo);
-    resetTodo();
-  }
+  const submitTodo = useCallback(
+    (event: FormEvent) => {
+      event.preventDefault();
+      if (text.trim().length === 0) {
+        onError(new Error('All fields are required'))
+        return;
+      }
+      const todo = new TodoCreateDto(text, status);
+      onCreateTodo(todo);
+      resetTodo();
+    },
+    [text, status, onCreateTodo, onError],
+  )
+  
   function resetTodo(event?: FormEvent) {
     setText('');
     setStatus(TodoStatus.Active);
