@@ -44,7 +44,6 @@ function App() {
         <br /><br />
       </div>
 
-
       <footer className="page-footer orange">
         <div className="container">
           <div className="row">
