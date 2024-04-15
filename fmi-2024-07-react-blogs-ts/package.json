@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "json-server db.json --port 9000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

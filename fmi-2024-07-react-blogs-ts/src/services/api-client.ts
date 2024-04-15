@@ -45,3 +45,6 @@ export class ApiClient {
         return resp.json();
     }
 }
+
+const API = new ApiClient("http://localhost:9000");
+export default API;

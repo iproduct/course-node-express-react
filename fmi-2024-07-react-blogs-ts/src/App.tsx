@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import PostList from './components/PostList';
+import API from './services/api-client';
+import { Post } from './model/post-model';
 
 function App() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  useEffect(() => {
+    API.findAll(Post).then(posts => setPosts(posts))
+  }, [])
   return (
     <>
       <nav className="light-blue lighten-1" role="navigation">
@@ -39,7 +45,7 @@ function App() {
 
         <div className="section">
           <div className="row">
-           <PostList posts={[]} filter={undefined} onDelete={()=>{}} />
+           <PostList posts={posts} filter={undefined} onDelete={()=>{}} />
           </div>
         </div>
         <br /><br />
