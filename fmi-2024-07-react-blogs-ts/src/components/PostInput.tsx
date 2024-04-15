@@ -8,7 +8,7 @@ type Props = {
 
 const PostInput = ({ onCreatePost, onError }: Props) => {
   const [title, setText] = useState('');
-  const [status, setStatus] = useState(PostStatus.Publised);
+  const [status, setStatus] = useState(PostStatus.Published);
   const submitPost = useCallback(
     (event: FormEvent) => {
       event.preventDefault();
@@ -25,13 +25,13 @@ const PostInput = ({ onCreatePost, onError }: Props) => {
   
   function resetPost(event?: FormEvent) {
     setText('');
-    setStatus(PostStatus.Publised);
+    setStatus(PostStatus.Published);
   }
   return (
     <form onSubmit={submitPost} onReset={resetPost} className='my-2'>
       <input value={title} onChange={event => setText(event.target.value)} className="form-control" placeholder="What to do next?" />
       <select value={status} onChange={event => setStatus(parseInt(event.target.value))} className="form-select">
-        <option value={PostStatus.Publised}>Active</option>
+        <option value={PostStatus.Published}>Active</option>
         <option value={PostStatus.Created}>Completed</option>
         <option value={PostStatus.Archived}>Canceled</option>
       </select>

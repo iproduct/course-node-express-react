@@ -1,7 +1,7 @@
 import { IdType } from "../shared/shared-types";
 
 export enum PostStatus{
-    Publised = 1, Created, Archived
+    Published = 1, Created, Archived
 }
 
 export class PostCreateDto {
@@ -11,7 +11,7 @@ export class PostCreateDto {
         public authorId: IdType,
         tags: string[],
         imageUrl: string,
-        public status: PostStatus =PostStatus.Publised,
+        public status: PostStatus =PostStatus.Published,
     ) {}
 }
 
