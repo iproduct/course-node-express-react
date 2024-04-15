@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import PostList from './components/PostList';
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
 
         <div className="section">
           <div className="row">
-            <p>Blog posts here</p>
+           <PostList posts={[]} filter={undefined} onDelete={()=>{}} />
           </div>
         </div>
         <br /><br />
