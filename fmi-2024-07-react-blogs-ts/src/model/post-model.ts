@@ -19,3 +19,5 @@ export class Post extends PostCreateDto{
     static className = 'Post';
     public id: IdType = 0;
 }
+
+export type PostFilterType = PostStatus | undefined;

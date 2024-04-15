@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
-import { Post, PostStatus } from './post-model'
-import PostItem from './PostItem'
-import { PostFilterType } from './PostFilter';
+import { Post, PostFilterType, PostStatus } from '../model/post-model';
+import PostItem from './PostItem';
+
 
 type PostListProps = {
     posts: Post[],
