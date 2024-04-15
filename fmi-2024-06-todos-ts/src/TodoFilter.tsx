@@ -1,9 +1,11 @@
 import { ChangeEvent } from 'react'
 import { TodoStatus } from './todo-model'
 
+export type TodoFilterType = TodoStatus | undefined;
+
 type Props = {
-    filter: TodoStatus,
-    onFilterChange: (status: TodoStatus) => void
+    filter: TodoFilterType ,
+    onFilterChange: (status: TodoFilterType) => void
 }
 
 const TodoFilter = ({ filter, onFilterChange }: Props) => {
@@ -13,6 +15,7 @@ const TodoFilter = ({ filter, onFilterChange }: Props) => {
 
     return (
         <select value={filter} onChange={changeFilter} className="form-select">
+            <option value={undefined}>All</option>
             <option value={TodoStatus.Active}>Active</option>
             <option value={TodoStatus.Completed}>Completed</option>
             <option value={TodoStatus.Canceled}>Canceled</option>

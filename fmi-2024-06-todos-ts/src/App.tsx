@@ -2,19 +2,21 @@ import React from 'react';
 import './App.css';
 import { Todo, TodoCreateDto } from './todo-model';
 import TodoList from './TodoList';
-import TodoRepository from './todo-repository';
 import TodoInput from './TodoInput';
 import API from './todo-api-client';
+import TodoFilter, { TodoFilterType } from './TodoFilter';
 
 interface AppState {
   todos: Todo[];
   errors: string;
+  filter: TodoFilterType;
 }
 
 class App extends React.Component<{}, AppState> {
   state: AppState = {
     todos: [],
-    errors: ''
+    errors: '',
+    filter: undefined,
   }
 
   async componentDidMount() {
@@ -62,7 +64,9 @@ class App extends React.Component<{}, AppState> {
         <TodoInput onCreateTodo={this.createTodo} onError={this.showError} />
         {this.state.errors && <div className='errors'>Error: {this.state.errors}</div>}
         <hr />
-        <TodoList todos={this.state.todos} onDelete={this.deleteTodo}/>
+        <TodoFilter filter={this.state.filter} onFilterChange={(status) => {this.setState({filter: status})}} />
+        <hr />
+        <TodoList todos={this.state.todos} filter={this.state.filter} onDelete={this.deleteTodo}/>
       </div>
     );
   }
