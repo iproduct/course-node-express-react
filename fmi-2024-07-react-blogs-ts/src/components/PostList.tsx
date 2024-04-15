@@ -11,11 +11,11 @@ type PostListProps = {
 
 export default function PostList({posts, filter, ...rest}: PostListProps) {
   const visiblePosts = useMemo(
-    () => ((tds: Post[] , fltr: PostFilterType) => posts.filter(td => !filter || filter === td.status)),
+    () => posts.filter(td => !filter || filter === td.status),
     [posts, filter]
   );
   return (
     <div>{
-      visiblePosts(posts, filter).map((td, index) => (<PostItem key={td.id} post={td} index={index + 1} {...rest} />))}</div>
+      visiblePosts.map((td, index) => (<PostItem key={td.id} post={td} index={index + 1} {...rest} />))}</div>
   )
 }

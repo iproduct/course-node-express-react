@@ -11,11 +11,11 @@ type TodoListProps = {
 
 export default function TodoList({todos, filter, ...rest}: TodoListProps) {
   const visibleTodos = useMemo(
-    () => ((tds: Todo[] , fltr: TodoFilterType) => todos.filter(td => !filter || filter === td.status)),
+    () => todos.filter(td => !filter || filter === td.status),
     [todos, filter]
   );
   return (
     <div>{
-      visibleTodos(todos, filter).map((td, index) => (<TodoItem key={td.id} todo={td} index={index + 1} {...rest} />))}</div>
+      visibleTodos.map((td, index) => (<TodoItem key={td.id} todo={td} index={index + 1} {...rest} />))}</div>
   )
 }
