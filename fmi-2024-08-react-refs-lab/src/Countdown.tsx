@@ -4,6 +4,7 @@ import useEffectOnMount from './hooks/useEffectOnMount';
 // Define the handle types which will be passed to the forwardRef
 export type CountdownHandle = {
     start: () => void;
+    stop: () => void;
     focus: () => void;
 };
 
@@ -15,7 +16,19 @@ const Countdown = forwardRef<CountdownHandle, CountdownProps>((props, ref) => {
     useImperativeHandle(ref, () => ({
         // start() has type inference here
         start() {
-            alert("Start");
+            console.log("Timer started")
+            if (!interval.current) {
+                interval.current = setInterval(() => {
+                    setCounter(ctr => ctr + 1);
+                }, 1000);
+            }
+        },
+        stop() {
+            console.log("Timer stopped")
+            if (interval.current) {
+                clearInterval(interval.current);
+                interval.current = undefined;
+            }
         },
         focus() {
             inputRef.current?.focus();

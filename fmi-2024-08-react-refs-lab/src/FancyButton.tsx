@@ -13,4 +13,4 @@ const FancyButton = forwardRef<HTMLButtonElement, FancyButtonProps>((props: Fanc
   );
 });
 
-export default FancyButton;
+export default logPropsHOC(FancyButton);
