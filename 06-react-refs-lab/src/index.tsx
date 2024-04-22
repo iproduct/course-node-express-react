@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import FancyFormApp from './FancyFormApp';
+// import CountdownApp from './CountdownApp';
 // import VideoPlayerApp from './VideoPlayerApp';
+import UncontrolledFormClass from './components/UncontrolledFormClass';
+import UncontrolledFormApp from './UncontrolledFormApp';
+import VideoPlayerApp from './VideoPlayerApp';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <FancyFormApp />
+    {/* <App /> */}
+    <VideoPlayerApp />
+    {/* <UncontrolledFormApp /> */}
+    {/* <CountdownApp /> */}
   </React.StrictMode>
 );
 
