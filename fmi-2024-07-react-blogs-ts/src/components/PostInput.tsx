@@ -21,8 +21,8 @@ const PostInput = ({ onCreatePost, onError }: Props) => {
       resetPost();
     },
     [title, onCreatePost, onError],
+    
   )
-  
   function resetPost(event?: FormEvent) {
     setText('');
     setStatus(PostStatus.Published);

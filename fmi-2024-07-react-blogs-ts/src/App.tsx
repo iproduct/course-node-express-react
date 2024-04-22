@@ -7,8 +7,13 @@ import { Post } from './model/post-model';
 function App() {
   const [posts, setPosts] = useState<Post[]>([]);
   useEffect(() => {
-    API.findAll(Post).then(posts => setPosts(posts))
-  }, [])
+    const effect = async () => {
+      const psts = await API.findAll(Post);
+      setPosts(psts);
+    }
+    effect();
+    // return cleanup
+  }, []);
   return (
     <>
       <nav className="light-blue lighten-1" role="navigation">
@@ -32,7 +37,7 @@ function App() {
           </div>
           <div className="row center">
             <button id="download-button" className="btn-large btn-large waves-effect waves-light orange"
-              onClick={() => {}}>
+              onClick={() => { }}>
               Add New Post
             </button>
           </div>
@@ -44,7 +49,7 @@ function App() {
 
         <div className="section">
           <div className="row">
-           <PostList posts={posts} filter={undefined} onDelete={()=>{}} />
+            <PostList posts={posts} filter={undefined} onDelete={() => { }} />
           </div>
         </div>
         <br /><br />
