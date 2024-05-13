@@ -10,6 +10,8 @@ const Layout = (props: Props) => {
             <h2>Hello React Router Demo</h2>
             <nav>
                 <NavLink to="/home">Home</NavLink>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+                <NavLink to="/contacts">Contacts</NavLink>
                 <NavLink to="/about">About</NavLink>
             </nav>
             <main>
