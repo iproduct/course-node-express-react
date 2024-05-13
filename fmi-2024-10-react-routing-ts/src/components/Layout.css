@@ -1,0 +1,6 @@
+nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    gap: 10px 20px;
+}

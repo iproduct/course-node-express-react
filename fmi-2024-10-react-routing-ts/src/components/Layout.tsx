@@ -1,14 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import './Layout.css';
 
 type Props = {}
 
 const Layout = (props: Props) => {
     return (
         <>
-            <div>Hello React Router Demo</div>
+            <h2>Hello React Router Demo</h2>
             <nav>
-
+                <NavLink to="/home">Home</NavLink>
+                <NavLink to="/about">About</NavLink>
             </nav>
+            <Outlet />
         </>
     )
 }
+
+export default Layout;
