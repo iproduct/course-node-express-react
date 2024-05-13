@@ -12,7 +12,9 @@ const Layout = (props: Props) => {
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
             </nav>
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
         </>
     )
 }

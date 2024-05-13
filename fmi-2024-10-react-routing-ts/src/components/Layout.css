@@ -1,6 +1,20 @@
 nav {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    gap: 10px 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  gap: 10px 20px;
 }
+
+nav a {
+    background-color: rgb(210, 243, 255);
+}
+
+a.active {
+  color: white;
+  background-color: blue;
+}
+
+main {
+    margin-top: 30px;
+}
+
