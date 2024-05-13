@@ -91,7 +91,7 @@ export async function contactFormAction({ request, params }: ActionFunctionArgs)
     if (request.method === 'PUT') {
         let formData = await request.formData();
         const contact = Object.fromEntries(formData) as unknown as ContactData;
-        contact.id = +contact.id;
+        contact.id = +params.contactId!;
         console.log(contact);
         await updateContact(contact);
         return redirect(`/contacts/${params.contactId}`);

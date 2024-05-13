@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Form, useLoaderData, useParams } from 'react-router-dom';
-import { ContactData, getContact } from '../service/contacts-service';
+import { Form, useLoaderData } from 'react-router-dom';
+import { ContactData } from '../service/contacts-service';
 
 type Props = {}
 
@@ -13,7 +12,7 @@ const ContactDetailsForm = (props: Props) => {
             </div>
             <div className='actions'>
                 <Form method="PUT">
-                    <input name='id' defaultValue={contact.id}/>
+                    <input name='id' defaultValue={contact.id} disabled/>
                     <input name='fname' defaultValue={contact.fname} />
                     <input name='lname' defaultValue={contact.lname} />
                     <input name='email' defaultValue={contact.email} />
