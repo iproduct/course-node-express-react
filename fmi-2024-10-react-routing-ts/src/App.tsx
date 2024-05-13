@@ -3,8 +3,6 @@ import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Link,
 } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
@@ -35,19 +33,19 @@ const router = createBrowserRouter([
         element: <Contacts />,
         children: [
           {
+            path: ':contactId',
+            loader: contactLoader,
+            action: contactAction,
+            element: <ContactDetails />,
+            errorElement: <ErrorPage />,
+          },
+          {
             path: ':contactId/edit',
             loader: contactLoader,
             action: contactFormAction,
             element: <ContactDetailsForm />,
             errorElement: <ErrorPage />,
           },
-          {
-            path: ':contactId',
-            loader: contactLoader,
-            action: contactAction,
-            element: <ContactDetails />,
-            errorElement: <ErrorPage />,
-          }
         ]
       },
       { path: "/about", element: <About /> },
