@@ -1,5 +1,5 @@
 import { Form, useActionData, useLoaderData } from 'react-router-dom';
-import { ContactActionResult, ContactData, ContactErrors } from '../service/contacts-service';
+import { ContactActionResult, ContactData } from '../service/contacts-service';
 import './ContactDetailsForm.css';
 
 type Props = {}
