@@ -1,16 +1,20 @@
-import React from 'react'
-import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
+import React, { MouseEvent } from 'react'
+import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import { ContactsData } from '../service/contacts-loader';
 
 type Props = {}
 
 const Contacts = (props: Props) => {
   const { contacts } = useLoaderData() as ContactsData;
+  const navigate = useNavigate();
   return (
     <>
       <h3>Contacts</h3>
       <nav className='contacts'>
-        {contacts.map(c => (<NavLink className='contact' key={c.id} to={'/contacts/' + c.id}>{c.fname} {c.lname}</NavLink>))}
+        {contacts.map(c => (
+          <div className='contact' key={c.id} onClick={event => navigate('/contacts/' + c.id)}>
+            {c.fname} {c.lname}
+          </div>))}
       </nav>
       <hr />
       <Outlet />

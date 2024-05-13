@@ -1,3 +1,5 @@
+import { LoaderFunctionArgs } from "react-router-dom";
+
 export interface ContactsData {
     contacts: ContactData[];
 }
@@ -58,3 +60,11 @@ export async function getContact(id: number) {
     await new Promise(r => setTimeout(r, 500));
     return contacts.contacts.find(c => c.id === id);
 }
+
+export function contactLoader({ params }: LoaderFunctionArgs ) {
+    if (params.contactId && contacts.contacts.some(c => c.id + '' === params?.contactId)) {
+      return getContact(+params.contactId);
+    } else {
+      throw new Error(`Invalid or missing post ID`);
+    }
+  }

@@ -13,8 +13,9 @@ import NoMatch from "./components/NoMatch";
 import { dashboardMessagesLoader } from "./service/messages-loader";
 import Dashboard from "./components/Dashboard";
 import Contacts from "./components/Contacts";
-import { getContacts } from "./service/contacts-loader";
+import { contactLoader, getContacts } from "./service/contacts-loader";
 import ContactDetails from "./components/ContactDetails";
+import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,9 @@ const router = createBrowserRouter([
         children: [
           {
             path: ':contactId',
-            element: <ContactDetails />
+            loader: contactLoader,
+            element: <ContactDetails />,
+            errorElement: <ErrorPage />,
           }
         ]
       },
