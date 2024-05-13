@@ -13,6 +13,20 @@ export interface ContactData {
     phone: string
 }
 
+export interface ContactErrors {
+    fname?: string,
+    lname?: string,
+    email?: string,
+    address?: string,
+    phone?: string
+}
+
+export interface ContactActionResult {
+    errors: ContactErrors,
+    values: ContactData
+}
+
+
 let contacts: ContactsData = {
     contacts: [
         {
@@ -61,7 +75,7 @@ export async function getContact(id: number) {
     return contacts.contacts.find(c => c.id === id);
 }
 
-export function contactLoader({ params }: LoaderFunctionArgs) {
+export function contactLoader({ request,params }: LoaderFunctionArgs) {
     if (params.contactId && contacts.contacts.some(c => c.id + '' === params?.contactId)) {
         return getContact(+params.contactId);
     } else {
@@ -88,11 +102,19 @@ async function updateContact(contact: ContactData) {
 }
 
 export async function contactFormAction({ request, params }: ActionFunctionArgs) {
+    const errors: ContactErrors = {};
     if (request.method === 'PUT') {
         let formData = await request.formData();
         const contact = Object.fromEntries(formData) as unknown as ContactData;
         contact.id = +params.contactId!;
         console.log(contact);
+        if (!contact.email.includes("@")) {
+            errors.email = "That doesn't look like an email address";
+        }
+        if (Object.keys(errors).length) {
+            return {errors, values: contact};
+        }
+
         await updateContact(contact);
         return redirect(`/contacts/${params.contactId}`);
     }

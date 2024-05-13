@@ -19,7 +19,7 @@ const ContactDetails = (props: Props) => {
     return (
         <div>
             <div>
-                ContactDetails: {contact?.id}: {contact?.fname} {contact?.lname} - {contact?.address}, {contact?.phone}
+                ContactDetails: {contact?.id}: {contact?.fname} {contact?.lname} - {contact?.address}, {contact?.email}, {contact?.phone}
             </div>
             <div className='actions'>
                 <Form method="PUT">
