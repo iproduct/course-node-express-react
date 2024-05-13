@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react'
 import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
-import { ContactsData } from '../service/contacts-loader';
+import { ContactsData } from '../service/contacts-service';
+import './Contacts.css';
 
 type Props = {}
 
@@ -18,6 +19,9 @@ const Contacts = (props: Props) => {
       </nav>
       <hr />
       <Outlet />
+      <div className='buttons'>
+        <button onClick={() => navigate(-1)}>Go Back</button>
+      </div>
     </>
 
   )

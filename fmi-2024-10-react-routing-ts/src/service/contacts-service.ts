@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs } from "react-router-dom";
+import { ActionFunctionArgs, LoaderFunctionArgs, redirect } from "react-router-dom";
 
 export interface ContactsData {
     contacts: ContactData[];
@@ -13,7 +13,7 @@ export interface ContactData {
     phone: string
 }
 
-const contacts: ContactsData = {
+let contacts: ContactsData = {
     contacts: [
         {
             id: 1,
@@ -61,10 +61,39 @@ export async function getContact(id: number) {
     return contacts.contacts.find(c => c.id === id);
 }
 
-export function contactLoader({ params }: LoaderFunctionArgs ) {
+export function contactLoader({ params }: LoaderFunctionArgs) {
     if (params.contactId && contacts.contacts.some(c => c.id + '' === params?.contactId)) {
-      return getContact(+params.contactId);
+        return getContact(+params.contactId);
     } else {
-      throw new Error(`Invalid or missing post ID`);
+        throw new Error(`Invalid or missing post ID`);
     }
-  }
+}
+
+async function deleteContactByd(id: number) {
+    contacts.contacts = contacts.contacts.filter(c => c.id !== id);
+}
+
+export async function contactAction({ request, params }: ActionFunctionArgs) {
+    if (request.method === 'DELETE') {
+        params.contactId && await deleteContactByd(+params.contactId);
+        return redirect('/contacts');
+    } else if (request.method === 'PUT') {
+        return redirect(`/contacts/${params.contactId}/edit`);
+    }
+}
+
+async function updateContact(contact: ContactData) {
+    contacts.contacts = contacts.contacts.map(c => c.id === contact.id ? contact : c);
+    return contact;
+}
+
+export async function contactFormAction({ request, params }: ActionFunctionArgs) {
+    if (request.method === 'PUT') {
+        let formData = await request.formData();
+        const contact = Object.fromEntries(formData) as unknown as ContactData;
+        contact.id = +contact.id;
+        console.log(contact);
+        await updateContact(contact);
+        return redirect(`/contacts/${params.contactId}`);
+    }
+}
