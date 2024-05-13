@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Form, useLoaderData, useParams } from 'react-router-dom';
-import { ContactData, getContact } from '../service/contacts-service';
+
+import { Form, useLoaderData } from 'react-router-dom';
+import { ContactData } from '../service/contacts-service';
 
 type Props = {}
 
@@ -25,8 +25,14 @@ const ContactDetails = (props: Props) => {
                 <Form method="PUT">
                     <button type="submit">Edit</button>
                 </Form>
-                <Form method="DELETE">
+                <Form method="DELETE" onSubmit={(event) => {
+                    // eslint-disable-next-line no-restricted-globals
+                    if (!confirm("Please confirm you want to delete this record.")) {
+                        event.preventDefault();
+                    }
+                }}>
                     <button type='submit'>Delete</button>
+
                 </Form>
             </div>
         </div>
