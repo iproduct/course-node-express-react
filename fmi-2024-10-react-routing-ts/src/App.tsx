@@ -1,5 +1,3 @@
-import * as React from "react";
-import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -30,10 +28,14 @@ const router = createBrowserRouter([
       {
         path: "/contacts",
         loader: getContacts,
+        shouldRevalidate: ({ currentUrl }) => {
+          console.log(currentUrl);
+          return !currentUrl.pathname.startsWith('/contacts')
+        },
         element: <Contacts />,
         children: [
           {
-            path: ':contactId',
+            path: ':contactId/*',
             loader: contactLoader,
             action: contactAction,
             element: <ContactDetails />,
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
             path: ':contactId/edit',
             loader: contactLoader,
             action: contactFormAction,
+            shouldRevalidate: ({ actionResult }) => !actionResult?.errors,
             element: <ContactDetailsForm />,
             errorElement: <ErrorPage />,
           },

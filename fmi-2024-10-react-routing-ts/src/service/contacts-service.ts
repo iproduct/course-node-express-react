@@ -75,7 +75,7 @@ export async function getContact(id: number) {
     return contacts.contacts.find(c => c.id === id);
 }
 
-export function contactLoader({ request,params }: LoaderFunctionArgs) {
+export function contactLoader({ request, params }: LoaderFunctionArgs) {
     if (params.contactId && contacts.contacts.some(c => c.id + '' === params?.contactId)) {
         return getContact(+params.contactId);
     } else {
