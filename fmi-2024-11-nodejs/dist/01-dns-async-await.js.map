@@ -1,0 +1,1 @@
+{"version":3,"file":"01-dns-async-await.js","sourceRoot":"","sources":["../src/01-dns-async-await.ts"],"names":[],"mappings":";;;;;;;;;;;AAAA,oCAAoC;AAEpC,MAAM,MAAM,GAAG,WAAW,CAAC;AAE3B,CAAC,GAAS,EAAE;IACR,MAAM,SAAS,GAAG,MAAM,GAAG,CAAC,OAAO,CAAC,MAAM,CAAC,CAAA;IAC3C,OAAO,CAAC,GAAG,CAAC,SAAS,CAAC,CAAC;AAC3B,CAAC,CAAA,CAAC,EAAE,CAAC"}
