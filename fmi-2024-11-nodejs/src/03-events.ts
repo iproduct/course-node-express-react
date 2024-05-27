@@ -11,7 +11,7 @@ const secondListener = (payload) => {
     console.log(`Second listener: ${JSON.stringify(payload)}`);
 };
 
-emitter.on('myevent', secondListener);
+emitter.once('myevent', secondListener);
 
 emitter.emit('myevent')
 emitter.emit('myevent', {name: 'Trayan', age: 45}, 'active')
