@@ -88,6 +88,19 @@
       "likeCounter": 0,
       "status": 2,
       "id": 8
+    },
+    {
+      "title": "Test",
+      "content": "Test 123 content here ...",
+      "imageUrl": "https://s3.amazonaws.com/creativetim_bucket/products/71/thumb/material-dashboard-react.jpg?1638950990",
+      "authorId": 1,
+      "tags": [
+        "test",
+        "123"
+      ],
+      "likeCounter": 0,
+      "status": 1,
+      "id": 9
     }
   ],
   "comments": [
