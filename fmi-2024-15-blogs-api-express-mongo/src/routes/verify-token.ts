@@ -39,6 +39,7 @@ export function verifyToken(req: Request, res: Response, next: NextFunction)  {
     else {
       // if everything good, save to request for use in other routes
       req['userId'] = decoded['id'];
+      console.log("UserID:", req['userId'])
       next();
     }
   });

@@ -62,7 +62,7 @@ export class MongoRepository<T extends Indentifiable> implements Repository<T> {
         throw new AppError(500, `Error inserting ${this.entytyType.typeId}: "${JSON.stringify(entity)}"`);
     }
     async deleteById(id: IdType): Promise<T> {
-        const found = await this.findById(id);
+        const found=await this.findById(id);
         if (!found) {
             throw new AppError(404, `${this.entytyType.typeId} ID="${id} does not exist and can not be modified.`);
         }
@@ -78,7 +78,8 @@ export class MongoRepository<T extends Indentifiable> implements Repository<T> {
     }
     async findById(id: IdType): Promise<T> {
         try {
-            return this.db.collection(this.collection).findOne({_id: new ObjectId(id)}) as unknown as Promise<T>;
+            const {_id, ...props} = await this.db.collection(this.collection).findOne({_id: new ObjectId(id)});
+            return {id: _id, ...props} as unknown as Promise<T>;
         } catch(err) {
             throw new AppError(404, err.message);
         }
@@ -96,7 +97,8 @@ export class PostRepository extends MongoRepository<Post> {
 export class UserRepository extends MongoRepository<User> {
     async findByUsername(username: string): Promise<User> {
         try {
-            return await this.db.collection(this.collection).findOne({'username': username}) as unknown as Promise<User>;
+            const {_id, ...props} = await this.db.collection(this.collection).findOne({'username': username});
+            return {id: _id, ...props} as unknown as Promise<User>;
         } catch(err) {
             throw new AppError(404, `User with username: "${username}" does not exist.`);
         }

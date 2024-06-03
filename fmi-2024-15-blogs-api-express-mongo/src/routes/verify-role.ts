@@ -24,8 +24,9 @@ import { Role } from '../model/user.model';
 
 export function verifyRole(roles: Role[]) {
   return async function (req: Request, res: Response, next: NextFunction) {
-    const paramUserId = req.params.userId;
+    // const paramUserId = req.params.userId;
     const userId = req['userId'];
+    console.log("UserID:", userId)
 
     if (!userId) next(new AppError(403, `No userId provided.`)); //Error
     try {
