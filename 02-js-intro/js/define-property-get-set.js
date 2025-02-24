@@ -26,7 +26,8 @@ pl1.position += 50;
 console.log('Value: ' + pl1.position);
 console.log(pl1.positionsLog);
 
-console.log(pl1.getLog());
+const log = pl1.getLog()
+log.forEach(console.log)
 
 // for (var key in pl1) {
 //   if (pl1.hasOwnProperty(key)) {
