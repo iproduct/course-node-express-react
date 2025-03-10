@@ -29,6 +29,6 @@ const resultsDiv = document.getElementById("results");
                 return img
             })
         ).then(images =>{
-            // TODO images remove after 5 sec
+            // TODO: remove images after 5 sec
         })
 })()
