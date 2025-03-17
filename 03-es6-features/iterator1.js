@@ -1,10 +1,11 @@
 let fibonacci = {
-  [Symbol.iterator]: function() {
-    let pre = 0, cur = 1;
+  [Symbol.iterator]: function () {
     return {
+      pre: 0,
+      cur: 1,
       next() {
-        [pre, cur] = [cur, pre + cur];
-        return { value: cur }
+        [this.pre, this.cur] = [this.cur, this.pre + this.cur];
+        return { value: this.cur }
       }
     }
   }

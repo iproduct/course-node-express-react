@@ -27,8 +27,8 @@ for (var [i, n] of fibonacci(10)) {
   console.log(i, '->', n);
 }
 
-// for (var [i, n] of fibonacci(30)) {
-//   console.log(i, '->', n);
-// }
+for (var [i, n] of fibonacci(30)) {
+  console.log(i, '->', n);
+}
 
 console.log(...fibonacci(10));
