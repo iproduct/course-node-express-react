@@ -1,9 +1,9 @@
 function msgAfterTimeout(msg, who, timeout) {
     return new Promise((resolve, reject) => {
         setTimeout(() =>
-            // Math.random() > 0.5 ?
+            Math.random() > 0.5 ?
                 resolve(`${msg} Hello ${who}!`)
-                // : reject(`Error resolving promise: ${who}`)
+                : reject(`Error resolving promise: ${who}`)
             , timeout)
     })
 }

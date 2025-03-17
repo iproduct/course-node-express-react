@@ -1,5 +1,6 @@
 async function f() {
   let promise = new Promise((resolve, reject) => {
+    // setTimeout(() => resolve("Task completed result."), 2000);
     setTimeout(() => reject("Task completed with error."), 2000);
   });
 
@@ -14,5 +15,6 @@ async function f() {
   }
 }
 
-f().then((data) => console.log('Really finished: ' + data))
-  .catch((data) => console.log('Really finished REJECT: ' + data));
+f()
+  .then((data) => console.log('Really finished: ' + data))
+  .catch((err) => console.log('Really finished REJECT: ' + err));

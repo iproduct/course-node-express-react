@@ -1,11 +1,12 @@
 async function f() {
   return new Promise((resolve, reject) => setTimeout(reject, 3000, "Rejected with Error!"));
-  return Promise.resolve(1);
+  // return Promise.resolve(42);
+  // return 42;
 }
 async function g() {
   // return Promise.reject("Error!!!");
-  throw "Error!!!";
-  // return 2;
+  // throw "Error!!!";
+  return 2;
 }
 
 // console.log(g());
