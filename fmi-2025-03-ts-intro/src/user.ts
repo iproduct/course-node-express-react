@@ -2,6 +2,7 @@ import { IdType } from "./common-types";
 import { Contact, Person } from "./person";
 
 export interface User extends Person {
+    id: IdType;
     role: Role;
     password: string;
     readonly salutation: string;
@@ -16,7 +17,7 @@ export enum Role {
 type Role2 = 'ADMIN' | 'AUTHOR' | 'READER' | 'ANONIMOUS'
 
 export class UserBase implements User {
-    id: IdType = undefined;
+    public id: IdType = 0;
     role: Role = Role.READER;
     constructor(
         public firstName: string,
@@ -34,6 +35,8 @@ export class UserBase implements User {
         Password: ${this.password}, Role: ${this.role}`;
     }
 }
+
+export type UserCreateDto = Omit<User, "id">;
 
 class Reader extends UserBase {
     // role = 'READER' as const 
