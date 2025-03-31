@@ -20,12 +20,12 @@ export class UserServiceImpl implements UserService{
     login(credentials: Credentials): User;
     login(credentials: Credentials | string , pass?: string){
         let email, password: string;
-        if(typeof credentials === 'string') {
-            email = credentials;
-            password = pass ? pass: '';
-        } else {
+        if(credentials instanceof Credentials) {
             email = credentials.email;
             password = credentials.password;
+        } else {
+            email = credentials;
+            password = pass ? pass: '';
         }
         const user = this.userRepo.findByEmail(email);
         if(user) {

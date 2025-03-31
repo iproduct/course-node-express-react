@@ -1,5 +1,6 @@
 import { UserRepository, UserRepositoryInMemory } from "./dao/user-repository.js"
 import { greet } from "./greeter.js"
+import { Credentials } from "./model/credentials.js"
 import { Admin, Reader, Author, UserBase, User } from "./model/user.js"
 import { UserService, UserServiceImpl } from "./service/user-service.js"
 import { NumberIdGenrator } from "./util/idgen.js"
@@ -24,5 +25,6 @@ resultsDiv!.innerHTML = '<ul>' +
     + '</ul>';
 
 const userService: UserService = new UserServiceImpl(userRepo);
-const loggedUser = userService.login({email: 'trayan@gmail.com', password:'trayan123'});
+// const loggedUser = userService.login({email: 'trayan@gmail.com', password:'trayan123'});
+const loggedUser = userService.login(new Credentials('trayan@gmail.com', 'trayan123'));
 console.log('Logged user:', loggedUser);

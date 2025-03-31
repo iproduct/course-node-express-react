@@ -1,16 +1,17 @@
+import { Credentials } from "../model/credentials.js";
 export class UserServiceImpl {
     constructor(userRepo) {
         this.userRepo = userRepo;
     }
     login(credentials, pass) {
         let email, password;
-        if (typeof credentials === 'string') {
-            email = credentials;
-            password = pass ? pass : '';
-        }
-        else {
+        if (credentials instanceof Credentials) {
             email = credentials.email;
             password = credentials.password;
+        }
+        else {
+            email = credentials;
+            password = pass ? pass : '';
         }
         const user = this.userRepo.findByEmail(email);
         if (user) {
