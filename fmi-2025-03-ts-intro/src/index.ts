@@ -1,6 +1,6 @@
 import { UserRepository, UserRepositoryInMemory } from "./dao/user-repository.js"
 import { greet } from "./greeter.js"
-import { Admin, Reader, Author, UserBase } from "./model/user.js"
+import { Admin, Reader, Author, UserBase, User } from "./model/user.js"
 import { NumberIdGenrator } from "./util/idgen.js"
 
 const resultsDiv = document.getElementById('results')
@@ -14,7 +14,7 @@ const users = [
 const userRepo: UserRepository = new UserRepositoryInMemory(new NumberIdGenrator())
 users.forEach(user => userRepo.create(user))
 
-console.log(userRepo.findAll())
+console.log(userRepo.findAll() as User[])
 
 resultsDiv!.innerHTML = '<ul>' +
     userRepo

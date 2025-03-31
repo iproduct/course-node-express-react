@@ -12,7 +12,7 @@ export class RepositoryInMemory {
     }
     create(dto) {
         const id = this.idGen.getNextId();
-        const entity = Object.assign({ id }, dto);
+        const entity = Object.assign(dto, { id });
         this.entities.set(id, entity);
         return entity;
     }
