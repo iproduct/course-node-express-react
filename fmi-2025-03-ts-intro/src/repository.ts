@@ -28,17 +28,26 @@ export class RepositoryInMemory<T extends Identifiable> implements Repository<T>
     }
     create(dto: EntityCreateDto<T>): T {
         let entity: EntityCreateDto<T> | Identifiable;
-        entity = {id: 1, ...dto}
-        return entity as T
+        entity = {id: this.idGen.getNextId(), ...dto};
+        return entity as T;
     }
     update(entity: T): Optional<T> {
-        throw new Error("Method not implemented.");
+        const old = this.findById(entity.id);
+        if(old) {
+            this.entities.set(entity.id, entity)
+            return entity
+        }
+        return undefined;
     }
     deleteById(id: IdType): Optional<T> {
-        throw new Error("Method not implemented.");
+        const old = this.findById(id);
+        if(this.entities.delete(id)) {
+            return old
+        }
+        return undefined;
     }
     count(): number {
-        throw new Error("Method not implemented.");
+        return this.entities.size;
     }
     
 }
