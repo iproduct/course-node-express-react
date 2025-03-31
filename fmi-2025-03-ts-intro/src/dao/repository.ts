@@ -1,5 +1,5 @@
-import { Identifiable, IdType, Optional } from "./common-types";
-import { IdGenerator } from "./idgen";
+import { Identifiable, IdType, Optional } from "../common/common-types.js";
+import { IdGenerator } from "../util/idgen.js";
 
 export interface Repository<T extends Identifiable> {
     findAll(): T[];
@@ -14,7 +14,7 @@ export interface Repository<T extends Identifiable> {
 //     [key: IdType] : V;
 // }
 
-type EntityCreateDto<T> = Omit<T, "id">
+export type EntityCreateDto<T> = Omit<T, "id">
 
 export class RepositoryInMemory<T extends Identifiable> implements Repository<T> {
     private entities = new Map<IdType, T>;
