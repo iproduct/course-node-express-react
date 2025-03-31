@@ -16,6 +16,8 @@ export interface UserService {
 
 export class UserServiceImpl implements UserService{
     constructor(private userRepo: UserRepository) {}
+    login(email: string, pass: string): User;
+    login(credentials: Credentials): User;
     login(credentials: Credentials | string , pass?: string){
         let email, password: string;
         if(typeof credentials === 'string') {
