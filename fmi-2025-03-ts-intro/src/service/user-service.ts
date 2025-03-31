@@ -1,6 +1,7 @@
-import { IdType } from "../common/common-types";
-import { UserRepository } from "../dao/user-repository";
-import { User, UserCreateDto } from "../model/user";
+import { IdType, Optional } from "../common/common-types.js";
+import { UserRepository } from "../dao/user-repository.js";
+import { Credentials } from "../model/credentials.js";
+import { User, UserCreateDto } from "../model/user.js";
 
 export interface UserService {
     addUser(userDto: UserCreateDto): User;
@@ -9,10 +10,30 @@ export interface UserService {
     updateUser(user: User): User;
     deleteUserById(id: IdType): User;
     getCount(): number;
+    login(email: string, pass: string): User;
+    login(credentials: Credentials): User;
 }
 
 export class UserServiceImpl implements UserService{
     constructor(private userRepo: UserRepository) {}
+    login(credentials: Credentials | string , pass?: string){
+        let email, password: string;
+        if(typeof credentials === 'string') {
+            email = credentials;
+            password = pass ? pass: '';
+        } else {
+            email = credentials.email;
+            password = credentials.password;
+        }
+        const user = this.userRepo.findByEmail(email);
+        if(user) {
+            if(user.password === password) {
+                return user;
+            } 
+            throw new Error(`Invalid user password.`)
+        } 
+        throw new Error(`User with email '${email}' does not exist.`)
+    }
     addUser(userDto: UserCreateDto): User {
         return this.userRepo.create(userDto);
     }

@@ -2,6 +2,25 @@ export class UserServiceImpl {
     constructor(userRepo) {
         this.userRepo = userRepo;
     }
+    login(credentials, pass) {
+        let email, password;
+        if (typeof credentials === 'string') {
+            email = credentials;
+            password = pass ? pass : '';
+        }
+        else {
+            email = credentials.email;
+            password = credentials.password;
+        }
+        const user = this.userRepo.findByEmail(email);
+        if (user) {
+            if (user.password === password) {
+                return user;
+            }
+            throw new Error(`Invalid user password.`);
+        }
+        throw new Error(`User with email '${email}' does not exist.`);
+    }
     addUser(userDto) {
         return this.userRepo.create(userDto);
     }
