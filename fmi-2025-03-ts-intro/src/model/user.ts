@@ -25,7 +25,7 @@ export class UserBase implements User {
         public email: string,
         public password: string,
         public contact?: Contact
-    ) {}
+    ) { }
 
     get salutation() {
         return `Hello ${this.firstName} ${this.lastName} in role [${this.role}]`
@@ -38,7 +38,7 @@ export class UserBase implements User {
 
 export type UserCreateDto = Omit<User, "id">;
 
-class Reader extends UserBase {
+export class Reader extends UserBase {
     // role = 'READER' as const 
     role = Role.READER
     constructor(
@@ -47,14 +47,14 @@ class Reader extends UserBase {
         public email: string,
         public password: string,
         public contact?: Contact) {
-            super(firstName, lastName, email, password, contact)
-        }
-        toString() {
-            return `READER: ${super.toString()}`
-        }
-    
+        super(firstName, lastName, email, password, contact)
+    }
+    public toString() {
+        return `READER: ${super.toString()}`
+    }
+
 }
-class Author extends UserBase {
+export class Author extends UserBase {
     // role = 'READER' as const 
     role = Role.AUTHOR
     constructor(
@@ -63,14 +63,14 @@ class Author extends UserBase {
         public email: string,
         public password: string,
         public contact?: Contact) {
-            super(firstName, lastName, email, password, contact)
-        }
-        toString() {
-            return `AUTHOR: ${super.toString()}`
-        }
-    
+        super(firstName, lastName, email, password, contact)
+    }
+    public toString() {
+        return `AUTHOR: ${super.toString()}`
+    }
+
 }
-class Admin extends UserBase {
+export class Admin extends UserBase {
     // role = 'READER' as const 
     role = Role.ADMIN
     constructor(
@@ -79,9 +79,9 @@ class Admin extends UserBase {
         public email: string,
         public password: string,
         public contact?: Contact) {
-            super(firstName, lastName, email, password, contact)
-        }
-        toString() {
-            return `ADMIN: ${super.toString()}`
-        }
+        super(firstName, lastName, email, password, contact)
+    }
+    public toString() {
+        return `ADMIN: ${super.toString()}`
+    }
 }

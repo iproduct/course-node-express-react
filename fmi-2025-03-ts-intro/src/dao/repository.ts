@@ -27,9 +27,10 @@ export class RepositoryInMemory<T extends Identifiable> implements Repository<T>
         return this.entities.get(id);
     }
     create(dto: EntityCreateDto<T>): T {
-        let entity: EntityCreateDto<T> | Identifiable;
-        entity = {id: this.idGen.getNextId(), ...dto};
-        return entity as T;
+        const id = this.idGen.getNextId();
+        const entity = {id, ...dto} as T;
+        this.entities.set(id, entity)
+        return entity;
     }
     update(entity: T): Optional<T> {
         const old = this.findById(entity.id);
