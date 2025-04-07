@@ -1,16 +1,14 @@
-import { Todo } from './model/todo'
+import { Todo, TodoStatus } from './model/todo'
 
 type Props = {
     todos: Todo[]
 }
 
-const TodoList = (props: Props) => {
+const TodoList = ({ todos }: Props) => {
     return (
-        <>
-            <div>TodoList</div>
-            <div>{props ? 'Todos here ...' : 'No todos yet.'}</div>
-        </>
-    )
+        todos.map(todo => (
+        <div key={todo.id} className='card'>{todo.id}: {todo.text} [{TodoStatus[todo.status]}]</div>)
+    ))
 }
 
 export default TodoList
