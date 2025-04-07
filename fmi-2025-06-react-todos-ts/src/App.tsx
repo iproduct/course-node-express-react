@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import TodoList from './TodoList'
+import TodoList from './components/TodoList'
 import { Todo } from './model/todo'
 
 function App() {
@@ -16,11 +16,14 @@ function App() {
       new Todo('Improve compoent styling.'),
     ])
   }, [])
+  function updateTodo(todo: Todo) {
+    setTodos(oldTodos => oldTodos.map(td => td.id === todo.id ? todo : td))
+  }
 
   return (
     <>
       <h1>React TODOS Typescript Demo</h1>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} changeStatus={updateTodo} />
     </>
   )
 }
