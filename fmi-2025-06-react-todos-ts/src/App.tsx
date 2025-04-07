@@ -1,9 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import TodoList from './TodoList'
+import { Todo } from './model/todo'
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState<Todo[]>([])
+  useEffect(() => {
+    setTodos([
+      new Todo('Create Todo App component.'),
+      new Todo('Create TodoList component.'),
+      new Todo('Create TodoItem component.'),
+      new Todo('Create TodoInput component.'),
+      new Todo('Connect todos app to backend with json-server.'),
+      new Todo('Create TodoFilter component.'),
+      new Todo('Improve compoent styling.'),
+    ])
+  }, [])
 
   return (
     <>

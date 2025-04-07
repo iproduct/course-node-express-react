@@ -1,7 +1,7 @@
-import React from 'react'
+import { Todo } from './model/todo'
 
 type Props = {
-    todos: []
+    todos: Todo[]
 }
 
 const TodoList = (props: Props) => {
