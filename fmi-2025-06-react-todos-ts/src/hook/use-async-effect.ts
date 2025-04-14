@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
-type AsyncEffect<V> = (isValid?: () => boolean) => Promise<V>;
+type AsyncEffect<V> = (isUpdateValid?: () => boolean) => Promise<V>;
 type Destructor<V> = (prevResult?: V) => void;
 
 export default function useAsyncEffect<V>(effect: AsyncEffect<V>, dependencies?: ReadonlyArray<unknown>, destroy?: Destructor<V>) {
     useEffect(function () {
         let result: V;
-        let valid = true;
+        let validUpdate = true;
         const maybePromise = effect(function () {
-            return valid;
+            return validUpdate;
         });
 
         Promise.resolve(maybePromise).then(function (value) {
@@ -16,7 +16,7 @@ export default function useAsyncEffect<V>(effect: AsyncEffect<V>, dependencies?:
         });
 
         return function () {
-            valid = false;
+            validUpdate = false;
 
             if (destroy) {
                 destroy(result);
