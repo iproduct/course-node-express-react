@@ -1,40 +1,42 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import TodoList from './component/TodoList'
 import { Todo } from './model/todo'
 import TodoInput from './component/TodoInput'
 import { ApiClient } from './service/api-client'
+import useAsyncEffect from './hook/use-async-effect'
 
-const BASE_URL = 'http://localhost:9000/';
+const BASE_URL = 'http://localhost:9000';
 
-const API_CLIENT = new ApiClient(BASE_URL);
+const API = new ApiClient(BASE_URL);
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
-  useEffect(() => {
-    const todos = await API_CLIENT.findAll(Todo)
-    setTodos([
-      new Todo('Create Todo App component.'),
-      new Todo('Create TodoList component.'),
-      new Todo('Create TodoItem component.'),
-      new Todo('Create TodoInput component.'),
-      new Todo('Connect todos app to backend with json-server.'),
-      new Todo('Create TodoFilter component.'),
-      new Todo('Improve compoent styling.'),
-    ])
-  }, [])
+  const [errors, setErrors] = useState<Error | undefined>(undefined)
+  useAsyncEffect(async () => {
+    const todos = await API.findAll(Todo);
+    setTodos(todos);
+  }, []);
   function updateTodo(todo: Todo) {
     setTodos(oldTodos => oldTodos.map(td => td.id === todo.id ? todo : td))
   }
 
-  function createTodo(todo: Todo) {
-    setTodos(oldTodos => [...oldTodos, todo])
+  async function createTodo(todo: Todo) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const {id, ...dto} = todo;
+      const created = await API.create(Todo, dto);
+      setTodos(oldTodos => [...oldTodos, created]);
+    } catch (err) {
+      setErrors(err as Error);
+    }
   }
 
   return (
     <>
       <h1>React TODOS Typescript Demo</h1>
       <TodoInput onCreateTodo={createTodo} onError={() => {}} />
+      {errors && (<div className='errors'>{errors.message}</div>)}
       <TodoList todos={todos} changeStatus={updateTodo} />
     </>
   )

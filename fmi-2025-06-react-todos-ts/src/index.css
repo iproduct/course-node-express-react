@@ -67,3 +67,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.errors {
+  border-radius: 8px;
+  border: 1px solid #f61717;
+  background-color: #fab0c0;
+  color: red;
+}
