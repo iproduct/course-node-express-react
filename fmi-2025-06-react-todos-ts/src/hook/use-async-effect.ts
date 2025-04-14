@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
-type AsyncEffect<V> = (isValid?: () => boolean) => Promise<V>;
+type AsyncEffect<V> = (isMounted?: () => boolean) => Promise<V>;
 type Destructor<V> = (prevResult?: V) => void;
 
-export default function useAsyncEffect<V>(effect: AsyncEffect<V>, dependencies?: ReadonlyArray<unknown>, destroy?: Destructor<V>) {
+export default function useAsyncEffect<V>(effect: AsyncEffect<V>, inputs?: ReadonlyArray<unknown>, destroy?: Destructor<V>) {
     useEffect(function () {
         let result: V;
-        let valid = true;
+        let mounted = true;
         let maybePromise = effect(function () {
-            return valid;
+            return mounted;
         });
 
         Promise.resolve(maybePromise).then(function (value) {
@@ -16,12 +16,12 @@ export default function useAsyncEffect<V>(effect: AsyncEffect<V>, dependencies?:
         });
 
         return function () {
-            valid = false;
+            mounted = false;
 
             if (destroy) {
                 destroy(result);
             }
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, dependencies);
+    }, inputs);
 }

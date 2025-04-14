@@ -3,10 +3,16 @@ import './App.css'
 import TodoList from './component/TodoList'
 import { Todo } from './model/todo'
 import TodoInput from './component/TodoInput'
+import { ApiClient } from './service/api-client'
+
+const BASE_URL = 'http://localhost:9000/';
+
+const API_CLIENT = new ApiClient(BASE_URL);
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   useEffect(() => {
+    const todos = await API_CLIENT.findAll(Todo)
     setTodos([
       new Todo('Create Todo App component.'),
       new Todo('Create TodoList component.'),

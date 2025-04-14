@@ -1,4 +1,21 @@
 {
+  "todos": [
+    {
+      "id": 1,
+      "text": "Create Todo App component.",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "text": "Create TodoList component.",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "text": "Create TodoItem component.",
+      "status": 1
+    }
+  ],
   "posts": [
     {
       "id": "1",

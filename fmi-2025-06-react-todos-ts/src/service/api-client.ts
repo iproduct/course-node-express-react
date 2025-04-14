@@ -3,13 +3,13 @@ import { EntityConstructor, Identifiable, IdType } from "../common/common-types"
 export class ApiClient {
     constructor(private baseUrl: string) { }
     async findAll<V extends Identifiable>(ctor: EntityConstructor<V>){
-        return this.fetchData(`${this.baseUrl}/${ctor.className}s`) as Promise<V[]>;
+        return this.fetchData(`${this.baseUrl}/${ctor.className.toLowerCase()}s`) as Promise<V[]>;
     }
     async findById<V extends Identifiable>(ctor: EntityConstructor<V>, id: IdType){
-        return this.fetchData(`${this.baseUrl}/${ctor.className}s/${id}`) as Promise<V>;
+        return this.fetchData(`${this.baseUrl}/${ctor.className.toLowerCase()}s/${id}`) as Promise<V>;
     }
     async create<V extends Identifiable>(ctor: EntityConstructor<V>, entity: Omit<V, "id">){
-        return this.fetchData(`${this.baseUrl}/${ctor.className}s`,
+        return this.fetchData(`${this.baseUrl}/${ctor.className.toLowerCase()}s`,
            {
             method: 'POST',
             headers: {
@@ -20,7 +20,7 @@ export class ApiClient {
         ) as Promise<V>;
     }
     async update<V extends Identifiable>(ctor: EntityConstructor<V>, entity: V){
-        return this.fetchData(`${this.baseUrl}/${ctor.className}s/${entity.id}`,
+        return this.fetchData(`${this.baseUrl}/${ctor.className.toLowerCase()}s/${entity.id}`,
            {
             method: 'PUT',
             headers: {
@@ -31,7 +31,7 @@ export class ApiClient {
         ) as Promise<V>;
     }
     async deleteById<V extends Identifiable>(ctor: EntityConstructor<V>, id: IdType){
-        return this.fetchData(`${this.baseUrl}/${ctor.className}s/${id}`,
+        return this.fetchData(`${this.baseUrl}/${ctor.className.toLowerCase()}s/${id}`,
            {
             method: 'DELETE',
            } 
