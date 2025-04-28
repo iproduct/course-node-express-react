@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import useEffectOnMount from './hooks/useEffectOnMount';
 
 // Define the handle types which will be passed to the forwardRef
@@ -8,9 +8,8 @@ export type CountdownHandle = {
     focus: () => void;
 };
 
-type CountdownProps = {};
 
-const Countdown = forwardRef<CountdownHandle, CountdownProps>((props, ref) => {
+const Countdown = forwardRef<CountdownHandle, object>((props, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     useImperativeHandle(ref, () => ({
@@ -36,7 +35,7 @@ const Countdown = forwardRef<CountdownHandle, CountdownProps>((props, ref) => {
     }));
 
     const [counter, setCounter] = useState(0);
-    const interval = useRef<NodeJS.Timer>();
+    const interval = useRef<ReturnType<typeof setTimeout>>(undefined);
 
     useEffectOnMount(() => {
         interval.current = setInterval(() => {

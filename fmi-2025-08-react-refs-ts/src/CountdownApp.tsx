@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import './App.css';
 import Countdown, { CountdownHandle } from './Countdown';
 // import CountdownClass from './CountdownClass';
