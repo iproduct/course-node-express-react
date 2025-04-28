@@ -17,10 +17,16 @@ function App() {
     const todos = await API.findAll(Todo);
     setTodos(todos);
   }, []);
-  function updateTodo(todo: Todo) {
-    setTodos(oldTodos => oldTodos.map(td => td.id === todo.id ? todo : td))
-  }
 
+  async function updateTodo(todo: Todo) {
+    try {
+      const updated = await API.update(Todo, todo);
+      setTodos(oldTodos => oldTodos.map(td => td.id === todo.id ? updated : td))
+    } catch (err) {
+      setErrors(err as Error);
+    }
+  }
+  
   async function createTodo(todo: Todo) {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

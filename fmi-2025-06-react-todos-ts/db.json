@@ -1,17 +1,17 @@
 {
   "todos": [
     {
-      "id": 1,
+      "id": "1",
       "text": "Create Todo App component.",
       "status": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "text": "Create TodoList component.",
       "status": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "text": "Create TodoItem component.",
       "status": 1
     },
@@ -23,7 +23,7 @@
     {
       "id": "3403",
       "text": "rrtrrr",
-      "status": 1
+      "status": 2
     },
     {
       "id": "70cd",
@@ -33,7 +33,17 @@
     {
       "id": "aea2",
       "text": "Finish",
+      "status": 2
+    },
+    {
+      "id": "d806",
+      "text": "new todo 28.04.25",
       "status": 1
+    },
+    {
+      "id": "1830",
+      "text": "super new todo",
+      "status": 2
     }
   ],
   "posts": [
