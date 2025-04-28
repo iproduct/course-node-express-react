@@ -1,4 +1,4 @@
-import{ ChangeEvent } from 'react'
+import { ChangeEvent, useCallback } from 'react'
 import { TodoStatus } from '../model/todo'
 
 export type TodoFilterType = TodoStatus | undefined;
@@ -9,9 +9,8 @@ type Props = {
 }
 
 const TodoFilter = ({ filter, onFilterChange }: Props) => {
-    function changeFilter(event: ChangeEvent<HTMLSelectElement>) {
-        onFilterChange(parseInt(event.target.value))
-    }
+    const changeFilter = useCallback((event: ChangeEvent<HTMLSelectElement>) => onFilterChange(parseInt(event.target.value)),
+        [onFilterChange]);
     return (
         <select value={filter} onChange={changeFilter}>
             <option value={undefined}>All</option>

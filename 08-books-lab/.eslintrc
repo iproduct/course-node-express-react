@@ -1,0 +1,7 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+       "jsx-a11y/anchor-is-valid": "off"
+    }
+  }

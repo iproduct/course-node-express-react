@@ -1,0 +1,35 @@
+.BookItem-card {
+  height: 250px;
+}
+.BookItem-thumbnail-container {
+  height: 175px;
+}
+
+.BookItem-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  justify-content: space-evenly;
+  padding-top: 10px;
+}
+
+.BookItem-card h3 {
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+.BookItem-card h4 {
+  font-size: 12pt;
+  font-weight: italic;
+}
+
+.BookItem-thumbnail {
+  width: 120px;
+  /* float: left; */
+  margin-right: 15px;
+}
+
+.BookItem-card-title {
+  display: block;
+  width: 250px;
+}
