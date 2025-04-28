@@ -1,0 +1,723 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 446,
+    "items": [
+      {
+        "kind": "books#volume",
+        "id": "274fCwAAQBAJ",
+        "etag": "L5Y/MrMgMAA",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/274fCwAAQBAJ",
+        "volumeInfo": {
+          "title": "Learning React Native",
+          "subtitle": "Building Native Mobile Apps with JavaScript",
+          "authors": [
+            "Bonnie Eisenman"
+          ],
+          "publisher": "\"O'Reilly Media, Inc.\"",
+          "publishedDate": "2015-12-03",
+          "description": "Get a practical introduction to React Native, the JavaScript framework for writing and deploying fully featured mobile apps that look and feel native. With this hands-on guide, you’ll learn how to build applications that target iOS, Android, and other mobile platforms instead of browsers. You’ll also discover how to access platform features such as the camera, user location, and local storage. With code examples and step-by-step instructions, author Bonnie Eisenman shows web developers and frontend engineers how to build and style interfaces, use mobile components, and debug and deploy apps. Along the way, you’ll build several increasingly sophisticated sample apps with React Native before putting everything together at the end. Learn how React Native provides an interface to native UI components Examine how the framework uses native components analogous to HTML elements Create and style your own React Native components and applications Install modules for APIs and features not supported by the framework Get tools for debugging your code, and for handling issues outside of JavaScript Put it all together with the Zebreto effective-memorization flashcard app Deploy apps to the iOS App Store and Google’s Play Store",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_13",
+              "identifier": "9781491929070"
+            },
+            {
+              "type": "ISBN_10",
+              "identifier": "1491929073"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": true
+          },
+          "pageCount": 272,
+          "printType": "BOOK",
+          "categories": [
+            "Computers"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=274fCwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=274fCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=274fCwAAQBAJ&pg=PA12&dq=react&hl=&cd=1&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=274fCwAAQBAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Learning_React_Native.html?hl=&id=274fCwAAQBAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=274fCwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "In \u003cb\u003eReact\u003c/b\u003e Native, just as in \u003cb\u003eReact\u003c/b\u003e, we write our views using JSX, combining markup and the JavaScript that controls it into a single file. JSX met with strong \u003cb\u003ereactions\u003c/b\u003e when \u003cb\u003eReact\u003c/b\u003e first debuted. For many web developers, the separation of&nbsp;..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "uUMQEAAAQBAJ",
+        "etag": "sgYVM4ocG1s",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/uUMQEAAAQBAJ",
+        "volumeInfo": {
+          "title": "Full-Stack React, TypeScript, and Node",
+          "subtitle": "Build cloud-ready web applications using React 17 with Hooks and GraphQL",
+          "authors": [
+            "David Choi"
+          ],
+          "publisher": "Packt Publishing Ltd",
+          "publishedDate": "2020-12-18",
+          "description": "TypeScript is among the fastest-growing languages, helping developers build full-stack apps by integrating with powerful frameworks such as React and Node.js. With this book, you’ll get started with TypeScript and build an SPA with React and middleware using Node.js and Express. Finally, you’ll be able to package your web app and deploy it on AWS.",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_13",
+              "identifier": "9781839214691"
+            },
+            {
+              "type": "ISBN_10",
+              "identifier": "1839214694"
+            }
+          ],
+          "readingModes": {
+            "text": true,
+            "image": true
+          },
+          "pageCount": 648,
+          "printType": "BOOK",
+          "categories": [
+            "Computers"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": true,
+          "contentVersion": "1.1.1.0.preview.3",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=uUMQEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=uUMQEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=uUMQEAAAQBAJ&pg=PA212&dq=react&hl=&cd=2&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=uUMQEAAAQBAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Full_Stack_React_TypeScript_and_Node.html?hl=&id=uUMQEAAAQBAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": true
+          },
+          "pdf": {
+            "isAvailable": true
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=uUMQEAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "Build cloud-ready web applications using \u003cb\u003eReact\u003c/b\u003e 17 with Hooks and GraphQL David Choi. The GitHub repository is at https://github.com/PacktPublishing/Full- Stack-\u003cb\u003eReact\u003c/b\u003e-TypeScript-and-Node. Use the code in the Chap7 folder."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "qGPTzAEACAAJ",
+        "etag": "Q7IG8xIP3Ek",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/qGPTzAEACAAJ",
+        "volumeInfo": {
+          "title": "ASP.NET Core 3 and React",
+          "authors": [
+            "Cart Rippon"
+          ],
+          "publishedDate": "2019-12-27",
+          "description": "Build modern, scalable, and cloud-ready single-page applications using ASP.NET Core, React, TypeScript, and Azure Key Features Explore the full potential and latest features of .NET Core 3.0, TypeScript 3, and React Learn how to manage data, application design, and packaging, and secure your web apps Discover best practices for using React and TypeScript to build a scalable frontend that interacts with REST APIs Book Description Microsoft's ASP.NET Core is a robust and high-performing cross-platform web API framework, and Facebook's React uses declarative JavaScript to drive a rich, interactive user experience on the client-side web. Together, they can be used to build full stack apps with enhanced security and scalability at each layer. This book will start by taking you through React and TypeScript components to build an intuitive single-page application. You'll understand how to design scalable REST APIs that can integrate with a React-based frontend. You'll get to grips with the latest features, popular patterns, and tools available in the React ecosystem, including function-based components, React Router, and Redux. The book shows how you can use TypeScript along with React to make the frontend robust and maintainable. You'll then cover important .NET Core features such as API controllers, attribute routing, and model binding to help you build a sturdy backend. Additionally, you'll explore API security with ASP.NET Core identity and authorization policies, and write reliable unit tests using both .NET Core and React before you deploy your app to the Azure cloud. By the end of the book, you'll have gained all the knowledge you need to enhance your C# and JavaScript skills and build full stack, production-ready applications with ASP.NET Core and React. What you will learn Build RESTful APIs with .NET Core using API controllers Create strongly typed, interactive, and function-based React components using Hooks Build forms efficiently using reusable React components Perform client-side state management with Redux and the React Context API Secure REST APIs with ASP.NET identity and authorization policies Run a range of automated tests on the frontend and backend Implement continuous integration (CI) and continuous delivery (CD) processes into Azure using Azure DevOps Who this book is for If you're a web developer looking to build solid full-stack web applications with .NET Core and React, this book is for you. Although this book does not assume any knowledge of React, you're expected to have a basic understanding of .NET Core.",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "1789950228"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9781789950229"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 598,
+          "printType": "BOOK",
+          "categories": [
+            "Computers"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=qGPTzAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=qGPTzAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=qGPTzAEACAAJ&dq=react&hl=&cd=3&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=qGPTzAEACAAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/ASP_NET_Core_3_and_React.html?hl=&id=qGPTzAEACAAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=qGPTzAEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "Although this book does not assume any knowledge of React, you&#39;re expected to have a basic understanding of .NET Core."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "xEApjgEACAAJ",
+        "etag": "qUE9phbkn7Y",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/xEApjgEACAAJ",
+        "volumeInfo": {
+          "title": "React.Js Essentials",
+          "authors": [
+            "Artemij Fedosejev"
+          ],
+          "publisher": "Packt Publishing",
+          "publishedDate": "2015-08-27",
+          "description": "A fast-paced guide to designing and building scalable and maintainable web apps with React.jsAbout This Book• Build maintainable and performant user interfaces for your web applications using React.js• Create reusable React.js components to save time and effort in maintaining your user interfaces• Learn how to build a ready-to-deploy React.js web application, following our step-by-step tutorialWho This Book Is ForIf you're a front-end developer with knowledge of jQuery and its libraries, along with frameworks, such as Angular.JS and Backbone.JS, or native JavaScript development, and you wish to use the fastest web user interface library there is, then this book is ideal for you.What You Will Learn• Install powerful React.js tools to make development much more efficient• Create React elements with properties and children• Get started with stateless and stateful React components• Use JSX to speed up your React.js development process• Add reactivity to your React components with lifecycle methods• Integrate your React components with other JavaScript libraries• Utilize the Flux application architecture with your React components• Test your React components with Jest test frameworkIn DetailBuilding web applications with maintainable and performant user interfaces is a challenge that many have faced for more than a decade, but no one has risen to this challenge quite like React.js. Today React.js is used by Facebook, Instagram, Khan Academy, and Imperial College London, to name a few. Many new users recognize the benefits of React.js and adopt it in their own projects, forming a fast-growing community. The speed at which React.js has evolved promises a bright future for those who invest in learning it today.React.js Essentials will take you on a fast-paced journey through building your own maintainable React.js application. Begin by exploring how you can create single and multiple user interface elements. Create stateless and stateful components and make them reactive, learn to interact between your components and lifecycle methods and gauge how to effectively integrate your user interface components with other JavaScript libraries. Delve deep into the core elements of the Flux architecture and learn how to manage your application using stores. Finish by going that extra mile with the Jest test framework, running multiple tests on your application and find solutions to scale it further without complexity.Style and approachThe book adopts a step-by-step, hands-on approach with ample codes to ensure you learn React.js at a fast pace.",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "1783551623"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9781783551620"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 208,
+          "printType": "BOOK",
+          "categories": [
+            "Computers"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=xEApjgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=xEApjgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=xEApjgEACAAJ&dq=react&hl=&cd=4&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=xEApjgEACAAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/React_Js_Essentials.html?hl=&id=xEApjgEACAAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=xEApjgEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "A fast-paced guide to designing and building scalable and maintainable web apps with React.jsAbout This Book- Build maintainable and performant user interfaces for your web applications using React.js- Create reusable React.js components to ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "XCLhDwAAQBAJ",
+        "etag": "IIDtbOgr9XA",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/XCLhDwAAQBAJ",
+        "volumeInfo": {
+          "title": "React and React Native",
+          "subtitle": "A complete hands-on guide to modern web and mobile development with React.js, 3rd Edition",
+          "authors": [
+            "Adam Boduch",
+            "Roy Derks"
+          ],
+          "publisher": "Packt Publishing Ltd",
+          "publishedDate": "2020-04-30",
+          "description": "Get up to speed with React, React Native, GraphQL and Apollo for building cross-platform native apps with the help of practical examples Key Features Covers the latest features of React such as Hooks, Suspense, NativeBase, and Apollo in this updated third edition Get to grips with the React architecture for writing easy-to-manage web and mobile applications Understand GraphQL and Apollo for building a scalable backend for your cross-platform apps Book Description React and React Native, Facebook’s innovative User Interface (UI) libraries, are designed to help you build robust cross-platform web and mobile applications. This updated third edition is improved and updated to cover the latest version of React. The book particularly focuses on the latest developments in the React ecosystem, such as modern Hook implementations, code splitting using lazy components and Suspense, user interface framework components using Material-UI, and Apollo. In terms of React Native, the book has been updated to version 0.62 and demonstrates how to apply native UI components for your existing mobile apps using NativeBase. You will begin by learning about the essential building blocks of React components. Next, you’ll progress to working with higher-level functionalities in application development, before putting this knowledge to use by developing user interface components for the web and for native platforms. In the concluding chapters, you’ll learn how to bring your application together with a robust data architecture. By the end of this book, you’ll be able to build React applications for the web and React Native applications for multiple mobile platforms. What you will learn Delve into the React architecture, component properties, state, and context Get to grips with React Hooks for handling functions and components Implement code splitting in React using lazy components and Suspense Build robust user interfaces for mobile and desktop apps using Material-UI Write shared components for Android and iOS mobile apps using React Native Simplify layout design for React Native apps using NativeBase Write GraphQL schemas to power web and mobile apps Implement web and mobile components that are driven by Apollo Who this book is for This book is for any JavaScript developer who wants to start learning how to use Facebook’s UI libraries, React and React Native, for mobile and web application development. Although no prior knowledge of React is needed, working knowledge of JavaScript programming will help you understand the concepts covered in the book more effectively.",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_13",
+              "identifier": "9781839212437"
+            },
+            {
+              "type": "ISBN_10",
+              "identifier": "1839212438"
+            }
+          ],
+          "readingModes": {
+            "text": true,
+            "image": true
+          },
+          "pageCount": 526,
+          "printType": "BOOK",
+          "categories": [
+            "Computers"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": true,
+          "contentVersion": "1.3.3.0.preview.3",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=XCLhDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=XCLhDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=XCLhDwAAQBAJ&printsec=frontcover&dq=react&hl=&cd=5&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=XCLhDwAAQBAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/React_and_React_Native.html?hl=&id=XCLhDwAAQBAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": true
+          },
+          "pdf": {
+            "isAvailable": true
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=XCLhDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "From composable and Native UIs through to device-specific APIs and offline development, this book has everything you need to create engaging and user-friendly React applications which run on all major platforms."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "8MzovgEACAAJ",
+        "etag": "ObQ+wPJJQok",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/8MzovgEACAAJ",
+        "volumeInfo": {
+          "title": "Pro MERN Stack",
+          "subtitle": "Full Stack Web App Development with Mongo, Express, React, and Node",
+          "authors": [
+            "Vasan Subramanian"
+          ],
+          "publisher": "Apress",
+          "publishedDate": "2019-05-13",
+          "description": "Assemble the complete stack required to build a modern web app using MongoDB, Express, React, and Node. This book also covers many other complementary tools: React Router, GraphQL, React-Bootstrap, Babel, and Webpack. This new edition will use the latest version of React (React 16) and the latest React Router (React Router 4), which has a significantly different approach to routing compared to React Router 2 which was used in the first edition of the book. Though the primary focus of Pro MERN Stack is to equip you with all that is required to build a full-fledged web application, a large portion of the book will be devoted to React 16. The popular MEAN (MongoDB, Express, AngularJS, Node) stack introduced Single Page Apps (SPAs) and front-end Model-View-Controller (MVC) as new and efficient paradigms. Facebook's React is a technology that competes indirectly with AngularJS. It is not a full-fledged MVC framework. It is a JavaScript library for building user interfaces (in some sense the View part). Yet, it is possible to build a web app by replacing AngularJS with React – hence the term MERN stack What You Will Learn Discover the features of React 16 to get the maximum out of this library Gain the basics of MongoDB, Express, and Node to build a web app Work with other libraries complementary to React, including React-Bootstrap, React Router, and GraphQL Use tools such as Babel and Webpack required to build JavaScript-based SPAs Tie all the components together to build a complete web app. Who This Book Is For Developers and architects who have prior experience in any web app stack other than the MERN stack will find the book useful to learn about this modern stack. Prior knowledge of JavaScript, HTML, and CSS is required.",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "1484243900"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9781484243909"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 542,
+          "printType": "BOOK",
+          "categories": [
+            "Computers"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=8MzovgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=8MzovgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=8MzovgEACAAJ&dq=react&hl=&cd=6&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=8MzovgEACAAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Pro_MERN_Stack.html?hl=&id=8MzovgEACAAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=8MzovgEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "Assemble the complete stack required to build a modern web app using MongoDB, Express, React, and Node. This book also covers many other complementary tools: React Router, GraphQL, React-Bootstrap, Babel, and Webpack."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "vqdhDwAAQBAJ",
+        "etag": "0U+UX8R1t9M",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/vqdhDwAAQBAJ",
+        "volumeInfo": {
+          "title": "Hands-On Full Stack Development with Spring Boot 2.0 and React",
+          "subtitle": "Build modern and scalable full stack applications using the Java-based Spring Framework 5.0 and React",
+          "authors": [
+            "Juha Hinkula"
+          ],
+          "publisher": "Packt Publishing Ltd",
+          "publishedDate": "2018-06-21",
+          "description": "Develop efficient and modern full-stack applications using Spring Boot and React 16 Key Features Develop resourceful backends using Spring Boot and faultless frontends using React. Explore the techniques involved in creating a full-stack app by going through a methodical approach. Learn to add CRUD functionalities and use Material UI in the user interface to make it more user-friendly. Book Description Apart from knowing how to write frontend and backend code, a full-stack engineer has to tackle all the problems that are encountered in the application development life cycle, starting from a simple idea to UI design, the technical design, and all the way to implementing, testing, production, deployment, and monitoring. This book covers the full set of technologies that you need to know to become a full-stack web developer with Spring Boot for the backend and React for the frontend. This comprehensive guide demonstrates how to build a modern full-stack application in practice. This book will teach you how to build RESTful API endpoints and work with the data access Layer of Spring, using Hibernate as the ORM. As we move ahead, you will be introduced to the other components of Spring, such as Spring Security, which will teach you how to secure the backend. Then, we will move on to the frontend, where you will be introduced to React, a modern JavaScript library for building fast and reliable user interfaces, and its app development environment and components. You will also create a Docker container for your application. Finally, the book will lay out the best practices that underpin professional full-stack web development. What you will learn Create a RESTful web service with Spring Boot Understand how to use React for frontend programming Gain knowledge of how to create unit tests using JUnit Discover the techniques that go into securing the backend using Spring Security Learn how to use Material UI in the user interface to make it more user-friendly Create a React app by using the Create React App starter kit made by Facebook Who this book is for Java developers who are familiar with Spring, but have not yet built full-stack applications",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_13",
+              "identifier": "9781788993166"
+            },
+            {
+              "type": "ISBN_10",
+              "identifier": "1788993160"
+            }
+          ],
+          "readingModes": {
+            "text": true,
+            "image": true
+          },
+          "pageCount": 302,
+          "printType": "BOOK",
+          "categories": [
+            "Computers"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": true,
+          "contentVersion": "1.1.2.0.preview.3",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=vqdhDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=vqdhDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=vqdhDwAAQBAJ&printsec=frontcover&dq=react&hl=&cd=7&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=vqdhDwAAQBAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Hands_On_Full_Stack_Development_with_Spr.html?hl=&id=vqdhDwAAQBAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": true
+          },
+          "pdf": {
+            "isAvailable": true
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=vqdhDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "Spring Boot and React allow us to build powerful full-stack applications and also demonstrate a modern full-stack app in practice."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "aOKFAAAAIAAJ",
+        "etag": "YwdBvobeDUw",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/aOKFAAAAIAAJ",
+        "volumeInfo": {
+          "title": "Polymer Handbook",
+          "subtitle": "Editors: J.Brandrup and E.H.Immergut, with the Collaboration of H.G.Elias",
+          "authors": [
+            "J. Brandrup"
+          ],
+          "publishedDate": "1966",
+          "industryIdentifiers": [
+            {
+              "type": "OTHER",
+              "identifier": "UCAL:B4477527"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "printType": "BOOK",
+          "categories": [
+            "Polymers"
+          ],
+          "averageRating": 5,
+          "ratingsCount": 1,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "0.3.3.0.preview.0",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=aOKFAAAAIAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=aOKFAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=aOKFAAAAIAAJ&q=react&dq=react&hl=&cd=8&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=aOKFAAAAIAAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Polymer_Handbook.html?hl=&id=aOKFAAAAIAAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=aOKFAAAAIAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "Sec Conditions References 9 Copolymer of RAj and AA, where A can \u003cb\u003ereact\u003c/b\u003e with A. Formation of rings excluded prior to gelation. 2,62 10 Crossllnking of molecules of constant length r. 2,62,63 11 Crossllnking or coupling of a polymer with&nbsp;..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "ZoIxAAAAMAAJ",
+        "etag": "GVm0EuMwKwQ",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/ZoIxAAAAMAAJ",
+        "volumeInfo": {
+          "title": "Laboratory Experiments for Introduction to Chemistry",
+          "authors": [
+            "Thomas R. Dickson"
+          ],
+          "publishedDate": "1975",
+          "industryIdentifiers": [
+            {
+              "type": "OTHER",
+              "identifier": "UOM:39015056939294"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 281,
+          "printType": "BOOK",
+          "categories": [
+            "Chemistry"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "0.2.2.0.preview.0",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=ZoIxAAAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=ZoIxAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=ZoIxAAAAMAAJ&pg=PA96&dq=react&hl=&cd=9&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=ZoIxAAAAMAAJ&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Laboratory_Experiments_for_Introduction.html?hl=&id=ZoIxAAAAMAAJ"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=ZoIxAAAAMAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "OJevSztje7IC",
+        "etag": "TmYkDUL2/78",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/OJevSztje7IC",
+        "volumeInfo": {
+          "title": "Addition and Elimination Reactions of Aliphatic Compounds",
+          "authors": [
+            "C.H. Bamford",
+            "R.G. Compton",
+            "C.F.H. Tipper†"
+          ],
+          "publisher": "Elsevier",
+          "publishedDate": "1973-01-01",
+          "description": "Addition and Elimination Reactions of Aliphatic Compounds",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "0080868045"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9780080868042"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": true
+          },
+          "pageCount": 514,
+          "printType": "BOOK",
+          "categories": [
+            "Science"
+          ],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "2.5.0.0.preview.1",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=OJevSztje7IC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=OJevSztje7IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.com/books?id=OJevSztje7IC&pg=PA435&dq=react&hl=&cd=10&source=gbs_api",
+          "infoLink": "http://books.google.com/books?id=OJevSztje7IC&dq=react&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Addition_and_Elimination_Reactions_of_Al.html?hl=&id=OJevSztje7IC"
+        },
+        "saleInfo": {
+          "country": "BG",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "BG",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.com/books/download/Addition_and_Elimination_Reactions_of_Al-sample-pdf.acsm?id=OJevSztje7IC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=OJevSztje7IC&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "These \u003cb\u003ereactions\u003c/b\u003e almost certainly involve carbonium-ion intermediates, as do nearly all other interconversions in the 5-methyl-2-cyclohexenyl system”. The kinetic and stereochemical results, however, lead to the surprising conclusion&nbsp;..."
+        }
+      }
+    ]
+  }
