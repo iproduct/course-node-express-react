@@ -1,4 +1,4 @@
-import { Children, ForwardedRef, forwardRef, ReactElement, ReactNode } from "react";
+import { ForwardedRef, forwardRef, ReactNode } from "react";
 
 function VideoPlayer({children}: {children?: ReactNode}, videoRef: ForwardedRef<HTMLVideoElement>) {
     return (
