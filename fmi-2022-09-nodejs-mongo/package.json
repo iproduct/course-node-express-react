@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/iproduct/Course-Multimedia-FMI#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongodb": "^3.6.9",
     "socketio": "^1.0.0"
   },
