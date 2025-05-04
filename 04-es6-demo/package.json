@@ -23,7 +23,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "favicons-webpack-plugin": "0.0.6",
     "file-loader": "^0.9.0",
-    "gh-pages": "^0.11.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^2.21.0",
     "irc": "^0.5.0",
     "oppressor": "0.0.1",
