@@ -16,7 +16,7 @@ const Layout = (props: Props) => {
                 <NavLink to="/contacts">Contacts</NavLink>
                 <NavLink to="/about">About</NavLink>
             </nav>
-            <main>
+            <main className="flex-vertical">
                 <Outlet />
                 {navigation.state === "loading" && <LoadingIndicator />}
             </main>

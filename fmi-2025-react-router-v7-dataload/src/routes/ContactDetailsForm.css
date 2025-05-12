@@ -1,0 +1,11 @@
+.contact-form {
+    display: flex;
+    flex-flow: column;
+}
+.contact-form input, .contact-form button {
+    margin: 5px 30px;
+}
+.contact-form .error {
+    margin: 0 30px 5px;
+    color: red;
+}
