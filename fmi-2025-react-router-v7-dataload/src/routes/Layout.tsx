@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigation } from 'react-router';
+import { Outlet, useNavigation } from 'react-router';
 import './Layout.css';
 import LoadingIndicator from '../components/LoadingIndicator';
 import Nav from '../components/Nav';
