@@ -1,0 +1,35 @@
+{
+  "name": "fmi-2025-11-node-ts",
+  "version": "1.0.0",
+  "description": "Intro to NodeJS using TS",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc -w",
+    "server": "node --inspect=5858 -r ts-node/register ./src/04-http-server-1.ts",
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react.git"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "intro"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-node-express-react/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-node-express-react#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/node": "^22.15.18"
+  }
+}

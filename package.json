@@ -1,9 +1,0 @@
-{
-  "name": "course-node-express-react",
-  "version": "1.0.0",
-  "description": "NodeJS Web API intro",
-  "main": "index.js",
-  "repository": "https://github.com/iproduct/course-node-express-react.git",
-  "author": "Trayan Iliev <office@iproduct.org>",
-  "license": "Apache-2.0"
-}
