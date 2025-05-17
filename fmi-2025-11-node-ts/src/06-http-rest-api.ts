@@ -1,10 +1,9 @@
 import * as http from 'http';
 import * as url from 'url';
-import { IncomingMessage, ServerResponse } from 'http';
 import { v4 as uuidv4 } from 'uuid';
 import * as fs from 'node:fs/promises';
 
-const HOSTNAME = 'localhost';
+const HOST = 'localhost';
 const PORT = 9000;
 const DB_FILE = '../todos.json';
 
@@ -21,8 +20,8 @@ const todos: Todo[] = [
     { id: uuidv4(), text: 'Implement error handling' }
 ];
 
-const server = http.createServer(async (req: IncomingMessage, res: ServerResponse) => {
-    const path = url.parse(req.url).pathname;
+const server = http.createServer(async (req, res) => {
+    const path = new URL(req.url, `http://${HOST}:${PORT}`).pathname;
     console.log(`${req.method} for: ${path}`);
     const matchTodoId = /^\/api\/todos\/([0-9a-fA-F\\-]{36})$/.exec(path);
     // console.log(req.headers);
@@ -46,7 +45,7 @@ const server = http.createServer(async (req: IncomingMessage, res: ServerRespons
                 });
                 res.writeHead(201, {
                     'Content-Type': 'application/json',
-                    'Location': `http://${HOSTNAME}:${PORT}${path}/${newTodo.id}`
+                    'Location': `http://${HOST}:${PORT}${path}/${newTodo.id}`
                 });
                 res.end(JSON.stringify(newTodo));
             }).on('error', (err) => {
@@ -88,8 +87,8 @@ server.on('clientError', err => console.error(`Client Error: ${err}`));
     try {
         const todos = await fs.readFile(DB_FILE, { encoding: 'utf8' });
         console.log(todos)
-        server.listen(PORT, HOSTNAME, () => {
-            console.log(`HTTP Server listeneing on: http://${HOSTNAME}:${PORT}`);
+        server.listen(PORT, HOST, () => {
+            console.log(`HTTP Server listeneing on: http://${HOST}:${PORT}`);
         })
     } catch (err) {
         console.error(`TODOs DB file '${DB_FILE}' does not exist. Creating it with sample TODOs.`);
