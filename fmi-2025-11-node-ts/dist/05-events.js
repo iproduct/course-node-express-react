@@ -11,8 +11,8 @@ const secondListener = (payload) => {
 emitter.once('myevent', secondListener);
 emitter.emit('myevent');
 emitter.emit('myevent', { name: 'Trayan', age: 45 }, 'active');
-let num = 0;
-const interval = setInterval(() => emitter.emit('myevent', { id: (++num), name: 'Trayan ' + num }), 2000);
-// setTimeout(() => emitter.off('myevent', secondListener), 6000);
-setTimeout(() => clearInterval(interval), 20000);
+// let num = 0;
+// const interval = setInterval(()=> emitter.emit('myevent', {id: (++num), name:'Trayan ' + num}), 2000)
+// // setTimeout(() => emitter.off('myevent', secondListener), 6000);
+// setTimeout(() => clearInterval(interval), 20000);
 //# sourceMappingURL=05-events.js.map
