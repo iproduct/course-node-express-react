@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc -w",
-    "server": "node --inspect=5858 -r ts-node/register ./src/04-http-server-1.ts",
+    "server": "node --inspect=5858 -r ts-node/register ./src/04-http-server-hello.ts",
     "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
