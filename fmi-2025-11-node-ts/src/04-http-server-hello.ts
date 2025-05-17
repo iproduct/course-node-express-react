@@ -13,10 +13,13 @@ const server = http.createServer((req, res) => {
     res.write('<h2>from TypeScript</h2>')
     res.write(`<p>Request for path: ${path}</p>`)
     res.write(`<p>HTTP Method: ${req.method}</p>`)
-    res.write(`<p>Headers: ${JSON.stringify(req.headers)}</p>`)
-
+    res.end(`<p>Headers: ${JSON.stringify(req.headers)}</p>`)
 })
 
 server.listen(PORT, HOST, () => {
     console.log(`HTTP Server listening on: http://${HOST}:${PORT}`)
+})
+
+server.on('error', err => {
+    console.log(`Server error: ${err}`)
 })
