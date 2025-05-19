@@ -1,1 +1,27 @@
-[{"id":"8c4de0b6-244f-460f-ab5c-9909097d5827","text":"Implement REST Server using NodeJS"},{"id":"3cb77a3f-aee9-4929-8a11-13e279a70b47","text":"Implement GET all TODOs"},{"id":"b997085d-0f93-44b4-ba55-b42da112ecce","text":"Implement POST new TODO"},{"id":"6690041c-46fb-42e2-bac3-2bbdbdd14819","text":"Implement DELETE existing TODO by ID"},{"id":"feef7169-bdf0-4f08-80a8-bc2cb1a6e4f8","text":"Implement error handling"},{"text":"NEW TODO 19.05.2025","id":"cc9133c9-c09e-4045-9a69-e5613d52fbdb"}]
+[
+    {
+        "id": "8c4de0b6-244f-460f-ab5c-9909097d5827",
+        "text": "Implement REST Server using NodeJS",
+        "status": 1
+    },
+    {
+        "id": "3cb77a3f-aee9-4929-8a11-13e279a70b47",
+        "text": "Implement GET all TODOs",
+        "status": 1
+    },
+    {
+        "id": "b997085d-0f93-44b4-ba55-b42da112ecce",
+        "text": "Implement POST new TODO",
+        "status": 1
+    },
+    {
+        "id": "6690041c-46fb-42e2-bac3-2bbdbdd14819",
+        "text": "Implement DELETE existing TODO by ID",
+        "status": 1
+    },
+    {
+        "id": "feef7169-bdf0-4f08-80a8-bc2cb1a6e4f8",
+        "text": "Implement error handling",
+        "status": 1
+    }
+]
