@@ -6,5 +6,5 @@
     "ignore": [
         "src/**/*.spec.ts"
     ],
-    "exec": "ts-node ./src/server01.ts"
+    "exec": "ts-node ./src/server03.ts"
 }
