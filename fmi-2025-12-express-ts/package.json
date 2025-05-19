@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc -w",
-    "server": "node --inspect=5858 -r ts-node/register ./src/05-events.ts",
+    "server": "node --inspect=5858 -r ts-node/register ./src/server01.ts",
     "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/iproduct/course-node-express-react#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^5.0.2",
     "@types/node": "^22.15.18",
     "@types/uuid": "^10.0.0",
     "nodemon": "^3.1.10",
@@ -32,6 +35,10 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0",
     "uuid": "^11.1.0"
   }
 }
