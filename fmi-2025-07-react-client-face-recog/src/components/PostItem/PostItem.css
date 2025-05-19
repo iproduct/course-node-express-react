@@ -1,0 +1,40 @@
+
+
+
+
+.PostItem-title {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.PostItem-card-actions.card-action {
+    position: absolute;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    bottom: 5px;
+    left: 2.5%;
+}
+
+.PostItem-card-actions.card-action button.btn, 
+.PostItem-card-actions.card-action button.btn-small, 
+.PostItem-card-actions.card-action button.btn-large {
+    margin-right: 10px;
+}
+
+.PostItem-card-actions.card-action .btn.danger {
+    background-color: #e04237;
+}
+
+.PostItem-card-actions.card-action .btn.danger:hover {
+    background-color: #fc3c2e;
+}
+
+
+
+.card p ul>li {
+    list-style-type: square;
+    list-style-position: inside;
+}

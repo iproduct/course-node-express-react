@@ -1,0 +1,24 @@
+.input-field input[type=search] ~ .material-icons.Nav-button {
+    display: inline-block;
+    color: white;
+}
+
+nav .input-field {
+    vertical-align: middle;
+}
+
+.nav-wrapper .input-field input[type=search].Nav-search-input {
+    display: inline-block;
+    border: 1px solid white;
+    padding-left: 0;
+}
+
+nav ul span {
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    font-size: 1rem;
+    color: #fff;
+    display: block;
+    padding: 0 15px;
+    cursor: pointer;
+}

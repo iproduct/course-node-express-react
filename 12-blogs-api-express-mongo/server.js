@@ -13,7 +13,7 @@ const app = express();
 const port = 8080;
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // create-react-app dev server
+    origin: 'http://localhost:5173', // create-react-app dev server
 }
 
 app.use(cors(corsOptions))
