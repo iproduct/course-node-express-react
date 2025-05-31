@@ -1,0 +1,46 @@
+{
+  "name": "fmi-2025-11-node-ts",
+  "version": "1.0.0",
+  "description": "Intro to NodeJS using TS",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc -w",
+    "demo": "node --inspect=5858 -r ts-node/register ./src/04-update-one.ts",
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react.git"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "intro"
+  ],
+  "author": "Trayan Iliev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-node-express-react/issues"
+  },
+  "homepage": "https://github.com/iproduct/course-node-express-react#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.18",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "indicative": "^7.4.4",
+    "mongodb": "^6.16.0",
+    "morgan": "^1.10.0",
+    "uuid": "^11.1.0"
+  }
+}

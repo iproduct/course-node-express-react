@@ -52,7 +52,7 @@ pool.query('SELECT * FROM posts WHERE id=?', [1], (err, rows, fields) => {
     const post = rows[0] as Post;
     console.log('Selected post:', post);
     //change first record title
-    post.title = 'My Title 123';
+    post.title += ': UPDATED using Connection Pool';
     pool.query(updateSql,
       [post.title, post.content, post.authorId, post.imageUrl, post.tags, post.categories,
       post.created, post.modified, post.id],

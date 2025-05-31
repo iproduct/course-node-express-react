@@ -29,6 +29,9 @@ dotenv.config()
 //     console.log(todos)
 // })
 
+export const HOST = process.env.HOST ||'localhost';
+const PORT = process.env.PORT || 8080
+
 const app = express()
 
 app.set('postsRepo', new JsonFileRepository<Todo>(process.env.DB_FILE));
@@ -52,14 +55,7 @@ app.get("/api/todos", async (req, res) => {
     const post = req.body as Todo;
     try {
         await validator.validate(post, {
-            title: 'required|string|min:3|max:80',
-            content: 'string|max:1024',
-            authorId: 'required|regex:[0-9a-f\\-]{36}',
-            imageUrl: 'url',
-            tags: 'required|array',
-            'tags.*': 'string|regex:\\w+',
-            categories: 'required|array',
-            'categories.*': 'string'
+            text: 'required|string|min:3|max:255',
         });
     } catch(errors) {
         console.log(errors);
@@ -69,15 +65,13 @@ app.get("/api/todos", async (req, res) => {
     const now = new Date();
     try {
         const created = await repo.create(post);
-        res.status(201).location(`http://${HOSTNAME}:${PORT}/api/posts/${created.id}`).json(created);
+        res.status(201).location(`http://${HOST}:${PORT}/api/todos/${created.id}`).json(created);
     } catch(err) {
         console.log(err);
         sendErrorResponse(req, res, 500, `Unable to create post '${post.text}: ${err.message}`, err);
     }
 });
 
-
-const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
     console.log(`Server is running at: http://localhost:${PORT}`)
 })

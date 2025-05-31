@@ -70,5 +70,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-#Environment vars
 .env

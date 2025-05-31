@@ -10,7 +10,7 @@
   "scripts": {
     "server": "node --inspect=5858 -r ts-node/register ./src/server.ts",
     "tsc": "tsc -w",
-    "start": "concurrently --kill-others \"nodemon\" \"livereload ./dist -d\"",
+    "start": "nodemon",
     "build": "tsc"
   },
   "dependencies": {
