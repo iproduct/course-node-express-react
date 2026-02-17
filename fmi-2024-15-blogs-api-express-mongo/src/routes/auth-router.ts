@@ -78,7 +78,7 @@ router.post('/register', async (req, res, next) => {
             password: 'required|string|min:6',
             imageUrl: 'url',
             roles: 'array',
-            'roles.*': `integer|range:${Role.READER},${Role.ADMIN}`
+            'roles.*': `integer|range:${Role.READER},${Role.AUTHOR}`
         });
     } catch (err) {
         next(new AppError(400, err.message, err));
@@ -86,11 +86,16 @@ router.post('/register', async (req, res, next) => {
     }
     // create user in db
     try {
-
-        const found = await (<UserRepository>req.app.locals.userRepo).findByUsername(newUser.username);
-        if (found) {
-            throw new AppError(400, `Username already taken: "${newUser.username}".`);
+        try {
+            const found = await (<UserRepository>req.app.locals.userRepo).findByUsername(newUser.username);
+            if (found) {
+                throw new AppError(400, `Username already taken: "${newUser.username}".`);
+            }
+        } catch (err) {
+            if (err instanceof AppError) { }
+            else throw err;
         }
+
 
         // throw new AppError(400, `Can not change username.`);
 

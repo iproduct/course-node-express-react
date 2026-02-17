@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server db.json --port 9000",
-    "start": "concurrently --kill-others \"yarn dev\" \"yarn server\""
+    "start": "concurrently --kill-others \"npm run dev\" \"npm run server\""
   },
   "dependencies": {
     "react": "^19.0.0",

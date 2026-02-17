@@ -33,11 +33,13 @@ function average(accumulator, value, index, array) {
     }
 }
 
-var result = [41, 20, 17, 50, 39, 75]
+let result = [41, 20, 17, 50, 39, 75]
     .filter( isYoung )
     // .some( value => !isYoung(value) );
     // .filter(isYoung)
     .map(ageNextYear)
-    .reduce(average, 0);
-    //  .forEach(print);
-console.log("YoungAvg = ", result);
+    // .reduce(average, 0)
+    .forEach(print)
+
+
+// console.log("YoungAvg = ", result);

@@ -3,22 +3,22 @@
     {
       "id": "1",
       "text": "Create Todo App component.",
-      "status": 1
+      "status": 2
     },
     {
       "id": "2",
       "text": "Create TodoList component.",
-      "status": 1
+      "status": 2
     },
     {
       "id": "3",
       "text": "Create TodoItem component.",
-      "status": 1
+      "status": 2
     },
     {
       "id": "715d",
       "text": "sdsadsad",
-      "status": 1
+      "status": 2
     },
     {
       "id": "3403",
@@ -28,7 +28,7 @@
     {
       "id": "70cd",
       "text": "hi",
-      "status": 1
+      "status": 2
     },
     {
       "id": "aea2",
@@ -38,7 +38,7 @@
     {
       "id": "d806",
       "text": "new todo 28.04.25",
-      "status": 1
+      "status": 2
     },
     {
       "id": "1830",
@@ -59,6 +59,11 @@
       "id": "b17d",
       "text": "qwwqwqwqeqe",
       "status": 2
+    },
+    {
+      "id": "3b3d",
+      "text": "sadsasada",
+      "status": 1
     }
   ],
   "posts": [

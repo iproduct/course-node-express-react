@@ -1,6 +1,3 @@
-function getComments(arr) {
-    return arr.filter((str) => { str.match("^[[:space:]]*#[[:space:]]*") }).join("<br>");
+function f({a, b = 0} = {a: "!"}) { return [a, b] } 
 
-}
-
-console.log(getComments(['  #aaaa', '   bbbbb', '  cccc#']))
+console.log([f({a: "ok"}), f(), f({})]);

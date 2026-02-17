@@ -35,7 +35,7 @@ export function verifyToken(req: Request, res: Response, next: NextFunction)  {
   console.log(`Token: ${token}`); // demo only
 
   jwt.verify(token, process.env.SECRET, function (error, decoded) {
-    if (error) next({ status: 403, message: `Failed to authenticate token.`, error });
+    if (error) next({ status: 401, message: `Failed to authenticate token.`, error });
     else {
       // if everything good, save to request for use in other routes
       req['userId'] = decoded['id'];

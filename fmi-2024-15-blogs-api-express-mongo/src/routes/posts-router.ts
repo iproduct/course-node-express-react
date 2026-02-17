@@ -22,7 +22,8 @@ import { PostRepository, UserRepository } from '../dao/mongo-repository';
 import * as indicative from 'indicative';
 import { verifyToken } from './verify-token';
 import { verifyRole } from './verify-role';
-import { Role } from '../model/user.model';
+import { Role, User } from '../model/user.model';
+import { Post } from '../model/post.model';
 
 const router = Router();
 
@@ -54,10 +55,10 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', verifyToken, verifyRole([Role.AUTHOR, Role.ADMIN]), function (req, res, next) {
     // validate new post
-    const newPost = req.body;
+    const newPost = req.body as Post;
     indicative.validator.validate(newPost, {
         _id: 'regex:^[0-9a-fA-F]{24}$',
-        title: 'required|string|min:3|max:30',
+        title: 'required|string|min:3|max:80',
         text: 'required|string|min:3|max:1024',
         // authorId: 'required|regex:^[0-9a-fA-F]{24}$',s
         imageUrl: 'url',
@@ -73,7 +74,10 @@ router.post('/', verifyToken, verifyRole([Role.AUTHOR, Role.ADMIN]), function (r
             // const defaultUser = await (<UserRepository>req.app.locals.userRepo).findByUsername("trayan");
             // newPost.authorId = defaultUser._id;
 
-            // Create new User
+            const user = req['user'];
+            (newPost as Post).authorId = user.id;
+
+            // Create new Post
             const created = await(<PostRepository>req.app.locals.postRepo).add(newPost);
 
             res.status(201).location(`/api/posts/${newPost.id}`).json(newPost);
@@ -89,7 +93,7 @@ router.put('/:id', async function (req, res, next) {
     try {
         await indicative.validator.validate(post, {
             _id: 'required|regex:^[0-9a-fA-F]{24}$',
-            title: 'required|string|min:3|max:30',
+            title: 'required|string|min:3|max:80',
             text: 'required|string|min:3|max:1024',
             // authorId: 'required|regex:^[0-9a-fA-F]{24}$',s
             imageUrl: 'url',
