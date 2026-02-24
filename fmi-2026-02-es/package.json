@@ -1,0 +1,25 @@
+{
+  "name": "fmi-2026-02-es",
+  "version": "1.0.0",
+  "description": "Introduction to ES6+ features",
+  "keywords": [
+    "es",
+    "intro",
+    "js"
+  ],
+  "homepage": "https://github.com/iproduct/course-node-express-react#readme",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-node-express-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Trayan Iliev",
+  "type": "es6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
