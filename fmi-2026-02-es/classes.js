@@ -38,3 +38,9 @@ const persons = [
 ]
 
 persons.forEach(p => console.log(p.toString()))
+const avg_salary = persons.filter(p => p instanceof Employee)
+    .map(p => p.salary)
+    .reduce((acc, current, index, arr) => 
+        index === arr.length - 1 ? (acc + current) / arr.length : acc + current, 0)
+
+console.log(`Agerage salary: ${avg_salary}`)
