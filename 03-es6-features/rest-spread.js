@@ -4,11 +4,11 @@
 // [a, b] = [b, a];
 // console.log('after swap', a, b); 
 
-const [a, b, , , ...rest] = [1, 2, 3, 4, 5, 6, 7, 8];
-console.log(a); // 1
-console.log(b); // 2
-console.log(rest); 
-console.log(...rest); 
+// const [a, b, , , ...rest] = [1, 2, 3, 4, 5, 6, 7, 8];
+// console.log(a); // 1
+// console.log(b); // 2
+// console.log(rest); 
+// console.log(...rest); 
 
 // const obj1 = {a:1, b:2, c:3};
 // const {c, a} = obj1;
@@ -22,34 +22,37 @@ console.log(...rest);
 // console.log(a); 
 // console.log(rest);
 // console.log(...(Object.entries(rest)));
+// console.log(...(Object.keys(rest)));
+// console.log(...(Object.values(rest)));
 
 // const obj = {a:1, b:2, c:3, d:4};
-// // const clone = {...obj, c:18, f:42 };
-// // console.log(obj);
-// // console.log(clone);
-// // console.log(clone === obj);
+// const clone = {...obj, c:18, f:42 };
+// console.log(obj);
+// console.log(clone);
+// console.log(clone === obj);
 
-// // const clone2 = Object.assign({}, obj, {c: 18}, {f:42});
-// // console.log(obj);
-// // console.log(clone2);
-// // console.log(clone2 === obj);
+// const clone2 = Object.assign({}, obj, {c: 18}, {f:42});
+// console.log(obj);
+// console.log(clone2);
+// console.log(clone2 === obj);
 
-// const a = [[1], [2], [3]];
-// // var b = [ ...a, [4]]; // shallow copy
-// // var b = a.concat([[4]]); // shallow copy
-// // console.log(b)
+const a = [[1], [2], [3]];
+// var b = [ ...a, [4]]; // shallow copy
+// var b = a.concat([[4]]); // shallow copy
+// console.log(b)
+// console.log(b === a);
 
-// // const b = JSON.parse(JSON.stringify(a)); // deep copy
-// var b = structuredClone(a); // deep copy
-// console.log('b=', b, b[0], b[0] === a[0]);
+// const b = JSON.parse(JSON.stringify(a)); // deep copy
+var b = structuredClone(a); // deep copy
+console.log('b=', b, b[0], b[0] === a[0]);
 // // console.log('b=', b2, b2[0], b2[0] === a[0]);
-// const [, c] = b;
-// console.log(c);
-// console.log(c.shift());
-// console.log(c);
+const [, c] = b;
+console.log(c);
+console.log(c.shift());
+console.log(c);
 
 // // // // // console.log(b.shift().shift());
 
-// console.log('a=', a);
-// console.log('b=', b);
+console.log('a=', a);
+console.log('b=', b);
 

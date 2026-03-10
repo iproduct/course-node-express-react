@@ -22,7 +22,7 @@
   //   console.log(`Rejected in second then clause: ${reason}`)
   // });
 
-  // Promise.any([p1, p2, p3, p4, p5]).then(values => {
+  // Promise.race([p1, p2, p3, p4, p5]).then(values => {
   //   console.log(values);
   // }).catch(reason => {
   //   console.log(`Rejected in second then clause: ${reason}`)
@@ -30,7 +30,7 @@
 
   Promise.allSettled([p1, p2, p3, p4, p5]).then(values => {
     console.log(
-      values.filter(res => res.status === 'fulfilled').map(res => res.value)
+      values
       );
   }).catch(reason => {
     console.log(`Rejected in second then clause: ${reason}`)

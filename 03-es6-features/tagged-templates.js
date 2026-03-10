@@ -1,5 +1,5 @@
 let person = 'Mike';
-let age = 28;
+let age = '100';
 
 let output = myTag`That ${ person } is a ${ age }.`;
 
