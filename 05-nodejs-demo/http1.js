@@ -22,6 +22,11 @@ const server = http.createServer((request, response) => {
     console.log(`Headers ${JSON.stringify(request.headers)}`);
 
     if (request.method === 'GET') {
+    if (path.normalize(decodeURI(request.url)) !== decodeURI(request.url)) {
+        response.statusCode = 403;
+        response.end();
+        return;
+    }
         // Providing response - read the requested file content from file system
         fs.readFile(path.join(public, pathname.substr(1)), function (err, data) {
             if (err) {
