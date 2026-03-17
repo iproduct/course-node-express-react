@@ -1,14 +1,6 @@
 const resultsDiv = document.getElementById('results');
 fetch('users.json')
     .then(usersResp => usersResp.json())
-    // .then(users => { 
-        // resultsDiv.innerHTML = 
-        // '<ul>' +
-        // users.map(user => `<li>${user.username}</li>`)
-        // .join("<br>") 
-        // + '</ul>';
-        // return users;
-    // })
     .then(users => {
         console.log(users);
         return Promise.allSettled(users.map(user => fetch(`https://api.github.com/users/${user.username}`)
