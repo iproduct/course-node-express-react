@@ -17,9 +17,13 @@
   },
   "license": "Apache-2.0",
   "author": "Trayan Iliev",
-  "type": "es6",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
   }
 }
