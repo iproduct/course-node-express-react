@@ -45,7 +45,6 @@ export class PersonImpl implements Person {
     }
 }
 
-
 export type UserCreateDto = Omit<User, "id">
 
 export class UserDto implements UserCreateDto {
