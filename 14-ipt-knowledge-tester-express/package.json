@@ -57,12 +57,12 @@
     "webpack-validator": "^2.2.3"
   },
   "dependencies": {
-    "body-parser": "^1.17.1",
+    "body-parser": "^1.20.1",
     "bootstrap": "^3.3.6",
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.3",
     "deep-equal": "^1.0.1",
-    "express": "^4.15.2",
+    "express": "^4.18.2",
     "indicative": "^5.0.5",
     "jquery": "^3.1.0",
     "mongodb": "^2.2.2",
