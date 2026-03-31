@@ -1,0 +1,1 @@
+{"version":3,"file":"id-generator-number.js","sourceRoot":"","sources":["../../../src/dao/impl/id-generator-number.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,iBAAiB;IAC1B,YAAoB,KAAa;QAAb,UAAK,GAAL,KAAK,CAAQ;IAAG,CAAC;IACrC,SAAS;QACL,OAAO,EAAE,IAAI,CAAC,KAAK,CAAC;IACxB,CAAC;CACJ"}

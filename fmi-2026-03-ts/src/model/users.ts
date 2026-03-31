@@ -1,8 +1,7 @@
-import { IdType } from "../common-types.js";
+import { Identifiable, IdType } from "../common-types.js";
 
 
-export interface Person {
-    id: IdType;
+export interface Person extends Identifiable<IdType>{
     firstName: string;
     lastName: string;
     email: string;
@@ -37,7 +36,7 @@ export class UserDto implements User {
         public contact?: Contact,
 ) {}
     get salutation() {
-        return `${this.firstName} ${this.lastName} - ${this.email}, in Roles: [${this.roles.join(', ')}]`
+        return `${this.firstName} ${this.lastName} - ${this.email}, in Roles: [${this.roles.map(r => Role[r]).join(', ')}]`
     }
 }
 
