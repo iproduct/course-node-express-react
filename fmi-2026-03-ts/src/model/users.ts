@@ -25,9 +25,8 @@ export interface User extends Person{
     roles: Array<Role>; // Role[]
 }
 
-export class UserDto implements User {
+export class UserCreateDto implements Omit<User, "id"> {
     constructor(
-        public id: number,
         public firstName: string,
         public lastName: string,
         public email: string,

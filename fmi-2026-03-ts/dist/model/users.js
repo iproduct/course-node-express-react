@@ -4,9 +4,8 @@ export var Role;
     Role[Role["Author"] = 2] = "Author";
     Role[Role["Admin"] = 3] = "Admin";
 })(Role || (Role = {}));
-export class UserDto {
-    constructor(id, firstName, lastName, email, password, roles = [Role.Reader], contact) {
-        this.id = id;
+export class UserCreateDto {
+    constructor(firstName, lastName, email, password, roles = [Role.Reader], contact) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
