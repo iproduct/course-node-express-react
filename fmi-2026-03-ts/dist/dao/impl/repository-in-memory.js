@@ -16,10 +16,15 @@ export class RepositoryInMemmory {
         return resultEntity;
     }
     update(entity) {
-        throw new Error("Method not implemented.");
+        if (this.entities.get(entity.id)) {
+            this.entities.set(entity.id, entity);
+            return entity;
+        }
     }
     deleteById(id) {
-        throw new Error("Method not implemented.");
+        const deleted = this.entities.get(id);
+        this.entities.delete(id);
+        return deleted;
     }
     get size() {
         return this.entities.size;
