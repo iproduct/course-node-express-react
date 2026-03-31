@@ -1,6 +1,6 @@
-import { Identifiable, IdType, Optional } from "../../common-types";
-import { IdGenerator } from "../id-generator";
-import { Repository } from "../repository";
+import { Identifiable, IdType, Optional } from "../../common-types.js";
+import { IdGenerator } from "../id-generator.js";
+import { Repository } from "../repository.js";
 
 export class RepositoryInMemmory<V extends Identifiable<IdType>> implements Repository<V> {
     private entities =  new Map<IdType, V>();

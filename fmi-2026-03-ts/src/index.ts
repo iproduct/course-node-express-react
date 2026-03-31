@@ -1,9 +1,13 @@
 import { IdGeneratorNumber } from "./dao/impl/id-generator-number.js";
 import { RepositoryInMemmory } from "./dao/impl/repository-in-memory.js";
+import { UserRepositoryImpl } from "./dao/impl/user-repository-impl.js";
 import { Repository } from "./dao/repository.js";
+import { UserRepository } from "./dao/user-repository.js";
 import { greeter } from "./greeter.js";
 import { Post } from "./model/posts.js";
 import { Role, User, UserCreateDto } from "./model/users.js";
+import { LoginServiceImpl } from "./service/impl/login-service-impl.js";
+import { LoginService } from "./service/login-service.js";
 
 
 const i = 1
@@ -18,15 +22,18 @@ const post1 = new Post(1, 'Intro to TypeScript',`TypeScript is a strongly typed 
     `,['typscript', 'introduction', 'programming'],
     'https://www.freepik.com/free-photo/side-shot-code-editor-using-react-js_131907798.htm#fromView=keyword&page=1&position=0&uuid=8150ff3f-5c37-4ac1-af25-ef9f041920c2&query=Typescript');
 
-const userRepo: Repository<User> = new RepositoryInMemmory<User>(new IdGeneratorNumber(0));
+const userRepo: UserRepository = new UserRepositoryImpl(new IdGeneratorNumber(0));
 
 demoUsers.forEach(u => userRepo.create(u));
 
 const allUsers = userRepo.findAll();
 
+const loginService: LoginService = new LoginServiceImpl(userRepo);
+
+
 const contentElem = document.getElementById('content');
 if (contentElem) {
-    contentElem.innerHTML = greeter(trayan.salutation);
+    contentElem.innerHTML = `User Login: ${JSON.stringify(loginService.login("trayan@gmail.com", "trayan123"))}`;
 }
 const usersElem = document.getElementById('users');
 if (usersElem) {
