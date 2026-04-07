@@ -1,4 +1,4 @@
-import { EntityConstructor, Identifiable, IdType } from "../common/common-types";
+import { type EntityConstructor, type Identifiable, type IdType } from "../shared/common-types";
 
 export class ApiClient {
     constructor(private baseUrl: string) { }

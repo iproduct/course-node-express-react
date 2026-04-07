@@ -4,10 +4,20 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import TodoList from './components/TodoList'
-import { SAMPLE_TODOS } from './model/sample-todos'
+import { ApiClient } from './service/api-client'
+import useAsyncEffect from './hook/use-async-effect'
+import { Todo } from './model/todo'
+
+const BASE_URL = 'http://localhost:3000';
+
+const API = new ApiClient(BASE_URL);
 
 function App() {
-  const [todos, setTodos] = useState(SAMPLE_TODOS);
+  const [todos, setTodos] = useState([]);
+  useAsyncEffect(async () => {
+    const todos = await API.findAll(Todo);
+    setTodos(todos);
+  }, []);
 
   return (
     <>
