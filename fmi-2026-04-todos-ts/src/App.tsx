@@ -4,9 +4,11 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import Hello from './components/Hello'
+import TodoList from './components/TodoList'
+import { SAMPLE_TODOS } from './model/sample-todos'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState(SAMPLE_TODOS);
 
   return (
     <>
@@ -18,13 +20,8 @@ function App() {
         </div>
         <div>
           <h1>React TS Todos</h1>
-          <Hello name={'Trayan' + count} />
-          <button
-            className="counter"
-            onClick={() => setCount(count => count + 1)}
-          >
-            Count is {count}
-          </button>
+          <TodoList todos={todos} 
+          changeTodo={(todo) => setTodos(todos => todos.map(td => td.id === todo.id ? todo: td))}/>
         </div>
       </section>
     </>
