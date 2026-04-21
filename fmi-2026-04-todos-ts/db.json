@@ -1,13 +1,40 @@
 {
   "todos": [
-    { "id": "1", "text": "a title", "status": 1 },
-    { "id": "2", "text": "another title", "status": 2 }
+    {
+      "id": "1",
+      "text": "a title",
+      "status": 1
+    },
+    {
+      "id": "2",
+      "text": "another title",
+      "status": 2
+    },
+    {
+      "id": "OES9MFCPx2k",
+      "text": "To go home",
+      "status": 1
+    },
+    {
+      "id": "hSbFKFeaNXs",
+      "text": "Filter todos by text",
+      "status": 1
+    }
   ],
   "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "$schema": "./node_modules/json-server/schema.json"
 }
