@@ -13,10 +13,12 @@ const BASE_URL = 'http://localhost:3000';
 const API = new ApiClient(BASE_URL);
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  useAsyncEffect(async () => {
-    const todos = await API.findAll(Todo);
-    setTodos(todos);
+  const [todos, setTodos] = useState<Todo[]>([]);
+  useAsyncEffect(async isUpdValid => {
+    const tds = await API.findAll(Todo);
+    if (isUpdValid && isUpdValid()) {
+      setTodos(tds);
+    }
   }, []);
 
   return (
@@ -29,8 +31,8 @@ function App() {
         </div>
         <div>
           <h1>React TS Todos</h1>
-          <TodoList todos={todos} 
-          changeTodo={(todo) => setTodos(todos => todos.map(td => td.id === todo.id ? todo: td))}/>
+          <TodoList todos={todos}
+            changeTodo={(todo) => setTodos(todos => todos.map(td => td.id === todo.id ? todo : td))} />
         </div>
       </section>
     </>
