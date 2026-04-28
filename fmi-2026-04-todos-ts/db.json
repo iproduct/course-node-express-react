@@ -19,6 +19,26 @@
       "id": "hSbFKFeaNXs",
       "text": "Filter todos by text",
       "status": 1
+    },
+    {
+      "id": "uB3n3Wow6EY",
+      "text": "implement TodoFilter component",
+      "status": 1
+    },
+    {
+      "id": "e9qE1n9Mvlc",
+      "text": "create TodoInput component",
+      "status": 1
+    },
+    {
+      "id": "VYAz7RiB10I",
+      "text": "Create App component",
+      "status": 1
+    },
+    {
+      "id": "PgiOfXKuQfA",
+      "text": "style components",
+      "status": 1
     }
   ],
   "comments": [

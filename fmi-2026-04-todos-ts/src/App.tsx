@@ -8,6 +8,8 @@ import { ApiClient } from './service/api-client'
 import useAsyncEffect from './hook/use-async-effect'
 import { Todo } from './model/todo'
 import TodoInput from './components/TodoInput'
+import TodoFilter from './components/TodoFilter'
+import Version from './components/Version'
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -15,6 +17,8 @@ const API = new ApiClient(BASE_URL);
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState<string>('');
+  const [version, setVersion] = useState(0);
   const [error, setError] = useState<Error | undefined>();
   useAsyncEffect(async isUpdValid => {
     try {
@@ -51,9 +55,12 @@ function App() {
         <div>
           <h1>React TS Todos</h1>
           <TodoInput onCreateTodo={createTodo} />
+          <TodoFilter filter={filter} onFilterChange={setFilter} />
           {error && (<div className="invalid-feedback">{error.message}</div>)}
-          <TodoList todos={todos}
-            changeTodo={updateTodo} />
+          <TodoList todos={todos} filter={filter} changeTodo={updateTodo}>
+            <Version version={version} />
+          </TodoList>
+          <button type="button" className="btn btn-primary" onClick={() => setVersion(ver => ++ver)}>Update version</button>
         </div>
       </section>
     </>

@@ -1,4 +1,4 @@
-import { useState, type SubmitEvent } from "react"
+import { useCallback, useState, type SubmitEvent } from "react"
 import { Todo, TodoStatus } from "../model/todo"
 
 type Props = {
@@ -9,7 +9,11 @@ type Props = {
 function TodoInput({ onCreateTodo, onError }: Props) {
     const [text, setText] = useState('')
     const [status, setStatus] = useState(TodoStatus.ACTIVE)
-    function submitTodo(event: SubmitEvent<HTMLFormElement>) {
+    function resetTodo() {
+        setText('');
+        setStatus(TodoStatus.ACTIVE);
+    }
+    const submitTodo = useCallback((event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (text.trim().length > 0) {
             const todo = new Todo(text, status);
@@ -20,11 +24,8 @@ function TodoInput({ onCreateTodo, onError }: Props) {
                 onError(new Error("All fields are required."));
             }
         }
-    }
-    function resetTodo() {
-        setText('');
-        setStatus(TodoStatus.ACTIVE);
-    }
+  }, [text, status, onCreateTodo, onError]);
+    
     return (
         <form onSubmit={submitTodo} onReset={resetTodo}>
             <input value={text} onChange={event => setText(event.target.value)} className="form-control" />
