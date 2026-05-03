@@ -6,8 +6,8 @@ export function UncontrolledForm() {
     const experienceRef = useRef<HTMLInputElement>(null);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        alert(`A name: '${nameRef.current?.value}' with experience: ${experienceRef.current?.value} was sumitted.`);
         event.preventDefault();
+        alert(`A name: '${nameRef.current?.value}' with experience: ${experienceRef.current?.value} was sumitted.`);  
     }
 
     return (
@@ -21,7 +21,7 @@ export function UncontrolledForm() {
                 <input type="text" ref={experienceRef} />
             </label>
             <input type="submit" value="Submit" />
-            <input type="buton" onClick={() => {experienceRef.current?.focus()}} value="Focuse Experience" />
+            <button type="button" onClick={() => {experienceRef.current?.focus()}}>Focuse Experience</button>
         </form>
     );
 }
