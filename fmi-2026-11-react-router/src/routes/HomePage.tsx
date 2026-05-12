@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Paper from '@mui/material/Paper'
@@ -5,19 +6,56 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { Link as RouterLink } from 'react-router'
 
+/** Writing desk — visual cue for blog authoring (Unsplash, free to use). */
+const HOME_HERO_IMAGE =
+  'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=640&q=80'
+
 export function HomePage() {
   return (
     <Stack spacing={3} sx={{ alignItems: 'stretch', maxWidth: 900 }}>
-      <Stack spacing={1}>
-        <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
-          Blogs React & React Router v7 Demo
-        </Typography>
-        <Typography color="text.secondary">
-          This project is a small CRUD-style admin UI backed by a fake REST API. It is
-          built to showcase{' '}
-          <strong>React Router 7 data APIs</strong> (loaders and actions) together with
-          Material UI, Vite, and json-server.
-        </Typography>
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={2.5}
+        sx={{ alignItems: { sm: 'flex-start' } }}
+      >
+        <Box
+          component="figure"
+          sx={{
+            m: 0,
+            flexShrink: 0,
+            alignSelf: { xs: 'stretch', sm: 'auto' },
+            maxWidth: { xs: '100%', sm: 260 },
+          }}
+        >
+          <Box
+            component="img"
+            src={HOME_HERO_IMAGE}
+            alt="Open notebook and pen on a wooden desk, evoking writing and blog authoring"
+            loading="lazy"
+            decoding="async"
+            sx={{
+              display: 'block',
+              width: '100%',
+              height: { xs: 160, sm: 148 },
+              objectFit: 'cover',
+              borderRadius: 2,
+              border: 1,
+              borderColor: 'divider',
+              boxShadow: 1,
+            }}
+          />
+        </Box>
+        <Stack spacing={1} sx={{ flex: 1, minWidth: 0 }}>
+          <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
+            Blogs React & React Router v7 Demo
+          </Typography>
+          <Typography color="text.secondary">
+            This project is a small CRUD-style admin UI backed by a fake REST API. It is
+            built to showcase{' '}
+            <strong>React Router 7 data APIs</strong> (loaders and actions) together with
+            Material UI, Vite, and json-server.
+          </Typography>
+        </Stack>
       </Stack>
 
       <Paper variant="outlined" sx={{ p: 2 }}>
