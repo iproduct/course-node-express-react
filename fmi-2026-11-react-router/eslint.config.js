@@ -20,7 +20,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['src/routes/**/*.{ts,tsx}', 'src/contexts/SnackbarContext.tsx'],
+    files: ['src/routes/**/*.{ts,tsx}', 'src/contexts/*.{ts,tsx}'],
     rules: {
       'react-refresh/only-export-components': 'off',
     },
