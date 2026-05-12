@@ -16,14 +16,23 @@ import {
 } from 'react-router'
 import { apiGet, apiPut, ApiError } from '../../api/client'
 import type { User, UserRole } from '../../api/types'
+import { useAuth } from '../../contexts/AuthContext'
 import { useSnackbar } from '../../contexts/SnackbarContext'
 import { redirectWithFlash } from '../../utils/redirectFlash'
+import {
+  assertCanAccessUserProfile,
+  redirectToLogin,
+  requireSession,
+} from '../../utils/usersAccess'
+import { getSession } from '../../services/mockAuth'
 
 const ROLES: UserRole[] = ['admin', 'author', 'reader']
 
-export async function userEditLoader({ params }: LoaderFunctionArgs) {
+export async function userEditLoader({ request, params }: LoaderFunctionArgs) {
+  const session = requireSession(request)
   const id = Number(params.userId)
   if (!Number.isFinite(id)) throw data('Invalid user id', { status: 400 })
+  assertCanAccessUserProfile(session, id)
   try {
     const user = await apiGet<User>(`/users/${id}`)
     return { user }
@@ -36,8 +45,13 @@ export async function userEditLoader({ params }: LoaderFunctionArgs) {
 }
 
 export async function userEditAction({ request, params }: ActionFunctionArgs) {
+  const session = getSession()
+  if (!session) return redirectToLogin(request)
+
   const id = Number(params.userId)
   if (!Number.isFinite(id) || request.method !== 'PUT') return null
+
+  assertCanAccessUserProfile(session, id)
 
   const fd = await request.formData()
   const firstName = String(fd.get('firstName') ?? '').trim()
@@ -46,16 +60,19 @@ export async function userEditAction({ request, params }: ActionFunctionArgs) {
   const email = String(fd.get('email') ?? '').trim()
   const imageUrl = String(fd.get('imageUrl') ?? '').trim()
   const passwordInput = String(fd.get('password') ?? '')
-  const role = String(fd.get('role') ?? '') as UserRole
+  const roleFromForm = String(fd.get('role') ?? '') as UserRole
 
   if (!firstName) return { ok: false as const, error: 'First name is required' }
   if (!lastName) return { ok: false as const, error: 'Last name is required' }
   if (!username) return { ok: false as const, error: 'Username is required' }
   if (!email) return { ok: false as const, error: 'Email is required' }
-  if (!ROLES.includes(role)) return { ok: false as const, error: 'Invalid role' }
 
   try {
     const existing = await apiGet<User>(`/users/${id}`)
+    const role =
+      session.role === 'admin' ? roleFromForm : existing.role
+    if (!ROLES.includes(role)) return { ok: false as const, error: 'Invalid role' }
+
     const password =
       passwordInput.trim() !== '' ? passwordInput : existing.password
 
@@ -84,6 +101,8 @@ export function UserEditPage() {
   const actionData = useActionData() as ActionData | undefined
   const navigation = useNavigation()
   const { showError } = useSnackbar()
+  const { session } = useAuth()
+  const isAdmin = session?.role === 'admin'
   const busy = navigation.state !== 'idle'
 
   useEffect(() => {
@@ -155,21 +174,30 @@ export function UserEditPage() {
               helperText="Leave blank to keep the current password."
               disabled={busy}
             />
-            <TextField
-              name="role"
-              select
-              label="Role"
-              required
-              fullWidth
-              defaultValue={user.role}
-              disabled={busy}
-            >
-              {ROLES.map((r) => (
-                <MenuItem key={r} value={r}>
-                  {r}
-                </MenuItem>
-              ))}
-            </TextField>
+            {isAdmin ? (
+              <TextField
+                name="role"
+                select
+                label="Role"
+                required
+                fullWidth
+                defaultValue={user.role}
+                disabled={busy}
+              >
+                {ROLES.map((r) => (
+                  <MenuItem key={r} value={r}>
+                    {r}
+                  </MenuItem>
+                ))}
+              </TextField>
+            ) : (
+              <>
+                <input type="hidden" name="role" value={user.role} />
+                <Typography variant="body2" color="text.secondary">
+                  Role: <strong>{user.role}</strong> — only an administrator can change roles.
+                </Typography>
+              </>
+            )}
             <Stack direction="row" spacing={2}>
               <Button type="submit" variant="contained" disabled={busy}>
                 {busy ? 'Saving…' : 'Save'}

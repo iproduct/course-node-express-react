@@ -5,12 +5,21 @@ import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { Link as RouterLink } from 'react-router'
+import { useAuth } from '../contexts/AuthContext'
 
 /** Writing desk — visual cue for blog authoring (Unsplash, free to use). */
 const HOME_HERO_IMAGE =
   'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=640&q=80'
 
 export function HomePage() {
+  const { session } = useAuth()
+  const usersPath =
+    session && session.role !== 'admin'
+      ? `/users/${session.apiUserId}`
+      : '/users'
+  const usersButtonLabel =
+    session && session.role !== 'admin' ? 'My profile' : 'Open users'
+
   return (
     <Stack spacing={3} sx={{ alignItems: 'stretch', maxWidth: 900 }}>
       <Stack
@@ -260,8 +269,8 @@ export function HomePage() {
         <Button component={RouterLink} to="/blogs" variant="contained">
           Open blogs
         </Button>
-        <Button component={RouterLink} to="/users" variant="outlined">
-          Open users
+        <Button component={RouterLink} to={usersPath} variant="outlined">
+          {usersButtonLabel}
         </Button>
       </Stack>
     </Stack>

@@ -15,6 +15,8 @@ import {
   blogNewLoader,
 } from './routes/blogs/BlogNewPage'
 import { BlogsListPage, blogsListLoader } from './routes/blogs/BlogsListPage'
+import { LoginPage } from './routes/auth/LoginPage'
+import { RegisterPage } from './routes/auth/RegisterPage'
 import { HomePage } from './routes/HomePage'
 import { RootLayout } from './routes/RootLayout'
 import { RouteErrorBoundary } from './routes/RouteErrorBoundary'
@@ -36,6 +38,8 @@ export const router = createBrowserRouter([
     errorElement: <RouteErrorBoundary />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: 'login', element: <LoginPage /> },
+      { path: 'register', element: <RegisterPage /> },
       { path: 'blogs', element: <BlogsListPage />, loader: blogsListLoader },
       {
         path: 'blogs/new',

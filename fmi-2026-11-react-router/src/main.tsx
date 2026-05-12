@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import { RouterProvider } from 'react-router'
+import { AuthProvider } from './contexts/AuthContext'
 import { SnackbarProvider } from './contexts/SnackbarContext'
 import './index.css'
 import { router } from './router'
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={muiTheme}>
       <CssBaseline />
       <SnackbarProvider>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </SnackbarProvider>
     </ThemeProvider>
   </StrictMode>,

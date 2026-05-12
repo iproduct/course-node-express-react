@@ -21,17 +21,34 @@ import {
   useNavigate,
   useSearchParams,
 } from 'react-router'
+import { useAuth } from '../contexts/AuthContext'
 import { useSnackbar } from '../contexts/SnackbarContext'
+import type { MockAuthSession } from '../services/mockAuth'
 
 const navBtn = { color: 'inherit', textTransform: 'none' as const }
 
-const NAV_LINKS = [
-  { to: '/', label: 'Home' },
-  { to: '/blogs', label: 'Blogs' },
-  { to: '/users', label: 'Users' },
-] as const
-
 const DRAWER_WIDTH = 280
+
+function primaryNavItems(session: MockAuthSession | null) {
+  const core = [
+    { key: 'home', to: '/', label: 'Home' },
+    { key: 'blogs', to: '/blogs', label: 'Blogs' },
+  ] as const
+  if (!session) {
+    return [...core, { key: 'users', to: '/users', label: 'Users' as const }]
+  }
+  if (session.role === 'admin') {
+    return [...core, { key: 'users', to: '/users', label: 'Users' as const }]
+  }
+  return [
+    ...core,
+    {
+      key: 'profile',
+      to: `/users/${session.apiUserId}`,
+      label: 'My profile' as const,
+    },
+  ]
+}
 
 function navLinkSelected(to: string, pathname: string): boolean {
   if (to === '/') return pathname === '/'
@@ -46,7 +63,9 @@ export function RootLayout() {
   const navigate = useNavigate()
   const location = useLocation()
   const { showSuccess, showError } = useSnackbar()
+  const { session, logout } = useAuth()
   const flashKey = useRef<string | null>(null)
+  const navItems = primaryNavItems(session)
 
   useEffect(() => {
     const flash = searchParams.get('flash')
@@ -112,11 +131,41 @@ export function RootLayout() {
               gap: 0.5,
             }}
           >
-            {NAV_LINKS.map(({ to, label }) => (
-              <Button key={to} component={RouterLink} to={to} sx={navBtn}>
+            {navItems.map(({ key, to, label }) => (
+              <Button key={key} component={RouterLink} to={to} sx={navBtn}>
                 {label}
               </Button>
             ))}
+            {session ? (
+              <>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    ml: 1,
+                    mr: 0.5,
+                    maxWidth: 160,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                  title={session.displayName}
+                >
+                  {session.displayName}
+                </Typography>
+                <Button color="inherit" variant="outlined" size="small" onClick={() => logout()}>
+                  Log out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button component={RouterLink} to="/login" sx={navBtn}>
+                  Sign in
+                </Button>
+                <Button component={RouterLink} to="/register" sx={navBtn}>
+                  Register
+                </Button>
+              </>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
@@ -141,8 +190,8 @@ export function RootLayout() {
             Navigate
           </Typography>
           <List dense disablePadding>
-            {NAV_LINKS.map(({ to, label }) => (
-              <ListItem key={to} disablePadding>
+            {navItems.map(({ key, to, label }) => (
+              <ListItem key={key} disablePadding>
                 <ListItemButton
                   component={RouterLink}
                   to={to}
@@ -153,6 +202,41 @@ export function RootLayout() {
                 </ListItemButton>
               </ListItem>
             ))}
+            {!session ? (
+              <>
+                <ListItem disablePadding>
+                  <ListItemButton
+                    component={RouterLink}
+                    to="/login"
+                    selected={navLinkSelected('/login', location.pathname)}
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    <ListItemText primary="Sign in" />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton
+                    component={RouterLink}
+                    to="/register"
+                    selected={navLinkSelected('/register', location.pathname)}
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    <ListItemText primary="Register" />
+                  </ListItemButton>
+                </ListItem>
+              </>
+            ) : (
+              <ListItem disablePadding>
+                <ListItemButton
+                  onClick={() => {
+                    logout()
+                    setMobileNavOpen(false)
+                  }}
+                >
+                  <ListItemText primary={`Log out (${session.displayName})`} />
+                </ListItemButton>
+              </ListItem>
+            )}
           </List>
         </Box>
       </Drawer>

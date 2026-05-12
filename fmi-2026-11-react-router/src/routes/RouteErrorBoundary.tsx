@@ -27,7 +27,7 @@ export function RouteErrorBoundary() {
   return (
     <Paper sx={{ p: 3 }}>
       <Typography variant="h5" gutterBottom>
-        {status === 404 ? 'Not found' : 'Unexpected error'}
+        {status === 404 ? 'Not found' : status === 403 ? 'Forbidden' : 'Unexpected error'}
       </Typography>
       <Typography color="text.secondary" sx={{ mb: 2 }}>
         Check the snackbar for details, or return home and try again.

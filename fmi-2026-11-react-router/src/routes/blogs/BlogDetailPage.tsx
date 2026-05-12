@@ -8,6 +8,7 @@ import type { ActionFunctionArgs, LoaderFunctionArgs } from 'react-router'
 import { data, Form, Link as RouterLink, useLoaderData } from 'react-router'
 import { apiDelete, apiGet, ApiError } from '../../api/client'
 import type { Blog, User } from '../../api/types'
+import { useAuth } from '../../contexts/AuthContext'
 import { redirectWithFlash } from '../../utils/redirectFlash'
 import { userFullName } from '../../utils/userDisplay'
 
@@ -42,6 +43,9 @@ type LoaderData = Awaited<ReturnType<typeof blogDetailLoader>>
 
 export function BlogDetailPage() {
   const { blog, author } = useLoaderData() as LoaderData
+  const { session } = useAuth()
+  const canOpenAuthorProfile =
+    session?.role === 'admin' || session?.apiUserId === author.id
 
   return (
     <Stack spacing={3} sx={{ maxWidth: 800 }}>
@@ -83,15 +87,26 @@ export function BlogDetailPage() {
             />
             <Chip size="small" label={blog.category} variant="outlined" />
           </Stack>
-          <Typography color="text.secondary">
+          <Typography color="text.secondary" component="div">
             By{' '}
-            <Button
-              component={RouterLink}
-              to={`/users/${author.id}`}
-              sx={{ textTransform: 'none', p: 0, minWidth: 0, verticalAlign: 'baseline' }}
-            >
-              {userFullName(author)}
-            </Button>
+            {canOpenAuthorProfile ? (
+              <Button
+                component={RouterLink}
+                to={`/users/${author.id}`}
+                sx={{
+                  textTransform: 'none',
+                  p: 0,
+                  minWidth: 0,
+                  verticalAlign: 'baseline',
+                }}
+              >
+                {userFullName(author)}
+              </Button>
+            ) : (
+              <Box component="span" sx={{ fontWeight: 600 }}>
+                {userFullName(author)}
+              </Box>
+            )}
             <Typography component="span" color="text.secondary" sx={{ ml: 0.5 }}>
               (@{author.username})
             </Typography>

@@ -10,12 +10,19 @@ import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
+import type { LoaderFunctionArgs } from 'react-router'
 import { Link as RouterLink, useLoaderData } from 'react-router'
 import { apiGet } from '../../api/client'
 import type { User } from '../../api/types'
 import { userFullName } from '../../utils/userDisplay'
+import {
+  redirectNonAdminFromUserList,
+  requireSession,
+} from '../../utils/usersAccess'
 
-export async function usersListLoader() {
+export async function usersListLoader({ request }: LoaderFunctionArgs) {
+  const session = requireSession(request)
+  redirectNonAdminFromUserList(session, request)
   const users = await apiGet<User[]>(`/users`)
   return { users }
 }

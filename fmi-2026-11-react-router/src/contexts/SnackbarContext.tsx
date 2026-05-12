@@ -67,18 +67,23 @@ export function SnackbarProvider({ children }: { children: ReactNode }) {
         <Alert
           onClose={handleClose}
           severity={severity}
-          variant="filled"
+          variant="standard"
           sx={{
             width: '100%',
             ...(severity === 'success'
               ? {
-                  bgcolor: 'success.dark',
-                  color: 'success.contrastText',
+                  bgcolor: 'success.light',
+                  color: 'success.dark',
+                  '& .MuiAlert-icon': { color: 'success.dark' },
                 }
               : {
-                  bgcolor: 'error.main',
-                  color: 'error.contrastText',
+                  bgcolor: 'error.light',
+                  color: 'error.dark',
+                  '& .MuiAlert-icon': { color: 'error.dark' },
                 }),
+            '& .MuiAlert-action .MuiIconButton-root': {
+              color: 'inherit',
+            },
           }}
         >
           {message}

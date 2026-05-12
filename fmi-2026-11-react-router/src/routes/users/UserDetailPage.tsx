@@ -13,11 +13,18 @@ import type { LoaderFunctionArgs } from 'react-router'
 import { data, Link as RouterLink, useLoaderData } from 'react-router'
 import { apiGet, ApiError } from '../../api/client'
 import type { Blog, User } from '../../api/types'
+import { useAuth } from '../../contexts/AuthContext'
 import { userFullName } from '../../utils/userDisplay'
+import {
+  assertCanAccessUserProfile,
+  requireSession,
+} from '../../utils/usersAccess'
 
-export async function userDetailLoader({ params }: LoaderFunctionArgs) {
+export async function userDetailLoader({ request, params }: LoaderFunctionArgs) {
+  const session = requireSession(request)
   const id = Number(params.userId)
   if (!Number.isFinite(id)) throw data('Invalid user id', { status: 400 })
+  assertCanAccessUserProfile(session, id)
   try {
     const user = await apiGet<User>(`/users/${id}`)
     const blogs = await apiGet<Blog[]>(`/blogs?userId=${id}`)
@@ -34,12 +41,18 @@ type LoaderData = Awaited<ReturnType<typeof userDetailLoader>>
 
 export function UserDetailPage() {
   const { user, blogs } = useLoaderData() as LoaderData
+  const { session } = useAuth()
+  const isAdmin = session?.role === 'admin'
 
   return (
     <Stack spacing={3}>
       <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }}>
-        <Button component={RouterLink} to="/users" variant="outlined">
-          ← All users
+        <Button
+          component={RouterLink}
+          to={isAdmin ? '/users' : '/'}
+          variant="outlined"
+        >
+          {isAdmin ? '← All users' : '← Home'}
         </Button>
         <Button
           component={RouterLink}
