@@ -1,7 +1,7 @@
 export type UserRole = 'admin' | 'author' | 'reader'
 
 export interface User {
-  id: number
+  id: string
   username: string
   password: string
   firstName: string
@@ -12,10 +12,10 @@ export interface User {
 }
 
 export interface Blog {
-  id: number
+  id: string
   title: string
   content: string
-  userId: number
+  userId: string
   category: string
   published: boolean
   imageUrl: string

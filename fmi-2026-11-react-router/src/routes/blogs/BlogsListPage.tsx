@@ -61,7 +61,7 @@ type LoaderData = Awaited<ReturnType<typeof blogsListLoader>>
 export function BlogsListPage() {
   const { blogs, users, filters, categories } = useLoaderData() as LoaderData
 
-  const userName = (id: number) => {
+  const userName = (id: string) => {
     const u = users.find((x) => String(x.id) === String(id))
     return u ? userFullName(u) : `User #${id}`
   }

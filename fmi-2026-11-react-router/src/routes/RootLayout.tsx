@@ -29,6 +29,9 @@ const navBtn = { color: 'inherit', textTransform: 'none' as const }
 
 const DRAWER_WIDTH = 280
 
+const LOGO_IMAGE =
+  'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=640&q=80'
+
 function primaryNavItems(session: MockAuthSession | null) {
   const core = [
     { key: 'home', to: '/', label: 'Home' },
@@ -111,6 +114,26 @@ export function RootLayout() {
           >
             <MenuIcon />
           </IconButton>
+          <RouterLink to="/">
+            <Box
+              component="img"
+              src={LOGO_IMAGE}
+              alt="Open notebook and pen on a wooden desk, evoking writing and blog authoring"
+              loading="lazy"
+              decoding="async"
+              sx={{
+                display: 'block',
+                width: 'auto',
+                height: { xs: 40, sm: 60 },
+                objectFit: 'cover',
+                borderRadius: 1,
+                border: 1,
+                borderColor: 'divider',
+                boxShadow: 1,
+                marginRight: 2
+              }}
+            />
+          </RouterLink>
           <Typography
             variant="h6"
             component={RouterLink}
@@ -122,7 +145,7 @@ export function RootLayout() {
               textDecoration: 'none',
             }}
           >
-            Blog admin
+            React Blogs
           </Typography>
           <Box
             sx={{

@@ -34,7 +34,7 @@ export function redirectNonAdminFromUserList(session: MockAuthSession, request: 
 }
 
 /** Only admins may open arbitrary profiles; others only their own id. */
-export function assertCanAccessUserProfile(session: MockAuthSession, targetUserId: number) {
+export function assertCanAccessUserProfile(session: MockAuthSession, targetUserId: string) {
   if (session.role === 'admin') return
   if (targetUserId !== session.apiUserId) {
     throw data('You can only view your own user profile.', { status: 403 })

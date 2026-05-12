@@ -31,14 +31,14 @@ export async function blogNewAction({ request }: ActionFunctionArgs) {
   const fd = await request.formData()
   const title = String(fd.get('title') ?? '').trim()
   const content = String(fd.get('content') ?? '')
-  const userId = Number(fd.get('userId'))
+  const userId = String(fd.get('userId') ?? '').trim()
   const category = String(fd.get('category') ?? '').trim()
   const published = fd.get('published') === 'on'
   const imageUrl = String(fd.get('imageUrl') ?? '').trim()
   const keywords = parseKeywordsInput(String(fd.get('keywords') ?? ''))
 
   if (!title) return { ok: false as const, error: 'Title is required' }
-  if (!Number.isFinite(userId)) return { ok: false as const, error: 'Author is required' }
+  if (!userId) return { ok: false as const, error: 'Author is required' }
 
   try {
     const blog = await apiPost<Blog>('/blogs', {
@@ -50,7 +50,11 @@ export async function blogNewAction({ request }: ActionFunctionArgs) {
       imageUrl,
       keywords,
     })
-    return redirectWithFlash(`/blogs/${blog.id}`, 'success', 'Blog created')
+    return redirectWithFlash(
+      `/blogs/${encodeURIComponent(blog.id)}`,
+      'success',
+      'Blog created',
+    )
   } catch (e) {
     const msg = e instanceof ApiError ? e.message : 'Could not create blog'
     return { ok: false as const, error: msg }

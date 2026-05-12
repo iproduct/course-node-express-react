@@ -1,10 +1,12 @@
 /**
- * Demo-only mock auth: credentials never leave the browser.
- * Seed accounts mirror `db.json` so existing demo users work without a real backend.
+ * Demo-only auth: sign-in loads users from json-server (`GET /users`) and checks username/password
+ * against those records. Session state is still stored only in the browser (localStorage).
+ * Seed users in code mirror `db.json` only for legacy session migration helpers.
  */
 
 import { apiGet, apiPost, ApiError } from '../api/client'
 import type { User, UserRole } from '../api/types'
+import { sessionEntityId } from '../utils/entityId'
 
 const SESSION_KEY = 'mock-auth-session'
 const REGISTERED_KEY = 'mock-auth-registered-users'
@@ -15,7 +17,7 @@ export type MockAuthSession = {
   displayName: string
   role: UserRole
   /** Matches json-server `users[].id` when that row exists (includes locally registered mock ids). */
-  apiUserId: number
+  apiUserId: string
 }
 
 function isUserRole(s: string): s is UserRole {
@@ -126,10 +128,7 @@ export function getSession(): MockAuthSession | null {
 
     const role: UserRole | undefined =
       typeof o.role === 'string' && isUserRole(o.role) ? o.role : undefined
-    const apiUserId: number | undefined =
-      typeof o.apiUserId === 'number' && Number.isFinite(o.apiUserId)
-        ? o.apiUserId
-        : undefined
+    const apiUserId = sessionEntityId(o.apiUserId)
 
     if (role === undefined || apiUserId === undefined) {
       const user = getAllUsers().find(
@@ -139,8 +138,7 @@ export function getSession(): MockAuthSession | null {
         clearSession()
         return null
       }
-      const idNum = Number(user.id)
-      if (!Number.isFinite(idNum)) {
+      if (!user.id.trim()) {
         clearSession()
         return null
       }
@@ -150,19 +148,23 @@ export function getSession(): MockAuthSession | null {
         email: user.email,
         displayName: displayName || user.username,
         role: user.role,
-        apiUserId: idNum,
+        apiUserId: user.id,
       }
       setSession(migrated)
       return migrated
     }
 
-    return {
+    const normalized: MockAuthSession = {
       username: storedUsername,
       email: storedEmail,
       displayName: storedDisplayName,
       role,
       apiUserId,
     }
+    if (typeof o.apiUserId === 'number') {
+      setSession(normalized)
+    }
+    return normalized
   } catch {
     return null
   }
@@ -180,36 +182,48 @@ export type LoginResult =
   | { ok: true; session: MockAuthSession }
   | { ok: false; error: string }
 
-export function login(username: string, password: string): LoginResult {
+export async function login(
+  username: string,
+  password: string,
+): Promise<LoginResult> {
   const u = username.trim()
   const p = password
   if (!u) return { ok: false, error: 'Username is required' }
   if (!p) return { ok: false, error: 'Password is required' }
 
   const key = normalizeUsername(u)
-  const user = getAllUsers().find((x) => normalizeUsername(x.username) === key)
-  if (!user || user.password !== p) {
-    return { ok: false, error: 'Invalid username or password' }
-  }
+  try {
+    const users = await apiGet<User[]>('/users')
+    const user = users.find((x) => normalizeUsername(x.username) === key)
+    if (!user || user.password !== p) {
+      return { ok: false, error: 'Invalid username or password' }
+    }
 
-  const idNum = Number(user.id)
-  if (!Number.isFinite(idNum)) {
-    return { ok: false, error: 'Invalid account' }
-  }
-  if (!isUserRole(user.role)) {
-    return { ok: false, error: 'Invalid account role' }
-  }
+    const apiUserId = String(user.id).trim()
+    if (!apiUserId) {
+      return { ok: false, error: 'Invalid account' }
+    }
+    if (!isUserRole(user.role)) {
+      return { ok: false, error: 'Invalid account role' }
+    }
 
-  const displayName = [user.firstName, user.lastName].filter(Boolean).join(' ').trim()
-  const session: MockAuthSession = {
-    username: user.username,
-    email: user.email,
-    displayName: displayName || user.username,
-    role: user.role,
-    apiUserId: idNum,
+    const displayName = [user.firstName, user.lastName].filter(Boolean).join(' ').trim()
+    const session: MockAuthSession = {
+      username: user.username,
+      email: user.email,
+      displayName: displayName || user.username,
+      role: user.role,
+      apiUserId,
+    }
+    setSession(session)
+    return { ok: true, session }
+  } catch (e) {
+    const msg =
+      e instanceof ApiError
+        ? e.message
+        : 'Could not reach the API. Start json-server (e.g. npm run api or npm run dev:full).'
+    return { ok: false, error: msg }
   }
-  setSession(session)
-  return { ok: true, session }
 }
 
 export type RegisterResult =
@@ -263,9 +277,13 @@ export async function register(input: {
     }
 
     const created = await apiPost<User>('/users', payload)
-    const idNum =
-      typeof created.id === 'number' ? created.id : Number(created.id)
-    if (!Number.isFinite(idNum)) {
+    const createdId =
+      typeof created.id === 'string'
+        ? created.id.trim()
+        : created.id != null
+          ? String(created.id).trim()
+          : ''
+    if (!createdId) {
       return { ok: false, error: 'Invalid response from server' }
     }
     if (!isUserRole(created.role)) {
@@ -274,7 +292,7 @@ export async function register(input: {
 
     const registered = readRegistered()
     const stored: StoredUser = {
-      id: String(created.id),
+      id: createdId,
       username: created.username,
       password,
       email: created.email,
@@ -294,7 +312,7 @@ export async function register(input: {
       email: stored.email,
       displayName: displayName || stored.username,
       role: created.role,
-      apiUserId: idNum,
+      apiUserId: createdId,
     }
     setSession(session)
     return { ok: true, session }

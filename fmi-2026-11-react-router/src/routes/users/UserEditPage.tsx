@@ -25,16 +25,17 @@ import {
   requireSession,
 } from '../../utils/usersAccess'
 import { getSession } from '../../services/mockAuth'
+import { routeEntityId } from '../../utils/entityId'
 
 const ROLES: UserRole[] = ['admin', 'author', 'reader']
 
 export async function userEditLoader({ request, params }: LoaderFunctionArgs) {
   const session = requireSession(request)
-  const id = Number(params.userId)
-  if (!Number.isFinite(id)) throw data('Invalid user id', { status: 400 })
+  const id = routeEntityId(params.userId)
+  if (!id) throw data('Invalid user id', { status: 400 })
   assertCanAccessUserProfile(session, id)
   try {
-    const user = await apiGet<User>(`/users/${id}`)
+    const user = await apiGet<User>(`/users/${encodeURIComponent(id)}`)
     return { user }
   } catch (e) {
     if (e instanceof ApiError && e.status === 404) {
@@ -48,8 +49,8 @@ export async function userEditAction({ request, params }: ActionFunctionArgs) {
   const session = getSession()
   if (!session) return redirectToLogin(request)
 
-  const id = Number(params.userId)
-  if (!Number.isFinite(id) || request.method !== 'PUT') return null
+  const id = routeEntityId(params.userId)
+  if (!id || request.method !== 'PUT') return null
 
   assertCanAccessUserProfile(session, id)
 
@@ -68,7 +69,7 @@ export async function userEditAction({ request, params }: ActionFunctionArgs) {
   if (!email) return { ok: false as const, error: 'Email is required' }
 
   try {
-    const existing = await apiGet<User>(`/users/${id}`)
+    const existing = await apiGet<User>(`/users/${encodeURIComponent(id)}`)
     const role =
       session.role === 'admin' ? roleFromForm : existing.role
     if (!ROLES.includes(role)) return { ok: false as const, error: 'Invalid role' }
@@ -76,7 +77,7 @@ export async function userEditAction({ request, params }: ActionFunctionArgs) {
     const password =
       passwordInput.trim() !== '' ? passwordInput : existing.password
 
-    await apiPut<User>(`/users/${id}`, {
+    await apiPut<User>(`/users/${encodeURIComponent(id)}`, {
       id,
       username,
       password,

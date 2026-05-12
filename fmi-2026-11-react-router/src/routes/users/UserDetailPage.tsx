@@ -19,15 +19,18 @@ import {
   assertCanAccessUserProfile,
   requireSession,
 } from '../../utils/usersAccess'
+import { routeEntityId } from '../../utils/entityId'
 
 export async function userDetailLoader({ request, params }: LoaderFunctionArgs) {
   const session = requireSession(request)
-  const id = Number(params.userId)
-  if (!Number.isFinite(id)) throw data('Invalid user id', { status: 400 })
+  const id = routeEntityId(params.userId)
+  if (!id) throw data('Invalid user id', { status: 400 })
   assertCanAccessUserProfile(session, id)
   try {
-    const user = await apiGet<User>(`/users/${id}`)
-    const blogs = await apiGet<Blog[]>(`/blogs?userId=${id}`)
+    const user = await apiGet<User>(`/users/${encodeURIComponent(id)}`)
+    const blogs = await apiGet<Blog[]>(
+      `/blogs?userId=${encodeURIComponent(id)}`,
+    )
     return { user, blogs }
   } catch (e) {
     if (e instanceof ApiError && e.status === 404) {

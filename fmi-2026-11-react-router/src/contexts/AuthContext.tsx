@@ -16,7 +16,10 @@ import {
 
 type AuthContextValue = {
   session: MockAuthSession | null
-  login: (username: string, password: string) => { ok: true } | { ok: false; error: string }
+  login: (
+    username: string,
+    password: string,
+  ) => Promise<{ ok: true } | { ok: false; error: string }>
   register: (input: {
     username: string
     password: string
@@ -38,8 +41,8 @@ export function useAuth(): AuthContextValue {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<MockAuthSession | null>(() => getSession())
 
-  const login = useCallback((username: string, password: string) => {
-    const result = loginService(username, password)
+  const login = useCallback(async (username: string, password: string) => {
+    const result = await loginService(username, password)
     if (result.ok === true) {
       setSession(result.session)
       return { ok: true as const }

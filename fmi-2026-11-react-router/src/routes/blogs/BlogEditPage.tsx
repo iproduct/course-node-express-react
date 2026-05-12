@@ -22,12 +22,13 @@ import { useSnackbar } from '../../contexts/SnackbarContext'
 import { keywordsToInput, parseKeywordsInput } from '../../utils/keywords'
 import { userAuthorMenuLabel } from '../../utils/userDisplay'
 import { redirectWithFlash } from '../../utils/redirectFlash'
+import { routeEntityId } from '../../utils/entityId'
 
 export async function blogEditLoader({ params }: LoaderFunctionArgs) {
-  const id = Number(params.blogId)
-  if (!Number.isFinite(id)) throw data('Invalid blog id', { status: 400 })
+  const id = routeEntityId(params.blogId)
+  if (!id) throw data('Invalid blog id', { status: 400 })
   try {
-    const blog = await apiGet<Blog>(`/blogs/${id}`)
+    const blog = await apiGet<Blog>(`/blogs/${encodeURIComponent(id)}`)
     const users = await apiGet<User[]>(`/users`)
     return { blog, users }
   } catch (e) {
@@ -39,23 +40,23 @@ export async function blogEditLoader({ params }: LoaderFunctionArgs) {
 }
 
 export async function blogEditAction({ request, params }: ActionFunctionArgs) {
-  const id = Number(params.blogId)
-  if (!Number.isFinite(id) || request.method !== 'PUT') return null
+  const id = routeEntityId(params.blogId)
+  if (!id || request.method !== 'PUT') return null
 
   const fd = await request.formData()
   const title = String(fd.get('title') ?? '').trim()
   const content = String(fd.get('content') ?? '')
-  const userId = Number(fd.get('userId'))
+  const userId = String(fd.get('userId') ?? '').trim()
   const category = String(fd.get('category') ?? '').trim()
   const published = fd.get('published') === 'on'
   const imageUrl = String(fd.get('imageUrl') ?? '').trim()
   const keywords = parseKeywordsInput(String(fd.get('keywords') ?? ''))
 
   if (!title) return { ok: false as const, error: 'Title is required' }
-  if (!Number.isFinite(userId)) return { ok: false as const, error: 'Author is required' }
+  if (!userId) return { ok: false as const, error: 'Author is required' }
 
   try {
-    await apiPut<Blog>(`/blogs/${id}`, {
+    await apiPut<Blog>(`/blogs/${encodeURIComponent(id)}`, {
       id,
       title,
       content,
@@ -65,7 +66,11 @@ export async function blogEditAction({ request, params }: ActionFunctionArgs) {
       imageUrl,
       keywords,
     })
-    return redirectWithFlash(`/blogs/${id}`, 'success', 'Blog updated')
+    return redirectWithFlash(
+      `/blogs/${encodeURIComponent(id)}`,
+      'success',
+      'Blog updated',
+    )
   } catch (e) {
     const msg = e instanceof ApiError ? e.message : 'Could not update blog'
     return { ok: false as const, error: msg }

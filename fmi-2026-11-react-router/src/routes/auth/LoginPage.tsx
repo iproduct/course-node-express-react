@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import { useState, type SubmitEvent} from 'react'
+import { useState, type FormEvent } from 'react'
 import {
   Link as RouterLink,
   Navigate,
@@ -38,19 +38,25 @@ export function LoginPage() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
 
   if (session) {
     return <Navigate to={from} replace />
   }
 
-  function handleSubmit(e: SubmitEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
-    const result = login(username, password)
-    if (result.ok === true) {
-      navigate(from, { replace: true })
-    } else {
-      setError(result.error)
+    setSubmitting(true)
+    try {
+      const result = await login(username, password)
+      if (result.ok === true) {
+        navigate(from, { replace: true })
+      } else {
+        setError(result.error)
+      }
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -61,8 +67,10 @@ export function LoginPage() {
           Sign in
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          Mock login only — credentials stay in your browser and are not sent to json-server.
-          Try <strong>alice_admin</strong> / <strong>changeme</strong>.
+          Demo sign-in: username and password are checked against records returned by{' '}
+          <code>GET /api/users</code> (json-server). The API must be running (e.g.{' '}
+          <code>npm run dev:full</code>). Try <strong>alice_admin</strong> /{' '}
+          <strong>changeme</strong>.
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} noValidate>
@@ -88,8 +96,14 @@ export function LoginPage() {
               required
               fullWidth
             />
-            <Button type="submit" variant="contained" size="large" fullWidth>
-              Sign in
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              fullWidth
+              disabled={submitting}
+            >
+              {submitting ? 'Signing in…' : 'Sign in'}
             </Button>
           </Stack>
         </Box>

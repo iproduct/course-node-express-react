@@ -11,13 +11,16 @@ import type { Blog, User } from '../../api/types'
 import { useAuth } from '../../contexts/AuthContext'
 import { redirectWithFlash } from '../../utils/redirectFlash'
 import { userFullName } from '../../utils/userDisplay'
+import { routeEntityId } from '../../utils/entityId'
 
 export async function blogDetailLoader({ params }: LoaderFunctionArgs) {
-  const id = Number(params.blogId)
-  if (!Number.isFinite(id)) throw data('Invalid blog id', { status: 400 })
+  const id = routeEntityId(params.blogId)
+  if (!id) throw data('Invalid blog id', { status: 400 })
   try {
-    const blog = await apiGet<Blog>(`/blogs/${id}`)
-    const author = await apiGet<User>(`/users/${blog.userId}`)
+    const blog = await apiGet<Blog>(`/blogs/${encodeURIComponent(id)}`)
+    const author = await apiGet<User>(
+      `/users/${encodeURIComponent(String(blog.userId))}`,
+    )
     return { blog, author }
   } catch (e) {
     if (e instanceof ApiError && e.status === 404) {
@@ -28,14 +31,14 @@ export async function blogDetailLoader({ params }: LoaderFunctionArgs) {
 }
 
 export async function blogDetailAction({ request, params }: ActionFunctionArgs) {
-  const id = Number(params.blogId)
-  if (!Number.isFinite(id) || request.method !== 'DELETE') return null
+  const id = routeEntityId(params.blogId)
+  if (!id || request.method !== 'DELETE') return null
   try {
-    await apiDelete(`/blogs/${id}`)
+    await apiDelete(`/blogs/${encodeURIComponent(id)}`)
     return redirectWithFlash('/blogs', 'success', 'Blog deleted')
   } catch (e) {
     const msg = e instanceof ApiError ? e.message : 'Delete failed'
-    return redirectWithFlash(`/blogs/${id}`, 'error', msg)
+    return redirectWithFlash(`/blogs/${encodeURIComponent(id)}`, 'error', msg)
   }
 }
 
@@ -45,7 +48,8 @@ export function BlogDetailPage() {
   const { blog, author } = useLoaderData() as LoaderData
   const { session } = useAuth()
   const canOpenAuthorProfile =
-    session?.role === 'admin' || session?.apiUserId === author.id
+    session?.role === 'admin' ||
+    String(session?.apiUserId) === String(author.id)
 
   return (
     <Stack spacing={3} sx={{ maxWidth: 800 }}>
