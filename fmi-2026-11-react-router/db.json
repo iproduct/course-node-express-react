@@ -29,6 +29,16 @@
       "email": "carol@example.com",
       "role": "reader",
       "imageUrl": "https://picsum.photos/id/1011/200/200"
+    },
+    {
+      "id": "glfl1MAOZsQ",
+      "username": "traian",
+      "password": "traian123",
+      "firstName": "Trayan",
+      "lastName": "I",
+      "email": "traian@gmail.com",
+      "role": "reader",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8RCycIeE35GO5QovtGVeDWPjozBEUzHaL0QUcOzI1XnwEfz9UCBGHZ2UX4dr_xA9ewCEOi_D7keodAlQ-ZxztsE1dOeXyGyv8jVSP-U0&s=10"
     }
   ],
   "blogs": [
