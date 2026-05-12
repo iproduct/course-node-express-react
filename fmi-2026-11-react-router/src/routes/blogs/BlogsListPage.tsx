@@ -15,6 +15,7 @@ import type { LoaderFunctionArgs } from 'react-router'
 import { Form, Link as RouterLink, useLoaderData } from 'react-router'
 import { apiGet } from '../../api/client'
 import type { Blog, BlogFilters, User } from '../../api/types'
+import { userFullName } from '../../utils/userDisplay'
 
 function buildBlogQuery(url: URL): string {
   const params = new URLSearchParams()
@@ -60,8 +61,10 @@ type LoaderData = Awaited<ReturnType<typeof blogsListLoader>>
 export function BlogsListPage() {
   const { blogs, users, filters, categories } = useLoaderData() as LoaderData
 
-  const userName = (id: number) =>
-    users.find((u) => u.id === id)?.name ?? `User #${id}`
+  const userName = (id: number) => {
+    const u = users.find((x) => String(x.id) === String(id))
+    return u ? userFullName(u) : `User #${id}`
+  }
 
   return (
     <Stack spacing={3}>
@@ -113,7 +116,7 @@ export function BlogsListPage() {
                 </MenuItem>
                 {users.map((u) => (
                   <MenuItem key={u.id} value={String(u.id)}>
-                    {u.name}
+                    {userFullName(u)} (@{u.username})
                   </MenuItem>
                 ))}
               </TextField>

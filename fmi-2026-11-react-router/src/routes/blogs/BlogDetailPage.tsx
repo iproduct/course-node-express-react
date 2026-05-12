@@ -9,6 +9,7 @@ import { data, Form, Link as RouterLink, useLoaderData } from 'react-router'
 import { apiDelete, apiGet, ApiError } from '../../api/client'
 import type { Blog, User } from '../../api/types'
 import { redirectWithFlash } from '../../utils/redirectFlash'
+import { userFullName } from '../../utils/userDisplay'
 
 export async function blogDetailLoader({ params }: LoaderFunctionArgs) {
   const id = Number(params.blogId)
@@ -89,8 +90,11 @@ export function BlogDetailPage() {
               to={`/users/${author.id}`}
               sx={{ textTransform: 'none', p: 0, minWidth: 0, verticalAlign: 'baseline' }}
             >
-              {author.name}
+              {userFullName(author)}
             </Button>
+            <Typography component="span" color="text.secondary" sx={{ ml: 0.5 }}>
+              (@{author.username})
+            </Typography>
           </Typography>
           {blog.imageUrl ? (
             <Box

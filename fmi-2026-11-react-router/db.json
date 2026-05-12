@@ -2,21 +2,33 @@
   "users": [
     {
       "id": "1",
-      "name": "Alice Admin",
+      "username": "alice_admin",
+      "password": "changeme",
+      "firstName": "Alice",
+      "lastName": "Admin",
       "email": "alice@example.com",
-      "role": "admin"
+      "role": "admin",
+      "imageUrl": "https://picsum.photos/id/1027/200/200"
     },
     {
       "id": "2",
-      "name": "Bob Author",
+      "username": "bob_author",
+      "password": "changeme",
+      "firstName": "Bob",
+      "lastName": "Author",
       "email": "bob@example.com",
-      "role": "author"
+      "role": "author",
+      "imageUrl": "https://picsum.photos/id/1005/200/200"
     },
     {
       "id": "3",
-      "name": "Carol Reader",
+      "username": "carol_reader",
+      "password": "changeme",
+      "firstName": "Carol",
+      "lastName": "Reader",
       "email": "carol@example.com",
-      "role": "reader"
+      "role": "reader",
+      "imageUrl": "https://picsum.photos/id/1011/200/200"
     }
   ],
   "blogs": [
@@ -28,7 +40,12 @@
       "category": "tech",
       "published": true,
       "imageUrl": "https://picsum.photos/id/180/960/540",
-      "keywords": ["react", "router", "spa", "data-fetching"]
+      "keywords": [
+        "react",
+        "router",
+        "spa",
+        "data-fetching"
+      ]
     },
     {
       "id": "2",
@@ -38,7 +55,12 @@
       "category": "design",
       "published": true,
       "imageUrl": "https://picsum.photos/id/326/960/540",
-      "keywords": ["design", "accessibility", "mui", "pastel"]
+      "keywords": [
+        "design",
+        "accessibility",
+        "mui",
+        "pastel"
+      ]
     },
     {
       "id": "3",
@@ -46,9 +68,12 @@
       "content": "This post is still a draft and should only appear when drafts are included in filters.",
       "userId": 1,
       "category": "tech",
-      "published": false,
+      "published": true,
       "imageUrl": "https://picsum.photos/id/866/960/540",
-      "keywords": ["roadmap", "draft"]
+      "keywords": [
+        "roadmap",
+        "draft"
+      ]
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

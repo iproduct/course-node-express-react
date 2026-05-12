@@ -40,16 +40,35 @@ export async function userEditAction({ request, params }: ActionFunctionArgs) {
   if (!Number.isFinite(id) || request.method !== 'PUT') return null
 
   const fd = await request.formData()
-  const name = String(fd.get('name') ?? '').trim()
+  const firstName = String(fd.get('firstName') ?? '').trim()
+  const lastName = String(fd.get('lastName') ?? '').trim()
+  const username = String(fd.get('username') ?? '').trim()
   const email = String(fd.get('email') ?? '').trim()
+  const imageUrl = String(fd.get('imageUrl') ?? '').trim()
+  const passwordInput = String(fd.get('password') ?? '')
   const role = String(fd.get('role') ?? '') as UserRole
 
-  if (!name) return { ok: false as const, error: 'Name is required' }
+  if (!firstName) return { ok: false as const, error: 'First name is required' }
+  if (!lastName) return { ok: false as const, error: 'Last name is required' }
+  if (!username) return { ok: false as const, error: 'Username is required' }
   if (!email) return { ok: false as const, error: 'Email is required' }
   if (!ROLES.includes(role)) return { ok: false as const, error: 'Invalid role' }
 
   try {
-    await apiPut<User>(`/users/${id}`, { id, name, email, role })
+    const existing = await apiGet<User>(`/users/${id}`)
+    const password =
+      passwordInput.trim() !== '' ? passwordInput : existing.password
+
+    await apiPut<User>(`/users/${id}`, {
+      id,
+      username,
+      password,
+      firstName,
+      lastName,
+      email,
+      role,
+      imageUrl,
+    })
     return redirectWithFlash(`/users/${id}`, 'success', 'User updated')
   } catch (e) {
     const msg = e instanceof ApiError ? e.message : 'Could not update user'
@@ -88,11 +107,27 @@ export function UserEditPage() {
         <Form method="put" replace>
           <Stack spacing={2}>
             <TextField
-              name="name"
-              label="Name"
+              name="firstName"
+              label="First name"
               required
               fullWidth
-              defaultValue={user.name}
+              defaultValue={user.firstName}
+              disabled={busy}
+            />
+            <TextField
+              name="lastName"
+              label="Last name"
+              required
+              fullWidth
+              defaultValue={user.lastName}
+              disabled={busy}
+            />
+            <TextField
+              name="username"
+              label="Username"
+              required
+              fullWidth
+              defaultValue={user.username}
               disabled={busy}
             />
             <TextField
@@ -102,6 +137,22 @@ export function UserEditPage() {
               required
               fullWidth
               defaultValue={user.email}
+              disabled={busy}
+            />
+            <TextField
+              name="imageUrl"
+              label="Profile image URL"
+              fullWidth
+              defaultValue={user.imageUrl}
+              disabled={busy}
+            />
+            <TextField
+              name="password"
+              label="Password"
+              type="password"
+              autoComplete="new-password"
+              fullWidth
+              helperText="Leave blank to keep the current password."
               disabled={busy}
             />
             <TextField

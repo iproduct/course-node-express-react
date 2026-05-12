@@ -1,3 +1,4 @@
+import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import Paper from '@mui/material/Paper'
@@ -12,6 +13,7 @@ import type { LoaderFunctionArgs } from 'react-router'
 import { data, Link as RouterLink, useLoaderData } from 'react-router'
 import { apiGet, ApiError } from '../../api/client'
 import type { Blog, User } from '../../api/types'
+import { userFullName } from '../../utils/userDisplay'
 
 export async function userDetailLoader({ params }: LoaderFunctionArgs) {
   const id = Number(params.userId)
@@ -49,11 +51,28 @@ export function UserDetailPage() {
       </Stack>
 
       <Paper sx={{ p: 3 }} elevation={0} variant="outlined">
-        <Stack spacing={1}>
-          <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
-            {user.name}
-          </Typography>
-          <Typography color="text.secondary">{user.email}</Typography>
+        <Stack spacing={2} sx={{ alignItems: 'flex-start' }}>
+          {user.imageUrl ? (
+            <Avatar
+              src={user.imageUrl}
+              alt={userFullName(user)}
+              sx={{ width: 96, height: 96 }}
+              variant="rounded"
+            />
+          ) : (
+            <Avatar sx={{ width: 96, height: 96 }} variant="rounded">
+              {user.username.slice(0, 1).toUpperCase()}
+            </Avatar>
+          )}
+          <Stack spacing={0.5}>
+            <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
+              {userFullName(user)}
+            </Typography>
+            <Typography color="text.secondary" sx={{ fontFamily: 'ui-monospace, monospace' }}>
+              @{user.username}
+            </Typography>
+            <Typography color="text.secondary">{user.email}</Typography>
+          </Stack>
           <Chip size="small" label={user.role} variant="outlined" sx={{ alignSelf: 'flex-start' }} />
         </Stack>
       </Paper>

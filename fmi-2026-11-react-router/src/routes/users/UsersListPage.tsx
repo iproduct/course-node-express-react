@@ -1,3 +1,5 @@
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import Paper from '@mui/material/Paper'
@@ -11,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import { Link as RouterLink, useLoaderData } from 'react-router'
 import { apiGet } from '../../api/client'
 import type { User } from '../../api/types'
+import { userFullName } from '../../utils/userDisplay'
 
 export async function usersListLoader() {
   const users = await apiGet<User[]>(`/users`)
@@ -36,7 +39,9 @@ export function UsersListPage() {
       <Table component={Paper} elevation={0} variant="outlined">
         <TableHead>
           <TableRow>
+            <TableCell sx={{ width: 72 }} />
             <TableCell>Name</TableCell>
+            <TableCell>Username</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Role</TableCell>
             <TableCell align="right">Actions</TableCell>
@@ -46,13 +51,32 @@ export function UsersListPage() {
           {users.map((user) => (
             <TableRow key={user.id} hover>
               <TableCell>
+                {user.imageUrl ? (
+                  <Avatar
+                    src={user.imageUrl}
+                    alt={userFullName(user)}
+                    sx={{ width: 40, height: 40 }}
+                    variant="rounded"
+                  />
+                ) : (
+                  <Avatar sx={{ width: 40, height: 40 }} variant="rounded">
+                    {user.username.slice(0, 1).toUpperCase()}
+                  </Avatar>
+                )}
+              </TableCell>
+              <TableCell>
                 <Button
                   component={RouterLink}
                   to={`/users/${user.id}`}
                   sx={{ textTransform: 'none', p: 0, fontWeight: 600 }}
                 >
-                  {user.name}
+                  {userFullName(user)}
                 </Button>
+              </TableCell>
+              <TableCell>
+                <Box component="span" sx={{ fontFamily: 'ui-monospace, monospace' }}>
+                  @{user.username}
+                </Box>
               </TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>

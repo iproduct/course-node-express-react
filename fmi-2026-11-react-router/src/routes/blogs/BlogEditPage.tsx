@@ -20,6 +20,7 @@ import { apiGet, apiPut, ApiError } from '../../api/client'
 import type { Blog, User } from '../../api/types'
 import { useSnackbar } from '../../contexts/SnackbarContext'
 import { keywordsToInput, parseKeywordsInput } from '../../utils/keywords'
+import { userAuthorMenuLabel } from '../../utils/userDisplay'
 import { redirectWithFlash } from '../../utils/redirectFlash'
 
 export async function blogEditLoader({ params }: LoaderFunctionArgs) {
@@ -129,7 +130,7 @@ export function BlogEditPage() {
             >
               {users.map((u) => (
                 <MenuItem key={u.id} value={String(u.id)}>
-                  {u.name} ({u.role})
+                  {userAuthorMenuLabel(u)}
                 </MenuItem>
               ))}
             </TextField>
