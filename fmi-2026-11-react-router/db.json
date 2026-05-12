@@ -61,15 +61,14 @@
       "id": "2",
       "title": "Pastel UI and Readability",
       "content": "Soft palettes can keep long admin sessions comfortable without sacrificing hierarchy or contrast.",
-      "userId": 2,
+      "userId": "2",
       "category": "design",
       "published": true,
       "imageUrl": "https://picsum.photos/id/326/960/540",
       "keywords": [
         "design",
         "accessibility",
-        "mui",
-        "pastel"
+        "mui"
       ]
     },
     {

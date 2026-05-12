@@ -2,7 +2,7 @@
 
 function PrivatePage() {
   return (
-    <div>Private Page</div>
+    <h1>Private Page</h1>
   )
 }
 

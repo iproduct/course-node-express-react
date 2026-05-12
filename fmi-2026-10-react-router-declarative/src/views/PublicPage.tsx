@@ -2,7 +2,7 @@
 
 function PublicPage() {
   return (
-    <div>Public Page</div>
+    <h1>Public Page</h1>
   )
 }
 
