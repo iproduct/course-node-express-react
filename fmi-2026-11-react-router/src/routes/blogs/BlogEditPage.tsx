@@ -19,6 +19,7 @@ import {
 import { apiGet, apiPut, ApiError } from '../../api/client'
 import type { Blog, User } from '../../api/types'
 import { useSnackbar } from '../../contexts/SnackbarContext'
+import { keywordsToInput, parseKeywordsInput } from '../../utils/keywords'
 import { redirectWithFlash } from '../../utils/redirectFlash'
 
 export async function blogEditLoader({ params }: LoaderFunctionArgs) {
@@ -46,6 +47,8 @@ export async function blogEditAction({ request, params }: ActionFunctionArgs) {
   const userId = Number(fd.get('userId'))
   const category = String(fd.get('category') ?? '').trim()
   const published = fd.get('published') === 'on'
+  const imageUrl = String(fd.get('imageUrl') ?? '').trim()
+  const keywords = parseKeywordsInput(String(fd.get('keywords') ?? ''))
 
   if (!title) return { ok: false as const, error: 'Title is required' }
   if (!Number.isFinite(userId)) return { ok: false as const, error: 'Author is required' }
@@ -58,6 +61,8 @@ export async function blogEditAction({ request, params }: ActionFunctionArgs) {
       userId,
       category: category || 'general',
       published,
+      imageUrl,
+      keywords,
     })
     return redirectWithFlash(`/blogs/${id}`, 'success', 'Blog updated')
   } catch (e) {
@@ -133,6 +138,21 @@ export function BlogEditPage() {
               label="Category"
               fullWidth
               defaultValue={blog.category}
+              disabled={busy}
+            />
+            <TextField
+              name="imageUrl"
+              label="Cover image URL"
+              fullWidth
+              defaultValue={blog.imageUrl}
+              disabled={busy}
+            />
+            <TextField
+              name="keywords"
+              label="Keywords"
+              helperText="Separate keywords with commas, semicolons, or new lines."
+              fullWidth
+              defaultValue={keywordsToInput(blog.keywords)}
               disabled={busy}
             />
             <FormControlLabel

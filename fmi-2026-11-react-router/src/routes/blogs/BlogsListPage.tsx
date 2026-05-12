@@ -95,7 +95,7 @@ export function BlogsListPage() {
               <TextField
                 name="q"
                 label="Search"
-                placeholder="Title or content"
+                placeholder="Title, content, or keywords"
                 defaultValue={filters.q}
                 size="small"
                 sx={{ minWidth: 220, flex: '1 1 200px' }}
@@ -164,16 +164,18 @@ export function BlogsListPage() {
       <Table component={Paper} elevation={0} variant="outlined">
         <TableHead>
           <TableRow>
+            <TableCell sx={{ width: 96 }}>Image</TableCell>
             <TableCell>Title</TableCell>
             <TableCell>Author</TableCell>
             <TableCell>Category</TableCell>
+            <TableCell>Keywords</TableCell>
             <TableCell>Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {blogs.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={4}>
+              <TableCell colSpan={6}>
                 <Box sx={{ py: 2, color: 'text.secondary' }}>
                   No blogs match these filters.
                 </Box>
@@ -182,6 +184,32 @@ export function BlogsListPage() {
           ) : (
             blogs.map((blog) => (
               <TableRow key={blog.id} hover>
+                <TableCell>
+                  {blog.imageUrl ? (
+                    <Box
+                      component="img"
+                      src={blog.imageUrl}
+                      alt=""
+                      loading="lazy"
+                      sx={{
+                        width: 72,
+                        height: 48,
+                        objectFit: 'cover',
+                        borderRadius: 1,
+                        display: 'block',
+                      }}
+                    />
+                  ) : (
+                    <Box
+                      sx={{
+                        width: 72,
+                        height: 48,
+                        borderRadius: 1,
+                        bgcolor: 'action.hover',
+                      }}
+                    />
+                  )}
+                </TableCell>
                 <TableCell>
                   <Button
                     component={RouterLink}
@@ -193,6 +221,23 @@ export function BlogsListPage() {
                 </TableCell>
                 <TableCell>{userName(blog.userId)}</TableCell>
                 <TableCell>{blog.category}</TableCell>
+                <TableCell>
+                  <Stack
+                    direction="row"
+                    sx={{ flexWrap: 'wrap', gap: 0.5, maxWidth: 280 }}
+                  >
+                    {(blog.keywords ?? []).slice(0, 4).map((kw) => (
+                      <Chip key={kw} label={kw} size="small" variant="outlined" />
+                    ))}
+                    {(blog.keywords ?? []).length > 4 ? (
+                      <Chip
+                        size="small"
+                        variant="outlined"
+                        label={`+${(blog.keywords ?? []).length - 4}`}
+                      />
+                    ) : null}
+                  </Stack>
+                </TableCell>
                 <TableCell>
                   <Chip
                     size="small"

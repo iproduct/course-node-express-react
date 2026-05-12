@@ -18,6 +18,7 @@ import {
 import { apiGet, apiPost, ApiError } from '../../api/client'
 import type { Blog, User } from '../../api/types'
 import { useSnackbar } from '../../contexts/SnackbarContext'
+import { parseKeywordsInput } from '../../utils/keywords'
 import { redirectWithFlash } from '../../utils/redirectFlash'
 
 export async function blogNewLoader() {
@@ -32,6 +33,8 @@ export async function blogNewAction({ request }: ActionFunctionArgs) {
   const userId = Number(fd.get('userId'))
   const category = String(fd.get('category') ?? '').trim()
   const published = fd.get('published') === 'on'
+  const imageUrl = String(fd.get('imageUrl') ?? '').trim()
+  const keywords = parseKeywordsInput(String(fd.get('keywords') ?? ''))
 
   if (!title) return { ok: false as const, error: 'Title is required' }
   if (!Number.isFinite(userId)) return { ok: false as const, error: 'Author is required' }
@@ -43,6 +46,8 @@ export async function blogNewAction({ request }: ActionFunctionArgs) {
       userId,
       category: category || 'general',
       published,
+      imageUrl,
+      keywords,
     })
     return redirectWithFlash(`/blogs/${blog.id}`, 'success', 'Blog created')
   } catch (e) {
@@ -118,6 +123,21 @@ export function BlogNewPage() {
               name="category"
               label="Category"
               placeholder="e.g. tech"
+              fullWidth
+              disabled={busy}
+            />
+            <TextField
+              name="imageUrl"
+              label="Cover image URL"
+              placeholder="https://…"
+              fullWidth
+              disabled={busy}
+            />
+            <TextField
+              name="keywords"
+              label="Keywords"
+              placeholder="react, router, tutorial"
+              helperText="Separate keywords with commas, semicolons, or new lines."
               fullWidth
               disabled={busy}
             />

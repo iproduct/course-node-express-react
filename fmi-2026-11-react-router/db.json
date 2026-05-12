@@ -1,19 +1,19 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Alice Admin",
       "email": "alice@example.com",
       "role": "admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Bob Author",
       "email": "bob@example.com",
       "role": "author"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Carol Reader",
       "email": "carol@example.com",
       "role": "reader"
@@ -21,28 +21,35 @@
   ],
   "blogs": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Getting Started with React Router 7",
       "content": "Data routers combine routing with loaders and actions so data fetching stays colocated with the routes that need it.",
       "userId": 2,
       "category": "tech",
-      "published": true
+      "published": true,
+      "imageUrl": "https://picsum.photos/id/180/960/540",
+      "keywords": ["react", "router", "spa", "data-fetching"]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Pastel UI and Readability",
       "content": "Soft palettes can keep long admin sessions comfortable without sacrificing hierarchy or contrast.",
       "userId": 2,
       "category": "design",
-      "published": true
+      "published": true,
+      "imageUrl": "https://picsum.photos/id/326/960/540",
+      "keywords": ["design", "accessibility", "mui", "pastel"]
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Draft: Upcoming Features",
       "content": "This post is still a draft and should only appear when drafts are included in filters.",
       "userId": 1,
       "category": "tech",
-      "published": false
+      "published": false,
+      "imageUrl": "https://picsum.photos/id/866/960/540",
+      "keywords": ["roadmap", "draft"]
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

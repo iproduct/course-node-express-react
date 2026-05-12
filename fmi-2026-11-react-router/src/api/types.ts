@@ -14,6 +14,8 @@ export interface Blog {
   userId: number
   category: string
   published: boolean
+  imageUrl: string
+  keywords: string[]
 }
 
 export interface BlogFilters {

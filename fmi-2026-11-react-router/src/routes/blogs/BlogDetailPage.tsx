@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import Paper from '@mui/material/Paper'
@@ -91,6 +92,27 @@ export function BlogDetailPage() {
               {author.name}
             </Button>
           </Typography>
+          {blog.imageUrl ? (
+            <Box
+              component="img"
+              src={blog.imageUrl}
+              alt={blog.title}
+              sx={{
+                width: '100%',
+                maxHeight: 360,
+                objectFit: 'cover',
+                borderRadius: 1,
+                display: 'block',
+              }}
+            />
+          ) : null}
+          {(blog.keywords ?? []).length > 0 ? (
+            <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1 }}>
+              {(blog.keywords ?? []).map((kw) => (
+                <Chip key={kw} label={kw} size="small" variant="outlined" />
+              ))}
+            </Stack>
+          ) : null}
           <Typography sx={{ whiteSpace: 'pre-wrap' }}>{blog.content}</Typography>
         </Stack>
       </Paper>
