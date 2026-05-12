@@ -10,7 +10,7 @@ export function HomePage() {
     <Stack spacing={3} sx={{ alignItems: 'stretch', maxWidth: 900 }}>
       <Stack spacing={1}>
         <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
-          Blog &amp; user admin demo
+          Blogs React & React Router v7 Demo
         </Typography>
         <Typography color="text.secondary">
           This project is a small CRUD-style admin UI backed by a fake REST API. It is
@@ -21,10 +21,10 @@ export function HomePage() {
       </Stack>
 
       <Paper variant="outlined" sx={{ p: 2 }}>
-        <Typography variant="subtitle1" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle1" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           Run locally
         </Typography>
-        <Typography variant="body2" color="text.secondary" paragraph>
+        <Typography variant="body2" component="p" color="text.secondary" sx={{ mb: 2 }}>
           Start the API and the dev server together:
         </Typography>
         <Typography
@@ -47,7 +47,7 @@ export function HomePage() {
       </Paper>
 
       <Paper variant="outlined" sx={{ p: 2 }}>
-        <Typography variant="subtitle1" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle1" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           Libraries &amp; tooling
         </Typography>
         <Stack
@@ -89,7 +89,7 @@ export function HomePage() {
       </Paper>
 
       <Paper variant="outlined" sx={{ p: 2 }}>
-        <Typography variant="subtitle1" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle1" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           Implemented product features
         </Typography>
         <Stack
@@ -122,10 +122,10 @@ export function HomePage() {
       </Paper>
 
       <Paper variant="outlined" sx={{ p: 2 }}>
-        <Typography variant="subtitle1" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle1" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           React Router — data routing (what this demo uses)
         </Typography>
-        <Typography variant="body2" color="text.secondary" paragraph>
+        <Typography variant="body2" component="p" color="text.secondary" sx={{ mb: 2 }}>
           The app uses a <strong>data router</strong>: the route tree is defined with{' '}
           <code>createBrowserRouter</code> in <code>src/router.tsx</code> and rendered
           with <code>RouterProvider</code> in <code>src/main.tsx</code>. That enables
@@ -135,7 +135,7 @@ export function HomePage() {
 
         <Divider sx={{ my: 2 }} />
 
-        <Typography variant="subtitle2" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle2" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           Loaders (<code>loader</code>)
         </Typography>
         <Stack
@@ -162,7 +162,7 @@ export function HomePage() {
           </li>
         </Stack>
 
-        <Typography variant="subtitle2" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle2" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           Actions (<code>action</code>)
         </Typography>
         <Stack
@@ -186,10 +186,10 @@ export function HomePage() {
           </li>
         </Stack>
 
-        <Typography variant="subtitle2" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle2" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           Declarative data forms
         </Typography>
-        <Typography variant="body2" color="text.secondary" paragraph>
+        <Typography variant="body2" component="p" color="text.secondary" sx={{ mb: 2 }}>
           Filter and search use <code>Form method=&quot;get&quot;</code> so the URL is
           the source of truth and the list loader re-runs on each filter apply. Create
           and update use <code>method=&quot;post&quot;</code> or{' '}
@@ -197,7 +197,7 @@ export function HomePage() {
           <code>method=&quot;delete&quot;</code> on the blog detail route.
         </Typography>
 
-        <Typography variant="subtitle2" fontWeight={700} gutterBottom>
+        <Typography variant="subtitle2" component="h6" gutterBottom sx={{ fontWeight: 700 }}>
           Errors and redirects
         </Typography>
         <Stack
