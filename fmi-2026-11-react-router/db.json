@@ -35,10 +35,20 @@
       "username": "traian",
       "password": "traian123",
       "firstName": "Trayan",
-      "lastName": "I",
+      "lastName": "Iliev",
       "email": "traian@gmail.com",
-      "role": "reader",
+      "role": "admin",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8RCycIeE35GO5QovtGVeDWPjozBEUzHaL0QUcOzI1XnwEfz9UCBGHZ2UX4dr_xA9ewCEOi_D7keodAlQ-ZxztsE1dOeXyGyv8jVSP-U0&s=10"
+    },
+    {
+      "username": "alex",
+      "password": "alex123",
+      "email": "alex@gmail.com",
+      "firstName": "alex",
+      "lastName": "",
+      "role": "reader",
+      "imageUrl": "",
+      "id": "BCnbZEBxYBU"
     }
   ],
   "blogs": [
@@ -46,15 +56,16 @@
       "id": "1",
       "title": "Getting Started with React Router 7",
       "content": "Data routers combine routing with loaders and actions so data fetching stays colocated with the routes that need it.",
-      "userId": 2,
+      "userId": "2",
       "category": "tech",
-      "published": true,
+      "published": false,
       "imageUrl": "https://picsum.photos/id/180/960/540",
       "keywords": [
         "react",
         "router",
         "spa",
-        "data-fetching"
+        "data-fetching",
+        "react"
       ]
     },
     {
@@ -83,6 +94,20 @@
         "roadmap",
         "draft"
       ]
+    },
+    {
+      "title": "React Router is Easy",
+      "content": "•    Declarative - enables basic routing features like matching URLs to components, navigating around the app, and providing active states with APIs like <Link>, useNavigate, and useLocation – demo: https://github.com/iproduct/course-node-express-react/tree/master/fmi-2026-10-react-router-declarative\n•    Data - by moving route configuration outside of React rendering, Data Mode adds data loading, actions, pending states and more with APIs like loader, action, and useFetcher – demo: https://github.com/iproduct/course-node-express-react/tree/master/fmi-2025-react-router-v7-dataload\n•    Framework - typesafe href, typesafe Route Module API, intelligent code splitting, SPA, SSR, and static rendering strategies\n\n--------\n\n•   Fulstack React Blogs Demo with React Router Datarouting, Material UI react components library, and json-server backed, including login/logout frontend mockup demo simulation – https://github.com/iproduct/course-node-express-react/tree/master/fmi-2026-11-react-router",
+      "userId": "glfl1MAOZsQ",
+      "category": "tech",
+      "published": true,
+      "imageUrl": "https://images.pdimagearchive.org/collections/popular-scientific-recreations/popular-scientific-recreations-00004.jpeg?width=1542&height=800",
+      "keywords": [
+        "react",
+        "router",
+        "tutorial"
+      ],
+      "id": "CGM3Ft9e4h4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
