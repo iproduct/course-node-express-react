@@ -36,11 +36,6 @@ function buildBlogQuery(url: URL): string {
 export async function blogsListLoader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url)
   const qs = buildBlogQuery(url)
-  const [blogs, users, allForCategories] = await Promise.all([
-    apiGet<Blog[]>(`/blogs${qs}`),
-    apiGet<User[]>(`/users`),
-    apiGet<Blog[]>(`/blogs`),
-  ])
 
   const filters: BlogFilters = {
     q: url.searchParams.get('q') ?? '',
@@ -49,6 +44,11 @@ export async function blogsListLoader({ request }: LoaderFunctionArgs) {
     published: url.searchParams.get('published') ?? '',
   }
 
+  const [blogs, users, allForCategories] = await Promise.all([
+    apiGet<Blog[]>(`/blogs${qs}`),
+    apiGet<User[]>(`/users`),
+    apiGet<Blog[]>(`/blogs`),
+  ])
   const categories = [
     ...new Set(allForCategories.map((b) => b.category).filter(Boolean)),
   ].sort()
