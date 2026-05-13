@@ -13,6 +13,8 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import type { LoaderFunctionArgs } from 'react-router'
 import { Form, Link as RouterLink, useLoaderData } from 'react-router'
+import React from 'react';
+import { useRef } from 'react'
 import { apiGet } from '../../api/client'
 import type { Blog, BlogFilters, User } from '../../api/types'
 import { userFullName } from '../../utils/userDisplay'
@@ -36,6 +38,12 @@ function buildBlogQuery(url: URL): string {
 export async function blogsListLoader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url)
   const qs = buildBlogQuery(url)
+  
+  const [blogs, users, allForCategories] = await Promise.all([
+    apiGet<Blog[]>(`/blogs${qs}`),
+    apiGet<User[]>(`/users`),
+    apiGet<Blog[]>(`/blogs`),
+  ])
 
   const filters: BlogFilters = {
     q: url.searchParams.get('q') ?? '',
@@ -44,11 +52,6 @@ export async function blogsListLoader({ request }: LoaderFunctionArgs) {
     published: url.searchParams.get('published') ?? '',
   }
 
-  const [blogs, users, allForCategories] = await Promise.all([
-    apiGet<Blog[]>(`/blogs${qs}`),
-    apiGet<User[]>(`/users`),
-    apiGet<Blog[]>(`/blogs`),
-  ])
   const categories = [
     ...new Set(allForCategories.map((b) => b.category).filter(Boolean)),
   ].sort()
@@ -60,6 +63,25 @@ type LoaderData = Awaited<ReturnType<typeof blogsListLoader>>
 
 export function BlogsListPage() {
   const { blogs, users, filters, categories } = useLoaderData() as LoaderData
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleReset = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const form = formRef.current;
+    if (form) {
+      const fields = ['q', 'userId', 'category', 'published'];
+      fields.forEach((name) => {
+        const el = form.elements.namedItem(name) as HTMLInputElement | null;
+        if (el) {
+          el.value = '';
+        }
+      });
+      // Submit the form to clear query parameters
+      if ((form as any).requestSubmit) {
+        (form as any).requestSubmit();
+      }
+    }
+  };
 
   const userName = (id: string) => {
     const u = users.find((x) => String(x.id) === String(id))
@@ -85,7 +107,7 @@ export function BlogsListPage() {
       </Stack>
 
       <Paper sx={{ p: 2 }} elevation={0} variant="outlined">
-        <Form method="get" replace>
+        <Form method="get" replace ref={formRef}>
           <Stack spacing={2}>
             <Typography variant="subtitle2" color="text.secondary">
               Search &amp; filters
@@ -155,7 +177,7 @@ export function BlogsListPage() {
                 <Button type="submit" variant="contained">
                   Apply
                 </Button>
-                <Button component={RouterLink} to="/blogs" variant="text">
+                <Button onClick={handleReset} variant="text">
                   Reset
                 </Button>
               </Stack>
