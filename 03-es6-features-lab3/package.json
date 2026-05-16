@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/iproduct/course-node-express-react#readme",
   "devDependencies": {
-    "lite-server": "^2.4.0"
+    "lite-server": "^2.6.1"
   }
 }
