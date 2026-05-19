@@ -1,6 +1,5 @@
-import { hostname } from 'os';
-
-const dns: typeof import('dns') = require('dns');
+// const dns: typeof import('dns') = require('dns');
+import * as dns from 'dns';
 
 const domain = 'yahoo.com';
 function main(domain: string) {
