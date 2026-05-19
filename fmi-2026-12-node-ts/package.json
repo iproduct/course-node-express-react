@@ -1,0 +1,32 @@
+{
+  "name": "fmi-2026-12-node-ts",
+  "version": "1.0.0",
+  "description": "node.js simple demos",
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "http"
+  ],
+  "homepage": "https://github.com/iproduct/course-social-robotics#readme",
+  "bugs": {
+    "url": "https://github.com/iproduct/course-social-robotics/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iproduct/course-node-express-react"
+  },
+  "license": "Apache-2.0",
+  "author": "Trayan Iliev",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc -w",
+    "server": "node --inspect=5858 -r ts-node/register ./src/01-dns.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}

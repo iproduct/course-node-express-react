@@ -96,6 +96,7 @@
       ]
     },
     {
+      "id": "CGM3Ft9e4h4",
       "title": "React Router is Easy",
       "content": "•    Declarative - enables basic routing features like matching URLs to components, navigating around the app, and providing active states with APIs like <Link>, useNavigate, and useLocation – demo: https://github.com/iproduct/course-node-express-react/tree/master/fmi-2026-10-react-router-declarative\n•    Data - by moving route configuration outside of React rendering, Data Mode adds data loading, actions, pending states and more with APIs like loader, action, and useFetcher – demo: https://github.com/iproduct/course-node-express-react/tree/master/fmi-2025-react-router-v7-dataload\n•    Framework - typesafe href, typesafe Route Module API, intelligent code splitting, SPA, SSR, and static rendering strategies\n\n--------\n\n•   Fulstack React Blogs Demo with React Router Datarouting, Material UI react components library, and json-server backed, including login/logout frontend mockup demo simulation – https://github.com/iproduct/course-node-express-react/tree/master/fmi-2026-11-react-router",
       "userId": "glfl1MAOZsQ",
@@ -105,9 +106,9 @@
       "keywords": [
         "react",
         "router",
-        "tutorial"
-      ],
-      "id": "CGM3Ft9e4h4"
+        "tutorial",
+        "ts"
+      ]
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
