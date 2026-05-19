@@ -6,9 +6,9 @@ const PORT = 3000
 
 const server = http.createServer((req, res) => {
     const path = new URL(req.url ? req.url : '/', `http://${HOST}:${PORT}`).pathname
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'text/html')
-    // res.writeHead(200, {'Content-Type': 'text/html'})
+    // res.statusCode = 200
+    // res.setHeader('Content-Type', 'text/html')
+    res.writeHead(200, {'Content-Type': 'text/html'})
     res.write('<h1>Hello from NodeJS</h1>')
     res.write('<h2>from TypeScript</h2>')
     res.write(`<p>Request for path: ${path}</p>`)

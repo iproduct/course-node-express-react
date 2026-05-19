@@ -21,7 +21,7 @@ const todos: Todo[] = [
 ];
 
 const server = http.createServer(async (req, res) => {
-    const path = new URL(req.url, `http://${HOST}:${PORT}`).pathname;
+    const path = new URL(req.url? req.url: '', `http://${HOST}:${PORT}`).pathname;
     console.log(`${req.method} for: ${path}`);
     const matchTodoId = /^\/api\/todos\/([0-9a-fA-F\\-]{36})$/.exec(path);
     // console.log(req.headers);
