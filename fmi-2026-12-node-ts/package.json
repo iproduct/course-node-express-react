@@ -21,11 +21,14 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc -w",
-    "server": "node --inspect=5858 -r ts-node/register ./src/01-dns.ts",
+    "server": "node --inspect=5858 -r ts-node/register ./src/03-dns-await.ts",
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   }
