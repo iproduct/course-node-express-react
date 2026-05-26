@@ -1,0 +1,7 @@
+POST http://localhost:9000/api/todos
+Content-Type: application/json
+
+{
+  "text": "Develop Express server 26.05.2026",
+  "status": 1
+}

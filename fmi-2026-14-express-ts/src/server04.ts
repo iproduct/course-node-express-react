@@ -70,15 +70,16 @@ app.get("/api/todos", async (req, res) => {
 }).get("/api/todos/:todoId", async (req, res) => {
     const repo = req.app.get('todosRepo') as Repository<Todo>;
     res.json(await repo.findById(req.params["todoId"]))
-}).post('/api/todos', async (req, res, next) => {
+}).post('/api/todos', async (req, res, next) => {``
     const repo = req.app.get('todosRepo') as Repository<Todo>;
     const post = req.body as Todo;
-    const validator = req.app.get('validateTodo');
+    const validate = req.app.get('validateTodo');
+    console.log(validate);
     try {
-        await validator.validate(post);
+        await validate(post);
     } catch(errors) {
         console.log(errors);
-        sendErrorResponse(req, res, 400, `Invalid post data: ${(errors as Error[]).map(e => e.message).join(', ')}`, errors);
+        sendErrorResponse(req, res, 400, `Invalid todo data: ${JSON.stringify(validate.errors, null, 2)}`, errors);
         return;
     }
     const now = new Date();
