@@ -16,10 +16,9 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import * as express from 'express';
-import * as cors from 'cors';
+import express from 'express';
 import { Request, Response, NextFunction } from 'express';
-import * as path from 'path';
+import path from 'path';
 import { MongoClient } from 'mongodb';
 import { PostRepository, UserRepository } from './dao/mongo-repository';
 import { Post } from './model/post.model';
