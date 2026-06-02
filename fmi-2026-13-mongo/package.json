@@ -1,6 +1,7 @@
 {
   "name": "fmi-2025-11-node-ts",
   "version": "1.0.0",
+  "type": "module",
   "description": "Intro to NodeJS using TS",
   "main": "index.js",
   "scripts": {

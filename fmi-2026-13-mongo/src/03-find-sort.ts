@@ -17,7 +17,7 @@
  */
 
 import { MongoClient } from 'mongodb';
-import { Post } from './model/post';
+// import { Post } from './model/post';
 
 const dbUrl = 'mongodb://localhost:27017/';
 const dbName = 'fmi-2025-intro';
@@ -31,11 +31,11 @@ const collection = 'posts';
     try {
         // get all posts
         const posts = await db.collection(collection)
-            .find<Post>({title:/react/i})
+            .find({title:/react/i})
             .project<{title: string, tags: string[]}>({title: true, tags: true})
-            .sort({title: -1})
-            // .skip(1)
-            // .limit(3)
+            .sort({title: 1})
+            .skip(3)
+            .limit(3)
             .toArray();
 
         // const posts = await db.collection(collection)

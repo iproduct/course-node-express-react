@@ -1,0 +1,11 @@
+POST http://localhost:9000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmYyMGQ3NThiYjk4MzM4MDFhYjA1ZiIsImlhdCI6MTc4MDQyNjcxNywiZXhwIjoxNzgwNDMwMzE3fQ.BJRQcm-XUARDY4lHTHoaG7a0pbcvvDAJUAcZhstqJsE
+
+{
+"title":"json server",
+"text":"Get a full fake REST API with zero coding in less than 30 seconds",
+"imageUrl":"https://res.cloudinary.com/practicaldev/image/fetch/s--j-EmFU3z--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/5hl5zsh5cn4b88tloai8.jpg",
+"keywords":["abc","def"]
+}
+

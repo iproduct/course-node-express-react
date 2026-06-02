@@ -26,6 +26,7 @@ import { User } from './model/user.model';
 import postsRouter from './routes/posts-router';
 import usersRouter from './routes/users-router';
 import authRouter from './routes/auth-router';
+import cors from 'cors'
 
 // const POSTS_FILE = path.join(__dirname, '../posts.json');
 const DB_URL = 'mongodb://localhost:27017/';
@@ -78,11 +79,11 @@ async function start() {
       return;
     }
     console.error(err);
-    const status = err['status'] || 500;
+    const status = (err as any)['status'] || 500;
     res.status(status).json({
       status: res.status,
       message: err.message,
-      error: req.app.get('env') === 'production' ? '' : err['error'] || err
+      error: err
     });
   });
 
@@ -91,7 +92,6 @@ async function start() {
   app.listen(app.get('port'), function () {
     console.log('Server started: http://localhost:' + app.get('port') + '/');
   });
-  app.on('close', cleanup);
 }
 
 start();
@@ -100,11 +100,4 @@ async function initDb(mongoUrl: string, dbName: string) {
   // connect to mongodb
   connection = await MongoClient.connect(mongoUrl);
   return connection.db(dbName);
-}
-
-async function cleanup() {
-  if (connection) {
-    await connection.close();
-  }
-  console.log("Server stopped and DB connection closed.");
 }

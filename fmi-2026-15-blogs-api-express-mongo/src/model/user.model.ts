@@ -23,7 +23,7 @@ export interface IUser extends Indentifiable {
     lastName: string;
     username: string;
     email: string;
-    password: string;
+    password?: string;
     imageUrl: string;
     roles: Role[];
 }
