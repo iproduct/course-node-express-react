@@ -15,7 +15,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
-    "bootstrap": "^3.3.6",
+    "bootstrap": "^3.4.1",
     "clean-webpack-plugin": "^0.1.9",
     "concurrently": "^2.1.0",
     "css-loader": "^0.23.1",
