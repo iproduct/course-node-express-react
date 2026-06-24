@@ -30,7 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.8",
     "morgan": "^1.10.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "livereload": "^0.9.1",
